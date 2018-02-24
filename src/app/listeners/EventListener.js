@@ -1,9 +1,9 @@
-import { EventEmitter } from 'src/app/events'
-export class EventHandler {
+import { AppEvent } from 'app-events'
+export class EventListener {
   constructor () {
-    this.evt = EventEmitter.evt
-    this.fire = EventEmitter.fire
-    this.listen = EventEmitter.listen
+    this.evt = AppEvent.evt
+    this.fire = AppEvent.fire
+    this.listen = AppEvent.listen
   }
 
   fetched (user) { }

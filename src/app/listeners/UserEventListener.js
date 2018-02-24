@@ -1,5 +1,5 @@
-import { EventHandler } from './EventHandler'
-class UserEventHandler extends EventHandler {
+import { EventListener } from './EventListener'
+class UserEventHandler extends EventListener {
   constructor () {
     super()
     this.listen('user:fetched', this.fetched)
@@ -11,8 +11,8 @@ class UserEventHandler extends EventHandler {
     this.listen('user:destroyed', this.destroyed)
   }
 
-  fetched (s) {
-    console.log('Item fetched ', s)
+  fetched (payload) {
+    console.log('User fetched EventListener in app/listeners/UserEventListener.js ', payload)
   }
 }
 
