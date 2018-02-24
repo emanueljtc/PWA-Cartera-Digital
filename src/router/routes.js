@@ -4,11 +4,28 @@ export default [
     path: '/',
     component: () => import('layouts/default'),
     children: [
-      { path: '', component: () => import('pages/index') }
+      {
+        path: '',
+        name: 'app.home',
+        component: () => import('pages/index'),
+        meta: {
+          requiresAuth: true
+        }
+      }
     ]
   },
+  {
+    path: '/login',
+    name: 'app.login',
+    component: () => import('pages/Login'),
+    meta: {
+      requiresAuth: false
+    }
+    // children: [{ path: ', component: () => import('pages/index') }]
+  },
 
-  { // Always leave this as last one
+  {
+    // Always leave this as last one
     path: '*',
     component: () => import('pages/404')
   }

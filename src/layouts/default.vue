@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
-      <q-toolbar color="primary" glossy>
+      <q-toolbar color="primary">
         <q-btn
           flat
           dense
@@ -12,7 +12,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          Carbono App
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
       </q-toolbar>
@@ -48,6 +48,11 @@
           <q-item-side icon="rss feed" />
           <q-item-main label="Twitter" sublabel="@quasarframework" />
         </q-item>
+        <q-item-separator />
+        <q-item @click.native="logout">
+          <q-item-side icon="exit_to_app" />
+          <q-item-main label="Log out" sublabel="" />
+        </q-item>
       </q-list>
     </q-layout-drawer>
 
@@ -58,7 +63,7 @@
 </template>
 
 <script>
-import { openURL } from 'quasar'
+import { openURL, QItemSeparator } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
@@ -68,7 +73,14 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    logout () {
+      this.$oauth.logout()
+      this.$router.push('/login')
+    }
+  },
+  components: {
+    QItemSeparator
   }
 }
 </script>
