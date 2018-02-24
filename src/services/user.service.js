@@ -5,14 +5,14 @@ class User extends Service {
   constructor () {
     super()
     // this.config.origin = Env('BASE_URL')
-    this.config.origin = Config('API_URL')
+    this.config.origin = Config('api.api_url')
     this.config.endpoint = '/users/'
   }
 
   static async currentUser () {
     let UserService = new User()
     try {
-      let response = await UserService.http.get(Config('CURRENT_USER_URL'))
+      let response = await UserService.http.get(Config('api.current_user_url'))
       Fire('user:fetched', response)
       return response
     } catch (error) {
