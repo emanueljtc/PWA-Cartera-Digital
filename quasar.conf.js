@@ -4,7 +4,7 @@ var path = require('path')
 
 module.exports = function (ctx) {
   return {
-    plugins: ['oauth', 'i18n', 'axios'],
+    plugins: ['oauth', 'i18n', 'axios', 'events'],
     css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
@@ -30,7 +30,7 @@ module.exports = function (ctx) {
         // Aliases
         cfg.resolve.alias.env = path.resolve(__dirname, 'src/app/helpers/env')
         cfg.resolve.alias.services = path.resolve(__dirname, 'src/services')
-
+        cfg.resolve.alias.events = path.resolve(__dirname, 'src/app/events')
         // Rules
         cfg.module.rules.push({
           enforce: 'pre',
