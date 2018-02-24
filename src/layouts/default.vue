@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
-      <q-toolbar color="primary" glossy>
+      <q-toolbar color="primary">
         <q-btn
           flat
           dense
@@ -12,7 +12,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          Carbono App
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
       </q-toolbar>
