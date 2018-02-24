@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-export class EventDispatcher {
+export class AppEventEmitter {
   constructor () {
     this.evt = new Vue()
   }
@@ -14,4 +14,4 @@ export class EventDispatcher {
   }
 }
 
-export const EventEmitter = new EventDispatcher()
+export const AppEvent = new AppEventEmitter()

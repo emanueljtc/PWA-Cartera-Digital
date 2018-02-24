@@ -1,6 +1,7 @@
 // Configuration for your app
 var env = require('./src/app/helpers/dotenv')
 var path = require('path')
+// var webpack = require('webpack')
 
 module.exports = function (ctx) {
   return {
@@ -30,7 +31,15 @@ module.exports = function (ctx) {
         // Aliases
         cfg.resolve.alias.env = path.resolve(__dirname, 'src/app/helpers/env')
         cfg.resolve.alias.services = path.resolve(__dirname, 'src/services')
-        cfg.resolve.alias.events = path.resolve(__dirname, 'src/app/events')
+        cfg.resolve.alias.helpers = path.resolve(__dirname, 'src/app/helpers')
+        cfg.resolve.alias['app-events'] = path.resolve(__dirname, 'src/app/events')
+
+        // I am working in expose Env variable in Global (not in window)
+        // meanwhile use 'helpers' import or 'env' to access Env variables
+        // cfg.plugins.push(new webpack.ProvidePlugin({
+        //   'Env': 'env'
+        // }))
+
         // Rules
         cfg.module.rules.push({
           enforce: 'pre',
