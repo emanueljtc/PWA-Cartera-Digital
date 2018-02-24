@@ -1,14 +1,11 @@
 // Configuration for your app
+var env = require('./src/app/helpers/dotenv')
+var path = require('path')
 
 module.exports = function (ctx) {
   return {
-    plugins: [
-      'i18n',
-      'axios'
-    ],
-    css: [
-      'app.styl'
-    ],
+    plugins: ['oauth', 'i18n', 'axios'],
+    css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
       'material-icons'
@@ -24,11 +21,17 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
+      env: env.get().parsed,
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
       // useNotifier: false,
       extendWebpack (cfg) {
+        // Aliases
+        cfg.resolve.alias.env = path.resolve(__dirname, 'src/app/helpers/env')
+        cfg.resolve.alias.services = path.resolve(__dirname, 'src/services')
+
+        // Rules
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -40,9 +43,9 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: false // opens browser window automatically
     },
-    // framework: 'all' --- includes everything; for dev only!
+    // framework: 'all' --- includes everything for dev only!
     framework: {
       components: [
         'QLayout',
@@ -60,16 +63,11 @@ module.exports = function (ctx) {
         'QItemMain',
         'QItemSide'
       ],
-      directives: [
-        'Ripple'
-      ],
-      plugins: [
-        'Notify'
-      ]
+      directives: ['Ripple'],
+      plugins: ['Notify', 'LocalStorage', 'SessionStorage', 'Cookies']
     },
     // animations: 'all' --- includes all animations
-    animations: [
-    ],
+    animations: [],
     pwa: {
       cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
       manifest: {
@@ -80,33 +78,31 @@ module.exports = function (ctx) {
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#027be3',
-        icons: [
-          {
-            'src': 'statics/icons/icon-128x128.png',
-            'sizes': '128x128',
-            'type': 'image/png'
-          },
-          {
-            'src': 'statics/icons/icon-192x192.png',
-            'sizes': '192x192',
-            'type': 'image/png'
-          },
-          {
-            'src': 'statics/icons/icon-256x256.png',
-            'sizes': '256x256',
-            'type': 'image/png'
-          },
-          {
-            'src': 'statics/icons/icon-384x384.png',
-            'sizes': '384x384',
-            'type': 'image/png'
-          },
-          {
-            'src': 'statics/icons/icon-512x512.png',
-            'sizes': '512x512',
-            'type': 'image/png'
-          }
-        ]
+        icons: [{
+          src: 'statics/icons/icon-128x128.png',
+          sizes: '128x128',
+          type: 'image/png'
+        },
+        {
+          src: 'statics/icons/icon-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: 'statics/icons/icon-256x256.png',
+          sizes: '256x256',
+          type: 'image/png'
+        },
+        {
+          src: 'statics/icons/icon-384x384.png',
+          sizes: '384x384',
+          type: 'image/png'
+        },
+        {
+          src: 'statics/icons/icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }]
       }
     },
     cordova: {
@@ -122,7 +118,6 @@ module.exports = function (ctx) {
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Window only
         // win32metadata: { ... }
       }
