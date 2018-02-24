@@ -1,5 +1,13 @@
 import User from 'services/user.service'
-export const someAction = (state) => {
+export const getUsers = async ({ commit, state }, payload) => {
+  try {
+    const users = await User.get()
+    commit('users/setUsersList', users, {
+      root: true
+    })
+  } catch (error) {
+    throw error
+  }
 }
 
 export const getCurrentUser = async ({ commit, state }, payload) => {

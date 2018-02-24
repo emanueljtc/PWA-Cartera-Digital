@@ -1,5 +1,4 @@
 import Env from 'env'
-window.env = Env
 export default {
   oauth: {
     grant_type: 'password',
