@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VRouterInterceptor from './v-router-interceptor'
+import Env from 'env'
 
 import routes from './routes'
 
@@ -15,10 +17,23 @@ const Router = new VueRouter({
    */
 
   // Leave as is and change from quasar.conf.js instead!
-  mode: process.env.VUE_ROUTER_MODE,
-  base: process.env.VUE_ROUTER_BASE,
+  mode: Env('VUE_ROUTER_MODE', 'hash'),
+  base: Env('VUE_ROUTER_BASE', '/'),
   scrollBehavior: () => ({ y: 0 }),
   routes
 })
+
+/*
+// Inform Google Analytics
+Router.beforeEach((to, from, next) => {
+  if (typeof ga !== 'undefined') {
+    ga('set', 'page', to.path)
+    ga('send', 'pageview')
+  }
+  next()
+})
+*/
+
+VRouterInterceptor.handle(Router)
 
 export default Router
