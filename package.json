@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "dexie": "^2.0.1",
     "easy-requests": "^1.2.2",
     "vue-i18n": "^7.3.3"
   },
