@@ -1,8 +1,8 @@
-import { Model } from 'database/Base.model'
+import { Model } from 'src/app/database/BaseModel'
 export class UserModel extends Model {
   constructor () {
-    super('persons')
+    super('users')
   }
 }
 
-export const Person = new UserModel()
+export const User = new UserModel()
