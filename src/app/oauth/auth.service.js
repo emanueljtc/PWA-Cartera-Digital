@@ -1,6 +1,5 @@
 import Http from 'axios'
-import Config from 'src/config'
-
+import { Config } from 'helpers'
 export default {
   user: null,
   destroySession () {

@@ -33,8 +33,9 @@ module.exports = function (ctx) {
         // Aliases
         cfg.resolve.alias.env = path.resolve(__dirname, 'config/helpers/env.js')
         cfg.resolve.alias.services = path.resolve(__dirname, 'src/services')
+        cfg.resolve.alias['@app'] = path.resolve(__dirname, 'src/app')
         cfg.resolve.alias.helpers = path.resolve(__dirname, 'src/app/helpers')
-        cfg.resolve.alias['app-events'] = path.resolve(__dirname, 'src/app/events')
+        cfg.resolve.alias['@events'] = path.resolve(__dirname, 'src/app/events')
 
         // Make our helper function Global
         cfg.plugins.push(
@@ -54,7 +55,7 @@ module.exports = function (ctx) {
     },
     devServer: {
       // https: true,
-      // port: 8080,
+      port: 3000,
       open: false // opens browser window automatically
     },
     // framework: 'all' --- includes everything for dev only!
@@ -83,9 +84,9 @@ module.exports = function (ctx) {
     pwa: {
       cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
       manifest: {
-        // name: 'Quasar App',
-        // short_name: 'Quasar-PWA',
-        // description: 'Best PWA App in town!',
+        name: 'Carbono App',
+        short_name: 'Carbono-PWA',
+        description: 'Best PWA App in town!',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

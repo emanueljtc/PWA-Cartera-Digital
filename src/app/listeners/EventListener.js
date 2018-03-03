@@ -1,4 +1,4 @@
-import { AppEvent } from 'app-events'
+import { AppEvent } from '@events'
 export class EventListener {
   constructor () {
     this.evt = AppEvent.evt

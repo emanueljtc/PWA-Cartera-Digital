@@ -1,4 +1,4 @@
-import { AppEvent } from 'app-events'
+import { AppEvent } from '@events'
 
 export default function fire (eventName, payload) {
   if (eventName) {

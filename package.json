@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "dexie": "^2.0.2",
     "easy-requests": "^1.2.2",
+    "moment": "^2.21.0",
     "vue-i18n": "^7.3.3"
   },
   "devDependencies": {

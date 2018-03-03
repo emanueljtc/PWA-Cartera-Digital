@@ -1,4 +1,4 @@
-import { AppEvent } from 'app-events'
+import { AppEvent } from '@events'
 import UserEventListener from 'src/app/listeners/UserEventListener'
 // leave the export, even if you don't use it
 export default ({ app, router, Vue }) => {
