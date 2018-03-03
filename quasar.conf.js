@@ -1,7 +1,9 @@
 // Configuration for your app
-var env = require('./src/app/helpers/dotenv')
+var webpack = require('webpack')
 var path = require('path')
-// var webpack = require('webpack')
+
+// Get our env variables
+const envparser = require('./config/envparser')
 
 module.exports = function (ctx) {
   return {
@@ -22,23 +24,24 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      env: env.get().parsed,
+      env: envparser(),
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
       // useNotifier: false,
       extendWebpack (cfg) {
         // Aliases
-        cfg.resolve.alias.env = path.resolve(__dirname, 'src/app/helpers/env')
+        cfg.resolve.alias.env = path.resolve(__dirname, 'config/helpers/env.js')
         cfg.resolve.alias.services = path.resolve(__dirname, 'src/services')
         cfg.resolve.alias.helpers = path.resolve(__dirname, 'src/app/helpers')
         cfg.resolve.alias['app-events'] = path.resolve(__dirname, 'src/app/events')
 
-        // I am working in expose Env variable in Global (not in window)
-        // meanwhile use 'helpers' import or 'env' to access Env variables
-        // cfg.plugins.push(new webpack.ProvidePlugin({
-        //   'Env': 'env'
-        // }))
+        // Make our helper function Global
+        cfg.plugins.push(
+          new webpack.ProvidePlugin({
+            'env': 'env' // this variable is our alias, it's not a string
+          })
+        )
 
         // Rules
         cfg.module.rules.push({

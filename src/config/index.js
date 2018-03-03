@@ -1,6 +1,6 @@
 import api from './api'
 import auth from './auth'
-import database from './database'
+// import database from './database'
 
 export default function (value = '', fallback = null) {
   const values = {
@@ -11,7 +11,7 @@ export default function (value = '', fallback = null) {
       ...auth
     },
     database: {
-      ...database
+    //   ...database
     }
   }
 

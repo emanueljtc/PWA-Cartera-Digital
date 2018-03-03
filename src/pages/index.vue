@@ -20,13 +20,12 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { Env, Fire, Listen } from 'helpers'
+import { Fire, Listen } from 'helpers'
 export default {
   name: 'PageIndex',
   methods: {
-    Env,
     fire () {
-      const CLIENT_SECRET = Env('CLIENT_SECRET', null)
+      const CLIENT_SECRET = env('CLIENT_SECRET', null)
       Fire('app.custom-event', { CLIENT_SECRET })
     },
     ...mapActions('users', [ 'getCurrentUser', 'getUsers' ])
