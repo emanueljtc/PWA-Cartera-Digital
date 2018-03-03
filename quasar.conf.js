@@ -30,16 +30,12 @@ module.exports = function (ctx) {
       // extractCSS: false,
       // useNotifier: false,
       extendWebpack (cfg) {
-        cfg.entry.database = [path.resolve(__dirname, 'src/app/database/index')]
-        if (process.env.SERVER !== 'local') {
-          cfg.output.filename = 'js/[name].js'
-        }
         // Aliases
         cfg.resolve.alias.env = path.resolve(__dirname, 'config/helpers/env.js')
         cfg.resolve.alias.services = path.resolve(__dirname, 'src/services')
         cfg.resolve.alias['@app'] = path.resolve(__dirname, 'src/app')
         cfg.resolve.alias.helpers = path.resolve(__dirname, 'src/app/helpers')
-        cfg.resolve.alias['app-events'] = path.resolve(__dirname, 'src/app/events')
+        cfg.resolve.alias['@events'] = path.resolve(__dirname, 'src/app/events')
 
         // Make our helper function Global
         cfg.plugins.push(

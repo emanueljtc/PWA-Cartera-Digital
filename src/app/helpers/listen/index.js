@@ -1,4 +1,4 @@
-import { AppEvent } from 'app-events'
+import { AppEvent } from '@events'
 
 export default function listen (eventName, cb) {
   if (eventName) {
