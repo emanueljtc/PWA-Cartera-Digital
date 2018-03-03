@@ -1,5 +1,6 @@
 import Http from 'axios'
-import API from 'src/config/api'
+import Config from 'src/config'
+
 export default {
   user: null,
   destroySession () {
@@ -10,7 +11,7 @@ export default {
       return this.user
     }
     try {
-      let user = await Http.get(API.CURRENT_USER_URL)
+      let user = await Http.get(Config('api.current_user_url'))
       this.user = user
       return user
     } catch (error) {
@@ -19,7 +20,7 @@ export default {
   },
   async attemptLogin (credentials) {
     try {
-      let response = await Http.post(API.TOKEN_URL, credentials)
+      let response = await Http.post(Config('api.token_url'), credentials)
       return new Promise(resolve => resolve(response))
     } catch (error) {
       return new Promise((resolve, reject) => reject(error))
