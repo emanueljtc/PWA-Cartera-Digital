@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VRouterInterceptor from './v-router-interceptor'
-import Env from 'env'
 
 import routes from './routes'
 
@@ -17,8 +16,8 @@ const Router = new VueRouter({
    */
 
   // Leave as is and change from quasar.conf.js instead!
-  mode: Env('VUE_ROUTER_MODE', 'hash'),
-  base: Env('VUE_ROUTER_BASE', '/'),
+  mode: env('VUE_ROUTER_MODE', 'hash'),
+  base: env('VUE_ROUTER_BASE', '/'),
   scrollBehavior: () => ({ y: 0 }),
   routes
 })

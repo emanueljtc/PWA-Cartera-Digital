@@ -11,6 +11,14 @@ export default [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: '/users',
+        name: 'app.dbusers',
+        component: () => import('pages/users'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   },

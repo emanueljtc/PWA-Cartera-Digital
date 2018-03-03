@@ -28,6 +28,14 @@
         inset-delimiter
       >
         <q-list-header>Essential Links</q-list-header>
+        <q-item @click.native="$router.replace({name : 'app.home'})">
+          <q-item-side icon="home" />
+          <q-item-main label="Home" sublabel="" />
+        </q-item>
+        <q-item @click.native="$router.replace({name : 'app.dbusers'})">
+          <q-item-side icon="person" />
+          <q-item-main label="Users" sublabel="Users stored in indexedDB" />
+        </q-item>
         <q-item @click.native="openURL('http://quasar-framework.org')">
           <q-item-side icon="school" />
           <q-item-main label="Docs" sublabel="quasar-framework.org" />

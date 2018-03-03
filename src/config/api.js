@@ -1,10 +1,10 @@
-import Env from 'env'
-export const API_URL = Env('BASE_URL', 'http://localhost:8000/') + 'api/'
+const api_url = env('BASE_URL', 'http://localhost:8000/') + 'api/'
 export default {
-  TOKEN_URL: Env('BASE_URL', 'http://localhost:8000/') + 'oauth/token',
-  CURRENT_USER_URL: API_URL + 'currentuser',
+  api_url,
+  token_url: env('BASE_URL', 'http://localhost:8000/') + 'oauth/token',
+  current_user_url: api_url + 'currentuser',
   endpoints: {
-    USERS_URL: API_URL + 'users'
-    // resource_url : API_URL + 'resource'
+    users_url: api_url + 'users'
+    // resource_url : api_url + 'resource'
   }
 }
