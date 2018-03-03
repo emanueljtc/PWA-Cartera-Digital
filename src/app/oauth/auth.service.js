@@ -10,7 +10,7 @@ export default {
       return this.user
     }
     try {
-      let user = await Config('api.current_user_url')
+      let user = await Http.get(Config('api.current_user_url'))
       this.user = user
       return user
     } catch (error) {

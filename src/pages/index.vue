@@ -39,7 +39,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { Env, Fire, Listen } from 'helpers'
+import { Fire, Listen } from 'helpers'
 import { User } from 'src/app/database/UserModel'
 import { QInput, QField } from 'quasar'
 export default {
@@ -78,7 +78,7 @@ export default {
       }
     },
     fire () {
-      const CLIENT_SECRET = Env('CLIENT_SECRET', null)
+      const CLIENT_SECRET = env('CLIENT_SECRET', null)
       Fire('app.custom-event', { CLIENT_SECRET })
     },
     ...mapActions('users', [ 'getCurrentUser', 'getUsers' ])
