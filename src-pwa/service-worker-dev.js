@@ -15,3 +15,12 @@ self.addEventListener('activate', () => {
     }
   })
 })
+
+self.addEventListener('message', function (event) {
+  console.log('Receiving data from App: ', event)
+  if (event.ports.length > 0) {
+    event.data.app = event.data
+    console.log(event)
+    // event.ports[0].postMessage(event.data)
+  }
+})

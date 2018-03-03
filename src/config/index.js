@@ -1,6 +1,6 @@
 import api from './api'
 import auth from './auth'
-// import database from './database'
+import database from './database'
 
 export default function (value = '', fallback = null) {
   const values = {
@@ -11,13 +11,15 @@ export default function (value = '', fallback = null) {
       ...auth
     },
     database: {
-    //   ...database
+      ...database
     }
   }
+  return findValue(value, values) || fallback
+}
 
+function findValue (value, values) {
   // Convert nested levels to array
   let keys = value.toString().split('.')
-
   let val
   // If it has only one level we take the first key and find it in values
   if (keys.length === 1) {
@@ -49,5 +51,6 @@ export default function (value = '', fallback = null) {
       })
     }
   }
-  return val || fallback
+
+  return val
 }

@@ -2,12 +2,6 @@ window = self // eslint-disable-line
 importScripts('../js/vendor.js') // eslint-disable-line
 importScripts('../js/database.js') // eslint-disable-line
 
-// function checker (params) {
-//   setTimeout(() => {
-//     checkData()
-//   }, 6000)
-// }
-
 const names = ['--', 'Cesar', 'Pilly', 'MaryPily', 'Luis', 'Lilia', 'Franscisco', 'Silvia', 'Jessica', 'Angie', 'Aymee']
 const vals = ['0', '1']
 function updateUser (user_id) {
@@ -37,8 +31,6 @@ function checkData () {
 self.addEventListener('message', function (event) {
   console.log('Receiving data from App: ', event)
   if (event.ports.length > 0) {
-    event.data.app = event.data
-    console.log(event)
     checkData()
     // event.ports[0].postMessage(event.data)
   }
