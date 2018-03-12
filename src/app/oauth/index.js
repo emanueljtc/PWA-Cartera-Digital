@@ -5,7 +5,7 @@
 
 import { Cookies, LocalStorage } from 'quasar'
 import HttpService from './auth.service'
-import ConfigAuth from 'src/config/auth'
+import { Config } from 'helpers'
 
 class OAuth {
   constructor () {
@@ -13,7 +13,7 @@ class OAuth {
       Cookies,
       LocalStorage
     }
-    this.session = this.storages[ConfigAuth.default_storage]
+    this.session = this.storages[Config('auth.default_storage')]
   }
 
   logout () {
@@ -37,7 +37,7 @@ class OAuth {
     }
 
     // We merge grant type and client secret stored in configuration
-    Object.assign(data, ConfigAuth.oauth)
+    Object.assign(data, Config('auth.oauth'))
     return new Promise((resolve, reject) => {
       HttpService.attemptLogin(data)
         .then(response => {
@@ -70,13 +70,13 @@ class OAuth {
   getAuthHeader () {
     if (this.session.has('access_token')) {
       let access_token = this.getItem('access_token') // eslint-disable-line camelcase
-      return ConfigAuth.oauth_type + ' ' + access_token // eslint-disable-line camelcase
+      return Config('auth.oauth_type') + ' ' + access_token // eslint-disable-line camelcase
     }
     return null
   }
 
   getItem (key) {
-    if (ConfigAuth.default_storage === 'LocalStorage') {
+    if (Config('auth.default_storage') === 'LocalStorage') {
       // eslint-disable-line eqeqeq
       return this.session.get.item(key)
     }
@@ -92,7 +92,7 @@ class OAuth {
     let hourInMilliSeconds = 86400
     let time = data.expires_in / hourInMilliSeconds
 
-    if (ConfigAuth.default_storage === 'LocalStorage') {
+    if (Config('auth.default_storage') === 'LocalStorage') {
       // eslint-disable-line eqeqeq
       this.session.set('access_token', data.access_token)
       this.session.set('refresh_token', data.access_token)
