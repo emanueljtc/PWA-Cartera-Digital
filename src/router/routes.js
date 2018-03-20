@@ -9,7 +9,7 @@ export default [
         name: 'app.home',
         component: () => import('pages/index'),
         meta: {
-          requiresAuth: true
+          requiresAuth: false
         }
       },
       {
