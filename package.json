@@ -2,7 +2,7 @@
   "name": "starter-app",
   "version": "1.0.0",
   "description": "An App Developed by Carbono",
-  "productName": "Carbono App",
+  "productName": "MoneyKo App",
   "cordovaId": "com.carbono.app",
   "author": "Cesar Santana <casc.santana@gmail.com>",
   "private": true,
