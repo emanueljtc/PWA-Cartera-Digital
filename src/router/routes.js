@@ -19,6 +19,14 @@ export default [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: '/ingresos',
+        name: 'app.ingresos',
+        component: () => import('pages/ingresos'),
+        meta: {
+          requiresAuth: false
+        }
       }
     ]
   },
