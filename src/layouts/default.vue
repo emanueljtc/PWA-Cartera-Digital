@@ -12,8 +12,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Carbono App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          <img src="~assets/img/moneyko-horizontal.svg" alt="MoneyKo">
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
@@ -27,7 +26,7 @@
         link
         inset-delimiter
       >
-        <q-list-header>Essential Links</q-list-header>
+        <!-- <q-list-header>Essential Links</q-list-header>
         <q-item @click.native="$router.replace({name : 'app.home'})">
           <q-item-side icon="home" />
           <q-item-main label="Home" sublabel="" />
@@ -60,24 +59,51 @@
         <q-item @click.native="logout">
           <q-item-side icon="exit_to_app" />
           <q-item-main label="Log out" sublabel="" />
-        </q-item>
+        </q-item> -->
       </q-list>
     </q-layout-drawer>
 
     <q-page-container>
+      <div class="center-align">
+        <q-btn round
+          @click="opened = true"
+          label="Close"
+          icon="help"
+          class="help"
+        />
+      </div>
       <router-view />
     </q-page-container>
+
+    <q-modal v-model="opened">
+      <h4>Tus egresos corresponden a:</h4>
+      <h3>Vivienda</h3>
+      <p>Alquiler, Mantenimientos</p>
+      <hr>
+      <h3>Despensa</h3>
+      <p>Comidas, Bebidas, <br> Artículos de aseo personal, <br> Limpieza del hogar</p>
+      <hr>
+      <h3>Transporte</h3>
+      <p>Combustible, Otros</p>
+      <hr>
+      <h3>Gustos</h3>
+      <p>Salidas, Diversión</p>
+      <hr>
+      <h3>Servicios básicos</h3>
+      <p>Smartphone, Gas, Luz, Agua, <br> Telefonía/Internet</p>
+    </q-modal>
   </q-layout>
 </template>
 
 <script>
-import { openURL, QItemSeparator } from 'quasar'
+import { openURL, QItemSeparator, QModal, QBtn } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      opened: false
     }
   },
   methods: {
@@ -88,10 +114,76 @@ export default {
     }
   },
   components: {
-    QItemSeparator
+    QItemSeparator, QModal, QBtn
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+  h1,h2,h3,h4,h5,h6, p {
+    font-weight: normal;
+    font-style: normal;
+    margin: 8px 0;
+    width: 100%;
+    line-height: initial;
+  }
+  .center-align {
+    text-align: center;
+  }
+  header {
+    padding: 8px 0px;
+    text-align: center;
+
+    img {
+      left: -23px;
+      position: relative;
+    }
+  }
+
+  .q-layout-header {
+      box-shadow: 0 0px 0px 0px rgba(0,0,0,0.2), 0 0px 0px rgba(0,0,0,0.14), 0 0px 0px rgba(0,0,0,0.12);
+  }
+
+  .help {
+    box-shadow: 0px 0px 0px 0px !important;
+    background: transparent;
+    width: 25px;
+    height: 25px;
+    /* background: #64c9db; */
+
+    .material-icons {
+      color: #64c9db;
+      font-size: 24px;
+    }
+  }
+
+  .modal-content {
+    padding: 20px 25px;
+    h4 {
+      /* font-family: Nunito; */
+      font-size: 20px;
+      text-align: center;
+      color: #64c9db;
+      margin-bottom: 15px;
+    }
+    h3 {
+      /* font-family: OpenSans; */
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      color: #3f224c;
+    }
+    p {
+      /* font-family: OpenSans; */
+      width: 100%;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      color: #9b9b9b;
+    }
+
+    hr {
+      border: solid 1px #f7ecfb;
+    }
+  }
 </style>
