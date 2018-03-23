@@ -11,7 +11,8 @@ module.exports = function (ctx) {
     css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
-      'material-icons'
+      'material-icons',
+      'fontawesome'
       // 'ionicons',
       // 'mdi',
       // 'fontawesome'
@@ -67,6 +68,7 @@ module.exports = function (ctx) {
         'QPageContainer',
         'QPage',
         'QToolbar',
+        'QToggle',
         'QToolbarTitle',
         'QBtn',
         'QIcon',
