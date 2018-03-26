@@ -27,6 +27,14 @@ export default [
         meta: {
           requiresAuth: false
         }
+      },
+      {
+        path: '/metas',
+        name: 'app.metas',
+        component: () => import('pages/metas'),
+        meta: {
+          requiresAuth: false
+        }
       }
     ]
   },
