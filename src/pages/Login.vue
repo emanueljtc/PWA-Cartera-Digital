@@ -19,7 +19,7 @@
             helper=""
             error-label="Write a password"
           )
-            q-input(v-model="form.password" stack-label="Password")
+            q-input(type="password" v-model="form.password" stack-label="Password")
           .center
             q-btn(type="submit" big class="bg-primary text-white") Login
 </template>
