@@ -12,16 +12,17 @@
           <div class="cuanto-meta">
             <h2>¿De cuánto?</h2>
             <q-field>
-              <q-input type="number" prefix="$" placeholder="0.00"/>
+              <q-input v-model="number" type="number" prefix="$" placeholder="3,000.00"/>
             </q-field>
           </div>
           <div class="para-meta">
             <h2>¿Para qué?</h2>
             <q-field>
-              <q-input type="text" placeholder="Ejemplo. Viaje a méxico"/>
+              <q-input v-model="text" type="text" placeholder="Ejemplo. Viaje a méxico"/>
             </q-field>
           </div>
         </div>
+        <button class="next">Ver resultados</button>
       </div>
     </div>
   </div>
@@ -42,16 +43,11 @@ export default {
   $dark-blue: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
+  $blue-light: #64c9db;
 
   .metas {
-    margin: 0px;
-    padding: 0px;
-    float: left;
     width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    left: 50%;
+    margin-top: 25px;
 
     .content {
       h2 {
@@ -111,7 +107,7 @@ export default {
           }
 
           .q-input {
-            max-width: 350px;
+            max-width: 300px;
             display: inline-block !important;
             float: none !important;
 
@@ -151,6 +147,11 @@ export default {
             margin-bottom: 20px;
           }
 
+          .q-if:before,
+          .q-if:after {
+            color: $dark-blue;
+          }
+
           .q-input {
             max-width: 350px;
             display: inline-block !important;
@@ -179,6 +180,51 @@ export default {
               color: #dedede;
             }
           }
+        }
+      }
+
+      button {
+        width: 300px;
+        height: 50px;
+        border-radius: 15px;
+        border: 0px;
+        outliner: 0;
+        cursor: pointer;
+        background-color: $blue-light;
+        color: $white;
+        margin-bottom: 15px;
+        margin-top: 25px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .metas {
+      padding: 0 5%;
+
+      p {
+        font-size: 18px !important;
+      }
+
+      .content {
+        .metas_desglose {
+          .cuanto-meta {
+            .q-input {
+              input {
+                text-align: center;
+                font-size: 50px;
+              }
+            }
+          }
+        }
+
+        .next {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          border-radius: 0px;
+          margin: 0px;
         }
       }
     }
