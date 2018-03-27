@@ -5,20 +5,20 @@
         <h2>Metas</h2>
         <p>¿Tienes una meta financiera?</p>
         <div class="input-field center-align">
-          <q-btn label="Si"/>
-          <q-btn label="No"/>
+          <q-btn @click="metaExist = true" label="Si"/>
+          <q-btn @click="metaExist = false" label="No"/>
         </div>
-        <div class="metas_desglose">
+        <div class="metas_desglose" v-if="metaExist">
           <div class="cuanto-meta">
             <h2>¿De cuánto?</h2>
             <q-field>
-              <q-input v-model="number" type="number" prefix="$" placeholder="3,000.00"/>
+              <q-input v-model="meta" type="number" prefix="$" placeholder="3,000.00"/>
             </q-field>
           </div>
           <div class="para-meta">
             <h2>¿Para qué?</h2>
             <q-field>
-              <q-input v-model="text" type="text" placeholder="Ejemplo. Viaje a méxico"/>
+              <q-input v-model="metaProposito" type="text" placeholder="Ejemplo. Viaje a méxico"/>
             </q-field>
           </div>
         </div>
@@ -32,6 +32,13 @@
 import { QField, QInput, QBtn } from 'quasar'
 
 export default {
+  data () {
+    return {
+      meta: '',
+      metaProposito: '',
+      metaExist: false
+    }
+  },
   components: {
     QField, QInput, QBtn
   }
