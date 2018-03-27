@@ -35,6 +35,14 @@ export default [
         meta: {
           requiresAuth: false
         }
+      },
+      {
+        path: '/correo',
+        name: 'app.correo',
+        component: () => import('pages/correo'),
+        meta: {
+          requiresAuth: false
+        }
       }
     ]
   },
