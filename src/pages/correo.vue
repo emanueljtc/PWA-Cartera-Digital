@@ -7,7 +7,7 @@
         <div class="correo_input">
           <q-field>
             <q-input
-              v-model="text" type="text" placeholder="ejemplo@mail.com"
+              v-model="correo" type="text" placeholder="ejemplo@mail.com"
               :before="[
                 {
                   icon: 'mail_outline'
@@ -17,7 +17,7 @@
           </q-field>
           <q-field>
             <q-input
-              v-model="text" type="password" placeholder="Minimo 8 caract."
+              v-model="password" type="password" placeholder="Minimo 8 caract."
               :before="[
                 {
                   icon: 'lock_outline'
@@ -26,7 +26,7 @@
             />
           </q-field>
         </div>
-        <button class="primary">Continuar</button>
+        <button class="primary" v-bind:disabled="!isCorreoValid()">Continuar</button>
       </div>
     </div>
   </div>
@@ -36,6 +36,17 @@
 import { QField, QInput } from 'quasar'
 
 export default {
+  data () {
+    return {
+      correo: '',
+      password: ''
+    }
+  },
+  methods: {
+    isCorreoValid: function () {
+      return this.correo !== '' && this.password !== ''
+    }
+  },
   components: {
     QField, QInput
   }
