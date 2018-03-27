@@ -131,4 +131,55 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 600px) {
+    .correo {
+      padding: 0 5%;
+      .content {
+        margin-bottom: 50px;
+        h2 {
+          position: relative;
+          width: 80%;
+          left: 10%;
+        }
+
+        .correo_input {
+          .q-field {
+            .q-input {
+              width: 80%;
+            }
+          }
+        }
+
+        button {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          border-radius: 0px;
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 415px) {
+    .correo {
+      .content {
+        h2 {
+          position: relative;
+          width: 90%;
+          left: 5%;
+        }
+
+        .correo_input {
+          .q-field {
+            .q-input {
+              width: 95%;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
