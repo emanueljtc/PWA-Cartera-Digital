@@ -5,8 +5,8 @@
         <h2>Metas</h2>
         <p>¿Tienes una meta financiera?</p>
         <div class="input-field center-align">
-          <q-btn @click="metaExist = true" label="Si"/>
-          <q-btn @click="metaExist = false" label="No"/>
+          <q-btn @click="metaExist = true, clicked = true" label="Si"/>
+          <q-btn @click="metaExist = false, clicked = true" label="No"/>
         </div>
         <div class="metas_desglose" v-if="metaExist">
           <div class="cuanto-meta">
@@ -22,7 +22,7 @@
             </q-field>
           </div>
         </div>
-        <button class="next">Ver resultados</button>
+        <button class="next" v-bind:disabled="!isMetaValid()">Ver resultados</button>
       </div>
     </div>
   </div>
@@ -36,7 +36,19 @@ export default {
     return {
       meta: '',
       metaProposito: '',
+      clicked: false,
       metaExist: false
+    }
+  },
+  methods: {
+    isMetaValid: function () {
+      if (this.clicked !== false) {
+        if (this.metaExist !== true) {
+          return this.clicked !== false
+        } else {
+          return this.meta !== '' && this.metaProposito !== ''
+        }
+      }
     }
   },
   components: {
