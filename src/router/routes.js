@@ -43,6 +43,14 @@ export default [
         meta: {
           requiresAuth: false
         }
+      },
+      {
+        path: '/gastos',
+        name: 'app.gastos',
+        component: () => import('pages/gastos-mayor'),
+        meta: {
+          requiresAuth: false
+        }
       }
     ]
   },
