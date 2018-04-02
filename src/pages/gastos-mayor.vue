@@ -34,11 +34,9 @@
 
   .gastos-mayor {
     position: relative;
-    left: 25%;
     margin: 0px;
     padding: 0px;
-    width: 50%;
-    min-height: calc(100vh - 91px);
+    width: 100%;
     .content {
       width: 100%;
       h2 {
@@ -72,7 +70,7 @@
 
           p {
             width: auto;
-            margin: 0 10%;
+            margin: 0 15%;
             color: $white;
             font-size: 16px;
             font-weight: 600;
