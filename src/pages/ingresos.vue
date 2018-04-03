@@ -11,7 +11,7 @@
               <h2>Ingresos</h2>
               <p>Especifica tus ingresos mensuales</p>
               <q-field>
-                <q-input v-model="ingreso" type="number" prefix="$" placeholder="10,000.00"/>
+                <q-input v-model="ingreso" type="number" prefix="$" placeholder="0.00"/>
               </q-field>
               <button class="primary" @click="next()" v-bind:disabled="!isIngresoValid()">Empieza ahora</button>
             </div>
