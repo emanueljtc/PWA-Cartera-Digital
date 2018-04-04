@@ -3,7 +3,7 @@
     <div class="container items-center correo center-align">
       <div class="content">
         <img src="~assets/img/moneyko-logo.svg" alt="MoneyKo">
-        <h2>Ingresa tus datos para ver tus resultados.</h2>
+        <h2>Crea tu cuenta para <br> visualizar tus datos.</h2>
         <div class="correo_input">
           <q-field>
             <q-input
@@ -60,7 +60,33 @@ export default {
   $white: #ffffff;
   $blue-light: #64c9db;
 
+  @font-face {
+    font-family: NunitoBold;
+    src: url(~assets/fonts/Nunito/Nunito-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: Nunito;
+    src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: OpenSansSemibold;
+    src: url(~assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
+  }
+
+  $nunitobold: NunitoBold;
+  $nunito: Nunito;
+  $os-semibold: OpenSansSemibold;
+
+  .q-layout-page-container {
+    button {
+      display: none !important;
+    }
+  }
+
   .correo {
+    font-family: $nunitobold;
     margin: 0px;
     padding: 0px;
     width: 100%;
@@ -69,7 +95,7 @@ export default {
     .content {
       width: 100%;
       h2 {
-        font-size: 25px;
+        font-size: 35px;
         font-weight: bold;
         font-style: normal;
         font-stretch: normal;
@@ -104,6 +130,7 @@ export default {
             }
 
             input {
+              font-family: $os-semibold;
               color: $dark-blue;
               font-size: 16px;
               font-weight: 600;
@@ -130,6 +157,8 @@ export default {
       }
 
       button {
+        display: initial !important;
+        font-family: $nunito;
         width: 300px;
         height: 50px;
         border-radius: 15px;
@@ -139,6 +168,8 @@ export default {
         background-color: $blue-light;
         color: white;
         margin-bottom: 15px;
+        font-weight: 500;
+        font-size: 20px;
       }
     }
   }
@@ -152,6 +183,7 @@ export default {
           position: relative;
           width: 80%;
           left: 10%;
+          font-size: 25px;
         }
 
         .correo_input {
