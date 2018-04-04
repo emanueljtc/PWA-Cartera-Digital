@@ -256,17 +256,36 @@ export default {
   $dark-blue: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
+
+  @font-face {
+    font-family: Nunito;
+    src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
+  }
+  @font-face {
+    font-family: NunitoSemibold;
+    src: url(~assets/fonts/Nunito/Nunito-SemiBold.ttf);
+  }
+  @font-face {
+    font-family: NunitoBold;
+    src: url(~assets/fonts/Nunito/Nunito-Bold.ttf);
+  }
+  $nunito: Nunito;
+  $nunitosemibold: NunitoSemibold;
+  $nunitobold: NunitoBold;
+
   .row-m {
     max-width: 500px;
     width: 100%;
     display: inline-block;
     text-align: left;
   }
+
   .q-stepper-header {
     display: none;
   }
 
   .q-stepper {
+    font-family: $nunito;
     box-shadow: 0px 0 0 0;
 
     .q-stepper-header {
@@ -278,6 +297,7 @@ export default {
       .q-stepper-step-content {
         position: relative;
         .ingresos {
+          font-family: $nunito;
           min-height: 75vh;
           height: auto;
           .content {
