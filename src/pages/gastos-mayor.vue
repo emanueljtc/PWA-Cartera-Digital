@@ -5,10 +5,10 @@
         <h2>Con base en los costos <br> mas bajos del mercado</h2>
         <div class="circulos">
           <div class="tu-precio items-center">
-            <p>Tú <br> $700.00</p>
+            <p>Tú <br> ${{ tuGasto }}</p>
           </div>
           <div class="precio-bajo items-center">
-            <p>Precio <br> mas bajo <br> $500.00</p>
+            <p>Precio <br> mas bajo <br> ${{ precioBajo }}</p>
           </div>
         </div>
         <i class="material-icons arrow">arrow_downward</i>
@@ -23,6 +23,14 @@
 </template>
 
 <script>
+export default {
+  data () {
+    return {
+      tuGasto: '700.00',
+      precioBajo: '500.00'
+    }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -111,6 +119,32 @@
             font-size: 60px;
             font-weight: bold;
             color: $green;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .gastos-mayor {
+      padding: 0 5%;
+      padding-bottom: 50px;
+
+      .content {
+        .circulos {
+          min-height: 150px;
+
+          .tu-precio, .precio-bajo {
+            width: 150px;
+            height: 150px;
+          }
+
+          .tu-precio {
+            margin-right: -15px;
+          }
+
+          .precio-bajo {
+            margin-left: -15px;
           }
         }
       }
