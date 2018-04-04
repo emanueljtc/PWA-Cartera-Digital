@@ -13,7 +13,7 @@
               <q-field>
                 <q-input v-model="ingreso" type="number" prefix="$" placeholder="0.00"/>
               </q-field>
-              <button class="primary" @click="next()" v-bind:disabled="!isIngresoValid()">Empieza ahora</button>
+              <button class="primary" @click="next()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -24,7 +24,7 @@
           <div class="container valign-wrapper egresos">
             <div class="content">
               <h2>Egresos</h2>
-              <p>Especifica tus ingresos mensuales</p>
+              <p>Especifica tus egresos mensuales</p>
               <q-field>
                 <q-select
                   v-model="egreso"
@@ -60,7 +60,7 @@
                   <q-btn label="Agregar otra opción" icon="add"/>
                 </div>
               </div>
-              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente</button>
+              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
           <!-- An ad group contains one or more ads which target a shared set of keywords.
@@ -113,7 +113,7 @@
                   <q-btn label="Agregar otra opción" icon="add"/>
                 </div>
               </div>
-              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente</button>
+              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
           <!-- An ad group contains one or more ads which target a shared set of keywords.
@@ -133,11 +133,11 @@
               <p>Especifica tu deuda</p>
               <div class="input-field center-align">
                 <q-btn
-                  @click="deudaExist = true"
+                  @click="deudaExist = true, clicked = true"
                   label="Si"
                 />
                 <q-btn
-                  @click="deudaExist = false"
+                  @click="deudaExist = false, clicked = true"
                   label="No"
                 />
                 <!-- <input type="radio" id="radio_deuda_si" name="deuda" value="1" />
@@ -168,7 +168,7 @@
                   </div>
                 </div>
               </div>
-              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente</button>
+              <button class="primary" @click="next()" v-bind:disabled="!isDeudaValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
           <!-- An ad group contains one or more ads which target a shared set of keywords.
@@ -177,6 +177,36 @@
             <q-toggle v-model="ready"></q-toggle>
             Enable next step
           </label> -->
+        </q-step>
+        <!-- ===================================================== -->
+        <!-- Metas -->
+        <!-- ===================================================== -->
+        <q-step title="metas" :ready="ready">
+          <div class="container metas center-align">
+            <div class="content">
+              <h2>Metas</h2>
+              <p>¿Tienes una meta financiera?</p>
+              <div class="input-field center-align">
+                <q-btn @click="metaExist = true, clickedmeta = true" label="Si"/>
+                <q-btn @click="metaExist = false, clickedmeta = true" label="No"/>
+              </div>
+              <div class="metas_desglose" v-if="metaExist">
+                <div class="cuanto-meta">
+                  <h2>¿De cuánto?</h2>
+                  <q-field>
+                    <q-input v-model="meta" type="number" prefix="$" placeholder="3,000.00"/>
+                  </q-field>
+                </div>
+                <div class="para-meta">
+                  <h2>¿Para qué?</h2>
+                  <q-field>
+                    <q-input v-model="metaProposito" type="text" placeholder="Ejemplo. Viaje a méxico"/>
+                  </q-field>
+                </div>
+              </div>
+              <button class="next" @click="$router.replace('/correo')" v-bind:disabled="!isMetaValid()">Ver resultados</button>
+            </div>
+          </div>
         </q-step>
       </q-stepper>
     </q-slide-transition>
@@ -201,8 +231,13 @@ export default {
       ready: false,
       finished: false,
       opened: false,
+      clicked: false,
+      clickedmeta: false,
       deudaExist: false,
       deuda: '',
+      meta: '',
+      metaProposito: '',
+      metaExist: false,
       selectOptions: [
         {
           label: 'Vivienda',
@@ -243,6 +278,20 @@ export default {
     },
     isEgresoValid: function () {
       return this.ingreso !== ''
+    },
+    isDeudaValid: function () {
+      if (this.clicked !== false) {
+        return this.deudaExist !== ''
+      }
+    },
+    isMetaValid: function () {
+      if (this.clicked !== false) {
+        if (this.metaExist !== true) {
+          return this.clickedmeta !== false
+        } else {
+          return this.meta !== '' && this.metaProposito !== ''
+        }
+      }
     }
   },
   components: {
@@ -256,6 +305,7 @@ export default {
   $dark-blue: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
+  $pink: #e03757;
 
   @font-face {
     font-family: Nunito;
@@ -269,9 +319,19 @@ export default {
     font-family: NunitoBold;
     src: url(~assets/fonts/Nunito/Nunito-Bold.ttf);
   }
+  @font-face {
+    font-family: OpenSans;
+    src: url(~assets/fonts/OpenSans/OpenSans-Regular.ttf);
+  }
+  @font-face {
+    font-family: OpenSansSemi;
+    src: url(~assets/fonts/OpenSans/OpenSans-Semibold.ttf);
+  }
   $nunito: Nunito;
   $nunitosemibold: NunitoSemibold;
   $nunitobold: NunitoBold;
+  $opensans: OpenSans;
+  $os-semibold: OpenSansSemi;
 
   .row-m {
     max-width: 500px;
@@ -311,8 +371,8 @@ export default {
             left: 50%;
 
             h2 {
-              /* font-family: Nunito; */
-              font-size: 25px;
+              font-family: $nunitobold;
+              font-size: 35px;
               font-weight: bold;
               font-style: normal;
               font-stretch: normal;
@@ -323,7 +383,7 @@ export default {
             }
 
             p {
-              /* font-family: OpenSans; */
+              font-family: $opensans;
               font-size: 20px;
               font-weight: normal;
               font-style: normal;
@@ -335,6 +395,10 @@ export default {
             }
 
             button {
+              position: relative;
+              font-family: $nunito;
+              font-size: 20px;
+              font-weight: 500;
               width: 300px;
               height: 50px;
               border-radius: 15px;
@@ -344,6 +408,11 @@ export default {
               outliner: 0;
               cursor: pointer;
               margin-bottom: 15px;
+
+              i {
+                position: relative;
+                top: 5px;
+              }
             }
 
             .q-field {
@@ -353,6 +422,7 @@ export default {
             .q-if-addon,
             .q-if-focused {
               color: $green !important;
+              font-family: $nunitobold;
               font-size: 50px;
               margin: 0 5px;
             }
@@ -361,19 +431,20 @@ export default {
               max-width: 350px;
               display: inline-block !important;
               float: none !important;
-              margin: 8% 0;
+              margin: 15% 0;
 
               input.q-input-target {
+                font-family: $nunitobold;
                 color: $green;
                 font-size: 60px;
                 font-weight: bold;
                 font-style: normal;
                 font-stretch: normal;
                 letter-spacing: normal;
-                text-align: left;
-                color: #c0d84a;
+                text-align: center;
                 line-height: initial;
                 height: auto;
+                padding-right: 40px;
               }
 
               input::-webkit-input-placeholder {
@@ -411,8 +482,8 @@ export default {
             left: 50%;
 
             h2 {
-              /* font-family: Nunito; */
-              font-size: 25px;
+              font-family: $nunitobold;
+              font-size: 35px;
               font-weight: bold;
               font-style: normal;
               font-stretch: normal;
@@ -423,7 +494,7 @@ export default {
             }
 
             p {
-              /* font-family: OpenSans; */
+              font-family: $opensans;
               font-size: 20px;
               font-weight: normal;
               font-style: normal;
@@ -432,9 +503,14 @@ export default {
               letter-spacing: normal;
               text-align: center;
               color: #3f224c;
+              margin-bottom: 45px;
             }
 
             button {
+              position: relative;
+              font-family: $nunito;
+              font-size: 20px;
+              font-weight: 500;
               width: 300px;
               height: 50px;
               border-radius: 15px;
@@ -444,6 +520,11 @@ export default {
               outliner: 0;
               cursor: pointer;
               margin-bottom: 15px;
+
+              i {
+                position: relative;
+                top: 5px;
+              }
             }
 
             .q-field {
@@ -458,18 +539,25 @@ export default {
 
               .q-if-control.q-icon {
                 padding-top: 12px;
+                color: $dark-blue;
               }
               .q-if-inner {
-                width: calc(100% - 80px);
+                width: calc(100% - 24px);
                 float: left;
 
                 .q-if-label,
                 .q-if-label-above {
-                  /* font-family: OpenSans; */
+                  font-family: $os-semibold;
                   font-size: 16px !important;
                   font-weight: 600;
                   text-align: left;
                   color: #3f224c !important;
+                }
+
+                .q-input-target {
+                  color: $dark-blue;
+                  font-family: $os-semibold;
+                  font-size: 16px;
                 }
               }
 
@@ -487,7 +575,7 @@ export default {
 
             .frecuencia_sub,
             .cantidad_sub {
-              /* font-family: OpenSans; */
+              font-family: $os-semibold;
               font-size: 16px;
               font-weight: 600;
               text-align: left;
@@ -504,13 +592,14 @@ export default {
             }
 
             .period {
-              margin-bottom: 25px;
+              margin-bottom: 60px;
               float: left;
               width: 70%;
               input[type=radio], input[type=checkbox] {
                 display: none;
               }
               input[type=radio] + label, input[type=checkbox] + label {
+                font-family: $os-semibold;
                 display: inline-block;
                 background-color: #f6f6f6;
                 color: #3f224c;
@@ -525,12 +614,12 @@ export default {
             }
             .cantidad {
               float: left;
-              /* padding: 0 25px; */
               width: 30%;
 
               .q-if-addon,
               .q-if-focused {
-                color: $green !important;
+                font-family: $nunitobold;
+                color: $pink !important;
                 font-size: 22px;
                 margin: 0 5px;
               }
@@ -541,31 +630,34 @@ export default {
                 float: none !important;
 
                 input.q-input-target {
-                  color: $green;
+                  font-family: $nunitobold;
+                  color: $pink;
                   font-size: 25px;
                   text-align: left;
-                  color: #c0d84a;
                   line-height: initial;
                   height: auto;
                 }
 
                 input::-webkit-input-placeholder {
-                  color: $green !important;
+                  color: $pink !important;
                 }
                 input::-moz-placeholder {
-                  color: $green;
+                  color: $pink;
                 }
                 input:-ms-input-placeholder {
-                  color: $green;
+                  color: $pink;
                 }
                 input:-moz-placeholder {
-                  color: $green;
+                  color: $pink;
                 }
               }
             }
 
             .row-m {
               button {
+                position: relative;
+                font-family: $os-semibold;
+                text-transform: initial;
                 width: auto;
                 height: 50px;
                 box-shadow: 0 0 0 0;
@@ -578,10 +670,16 @@ export default {
                 font-size: 16px;
                 margin-bottom: 15px;
               }
+
+              i {
+                position: relative;
+                font-size: 30px;
+                top: 0;
+              }
             }
           }
         }
-        .deuda {
+        .deuda, .metas {
           min-height: 75vh;
           height: auto;
           .content {
@@ -595,8 +693,8 @@ export default {
             left: 50%;
 
             h2 {
-              /* font-family: Nunito; */
-              font-size: 25px;
+              font-family: $nunitobold;
+              font-size: 35px;
               font-weight: bold;
               font-style: normal;
               font-stretch: normal;
@@ -604,10 +702,11 @@ export default {
               letter-spacing: normal;
               text-align: center;
               color: #3f224c;
+              margin: 0;
             }
 
             p {
-              /* font-family: OpenSans; */
+              font-family: $opensans;
               font-size: 20px;
               font-weight: normal;
               font-style: normal;
@@ -616,19 +715,30 @@ export default {
               letter-spacing: normal;
               text-align: center;
               color: #3f224c;
+              margin: 0;
+              margin-bottom: 30px;
             }
 
             button {
+              position: relative;
+              font-family: $nunito;
+              font-size: 20px;
+              font-weight: 500;
               width: 300px;
               height: 50px;
               border-radius: 15px;
               background-color: #64c9db;
               color: white;
               border: 0px;
-              outline: 0;
+              outliner: 0;
               cursor: pointer;
               margin-bottom: 15px;
               margin-top: 25px;
+
+              i {
+                position: relative;
+                top: 5px;
+              }
             }
 
             input[type=radio], input[type=checkbox] {
@@ -638,15 +748,24 @@ export default {
             .q-btn {
               display: inline-block;
               background-color: #f6f6f6;
-              color: #3f224c;
+              color: $dark-blue;
               border-radius: 5px;
               padding: 0px 15px;
               cursor: pointer;
               width: 120px;
               height: 40px;
               text-align: center;
-              margin: 15px 0;
+              margin: 15px 7.5px;
+              font-size: 16px;
+              font-family: $os-semibold;
             }
+
+            .q-btn:hover,
+            .q-btn:focus {
+              background-color: #af85bc;
+              color: $white;
+            }
+
             input[type=radio]:checked + label, input[type=checkbox]:checked + label {
               background-color: $purple;
               color: $white;
@@ -663,12 +782,14 @@ export default {
 
               .q-if-addon,
               .q-if-focused {
+                font-family: $nunitobold;
                 color: #fbbb2f !important;
                 font-size: 45px;
                 margin: 0 5px;
               }
 
               .q-input {
+                font-family: $nunitobold;
                 max-width: 150px;
                 display: inline-block !important;
                 float: none !important;
@@ -704,16 +825,19 @@ export default {
               .period {
                 margin: 25px 0;
                 p {
-                  /* font-family: OpenSans; */
+                  font-family: $os-semibold;
                   font-size: 16px;
                   font-weight: 600;
                   text-align: left;
+                  margin-bottom: 13px;
                   color: #3f224c;
                 }
                 input[type=radio], input[type=checkbox] {
                   display: none;
                 }
                 input[type=radio] + label, input[type=checkbox] + label {
+                  font-family: $os-semibold;
+                  font-size: 14px;
                   display: inline-block;
                   background-color: #f6f6f6;
                   color: #3f224c;
@@ -727,15 +851,19 @@ export default {
                 }
               }
               .cantidad {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 margin: 25px 0;
                 p {
-                  /* font-family: OpenSans; */
+                  width: auto;
+                  font-family: $os-semibold;
                   font-size: 16px;
                   font-weight: 600;
                   text-align: left;
                   color: #3f224c;
-                  width: calc(100% - 135px);
                   float: left;
+                  margin: 0px;
                 }
                 .q-if-addon,
                 .q-if-focused {
@@ -774,6 +902,98 @@ export default {
                     color: #e03757;
                   }
                 }
+              }
+            }
+          }
+        }
+
+        .metas {
+          .content {
+            .metas_desglose {
+              margin-top: 40px;
+
+              .cuanto-meta {
+                .q-if-addon,
+                .q-if-focused {
+                  color: $green !important;
+                  font-size: 50px;
+                  margin: 0 5px;
+                }
+
+                .q-input {
+                  max-width: 300px;
+                  display: inline-block !important;
+                  float: none !important;
+
+                  input {
+                    color: $green;
+                    font-size: 60px;
+                    font-weight: bold;
+                    font-style: normal;
+                    font-stretch: normal;
+                    letter-spacing: normal;
+                    text-align: left;
+                    line-height: initial;
+                    height: auto;
+                  }
+
+                  input::-webkit-input-placeholder {
+                    color: $green !important;
+                  }
+
+                  input::-moz-placeholder {
+                    color: $green;
+                  }
+
+                  input::-ms-input-placeholder {
+                    color: $green;
+                  }
+
+                  input:-moz-placeholder {
+                    color: $green;
+                  }
+                }
+              }
+
+              .para-meta {
+              h2 {
+                margin-top: 40px;
+                margin-bottom: 20px;
+              }
+
+              .q-if:before,
+              .q-if:after {
+                color: $dark-blue;
+              }
+
+              .q-input {
+                max-width: 350px;
+                display: inline-block !important;
+                float: none !important;
+
+                input {
+                  font-size: 16px;
+                  color: $dark-blue;
+                  line-height: 1.56px;
+                  text-align: center;
+                }
+
+                input::-webkit-input-placeholder {
+                  color: #dedede !important;
+                }
+
+                input::-moz-placeholder {
+                  color: #dedede;
+                }
+
+                input::-ms-input-placeholder {
+                  color: #dedede;
+                }
+
+                input:-moz-placeholder {
+                  color: #dedede;
+                }
+              }
               }
             }
           }
