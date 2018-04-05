@@ -194,7 +194,7 @@
                 <div class="cuanto-meta">
                   <h2>¿De cuánto?</h2>
                   <q-field>
-                    <q-input v-model="meta" type="number" prefix="$" placeholder="3,000.00"/>
+                    <q-input v-model="meta" type="number" prefix="$" placeholder="0.00"/>
                   </q-field>
                 </div>
                 <div class="para-meta">
