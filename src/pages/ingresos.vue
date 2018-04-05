@@ -325,7 +325,7 @@ export default {
   }
   @font-face {
     font-family: OpenSansSemi;
-    src: url(~assets/fonts/OpenSans/OpenSans-Semibold.ttf);
+    src: url(~assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
   }
   $nunito: Nunito;
   $nunitosemibold: NunitoSemibold;
@@ -431,7 +431,7 @@ export default {
               max-width: 350px;
               display: inline-block !important;
               float: none !important;
-              margin: 15% 0;
+              margin: 8% 0;
 
               input.q-input-target {
                 font-family: $nunitobold;
