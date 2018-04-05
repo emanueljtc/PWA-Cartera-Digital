@@ -8,12 +8,20 @@
           round
           @click="leftDrawerOpen = !leftDrawerOpen"
         >
-          <q-icon name="menu" />
+          <!-- <q-icon name="menu" /> -->
+          <q-icon name="arrow_back" />
         </q-btn>
 
         <q-toolbar-title>
           <img src="~assets/img/moneyko-horizontal.svg" alt="MoneyKo">
         </q-toolbar-title>
+
+        <q-btn round
+          @click="opened = true"
+          label="Close"
+          icon="help"
+          class="help"
+        />
       </q-toolbar>
     </q-layout-header>
 
@@ -65,12 +73,6 @@
 
     <q-page-container>
       <div class="center-align">
-        <q-btn round
-          @click="opened = true"
-          label="Close"
-          icon="help"
-          class="help"
-        />
       </div>
       <router-view />
     </q-page-container>
@@ -120,6 +122,23 @@ export default {
 </script>
 
 <style lang="scss">
+  $dark-blue: #3f224c;
+  $light-gray: #f6f6f6;
+  $light-blue: #64c9db;
+  $white: #ffffff;
+  $gray: #f7ecfb;
+
+  @font-face {
+    font-family: Nunito;
+    src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
+  }
+  @font-face {
+    font-family: OpenSans;
+    src: url(~assets/fonts/OpenSans/OpenSans-Regular.ttf);
+  }
+  $nunito: Nunito;
+  $opensans: OpenSans;
+
   h1,h2,h3,h4,h5,h6, p {
     font-weight: normal;
     font-style: normal;
@@ -131,8 +150,22 @@ export default {
     text-align: center;
   }
   header {
-    padding: 8px 0px;
+    background-color: $white;
     text-align: center;
+    height: 70px;
+
+    .q-toolbar {
+      position: relative;
+      width: 90%;
+      left: 5%;
+      height: 70px;
+      border-bottom: 1px solid $light-gray;
+
+      i {
+        font-size: 24px !important;
+        color: $dark-blue !important;
+      }
+    }
 
     img {
       left: -23px;
@@ -149,41 +182,37 @@ export default {
     background: transparent;
     width: 25px;
     height: 25px;
-    /* background: #64c9db; */
-
-    .material-icons {
-      color: #64c9db;
-      font-size: 24px;
-    }
   }
 
   .modal-content {
-    padding: 20px 25px;
+    padding: 20px 25px 28px 25px;
     h4 {
-      /* font-family: Nunito; */
+      font-family: $nunito;
       font-size: 20px;
       text-align: center;
-      color: #64c9db;
+      color: $light-blue;
       margin-bottom: 15px;
     }
     h3 {
-      /* font-family: OpenSans; */
+      font-family: $opensans;
       font-size: 16px;
       font-weight: 600;
       text-align: center;
-      color: #3f224c;
+      color: $dark-blue;
+      margin: 0;
     }
     p {
-      /* font-family: OpenSans; */
+      font-family: $opensans;
       width: 100%;
       font-size: 14px;
       font-weight: 600;
       text-align: center;
       color: #9b9b9b;
+      margin: 0;
     }
 
     hr {
-      border: solid 1px #f7ecfb;
+      border: solid 1px $gray;
     }
   }
 </style>
