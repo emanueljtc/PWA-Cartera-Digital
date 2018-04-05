@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="layout-padding center-align">
-      <div class="container valign-wrapper welcome">
+      <div class="container welcome">
         <div class="content">
           <img src="~assets/img/moneyko.svg" alt="MoneyKo">
           <!-- <img src="~assets/img/moneyko-logo.svg" alt="MoneyKo"> -->
@@ -23,6 +23,11 @@
 </script>
 
 <style lang="scss">
+  $dark-purple: #3f224c;
+  $link: #361a44;
+  $light-blue: #64c9db;
+  $white: #ffffff;
+
   @font-face {
     font-family: NunitoBold;
     src: url(~assets/fonts/Nunito/Nunito-Bold.ttf);
@@ -36,23 +41,28 @@
   $nunitobold: NunitoBold;
   $os-semibold: OpenSansSemibold;
 
+  .help {
+    display: none;
+  }
+
+  .q-layout-page-container {
+    padding: 0px !important;
+  }
+
   .layout-padding {
     position: relative;
     padding: 0;
     .welcome {
-      min-height: calc(100vh - 91px);
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
       height: auto;
-      padding: 0 5%;
+      padding: 75px 5% 0 5%;
       .content {
         text-align: center;
         margin: 0px;
         padding: 0px;
-        float: left;
         width: 100%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        left: 50%;
 
         h1 {
           font-family: $nunitobold;
@@ -60,7 +70,7 @@
           font-weight: 800;
           line-height: 1;
           margin-bottom: 29px;
-          color: #3f224c;
+          color: $dark-purple;
         }
 
         h2 {
@@ -69,7 +79,7 @@
           font-weight: bold;
           line-height: 1.27;
           margin-bottom: 29px;
-          color: #3f224c;
+          color: $dark-purple;
         }
 
         button {
@@ -79,7 +89,7 @@
           width: 300px;
           height: 50px;
           border-radius: 15px;
-          background-color: #64c9db;
+          background-color: $light-blue;
           color: white;
           border: 0px;
           outliner: 0;
@@ -94,7 +104,7 @@
           font-weight: bold;
           line-height: 1.39;
           text-align: center;
-          color: #361a44;
+          color: $link;
           text-decoration: underline;
         }
       }
