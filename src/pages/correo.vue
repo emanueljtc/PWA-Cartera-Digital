@@ -29,6 +29,10 @@
         <button class="primary" v-bind:disabled="!isCorreoValid()">Continuar</button>
       </div>
     </div>
+
+    <footer>
+      <p>Todos los derechos reservados, Moneyko 2018.</p>
+    </footer>
   </div>
 </template>
 
@@ -55,7 +59,7 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
-  $dark-blue: #3f224c;
+  $dark-purple: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
   $blue-light: #64c9db;
@@ -107,7 +111,7 @@ export default {
         font-weight: bold;
         line-height: 1.27;
         text-align: center;
-        color: $dark-blue;
+        color: $dark-purple;
         margin-top: 13px;
         margin-bottom: 50px;
       }
@@ -119,7 +123,7 @@ export default {
 
           .q-if:before,
           .q-if:after {
-            color: $dark-blue;
+            color: $dark-purple;
           }
 
           .q-input {
@@ -130,29 +134,29 @@ export default {
             transform: translateX(-50%);
 
             .q-icon {
-              color: $dark-blue !important;
+              color: $dark-purple !important;
               margin-right: 15px;
             }
 
             input {
               font-family: $os-semibold;
-              color: $dark-blue;
+              color: $dark-purple;
               font-size: 16px;
               font-weight: 600;
               line-height: 1.56;
             }
 
             input::-webkit-input-placeholder {
-              color: $dark-blue !important;
+              color: $dark-purple !important;
             }
             input::-moz-placeholder {
-              color: $dark-blue;
+              color: $dark-purple;
             }
             input:-ms-input-placeholder {
-              color: $dark-blue;
+              color: $dark-purple;
             }
             input:-moz-placeholder {
-              color: $dark-blue;
+              color: $dark-purple;
             }
           }
         }
@@ -173,6 +177,25 @@ export default {
         font-weight: 500;
         font-size: 20px;
       }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: $dark-purple;
+    color: $white;
+    text-align: center;
+
+    p {
+      font-family: $nunitobold;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0px;
+      line-height: 50px;
     }
   }
 
@@ -205,6 +228,10 @@ export default {
           margin: 0px;
         }
       }
+    }
+
+    footer {
+      display: none;
     }
   }
 

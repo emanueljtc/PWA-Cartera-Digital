@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
-  $dark-blue: #3f224c;
+  $dark-purple: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
   $blue-light: #64c9db;
@@ -77,7 +77,7 @@ export default {
         line-height: 1.27;
         letter-spacing: normal;
         text-align: center;
-        color: $dark-blue;
+        color: $dark-purple;
         margin: 0px;
         margin-bottom: 5px;
       }
@@ -90,7 +90,7 @@ export default {
         line-height: 1.25;
         letter-spacing: normal;
         text-align: center;
-        color: $dark-blue;
+        color: $dark-purple;
         margin: 0px;
         margin-bottom: 30px;
       }
@@ -98,7 +98,7 @@ export default {
       .q-btn {
         display: inline-block;
         background-color: #f6f6f6;
-        color: $dark-blue;
+        color: $dark-purple;
         border-radius: 5px;
         padding: 0px 15px;
         cursor: pointer;
@@ -168,7 +168,7 @@ export default {
 
           .q-if:before,
           .q-if:after {
-            color: $dark-blue;
+            color: $dark-purple;
           }
 
           .q-input {
@@ -178,7 +178,7 @@ export default {
 
             input {
               font-size: 16px;
-              color: $dark-blue;
+              color: $dark-purple;
               line-height: 1.56px;
               text-align: center;
             }

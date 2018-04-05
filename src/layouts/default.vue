@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-  $dark-blue: #3f224c;
+  $dark-purple: #3f224c;
   $light-gray: #f6f6f6;
   $light-blue: #64c9db;
   $white: #ffffff;
@@ -163,7 +163,7 @@ export default {
 
       i {
         font-size: 24px !important;
-        color: $dark-blue !important;
+        color: $dark-purple !important;
       }
     }
 
@@ -198,7 +198,7 @@ export default {
       font-size: 16px;
       font-weight: 600;
       text-align: center;
-      color: $dark-blue;
+      color: $dark-purple;
       margin: 0;
     }
     p {

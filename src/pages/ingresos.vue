@@ -217,6 +217,10 @@
       </p>
       <button class="primary" @click="reset()">Reset</button>
     </div>
+
+    <footer>
+      <p>Todos los derechos reservados, Moneyko 2018.</p>
+    </footer>
   </div>
 </template>
 
@@ -302,7 +306,7 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
-  $dark-blue: #3f224c;
+  $dark-purple: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
   $pink: #e03757;
@@ -539,7 +543,7 @@ export default {
 
               .q-if-control.q-icon {
                 padding-top: 12px;
-                color: $dark-blue;
+                color: $dark-purple;
               }
               .q-if-inner {
                 width: calc(100% - 24px);
@@ -555,7 +559,7 @@ export default {
                 }
 
                 .q-input-target {
-                  color: $dark-blue;
+                  color: $dark-purple;
                   font-family: $os-semibold;
                   font-size: 16px;
                 }
@@ -748,7 +752,7 @@ export default {
             .q-btn {
               display: inline-block;
               background-color: #f6f6f6;
-              color: $dark-blue;
+              color: $dark-purple;
               border-radius: 5px;
               padding: 0px 15px;
               cursor: pointer;
@@ -963,7 +967,7 @@ export default {
 
               .q-if:before,
               .q-if:after {
-                color: $dark-blue;
+                color: $dark-purple;
               }
 
               .q-input {
@@ -973,7 +977,7 @@ export default {
 
                 input {
                   font-size: 16px;
-                  color: $dark-blue;
+                  color: $dark-purple;
                   line-height: 1.56px;
                   text-align: center;
                 }
@@ -999,6 +1003,31 @@ export default {
           }
         }
       }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: $dark-purple;
+    color: $white;
+    text-align: center;
+
+    p {
+      font-family: $nunitobold;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0px;
+      line-height: 50px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    footer {
+      display: none;
     }
   }
 </style>

@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
-  $dark-blue: #3f224c;
+  $dark-purple: #3f224c;
   $purple: #af85bc;
   $white: #ffffff;
   $blue-light: #64c9db;
@@ -55,7 +55,7 @@ export default {
         line-height: 1.27;
         letter-spacing: normal;
         text-align: center;
-        color: $dark-blue;
+        color: $dark-purple;
         margin-top: 13px;
         margin-bottom: 50px;
       }
@@ -103,13 +103,13 @@ export default {
 
       .arrow {
         font-size: 35px;
-        color: $dark-blue;
+        color: $dark-purple;
         margin-bottom: 40px;
       }
 
       .ahorro {
         p {
-          color: $dark-blue;
+          color: $dark-purple;
           font-size: 18px;
           font-weight: normal;
           line-height: 1.39;

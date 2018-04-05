@@ -15,6 +15,10 @@
           </div>
         </div>
       </div>
+
+      <footer>
+        <p>Todos los derechos reservados, Moneyko 2018.</p>
+      </footer>
     </div>
   </div>
 </template>
@@ -113,6 +117,24 @@
         }
       }
     }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background-color: $dark-purple;
+      color: $white;
+
+      p {
+        font-family: $nunitobold;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0px;
+        line-height: 50px;
+      }
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -133,6 +155,10 @@
             width: 60%;
           }
         }
+      }
+
+      footer {
+        display: none;
       }
     }
   }
