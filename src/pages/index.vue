@@ -41,8 +41,12 @@
   $nunitobold: NunitoBold;
   $os-semibold: OpenSansSemibold;
 
-  .help {
-    display: none;
+  header {
+    .q-toolbar {
+      i {
+        display: none !important;
+      }
+    }
   }
 
   .q-layout-page-container {
