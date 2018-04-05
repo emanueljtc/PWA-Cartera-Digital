@@ -79,6 +79,14 @@ export default {
   $nunito: Nunito;
   $os-semibold: OpenSansSemibold;
 
+  header {
+    .q-toolbar {
+      i {
+        display: none !important;
+      }
+    }
+  }
+
   .q-layout-page-container {
     button {
       display: none !important;
@@ -88,7 +96,7 @@ export default {
   .correo {
     font-family: $nunitobold;
     margin: 0px;
-    padding: 0px;
+    padding: 50px 5% 0 5%;
     width: 100%;
     display: flex;
     min-height: calc(100vh - 91px);
@@ -97,10 +105,7 @@ export default {
       h2 {
         font-size: 35px;
         font-weight: bold;
-        font-style: normal;
-        font-stretch: normal;
         line-height: 1.27;
-        letter-spacing: normal;
         text-align: center;
         color: $dark-blue;
         margin-top: 13px;
@@ -134,10 +139,7 @@ export default {
               color: $dark-blue;
               font-size: 16px;
               font-weight: 600;
-              font-style: normal;
-              font-stretch: normal;
               line-height: 1.56;
-              letter-spacing: normal;
             }
 
             input::-webkit-input-placeholder {
