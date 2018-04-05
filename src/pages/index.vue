@@ -6,7 +6,8 @@
           <img src="~assets/img/moneyko.svg" alt="MoneyKo">
           <!-- <img src="~assets/img/moneyko-logo.svg" alt="MoneyKo"> -->
           <!-- <h1>Bienvenido</h1> -->
-          <h2>Moneyko te permite calcular tu <br>presupuesto y tus metas a largo <br> y corto plazo.</h2>
+          <!-- <h2>Moneyko te permite calcular tu <br>presupuesto y tus metas a largo <br> y corto plazo.</h2> -->
+          <h2>Calcula tu presupuesto y controla <br> tus finanzas con nuestras <br> recomendaciones.</h2>
           <a href="/ingresos" class="primary"></a>
           <q-btn @click="$router.replace('/ingresos')"> Empieza ahora </q-btn>
           <div class="row">
