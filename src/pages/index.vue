@@ -52,11 +52,7 @@
   $os-semibold: OpenSansSemibold;
 
   header {
-    .q-toolbar {
-      i {
-        display: none !important;
-      }
-    }
+    display: none
   }
 
   .q-layout-page-container {
@@ -89,11 +85,11 @@
         }
 
         h2 {
-          font-family: $os-semibold;
+          font-family: $nunitobold;
           font-size: 30px;
           font-weight: bold;
           line-height: 1.27;
-          margin-bottom: 29px;
+          margin: 29px 0;
           color: $dark-purple;
         }
 
@@ -109,7 +105,7 @@
           border: 0px;
           outliner: 0;
           cursor: pointer;
-          margin-bottom: 85px;
+          margin-bottom: 106px;
         }
 
         a {

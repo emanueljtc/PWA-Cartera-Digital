@@ -89,7 +89,7 @@ export default {
   $os-semibold: OpenSansSemibold;
 
   header {
-    display: none;
+    display: none !important;
   }
 
   .q-layout-page-container {

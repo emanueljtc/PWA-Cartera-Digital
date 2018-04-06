@@ -342,6 +342,10 @@ export default {
   $opensans: OpenSans;
   $os-semibold: OpenSansSemi;
 
+  header {
+    display: initial !important;
+  }
+
   h2 {
     font-family: $nunitobold;
     font-size: 35px;
@@ -431,7 +435,7 @@ export default {
           font-family: $nunito;
           min-height: 100vh;
           height: auto;
-          padding: 75px 5% 90px 5%;
+          padding: 120px 5% 90px 5%;
           display: flex;
           align-items: center;
 
@@ -490,7 +494,7 @@ export default {
           font-family: $nunito;
           min-height: 100vh;
           height: auto;
-          padding: 75px 5% 90px 5%;
+          padding: 120px 5% 90px 5%;
           display: flex;
           align-items: center;
 
@@ -669,7 +673,7 @@ export default {
           font-family: $nunito;
           min-height: 100vh;
           height: auto;
-          padding: 75px 5% 90px 5%;
+          padding: 120px 5% 90px 5%;
           display: flex;
           align-items: center;
 
