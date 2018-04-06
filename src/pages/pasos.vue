@@ -380,7 +380,7 @@ export default {
     outliner: 0;
     cursor: pointer;
     margin-bottom: 15px;
-    margin-top: 140px;
+    margin-top: 100px;
 
     i {
       position: relative;
