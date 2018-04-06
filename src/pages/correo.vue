@@ -59,10 +59,15 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
+  $yellow: #fbbb2f;
+  $pink: #e03757;
   $dark-purple: #3f224c;
+  $link: #361a44;
   $purple: #af85bc;
+  $light-blue: #64c9db;
   $white: #ffffff;
-  $blue-light: #64c9db;
+  $gray: #dedede;
+  $gray-button: #f6f6f6;
 
   @font-face {
     font-family: NunitoBold;
@@ -92,18 +97,17 @@ export default {
   }
 
   .q-layout-page-container {
-    button {
-      display: none !important;
-    }
+    padding: 0px !important;
   }
 
   .correo {
     font-family: $nunitobold;
     margin: 0px;
-    padding: 50px 5% 0 5%;
+    padding: 50px 5% 90px 5%;
     width: 100%;
     display: flex;
-    min-height: calc(100vh - 91px);
+    min-height: 100vh;
+    height: auto;
     .content {
       width: 100%;
       h2 {
@@ -171,7 +175,7 @@ export default {
         border: 0px;
         outliner: 0;
         cursor: pointer;
-        background-color: $blue-light;
+        background-color: $light-blue;
         color: white;
         margin-bottom: 15px;
         font-weight: 500;

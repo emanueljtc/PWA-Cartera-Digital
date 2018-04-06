@@ -9,7 +9,7 @@
           <!-- <h2>Moneyko te permite calcular tu <br>presupuesto y tus metas a largo <br> y corto plazo.</h2> -->
           <h2>Calcula tu presupuesto y controla <br> tus finanzas con nuestras <br> recomendaciones.</h2>
           <a href="/ingresos" class="primary"></a>
-          <q-btn @click="$router.replace('/ingresos')"> Empieza ahora </q-btn>
+          <q-btn @click="$router.replace('/pasos')"> Empieza ahora </q-btn>
           <div class="row">
             <a href="#" class="center-align">Ya estoy registrado</a>
           </div>
@@ -27,10 +27,16 @@
 </script>
 
 <style lang="scss">
+  $green: #c0d84a;
+  $yellow: #fbbb2f;
+  $pink: #e03757;
   $dark-purple: #3f224c;
   $link: #361a44;
+  $purple: #af85bc;
   $light-blue: #64c9db;
   $white: #ffffff;
+  $gray: #dedede;
+  $gray-button: #f6f6f6;
 
   @font-face {
     font-family: NunitoBold;
@@ -65,7 +71,8 @@
       align-items: center;
       min-height: 100vh;
       height: auto;
-      padding: 75px 5% 0 5%;
+      padding: 75px 5% 90px 5%;
+      padding-bottom: 90px !important;
       .content {
         text-align: center;
         margin: 0px;

@@ -21,9 +21,9 @@ export default [
         }
       },
       {
-        path: '/ingresos',
-        name: 'app.ingresos',
-        component: () => import('pages/ingresos'),
+        path: '/pasos',
+        name: 'app.pasos',
+        component: () => import('pages/pasos'),
         meta: {
           requiresAuth: false
         }

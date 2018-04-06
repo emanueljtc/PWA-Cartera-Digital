@@ -17,14 +17,15 @@
             </div>
           </div>
         </q-step>
+
         <!-- ===================================================== -->
         <!-- Egresos -->
         <!-- ===================================================== -->
         <q-step title="egresos" :ready="ready">
-          <div class="container valign-wrapper egresos">
+          <div class="container egresos">
             <div class="content">
               <h2>Egresos</h2>
-              <p>Especifica tus egresos mensuales</p>
+              <p>Especifica tus egresos</p>
               <q-field>
                 <q-select
                   v-model="egreso"
@@ -50,37 +51,32 @@
                   </div>
                   <div class="cantidad">
                     <q-field>
-                      <q-input v-model="egreso" type="number" prefix="$" placeholder="0.00"/>
+                      <q-input v-model="egresoAmount" type="number" prefix="$" placeholder="0.00"/>
                     </q-field>
                   </div>
                 </div>
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn label="Agregar otra opción" icon="add"/>
+                  <q-btn label="Agregar otra opción (4/5)" icon="add"/>
                 </div>
               </div>
               <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
-          <!-- An ad group contains one or more ads which target a shared set of keywords.
-          <br><br>
-          <label>
-            <q-toggle v-model="ready"></q-toggle>
-            Enable next step
-          </label> -->
         </q-step>
+
         <!-- ===================================================== -->
         <!-- Gastos más fuertes -->
         <!-- ===================================================== -->
-        <q-step title="egresos" :ready="ready">
+        <q-step title="gastos-mayor" :ready="ready">
           <div class="container valign-wrapper gastos">
             <div class="content">
               <h2>Gastos más fuertes</h2>
               <p>¿Cuáles son tus gastos más fuertes?</p>
               <q-field>
                 <q-select
-                  v-model="egreso"
+                  v-model="gasto"
                   :options="selectOptions"
                   float-label="Selecciona una opción"
                 />
@@ -103,26 +99,21 @@
                   </div>
                   <div class="cantidad">
                     <q-field>
-                      <q-input v-model="ingreso" type="number" prefix="$" placeholder="0.00"/>
+                      <q-input v-model="gastoAmount" type="number" prefix="$" placeholder="0.00"/>
                     </q-field>
                   </div>
                 </div>
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn label="Agregar otra opción" icon="add"/>
+                  <q-btn label="Agregar otra opción (4/5)" icon="add"/>
                 </div>
               </div>
               <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
-          <!-- An ad group contains one or more ads which target a shared set of keywords.
-          <br><br>
-          <label>
-            <q-toggle v-model="ready"></q-toggle>
-            Enable next step
-          </label> -->
         </q-step>
+
         <!-- ===================================================== -->
         <!-- Deuda -->
         <!-- ===================================================== -->
@@ -133,17 +124,13 @@
               <p>Especifica tu deuda</p>
               <div class="input-field center-align">
                 <q-btn
-                  @click="deudaExist = true, clicked = true"
+                  @click="deudaExist = true, clickedDeuda = true"
                   label="Si"
                 />
                 <q-btn
-                  @click="deudaExist = false, clicked = true"
+                  @click="deudaExist = false, clickedDeuda = true"
                   label="No"
                 />
-                <!-- <input type="radio" id="radio_deuda_si" name="deuda" value="1" />
-                <label for="radio_deuda_si">Si</label>
-                <input type="radio" id="radio_deuda_no" name="deuda" value="0" />
-                <label for="radio_deuda_no">No</label> -->
               </div>
               <div class="deuda_desglose" v-if="deudaExist">
                 <h2>¿De cuánto?</h2>
@@ -154,16 +141,18 @@
                   <div class="row-m">
                     <div class="period">
                       <p>Frecuencia de pagos</p>
-                      <input type="radio" id="radio_semanal" name="period" value="semanal" />
-                      <label for="radio_semanal">Pago único</label>
-                      <input type="radio" id="radio_quincenal" name="period" value="quincenal" />
-                      <label for="radio_quincenal">Quincenal</label>
-                      <input type="radio" id="radio_mensual" name="period" value="mensual" />
-                      <label for="radio_mensual">Mensual</label>
+                      <div class="frecuencias">
+                        <input type="radio" id="radio_semanal" name="period" value="semanal" />
+                        <label for="radio_semanal">Pago único</label>
+                        <input type="radio" id="radio_quincenal" name="period" value="quincenal" />
+                        <label for="radio_quincenal">Quincenal</label>
+                        <input type="radio" id="radio_mensual" name="period" value="mensual" />
+                        <label for="radio_mensual">Mensual</label>
+                        </div>
                     </div>
                     <div class="cantidad">
                       <p>Cantidad</p>
-                      <q-input v-model="deuda" type="number" prefix="$" placeholder="0.00"/>
+                      <q-input v-model="deudaPagos" type="number" prefix="$" placeholder="0.00"/>
                     </div>
                   </div>
                 </div>
@@ -171,13 +160,8 @@
               <button class="primary" @click="next()" v-bind:disabled="!isDeudaValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
-          <!-- An ad group contains one or more ads which target a shared set of keywords.
-          <br><br>
-          <label>
-            <q-toggle v-model="ready"></q-toggle>
-            Enable next step
-          </label> -->
         </q-step>
+
         <!-- ===================================================== -->
         <!-- Metas -->
         <!-- ===================================================== -->
@@ -187,8 +171,8 @@
               <h2>Metas</h2>
               <p>¿Tienes una meta financiera?</p>
               <div class="input-field center-align">
-                <q-btn @click="metaExist = true, clickedmeta = true" label="Si"/>
-                <q-btn @click="metaExist = false, clickedmeta = true" label="No"/>
+                <q-btn @click="metaExist = true, clickedMeta = true" label="Si"/>
+                <q-btn @click="metaExist = false, clickedMeta = true" label="No"/>
               </div>
               <div class="metas_desglose" v-if="metaExist">
                 <div class="cuanto-meta">
@@ -231,17 +215,8 @@ export default {
   data () {
     return {
       ingreso: '',
+      //
       egreso: '',
-      ready: false,
-      finished: false,
-      opened: false,
-      clicked: false,
-      clickedmeta: false,
-      deudaExist: false,
-      deuda: '',
-      meta: '',
-      metaProposito: '',
-      metaExist: false,
       selectOptions: [
         {
           label: 'Vivienda',
@@ -263,7 +238,25 @@ export default {
           label: 'Servicios básicos',
           value: '5'
         }
-      ]
+      ],
+      egresoAmount: '',
+      //
+      gasto: '',
+      gastoAmount: '',
+      //
+      deudaExist: false,
+      clickedDeuda: false,
+      deuda: '',
+      deudaPagos: '',
+      //
+      metaExist: false,
+      clickedMeta: false,
+      meta: '',
+      metaProposito: '',
+      //
+      ready: false,
+      finished: false,
+      opened: false
     }
   },
   methods: {
@@ -283,13 +276,20 @@ export default {
     isEgresoValid: function () {
       return this.ingreso !== ''
     },
+    isGastosValid: function () {
+      return this.ingreso !== ''
+    },
     isDeudaValid: function () {
-      if (this.clicked !== false) {
-        return this.deudaExist !== ''
+      if (this.clickedDeuda !== false) {
+        if (this.deudaExist !== true) {
+          return this.clickedDeuda !== false
+        } else {
+          return this.deuda !== '' && this.deudaPagos !== ''
+        }
       }
     },
     isMetaValid: function () {
-      if (this.clicked !== false) {
+      if (this.clickedMeta !== false) {
         if (this.metaExist !== true) {
           return this.clickedmeta !== false
         } else {
@@ -306,10 +306,15 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
-  $dark-purple: #3f224c;
-  $purple: #af85bc;
-  $white: #ffffff;
+  $yellow: #fbbb2f;
   $pink: #e03757;
+  $dark-purple: #3f224c;
+  $link: #361a44;
+  $purple: #af85bc;
+  $light-blue: #64c9db;
+  $white: #ffffff;
+  $gray: #dedede;
+  $gray-button: #f6f6f6;
 
   @font-face {
     font-family: Nunito;
@@ -337,8 +342,68 @@ export default {
   $opensans: OpenSans;
   $os-semibold: OpenSansSemi;
 
+  h2 {
+    font-family: $nunitobold;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 1.27;
+    text-align: center;
+    color: $dark-purple;
+    margin: 0;
+  }
+
+  p {
+    font-family: $opensans;
+    font-size: 20px;
+    line-height: 1.25;
+    text-align: center;
+    color: $dark-purple;
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+
+  button {
+    position: relative;
+    font-family: $nunito;
+    font-size: 20px;
+    font-weight: 500;
+    width: 300px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: $light-blue;
+    color: white;
+    border: 0px;
+    outliner: 0;
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-top: 140px;
+
+    i {
+      position: relative;
+      top: 5px;
+    }
+  }
+
+  .q-layout-page-container {
+    padding: 0px !important;
+  }
+
+  .q-list {
+    padding: 0px;
+    .q-item {
+      color: $dark-purple;
+      font-family: $os-semibold;
+      font-size: 16px;
+      border-bottom: 1px solid $gray;
+    }
+
+    .q-item:hover {
+      background-color: $gray !important;
+    }
+  }
+
   .row-m {
-    max-width: 500px;
+    max-width: 45%;
     width: 100%;
     display: inline-block;
     text-align: left;
@@ -351,73 +416,29 @@ export default {
   .q-stepper {
     font-family: $nunito;
     box-shadow: 0px 0 0 0;
-
     .q-stepper-header {
       box-shadow: 0px 0 0 0;
     }
     .q-stepper-step {
       text-align: center;
-
+      .q-stepper-step-inner {
+        padding: 0px;
+      }
       .q-stepper-step-content {
         position: relative;
+
         .ingresos {
           font-family: $nunito;
-          min-height: 75vh;
+          min-height: 100vh;
           height: auto;
+          padding: 75px 5% 90px 5%;
+          display: flex;
+          align-items: center;
+
           .content {
             margin: 0px;
             padding: 0px;
-            float: left;
             width: 100%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) translateX(-50%);
-            left: 50%;
-
-            h2 {
-              font-family: $nunitobold;
-              font-size: 35px;
-              font-weight: bold;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: 1.27;
-              letter-spacing: normal;
-              text-align: center;
-              color: #3f224c;
-            }
-
-            p {
-              font-family: $opensans;
-              font-size: 20px;
-              font-weight: normal;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: 1.25;
-              letter-spacing: normal;
-              text-align: center;
-              color: #3f224c;
-            }
-
-            button {
-              position: relative;
-              font-family: $nunito;
-              font-size: 20px;
-              font-weight: 500;
-              width: 300px;
-              height: 50px;
-              border-radius: 15px;
-              background-color: #64c9db;
-              color: white;
-              border: 0px;
-              outliner: 0;
-              cursor: pointer;
-              margin-bottom: 15px;
-
-              i {
-                position: relative;
-                top: 5px;
-              }
-            }
 
             .q-field {
               text-align: center;
@@ -435,16 +456,13 @@ export default {
               max-width: 350px;
               display: inline-block !important;
               float: none !important;
-              margin: 8% 0;
+              margin-top: 100px;
 
               input.q-input-target {
                 font-family: $nunitobold;
                 color: $green;
                 font-size: 60px;
                 font-weight: bold;
-                font-style: normal;
-                font-stretch: normal;
-                letter-spacing: normal;
                 text-align: center;
                 line-height: initial;
                 height: auto;
@@ -466,69 +484,27 @@ export default {
             }
           }
         }
+
         .egresos,
         .gastos {
-          min-height: 75vh;
+          font-family: $nunito;
+          min-height: 100vh;
           height: auto;
-
-          .primary {
-            margin-top: 65px;
-          }
+          padding: 75px 5% 90px 5%;
+          display: flex;
+          align-items: center;
 
           .content {
             margin: 0px;
             padding: 0px;
-            float: left;
             width: 100%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) translateX(-50%);
-            left: 50%;
-
-            h2 {
-              font-family: $nunitobold;
-              font-size: 35px;
-              font-weight: bold;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: 1.27;
-              letter-spacing: normal;
-              text-align: center;
-              color: #3f224c;
-            }
 
             p {
-              font-family: $opensans;
-              font-size: 20px;
-              font-weight: normal;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: 1.25;
-              letter-spacing: normal;
-              text-align: center;
-              color: #3f224c;
-              margin-bottom: 45px;
+              margin-bottom: 40px;
             }
 
             button {
-              position: relative;
-              font-family: $nunito;
-              font-size: 20px;
-              font-weight: 500;
-              width: 300px;
-              height: 50px;
-              border-radius: 15px;
-              background-color: #64c9db;
-              color: white;
-              border: 0px;
-              outliner: 0;
-              cursor: pointer;
-              margin-bottom: 15px;
-
-              i {
-                position: relative;
-                top: 5px;
-              }
+              margin-top: 0px;
             }
 
             .q-field {
@@ -536,10 +512,10 @@ export default {
             }
 
             .q-select {
-              min-width: 500px;
+              min-width: 45%;
               display: inline-block !important;
               float: none !important;
-              margin: 15px 0;
+              margin-bottom: 38px;
 
               .q-if-control.q-icon {
                 padding-top: 12px;
@@ -555,7 +531,7 @@ export default {
                   font-size: 16px !important;
                   font-weight: 600;
                   text-align: left;
-                  color: #3f224c !important;
+                  color: $dark-purple !important;
                 }
 
                 .q-input-target {
@@ -567,11 +543,8 @@ export default {
 
               input.q-input-target {
                 font-weight: bold;
-                font-style: normal;
-                font-stretch: normal;
-                letter-spacing: normal;
                 text-align: left;
-                color: #c0d84a;
+                color: $green;
                 line-height: initial;
                 height: auto;
               }
@@ -583,9 +556,10 @@ export default {
               font-size: 16px;
               font-weight: 600;
               text-align: left;
-              color: #3f224c;
-              margin: 10px 0;
+              color: $dark-purple;
               float: left;
+              margin-bottom: 11px;
+              margin-top: 0px;
             }
 
             .frecuencia_sub {
@@ -605,8 +579,8 @@ export default {
               input[type=radio] + label, input[type=checkbox] + label {
                 font-family: $os-semibold;
                 display: inline-block;
-                background-color: #f6f6f6;
-                color: #3f224c;
+                background-color: $gray-button;
+                color: $dark-purple;
                 border-radius: 5px;
                 padding: 8px 15px;
                 cursor: pointer;
@@ -616,6 +590,7 @@ export default {
                 color: $white;
               }
             }
+
             .cantidad {
               float: left;
               width: 30%;
@@ -632,6 +607,7 @@ export default {
                 max-width: 350px;
                 display: inline-block !important;
                 float: none !important;
+                padding-bottom: 0px;
 
                 input.q-input-target {
                   font-family: $nunitobold;
@@ -667,12 +643,17 @@ export default {
                 box-shadow: 0 0 0 0;
                 border-radius: 15px;
                 background-color: transparent;
-                color: #af85bc;
+                color: $purple;
                 border: 0px;
                 outline: 0;
                 cursor: pointer;
                 font-size: 16px;
-                margin-bottom: 15px;
+                margin-bottom: 50px;
+                padding: 0px;
+              }
+
+              .q-focus-helper {
+                background-color: transparent;
               }
 
               i {
@@ -683,75 +664,36 @@ export default {
             }
           }
         }
+
         .deuda, .metas {
-          min-height: 75vh;
+          font-family: $nunito;
+          min-height: 100vh;
           height: auto;
+          padding: 75px 5% 90px 5%;
+          display: flex;
+          align-items: center;
+
           .content {
             margin: 0px;
             padding: 0px;
-            float: left;
             width: 100%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) translateX(-50%);
-            left: 50%;
-
-            h2 {
-              font-family: $nunitobold;
-              font-size: 35px;
-              font-weight: bold;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: 1.27;
-              letter-spacing: normal;
-              text-align: center;
-              color: #3f224c;
-              margin: 0;
-            }
 
             p {
-              font-family: $opensans;
-              font-size: 20px;
-              font-weight: normal;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: 1.25;
-              letter-spacing: normal;
-              text-align: center;
-              color: #3f224c;
-              margin: 0;
-              margin-bottom: 30px;
+              margin: 0px 0px 10px 0px;
             }
 
             button {
-              position: relative;
-              font-family: $nunito;
-              font-size: 20px;
-              font-weight: 500;
-              width: 300px;
-              height: 50px;
-              border-radius: 15px;
-              background-color: #64c9db;
-              color: white;
-              border: 0px;
-              outliner: 0;
-              cursor: pointer;
               margin-bottom: 15px;
               margin-top: 25px;
-
-              i {
-                position: relative;
-                top: 5px;
-              }
             }
 
             input[type=radio], input[type=checkbox] {
               display: none;
             }
-            /* input[type=radio] + label, input[type=checkbox] + label */
+
             .q-btn {
               display: inline-block;
-              background-color: #f6f6f6;
+              background-color: $gray-button;
               color: $dark-purple;
               border-radius: 5px;
               padding: 0px 15px;
@@ -766,7 +708,7 @@ export default {
 
             .q-btn:hover,
             .q-btn:focus {
-              background-color: #af85bc;
+              background-color: $purple;
               color: $white;
             }
 
@@ -776,10 +718,12 @@ export default {
             }
 
             .deuda_desglose {
-              margin-top: 25px;
+              margin-top: 40px;
+
               h2 {
-                margin: 15px 0;
+                margin-bottom: 15px;
               }
+
               .q-field {
                 text-align: center;
               }
@@ -787,55 +731,63 @@ export default {
               .q-if-addon,
               .q-if-focused {
                 font-family: $nunitobold;
-                color: #fbbb2f !important;
+                color: $yellow !important;
                 font-size: 45px;
                 margin: 0 5px;
               }
 
               .q-input {
                 font-family: $nunitobold;
-                max-width: 150px;
+                max-width: 350px;
                 display: inline-block !important;
                 float: none !important;
+                padding: 0px;
+
                 input.q-input-target {
+                  font-family: $nunitobold;
                   font-size: 50px;
                   font-weight: bold;
-                  font-style: normal;
-                  font-stretch: normal;
-                  letter-spacing: normal;
-                  text-align: left;
-                  color: #fbbb2f;
+                  color: $yellow;
                   line-height: initial;
                   height: auto;
+                  text-align: center;
+                  line-height: initial;
+                  padding-right: 40px;
                 }
 
                 input::-webkit-input-placeholder {
-                  color: #fbbb2f !important;
+                  color: $yellow !important;
                 }
                 input::-moz-placeholder {
-                  color: #fbbb2f;
+                  color: $yellow;
                 }
                 input:-ms-input-placeholder {
-                  color: #fbbb2f;
+                  color: $yellow;
                 }
                 input:-moz-placeholder {
-                  color: #fbbb2f;
+                  color: $yellow;
                 }
               }
               .row-m {
-                max-width: 310px;
+                max-width: 350px;
               }
 
               .period {
-                margin: 25px 0;
+                margin: 40px 0 25px 0;
                 p {
                   font-family: $os-semibold;
                   font-size: 16px;
                   font-weight: 600;
                   text-align: left;
                   margin-bottom: 13px;
-                  color: #3f224c;
+                  color: $dark-purple;
                 }
+
+                .frecuencias {
+                  display: flex;
+                  justify-content: space-between;
+                }
+
                 input[type=radio], input[type=checkbox] {
                   display: none;
                 }
@@ -843,8 +795,8 @@ export default {
                   font-family: $os-semibold;
                   font-size: 14px;
                   display: inline-block;
-                  background-color: #f6f6f6;
-                  color: #3f224c;
+                  background-color: $gray-button;
+                  color: $dark-purple;
                   border-radius: 5px;
                   padding: 8px 15px;
                   cursor: pointer;
@@ -854,6 +806,7 @@ export default {
                   color: $white;
                 }
               }
+
               .cantidad {
                 display: flex;
                 justify-content: space-between;
@@ -865,13 +818,13 @@ export default {
                   font-size: 16px;
                   font-weight: 600;
                   text-align: left;
-                  color: #3f224c;
+                  color: $dark-purple;
                   float: left;
                   margin: 0px;
                 }
                 .q-if-addon,
                 .q-if-focused {
-                  color: #e03757 !important;
+                  color: $pink !important;
                   font-size: 23px;
                   margin: 0 5px;
                 }
@@ -884,26 +837,23 @@ export default {
                   input.q-input-target {
                     font-size: 25px;
                     font-weight: bold;
-                    font-style: normal;
-                    font-stretch: normal;
-                    letter-spacing: normal;
                     text-align: right;
-                    color: #e03757;
+                    color: $pink;
                     line-height: initial;
                     height: auto;
                   }
 
                   input::-webkit-input-placeholder {
-                    color: #e03757 !important;
+                    color: $pink !important;
                   }
                   input::-moz-placeholder {
-                    color: #e03757;
+                    color: $pink;
                   }
                   input:-ms-input-placeholder {
-                    color: #e03757;
+                    color: $pink;
                   }
                   input:-moz-placeholder {
-                    color: #e03757;
+                    color: $pink;
                   }
                 }
               }
@@ -915,6 +865,11 @@ export default {
           .content {
             .metas_desglose {
               margin-top: 40px;
+              margin-bottom: 25px;
+
+              h2 {
+                margin-bottom: 10px;
+              }
 
               .cuanto-meta {
                 .q-if-addon,
@@ -925,20 +880,20 @@ export default {
                 }
 
                 .q-input {
-                  max-width: 300px;
+                  max-width: 350px;
                   display: inline-block !important;
                   float: none !important;
+                  padding: 0px;
 
                   input {
+                    font-family: $nunitobold;
                     color: $green;
                     font-size: 60px;
                     font-weight: bold;
-                    font-style: normal;
-                    font-stretch: normal;
-                    letter-spacing: normal;
-                    text-align: left;
+                    text-align: center;
                     line-height: initial;
                     height: auto;
+                    padding-right: 40px;
                   }
 
                   input::-webkit-input-placeholder {
@@ -960,44 +915,44 @@ export default {
               }
 
               .para-meta {
-              h2 {
-                margin-top: 40px;
-                margin-bottom: 20px;
-              }
+                h2 {
+                  margin-top: 40px;
+                }
 
-              .q-if:before,
-              .q-if:after {
-                color: $dark-purple;
-              }
-
-              .q-input {
-                max-width: 350px;
-                display: inline-block !important;
-                float: none !important;
-
-                input {
-                  font-size: 16px;
+                .q-if:before,
+                .q-if:after {
                   color: $dark-purple;
-                  line-height: 1.56px;
-                  text-align: center;
                 }
 
-                input::-webkit-input-placeholder {
-                  color: #dedede !important;
-                }
+                .q-input {
+                  max-width: 350px;
+                  width: 350px;
+                  display: inline-block !important;
+                  float: none !important;
 
-                input::-moz-placeholder {
-                  color: #dedede;
-                }
+                  input {
+                    font-size: 16px;
+                    color: $dark-purple;
+                    line-height: 1.56px;
+                    text-align: center;
+                  }
 
-                input::-ms-input-placeholder {
-                  color: #dedede;
-                }
+                  input::-webkit-input-placeholder {
+                    color: $gray !important;
+                  }
 
-                input:-moz-placeholder {
-                  color: #dedede;
+                  input::-moz-placeholder {
+                    color: $gray;
+                  }
+
+                  input::-ms-input-placeholder {
+                    color: $gray;
+                  }
+
+                  input:-moz-placeholder {
+                    color: $gray;
+                  }
                 }
-              }
               }
             }
           }
@@ -1013,7 +968,6 @@ export default {
     width: 100%;
     height: 50px;
     background-color: $dark-purple;
-    color: $white;
     text-align: center;
 
     p {
@@ -1022,6 +976,7 @@ export default {
       font-weight: bold;
       margin: 0px;
       line-height: 50px;
+      color: $white !important;
     }
   }
 
