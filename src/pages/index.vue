@@ -67,8 +67,8 @@
       align-items: center;
       min-height: 100vh;
       height: auto;
-      padding: 75px 5% 90px 5%;
-      padding-bottom: 90px !important;
+      padding: 50px 5% 100px 5%;
+
       .content {
         text-align: center;
         margin: 0px;
@@ -143,7 +143,13 @@
   @media screen and (max-width: 600px) {
     .layout-padding {
       .welcome {
+        padding: 50px 5%;
+
         .content {
+          img {
+            height: 100px;
+          }
+
           h1 {
             font-size: 25px;
             margin-bottom: 13px;
@@ -151,7 +157,7 @@
 
           h2 {
             font-size: 18px;
-            margin-bottom: 60px;
+            margin-bottom: 35px;
           }
 
           button {

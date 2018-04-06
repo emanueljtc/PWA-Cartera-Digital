@@ -161,6 +161,10 @@ export default {
       height: 70px;
       border-bottom: 1px solid $light-gray;
 
+      button {
+        margin-top: 0 !important;
+      }
+
       i {
         font-size: 24px !important;
         color: $dark-purple !important;
@@ -213,6 +217,29 @@ export default {
 
     hr {
       border: solid 1px $gray;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    header {
+      height: 55px;
+      .q-toolbar {
+        width: 95%;
+        left: 2.5%;
+        height: 55px;
+        border-bottom: 0px;
+        padding: 0px;
+      }
+
+      .help {
+        position: absolute;
+        top: 8px;
+        left: calc(50% - 12.5px);
+      }
+
+      img {
+        display: none;
+      }
     }
   }
 </style>

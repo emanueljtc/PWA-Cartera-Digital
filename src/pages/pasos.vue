@@ -13,7 +13,7 @@
               <q-field>
                 <q-input v-model="ingreso" type="number" prefix="$" placeholder="0.00"/>
               </q-field>
-              <button class="primary" @click="next()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="next()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -50,6 +50,7 @@
                     <label for="radio_mensual">Mensual</label>
                   </div>
                   <div class="cantidad">
+                    <p class="cantidad_sub_mob">Cantidad</p>
                     <q-field>
                       <q-input v-model="egresoAmount" type="number" prefix="$" placeholder="0.00"/>
                     </q-field>
@@ -61,7 +62,7 @@
                   <q-btn label="Agregar otra opción (4/5)" icon="add"/>
                 </div>
               </div>
-              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -109,7 +110,7 @@
                   <q-btn label="Agregar otra opción (4/5)" icon="add"/>
                 </div>
               </div>
-              <button class="primary" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -157,7 +158,7 @@
                   </div>
                 </div>
               </div>
-              <button class="primary" @click="next()" v-bind:disabled="!isDeudaValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="next()" v-bind:disabled="!isDeudaValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -555,7 +556,8 @@ export default {
             }
 
             .frecuencia_sub,
-            .cantidad_sub {
+            .cantidad_sub,
+            .cantidad_sub_mob {
               font-family: $os-semibold;
               font-size: 16px;
               font-weight: 600;
@@ -564,6 +566,10 @@ export default {
               float: left;
               margin-bottom: 11px;
               margin-top: 0px;
+            }
+
+            .cantidad_sub_mob {
+              display: none;
             }
 
             .frecuencia_sub {
@@ -985,6 +991,89 @@ export default {
   }
 
   @media screen and (max-width: 600px) {
+    h2 {
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .next {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: 0px !important;
+      border-radius: 0px;
+    }
+
+    .ingresos {
+      padding: 50px 10% 100px 10% !important;
+    }
+
+    .egresos,
+    .gastos,
+    .deuda,
+    .metas {
+      padding: 50px 5% 100px 5% !important;
+    }
+
+    .egresos, .gastos {
+      padding-bottom: 130px !important;
+    }
+
+    .egresos, .gastos {
+      .q-select {
+        margin-bottom: 30px !important;
+        min-width: 100% !important;
+      }
+
+      .row-m {
+        display: initial;
+        width: 100%;
+
+        .cantidad_sub {
+          display: none;
+        }
+
+        .period, .cantidad {
+          float: none !important;
+          width: 100% !important;
+        }
+
+        .period {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 40px !important;
+        }
+
+        .cantidad {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .cantidad_sub_mob {
+            margin-bottom: 0 !important;
+            display: block !important;
+          }
+        }
+
+        .q-btn {
+          position: absolute !important;
+          left: 5% !important;
+          bottom: 60px !important;
+          margin: 0px !important;
+        }
+      }
+    }
+
+    .metas {
+      .q-input {
+        width: 100% !important;
+      }
+    }
+
     footer {
       display: none;
     }

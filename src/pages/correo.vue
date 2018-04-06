@@ -3,7 +3,7 @@
     <div class="container items-center correo center-align">
       <div class="content">
         <img src="~assets/img/moneyko-logo.svg" alt="MoneyKo">
-        <h2>Crea tu cuenta para <br> visualizar tus datos.</h2>
+        <h2>Crea tu cuenta para <br> visualizar tus datos</h2>
         <div class="correo_input">
           <q-field>
             <q-input
@@ -99,7 +99,7 @@ export default {
   .correo {
     font-family: $nunitobold;
     margin: 0px;
-    padding: 50px 5% 90px 5%;
+    padding: 50px 5% 100px 5%;
     width: 100%;
     display: flex;
     min-height: 100vh;
@@ -201,7 +201,7 @@ export default {
 
   @media screen and (max-width: 600px) {
     .correo {
-      padding: 0 5%;
+      padding: 50px 5%;
       .content {
         margin-bottom: 50px;
         h2 {
