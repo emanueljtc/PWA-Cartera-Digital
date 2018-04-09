@@ -29,14 +29,6 @@ export default [
         }
       },
       {
-        path: '/metas',
-        name: 'app.metas',
-        component: () => import('pages/metas'),
-        meta: {
-          requiresAuth: false
-        }
-      },
-      {
         path: '/correo',
         name: 'app.correo',
         component: () => import('pages/correo'),

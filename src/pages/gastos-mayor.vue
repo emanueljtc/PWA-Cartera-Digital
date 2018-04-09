@@ -35,20 +35,54 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
+  $yellow: #fbbb2f;
+  $pink: #e03757;
   $dark-purple: #3f224c;
+  $link: #361a44;
   $purple: #af85bc;
+  $light-blue: #64c9db;
   $white: #ffffff;
-  $blue-light: #64c9db;
+  $gray: #dedede;
+  $gray-button: #f6f6f6;
+
+  @font-face {
+    font-family: NunitoBold;
+    src: url(~assets/fonts/Nunito/Nunito-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: OpenSansSemibold;
+    src: url(~assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
+  }
+
+  @font-face {
+    font-family: OpenSans;
+    src: url(~assets/fonts/OpenSans/OpenSans-Regular.ttf);
+  }
+
+  $nunitobold: NunitoBold;
+  $opensans: OpenSans;
+  $os-semibold: OpenSansSemibold;
+
+  .q-layout-page-container {
+    padding: 0px !important;
+  }
 
   .gastos-mayor {
     position: relative;
+    min-height: 100vh;
+    height: auto;
     margin: 0px;
-    padding: 0px;
+    padding: 120px 5% 100px 5%;
     width: 100%;
+    display: flex;
+    align-items: center;
+
     .content {
       width: 100%;
       h2 {
-        font-size: 25px;
+        font-family: $nunitobold;
+        font-size: 35px;
         font-weight: bold;
         font-style: normal;
         font-stretch: normal;
@@ -77,10 +111,11 @@ export default {
           display: flex;
 
           p {
+            font-family: $os-semibold;
             width: auto;
             margin: 0 15%;
             color: $white;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             font-style: normal;
             line-height: 1.56;
@@ -109,6 +144,7 @@ export default {
 
       .ahorro {
         p {
+          font-family: $opensans;
           color: $dark-purple;
           font-size: 18px;
           font-weight: normal;
@@ -116,6 +152,7 @@ export default {
           margin: 0;
 
           span {
+            font-family: $nunitobold;
             font-size: 60px;
             font-weight: bold;
             color: $green;
@@ -125,18 +162,21 @@ export default {
     }
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     .gastos-mayor {
       padding: 0 5%;
       padding-bottom: 50px;
-
       .content {
+        h2 {
+          font-size: 25px !important;
+        }
+
         .circulos {
           min-height: 150px;
-
           .tu-precio, .precio-bajo {
-            width: 150px;
-            height: 150px;
+            p {
+              font-size: 16px;
+            }
           }
 
           .tu-precio {
@@ -145,6 +185,20 @@ export default {
 
           .precio-bajo {
             margin-left: -15px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .gastos-mayor {
+      .content {
+        .circulos {
+          .tu-precio,
+          .precio-bajo {
+            width: 150px;
+            height: 150px;
           }
         }
       }
