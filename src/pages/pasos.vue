@@ -11,7 +11,7 @@
               <h2>Ingresos</h2>
               <p>Especifica tus ingresos mensuales</p>
               <q-field>
-                <q-input v-model="ingreso" type="number" prefix="$" placeholder="0.00"/>
+                <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="ingreso"></vue-numeric>
               </q-field>
               <button class="next" @click="next()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
@@ -52,7 +52,7 @@
                   <div class="cantidad">
                     <p class="cantidad_sub_mob">Cantidad</p>
                     <q-field>
-                      <q-input v-model="egresoAmount" type="number" prefix="$" placeholder="0.00"/>
+                      <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="egresoAmount"></vue-numeric>
                     </q-field>
                   </div>
                 </div>
@@ -100,7 +100,7 @@
                   </div>
                   <div class="cantidad">
                     <q-field>
-                      <q-input v-model="gastoAmount" type="number" prefix="$" placeholder="0.00"/>
+                      <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="gastoAmount"></vue-numeric>
                     </q-field>
                   </div>
                 </div>
@@ -136,7 +136,7 @@
               <div class="deuda_desglose" v-if="deudaExist">
                 <h2>¿De cuánto?</h2>
                 <q-field>
-                  <q-input v-model="deuda" type="number" prefix="$" placeholder="0.00"/>
+                  <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="deuda"></vue-numeric>
                 </q-field>
                 <div class="input-field center-align">
                   <div class="row-m">
@@ -153,7 +153,7 @@
                     </div>
                     <div class="cantidad">
                       <p>Cantidad</p>
-                      <q-input v-model="deudaPagos" type="number" prefix="$" placeholder="0.00"/>
+                      <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="deudaPagos"></vue-numeric>
                     </div>
                   </div>
                 </div>
@@ -179,7 +179,7 @@
                 <div class="cuanto-meta">
                   <h2>¿De cuánto?</h2>
                   <q-field>
-                    <q-input v-model="meta" type="number" prefix="$" placeholder="0.00"/>
+                    <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="meta"></vue-numeric>
                   </q-field>
                 </div>
                 <div class="para-meta">
@@ -211,8 +211,10 @@
 
 <script>
 import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn } from 'quasar'
+import VueNumeric from 'vue-numeric'
 
 export default {
+  name: 'App',
   data () {
     return {
       ingreso: '',
@@ -300,7 +302,7 @@ export default {
     }
   },
   components: {
-    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn
+    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, VueNumeric
   }
 }
 </script>
@@ -449,43 +451,35 @@ export default {
               text-align: center;
             }
 
-            .q-if-addon,
-            .q-if-focused {
-              color: $green !important;
+            input {
               font-family: $nunitobold;
-              font-size: 50px;
-              margin: 0 5px;
+              color: $green;
+              font-size: 60px;
+              font-weight: bold;
+              text-align: center;
+              line-height: initial;
+              height: auto;
+              border: none;
+              border-bottom: 1px solid $gray;
+              max-width: 350px;
+              margin-top: 100px;
             }
 
-            .q-input {
-              max-width: 350px;
-              display: inline-block !important;
-              float: none !important;
-              margin-top: 100px;
+            input:focus {
+              outline: none;
+            }
 
-              input.q-input-target {
-                font-family: $nunitobold;
-                color: $green;
-                font-size: 60px;
-                font-weight: bold;
-                text-align: center;
-                line-height: initial;
-                height: auto;
-                padding-right: 40px;
-              }
-
-              input::-webkit-input-placeholder {
-                color: $green !important;
-              }
-              input::-moz-placeholder {
-                color: $green;
-              }
-              input:-ms-input-placeholder {
-                color: $green;
-              }
-              input:-moz-placeholder {
-                color: $green;
-              }
+            input::-webkit-input-placeholder {
+              color: $green !important;
+            }
+            input::-moz-placeholder {
+              color: $green;
+            }
+            input:-ms-input-placeholder {
+              color: $green;
+            }
+            input:-moz-placeholder {
+              color: $green;
             }
           }
         }
@@ -605,41 +599,34 @@ export default {
               float: left;
               width: 30%;
 
-              .q-if-addon,
-              .q-if-focused {
+              input {
                 font-family: $nunitobold;
-                color: $pink !important;
-                font-size: 22px;
-                margin: 0 5px;
+                color: $pink;
+                font-size: 25px;
+                font-weight: bold;
+                text-align: left;
+                line-height: initial;
+                height: auto;
+                border: none;
+                border-bottom: 1px solid $gray;
+                width: inherit;
               }
 
-              .q-input {
-                max-width: 350px;
-                display: inline-block !important;
-                float: none !important;
-                padding-bottom: 0px;
+              input:focus {
+                outline: none;
+              }
 
-                input.q-input-target {
-                  font-family: $nunitobold;
-                  color: $pink;
-                  font-size: 25px;
-                  text-align: left;
-                  line-height: initial;
-                  height: auto;
-                }
-
-                input::-webkit-input-placeholder {
-                  color: $pink !important;
-                }
-                input::-moz-placeholder {
-                  color: $pink;
-                }
-                input:-ms-input-placeholder {
-                  color: $pink;
-                }
-                input:-moz-placeholder {
-                  color: $pink;
-                }
+              input::-webkit-input-placeholder {
+                color: $pink !important;
+              }
+              input::-moz-placeholder {
+                color: $pink;
+              }
+              input:-ms-input-placeholder {
+                color: $pink;
+              }
+              input:-moz-placeholder {
+                color: $pink;
               }
             }
 
@@ -738,46 +725,36 @@ export default {
                 text-align: center;
               }
 
-              .q-if-addon,
-              .q-if-focused {
+              input {
                 font-family: $nunitobold;
-                color: $yellow !important;
-                font-size: 45px;
-                margin: 0 5px;
-              }
-
-              .q-input {
-                font-family: $nunitobold;
+                color: $yellow;
+                font-size: 50px;
+                font-weight: bold;
+                text-align: center;
+                line-height: initial;
+                height: auto;
+                border: none;
+                border-bottom: 1px solid $gray;
                 max-width: 350px;
-                display: inline-block !important;
-                float: none !important;
-                padding: 0px;
-
-                input.q-input-target {
-                  font-family: $nunitobold;
-                  font-size: 50px;
-                  font-weight: bold;
-                  color: $yellow;
-                  line-height: initial;
-                  height: auto;
-                  text-align: center;
-                  line-height: initial;
-                  padding-right: 40px;
-                }
-
-                input::-webkit-input-placeholder {
-                  color: $yellow !important;
-                }
-                input::-moz-placeholder {
-                  color: $yellow;
-                }
-                input:-ms-input-placeholder {
-                  color: $yellow;
-                }
-                input:-moz-placeholder {
-                  color: $yellow;
-                }
               }
+
+              input:focus {
+                outline: none;
+              }
+
+              input::-webkit-input-placeholder {
+                color: $yellow !important;
+              }
+              input::-moz-placeholder {
+                color: $yellow;
+              }
+              input:-ms-input-placeholder {
+                color: $yellow;
+              }
+              input:-moz-placeholder {
+                color: $yellow;
+              }
+
               .row-m {
                 max-width: 350px;
               }
@@ -832,11 +809,35 @@ export default {
                   float: left;
                   margin: 0px;
                 }
-                .q-if-addon,
-                .q-if-focused {
+
+                input {
+                  font-family: $nunitobold;
+                  color: $pink;
+                  font-size: 25px;
+                  font-weight: bold;
+                  text-align: left;
+                  line-height: initial;
+                  height: auto;
+                  border: none;
+                  border-bottom: 1px solid $gray;
+                  width: 50%;
+                }
+
+                input:focus {
+                  outline: none;
+                }
+
+                input::-webkit-input-placeholder {
                   color: $pink !important;
-                  font-size: 23px;
-                  margin: 0 5px;
+                }
+                input::-moz-placeholder {
+                  color: $pink;
+                }
+                input:-ms-input-placeholder {
+                  color: $pink;
+                }
+                input:-moz-placeholder {
+                  color: $pink;
                 }
 
                 .q-input {
@@ -882,45 +883,34 @@ export default {
               }
 
               .cuanto-meta {
-                .q-if-addon,
-                .q-if-focused {
-                  color: $green !important;
-                  font-size: 50px;
-                  margin: 0 5px;
+                input {
+                  font-family: $nunitobold;
+                  color: $green;
+                  font-size: 60px;
+                  font-weight: bold;
+                  text-align: center;
+                  line-height: initial;
+                  height: auto;
+                  border: none;
+                  border-bottom: 1px solid $gray;
+                  max-width: 350px;
                 }
 
-                .q-input {
-                  max-width: 350px;
-                  display: inline-block !important;
-                  float: none !important;
-                  padding: 0px;
+                input:focus {
+                  outline: none;
+                }
 
-                  input {
-                    font-family: $nunitobold;
-                    color: $green;
-                    font-size: 60px;
-                    font-weight: bold;
-                    text-align: center;
-                    line-height: initial;
-                    height: auto;
-                    padding-right: 40px;
-                  }
-
-                  input::-webkit-input-placeholder {
-                    color: $green !important;
-                  }
-
-                  input::-moz-placeholder {
-                    color: $green;
-                  }
-
-                  input::-ms-input-placeholder {
-                    color: $green;
-                  }
-
-                  input:-moz-placeholder {
-                    color: $green;
-                  }
+                input::-webkit-input-placeholder {
+                  color: $green !important;
+                }
+                input::-moz-placeholder {
+                  color: $green;
+                }
+                input:-ms-input-placeholder {
+                  color: $green;
+                }
+                input:-moz-placeholder {
+                  color: $green;
                 }
               }
 
