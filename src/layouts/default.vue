@@ -78,6 +78,10 @@
     </q-page-container>
 
     <q-modal v-model="opened">
+      <q-btn class="close-modal"
+        @click="opened = false"
+        icon="close"
+      />
       <h4>Tus egresos corresponden a:</h4>
       <h3>Vivienda</h3>
       <p>Alquiler, Mantenimientos</p>
@@ -139,6 +143,24 @@ export default {
   $nunito: Nunito;
   $opensans: OpenSans;
 
+  .close-modal {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 18px;
+    padding: 0px;
+    border: 0px;
+    box-shadow: none;
+    color: $dark-purple;
+    cursor: pointer !important;
+  }
+
+  .close-modal:hover {
+    .q-focus-helper {
+      background-color: transparent !important;
+    }
+  }
+
   h1,h2,h3,h4,h5,h6, p {
     font-weight: normal;
     font-style: normal;
@@ -189,7 +211,7 @@ export default {
   }
 
   .modal-content {
-    padding: 20px 25px 28px 25px;
+    padding: 40px 25px 28px 25px;
     h4 {
       font-family: $nunito;
       font-size: 20px;
