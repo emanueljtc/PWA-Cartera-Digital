@@ -2,10 +2,13 @@
   <div>
     <q-slide-transition name="slide">
       <q-stepper @finish="finish()" ref="stepper" v-show="!finished">
+
         <!-- ===================================================== -->
         <!-- Ingresos -->
         <!-- ===================================================== -->
         <q-step title="ingresos">
+          <button class="back white">
+          </button>
           <div class="container valign-wrapper ingresos">
             <div class="content">
               <h2>Ingresos</h2>
@@ -22,6 +25,10 @@
         <!-- Egresos -->
         <!-- ===================================================== -->
         <q-step title="egresos" :ready="ready">
+          <button class="back"
+            @click="$refs.stepper.previous()"
+          >
+          </button>
           <div class="container egresos">
             <div class="content">
               <h2>Egresos</h2>
@@ -71,6 +78,10 @@
         <!-- Gastos más fuertes -->
         <!-- ===================================================== -->
         <q-step title="gastos-mayor" :ready="ready">
+          <button class="back"
+            @click="$refs.stepper.previous()"
+          >
+          </button>
           <div class="container valign-wrapper gastos">
             <div class="content">
               <h2>Gastos más fuertes</h2>
@@ -119,6 +130,10 @@
         <!-- Deuda -->
         <!-- ===================================================== -->
         <q-step title="deuda" :ready="ready">
+          <button class="back"
+            @click="$refs.stepper.previous()"
+          >
+          </button>
           <div class="container valign-wrapper deuda">
             <div class="content">
               <h2>¿Tienes una deuda?</h2>
@@ -167,6 +182,10 @@
         <!-- Metas -->
         <!-- ===================================================== -->
         <q-step title="metas" :ready="ready">
+          <button class="back"
+            @click="$refs.stepper.previous()"
+          >
+          </button>
           <div class="container metas center-align">
             <div class="content">
               <h2>Metas</h2>
@@ -389,6 +408,39 @@ export default {
       position: relative;
       top: 5px;
     }
+  }
+
+  .white {
+    background-color: white !important;
+    height: 68px !important;
+    cursor: default;
+    width: 8% !important;
+    margin-left: -3.5% !important;
+  }
+
+  .back {
+    position: absolute;
+    left: calc(5% + 12px);
+    background-color: transparent;
+    z-index: 10000;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    height: 70px;
+    line-height: 70px;
+    color: $dark-purple;
+    box-shadow: none;
+    font-size: 30px;
+    width: 30px;
+
+    i {
+      margin-bottom: 15px;
+    }
+  }
+
+  .back:hover,
+  .back:focus {
+    outline: none;
   }
 
   .q-layout-page-container {
@@ -999,6 +1051,11 @@ export default {
   @media screen and (max-width: 600px) {
     .row-m {
       max-width: 45%;
+    }
+
+    .back {
+      height: 55px;
+      line-height: 55px;
     }
 
     h2 {

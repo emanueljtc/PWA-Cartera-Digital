@@ -2,15 +2,20 @@
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
       <q-toolbar color="primary">
-        <q-btn
+        <!-- Menu -->
+        <!-- <q-btn
           flat
           dense
           round
           @click="leftDrawerOpen = !leftDrawerOpen"
         >
-          <!-- <q-icon name="menu" /> -->
+          <q-icon name="menu" />
+        </q-btn> -->
+
+        <!-- Back -->
+        <button class="back-header">
           <q-icon name="arrow_back" />
-        </q-btn>
+        </button>
 
         <q-toolbar-title>
           <img src="~assets/img/moneyko-horizontal.svg" alt="MoneyKo">
@@ -142,6 +147,16 @@ export default {
   }
   $nunito: Nunito;
   $opensans: OpenSans;
+
+  .back-header {
+    background-color: transparent;
+    width: auto;
+    cursor: default;
+  }
+
+  .back-header:focus {
+    outline: none;
+  }
 
   .close-modal {
     position: absolute;
