@@ -462,6 +462,7 @@ export default {
               border: none;
               border-bottom: 1px solid $gray;
               max-width: 350px;
+              width: 100%;
               margin-top: 100px;
             }
 
@@ -736,6 +737,7 @@ export default {
                 border: none;
                 border-bottom: 1px solid $gray;
                 max-width: 350px;
+                width: 100%;
               }
 
               input:focus {
@@ -894,6 +896,7 @@ export default {
                   border: none;
                   border-bottom: 1px solid $gray;
                   max-width: 350px;
+                  width: 100%;
                 }
 
                 input:focus {
@@ -980,7 +983,24 @@ export default {
     }
   }
 
+  @media screen and (max-width: 1100px) {
+    .row-m {
+      max-width: 65%;
+    }
+    .egresos, .gastos {
+      .content {
+        .q-select {
+          width: 65%;
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 600px) {
+    .row-m {
+      max-width: 45%;
+    }
+
     h2 {
       font-size: 25px;
     }
