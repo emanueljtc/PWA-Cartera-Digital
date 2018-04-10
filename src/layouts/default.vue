@@ -168,6 +168,8 @@ export default {
     box-shadow: none;
     color: $dark-purple;
     cursor: pointer !important;
+    margin: 0px;
+    width: auto;
   }
 
   .close-modal:hover {
