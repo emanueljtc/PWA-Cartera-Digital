@@ -12,11 +12,6 @@
           <q-icon name="menu" />
         </q-btn> -->
 
-        <!-- Back -->
-        <button class="back-header">
-          <q-icon name="arrow_back" />
-        </button>
-
         <q-toolbar-title>
           <img src="~assets/img/moneyko-horizontal.svg" alt="MoneyKo">
         </q-toolbar-title>
@@ -148,16 +143,6 @@ export default {
   $nunito: Nunito;
   $opensans: OpenSans;
 
-  .back-header {
-    background-color: transparent;
-    width: auto;
-    cursor: default;
-  }
-
-  .back-header:focus {
-    outline: none;
-  }
-
   .close-modal {
     position: absolute;
     top: 0px;
@@ -176,6 +161,10 @@ export default {
     .q-focus-helper {
       background-color: transparent !important;
     }
+  }
+
+  .hide {
+    display: none;
   }
 
   h1,h2,h3,h4,h5,h6, p {

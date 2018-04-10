@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- Back -->
+    <button class="back back-header" v-bind:class="{ hide: DisabledBack }">
+      <q-icon name="arrow_back" />
+    </button>
     <q-slide-transition name="slide">
       <q-stepper @finish="finish()" ref="stepper" v-show="!finished">
 
@@ -7,8 +11,6 @@
         <!-- Ingresos -->
         <!-- ===================================================== -->
         <q-step title="ingresos">
-          <button class="back white">
-          </button>
           <div class="container valign-wrapper ingresos">
             <div class="content">
               <h2>Ingresos</h2>
@@ -26,7 +28,7 @@
         <!-- ===================================================== -->
         <q-step title="egresos" :ready="ready">
           <button class="back"
-            @click="$refs.stepper.previous()"
+            @click="prev()"
           >
           </button>
           <div class="container egresos">
@@ -278,7 +280,8 @@ export default {
       //
       ready: false,
       finished: false,
-      opened: false
+      opened: false,
+      DisabledBack: true
     }
   },
   methods: {
@@ -291,6 +294,11 @@ export default {
     },
     next () {
       this.$refs.stepper.next()
+      this.DisabledBack = false
+    },
+    prev () {
+      this.$refs.stepper.previous()
+      this.DisabledBack = true
     },
     isIngresoValid: function () {
       return this.ingreso !== ''
@@ -408,14 +416,6 @@ export default {
       position: relative;
       top: 5px;
     }
-  }
-
-  .white {
-    background-color: white !important;
-    height: 68px !important;
-    cursor: default;
-    width: 8% !important;
-    margin-left: -3.5% !important;
   }
 
   .back {
@@ -1056,6 +1056,7 @@ export default {
     .back {
       height: 55px;
       line-height: 55px;
+      left: 5%;
     }
 
     h2 {
