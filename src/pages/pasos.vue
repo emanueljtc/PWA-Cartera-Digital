@@ -286,7 +286,7 @@
 
 <script>
 import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn } from 'quasar'
-import VueAutonumeric from '../../node_modules/vue-autonumeric/src/index.js'
+import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
 export default {
   name: 'App',
   data () {
