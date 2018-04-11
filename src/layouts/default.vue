@@ -3,25 +3,18 @@
     <q-layout-header>
       <q-toolbar color="primary">
         <!-- Menu -->
-        <!-- <q-btn
+        <q-btn class="hide"
           flat
           dense
           round
           @click="leftDrawerOpen = !leftDrawerOpen"
         >
           <q-icon name="menu" />
-        </q-btn> -->
+        </q-btn>
 
         <q-toolbar-title>
           <img src="~assets/img/moneyko-horizontal.svg" alt="MoneyKo">
         </q-toolbar-title>
-
-        <q-btn round
-          @click="opened = true"
-          label="Close"
-          icon="help"
-          class="help"
-        />
       </q-toolbar>
     </q-layout-header>
 
@@ -77,27 +70,6 @@
       <router-view />
     </q-page-container>
 
-    <q-modal v-model="opened">
-      <q-btn class="close-modal"
-        @click="opened = false"
-        icon="close"
-      />
-      <h4>Tus egresos corresponden a:</h4>
-      <h3>Vivienda</h3>
-      <p>Alquiler, Mantenimientos</p>
-      <hr>
-      <h3>Despensa</h3>
-      <p>Comidas, Bebidas, <br> Artículos de aseo personal, <br> Limpieza del hogar</p>
-      <hr>
-      <h3>Transporte</h3>
-      <p>Combustible, Otros</p>
-      <hr>
-      <h3>Gustos</h3>
-      <p>Salidas, Diversión</p>
-      <hr>
-      <h3>Servicios básicos</h3>
-      <p>Smartphone, Gas, Luz, Agua, <br> Telefonía/Internet</p>
-    </q-modal>
   </q-layout>
 </template>
 
@@ -143,26 +115,6 @@ export default {
   $nunito: Nunito;
   $opensans: OpenSans;
 
-  .close-modal {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    font-size: 18px;
-    padding: 0px;
-    border: 0px;
-    box-shadow: none;
-    color: $dark-purple;
-    cursor: pointer !important;
-    margin: 0px;
-    width: auto;
-  }
-
-  .close-modal:hover {
-    .q-focus-helper {
-      background-color: transparent !important;
-    }
-  }
-
   .hide {
     display: none;
   }
@@ -189,7 +141,14 @@ export default {
       height: 70px;
       border-bottom: 1px solid $light-gray;
 
+      .q-toolbar-title {
+        position: absolute;
+        left: 0;
+        width: 100%;
+      }
+
       button {
+        z-index: 1;
         margin-top: 0 !important;
       }
 
@@ -198,22 +157,10 @@ export default {
         color: $dark-purple !important;
       }
     }
-
-    img {
-      left: -23px;
-      position: relative;
-    }
   }
 
   .q-layout-header {
       box-shadow: 0 0px 0px 0px rgba(0,0,0,0.2), 0 0px 0px rgba(0,0,0,0.14), 0 0px 0px rgba(0,0,0,0.12);
-  }
-
-  .help {
-    box-shadow: 0px 0px 0px 0px !important;
-    background: transparent;
-    width: 25px;
-    height: 25px;
   }
 
   .modal-content {
@@ -257,12 +204,6 @@ export default {
         height: 55px;
         border-bottom: 0px;
         padding: 0px;
-      }
-
-      .help {
-        position: absolute;
-        top: 8px;
-        left: calc(50% - 12.5px);
       }
 
       img {

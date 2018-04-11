@@ -4,6 +4,9 @@
     <button class="back back-header" v-bind:class="{ hide: DisabledBack }">
       <q-icon name="arrow_back" />
     </button>
+    <button class="help" @click="openmodal = true" v-bind:class="{ hide: DisabledHelp }">
+      <q-icon name="help" />
+    </button>
     <q-slide-transition name="slide">
       <q-stepper @finish="finish()" ref="stepper" v-show="!finished">
 
@@ -18,7 +21,7 @@
               <q-field>
                 <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="ingreso"></vue-numeric>
               </q-field>
-              <button class="next" @click="next()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="next(), help(), back()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -28,7 +31,7 @@
         <!-- ===================================================== -->
         <q-step title="egresos" :ready="ready">
           <button class="back"
-            @click="prev()"
+            @click="prev(), stophelp()"
           >
           </button>
           <div class="container egresos">
@@ -123,7 +126,7 @@
                   <q-btn label="Agregar otra opción (4/5)" icon="add"/>
                 </div>
               </div>
-              <button class="next" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="next(), stophelp()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -133,7 +136,7 @@
         <!-- ===================================================== -->
         <q-step title="deuda" :ready="ready">
           <button class="back"
-            @click="$refs.stepper.previous()"
+            @click="$refs.stepper.previous(), help()"
           >
           </button>
           <div class="container valign-wrapper deuda">
@@ -227,6 +230,27 @@
     <footer>
       <p>Todos los derechos reservados, Moneyko 2018.</p>
     </footer>
+
+    <q-modal v-model="openmodal">
+      <button class="close-modal" @click="openmodal = false">
+        <q-icon name="close" />
+      </button>
+      <h4>Tus egresos corresponden a:</h4>
+      <h3>Vivienda</h3>
+      <p>Alquiler, Mantenimientos</p>
+      <hr>
+      <h3>Despensa</h3>
+      <p>Comidas, Bebidas, <br> Artículos de aseo personal, <br> Limpieza del hogar</p>
+      <hr>
+      <h3>Transporte</h3>
+      <p>Combustible, Otros</p>
+      <hr>
+      <h3>Gustos</h3>
+      <p>Salidas, Diversión</p>
+      <hr>
+      <h3>Servicios básicos</h3>
+      <p>Smartphone, Gas, Luz, Agua, <br> Telefonía/Internet</p>
+    </q-modal>
   </div>
 </template>
 
@@ -238,6 +262,8 @@ export default {
   name: 'App',
   data () {
     return {
+      openmodal: false,
+      //
       ingreso: '',
       //
       egreso: '',
@@ -281,7 +307,8 @@ export default {
       ready: false,
       finished: false,
       opened: false,
-      DisabledBack: true
+      DisabledBack: true,
+      DisabledHelp: true
     }
   },
   methods: {
@@ -294,7 +321,15 @@ export default {
     },
     next () {
       this.$refs.stepper.next()
+    },
+    back () {
       this.DisabledBack = false
+    },
+    help () {
+      this.DisabledHelp = false
+    },
+    stophelp () {
+      this.DisabledHelp = true
     },
     prev () {
       this.$refs.stepper.previous()
@@ -418,11 +453,33 @@ export default {
     }
   }
 
-  .back {
+  .close-modal {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 22px;
+    padding: 0px;
+    border: 0px;
+    box-shadow: none;
+    color: $dark-purple;
+    cursor: pointer !important;
+    margin: 0px;
+    background-color: $white;
+    width: auto;
+    height: auto;
+  }
+
+  .close-modal:hover {
+    .q-focus-helper {
+      background-color: transparent !important;
+    }
+  }
+
+  .back, .help {
     position: absolute;
     left: calc(5% + 12px);
     background-color: transparent;
-    z-index: 10000;
+    z-index: 5000;
     margin: 0px;
     padding: 0px;
     width: auto;
@@ -438,8 +495,16 @@ export default {
     }
   }
 
+  .help {
+    right: calc(5% + 12px);
+    left: initial;
+    font-size: 25px;
+  }
+
   .back:hover,
-  .back:focus {
+  .back:focus,
+  .help:hover,
+  .help:focus {
     outline: none;
   }
 
@@ -1053,10 +1118,16 @@ export default {
       max-width: 45%;
     }
 
-    .back {
+    .back,
+    .help {
       height: 55px;
       line-height: 55px;
       left: 5%;
+    }
+
+    .help {
+      right: calc(50% - 12px);
+      left: initial;
     }
 
     h2 {
