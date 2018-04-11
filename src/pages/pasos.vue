@@ -286,9 +286,8 @@
 
 <script>
 import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn } from 'quasar'
-// import VueNumeric from 'vue-numeric'
+import AutoNumeric from 'AutoNumeric'
 import VueAutonumeric from 'vue-autonumeric'
-
 export default {
   name: 'App',
   data () {
@@ -395,7 +394,7 @@ export default {
     }
   },
   components: {
-    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, VueAutonumeric
+    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, AutoNumeric, VueAutonumeric
   }
 }
 </script>
