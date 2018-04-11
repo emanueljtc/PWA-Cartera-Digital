@@ -19,7 +19,12 @@
               <h2>Ingresos</h2>
               <p>Especifica tus ingresos mensuales</p>
               <q-field>
-                <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="ingreso"></vue-numeric>
+               <vue-autonumeric v-model="ingreso"
+                  :options="{
+                    currencySymbol: '$',
+                    decimalPlaces: 2,
+                    minimumValue: 0,
+                  }" placeholder="$0.00"></vue-autonumeric>
               </q-field>
               <button class="next" @click="next(), help(), back()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
@@ -64,7 +69,12 @@
                   <div class="cantidad">
                     <p class="cantidad_sub_mob">Cantidad</p>
                     <q-field>
-                      <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="egresoAmount"></vue-numeric>
+                       <vue-autonumeric v-model="egresoAmount"
+                        :options="{
+                          currencySymbol: '$',
+                          decimalPlaces: 2,
+                          minimumValue: 0,
+                        }" placeholder="$0.00"></vue-autonumeric>
                     </q-field>
                   </div>
                 </div>
@@ -116,7 +126,12 @@
                   </div>
                   <div class="cantidad">
                     <q-field>
-                      <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="gastoAmount"></vue-numeric>
+                      <vue-autonumeric v-model="gastoAmount"
+                        :options="{
+                          currencySymbol: '$',
+                          decimalPlaces: 2,
+                          minimumValue: 0,
+                        }" placeholder="$0.00"></vue-autonumeric>
                     </q-field>
                   </div>
                 </div>
@@ -156,7 +171,12 @@
               <div class="deuda_desglose" v-if="deudaExist">
                 <h2>¿De cuánto?</h2>
                 <q-field>
-                  <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="deuda"></vue-numeric>
+                  <vue-autonumeric v-model="deuda"
+                    :options="{
+                      currencySymbol: '$',
+                      decimalPlaces: 2,
+                      minimumValue: 0,
+                    }" placeholder="$0.00"></vue-autonumeric>
                 </q-field>
                 <div class="input-field center-align">
                   <div class="row-m">
@@ -173,7 +193,12 @@
                     </div>
                     <div class="cantidad">
                       <p>Cantidad</p>
-                      <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="deudaPagos"></vue-numeric>
+                      <vue-autonumeric v-model="deudaPagos"
+                        :options="{
+                          currencySymbol: '$',
+                          decimalPlaces: 2,
+                          minimumValue: 0,
+                        }" placeholder="$0.00"></vue-autonumeric>
                     </div>
                   </div>
                 </div>
@@ -203,7 +228,12 @@
                 <div class="cuanto-meta">
                   <h2>¿De cuánto?</h2>
                   <q-field>
-                    <vue-numeric currency="$" placeholder="$ 0.00" separator="," v-bind:precision="2" v-model="meta"></vue-numeric>
+                    <vue-autonumeric v-model="meta"
+                        :options="{
+                          currencySymbol: '$',
+                          decimalPlaces: 2,
+                          minimumValue: 0,
+                        }" placeholder="$0.00"></vue-autonumeric>
                   </q-field>
                 </div>
                 <div class="para-meta">
@@ -256,7 +286,8 @@
 
 <script>
 import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn } from 'quasar'
-import VueNumeric from 'vue-numeric'
+// import VueNumeric from 'vue-numeric'
+import VueAutonumeric from 'vue-autonumeric'
 
 export default {
   name: 'App',
@@ -364,7 +395,7 @@ export default {
     }
   },
   components: {
-    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, VueNumeric
+    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, VueAutonumeric
   }
 }
 </script>

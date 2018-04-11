@@ -13,10 +13,12 @@
     "dev": "node node_modules/quasar-cli/bin/quasar dev"
   },
   "dependencies": {
+    "autonumeric": "^4.2.9",
     "axios": "^0.17.1",
     "dexie": "^2.0.2",
     "easy-requests": "^1.2.2",
     "moment": "^2.21.0",
+    "vue-autonumeric": "^1.2.0",
     "vue-i18n": "^7.3.3",
     "vue-numeric": "^2.3.0"
   },
