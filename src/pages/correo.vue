@@ -26,10 +26,10 @@
             />
           </q-field>
         </div>
+        <!-- {{ form }} -->
         <button class="primary" v-bind:disabled="!isCorreoValid()">Continuar</button>
       </div>
     </div>
-
     <footer>
       <p>Todos los derechos reservados, Moneyko 2018.</p>
     </footer>
@@ -43,12 +43,19 @@ export default {
   data () {
     return {
       correo: '',
-      password: ''
+      password: '',
+      first_name: 'dsads',
+      last_name: 'dsafsdf'
     }
   },
   methods: {
     isCorreoValid: function () {
       return this.correo !== '' && this.password !== ''
+    }
+  },
+  computed: {
+    form () {
+      return this.$store.state.valuador.form
     }
   },
   components: {

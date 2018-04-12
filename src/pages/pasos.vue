@@ -19,7 +19,7 @@
               <h2>Ingresos</h2>
               <p>Especifica tus ingresos mensuales</p>
               <q-field>
-               <vue-autonumeric v-model="ingreso"
+               <vue-autonumeric v-model="form.ingreso"
                   :options="{
                     currencySymbol: '$',
                     decimalPlaces: 2,
@@ -45,7 +45,7 @@
               <p>Especifica tus egresos</p>
               <q-field>
                 <q-select
-                  v-model="egreso"
+                  v-model="form_egreso.egreso"
                   :options="selectOptions"
                   float-label="Selecciona una opción"
                 />
@@ -59,17 +59,17 @@
               <div class="input-field center-align">
                 <div class="row-m">
                   <div class="period">
-                    <input type="radio" id="radio_semanal" name="period" value="semanal" />
+                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_semanal" name="period" value="semanal" />
                     <label for="radio_semanal">Semanal</label>
-                    <input type="radio" id="radio_quincenal" name="period" value="quincenal" />
+                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_quincenal" name="period" value="quincenal" />
                     <label for="radio_quincenal">Quincenal</label>
-                    <input type="radio" id="radio_mensual" name="period" value="mensual" />
+                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_mensual" name="period" value="mensual" />
                     <label for="radio_mensual">Mensual</label>
                   </div>
                   <div class="cantidad">
                     <p class="cantidad_sub_mob">Cantidad</p>
                     <q-field>
-                       <vue-autonumeric v-model="egresoAmount"
+                       <vue-autonumeric v-model="form_egreso.cantidad"
                         :options="{
                           currencySymbol: '$',
                           decimalPlaces: 2,
@@ -81,10 +81,10 @@
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn label="Agregar otra opción (4/5)" icon="add"/>
+                  <q-btn :label="totalEgresos" @click="crearEgreso"  v-show="form.egresos.length < 4" icon="add"/>
                 </div>
               </div>
-              <button class="next" @click="next()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="NextEgreso()" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -103,7 +103,7 @@
               <p>¿Cuáles son tus gastos más fuertes?</p>
               <q-field>
                 <q-select
-                  v-model="gasto"
+                  v-model="form_gasto.gasto"
                   :options="selectOptions"
                   float-label="Selecciona una opción"
                 />
@@ -117,16 +117,16 @@
               <div class="input-field center-align">
                 <div class="row-m">
                   <div class="period">
-                    <input type="radio" id="radio_semanal" name="period" value="semanal" />
+                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_semanal" name="period" value="semanal" />
                     <label for="radio_semanal">Semanal</label>
-                    <input type="radio" id="radio_quincenal" name="period" value="quincenal" />
+                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_quincenal" name="period" value="quincenal" />
                     <label for="radio_quincenal">Quincenal</label>
-                    <input type="radio" id="radio_mensual" name="period" value="mensual" />
+                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_mensual" name="period" value="mensual" />
                     <label for="radio_mensual">Mensual</label>
                   </div>
                   <div class="cantidad">
                     <q-field>
-                      <vue-autonumeric v-model="gastoAmount"
+                      <vue-autonumeric v-model="form_gasto.cantidad"
                         :options="{
                           currencySymbol: '$',
                           decimalPlaces: 2,
@@ -138,10 +138,10 @@
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn label="Agregar otra opción (4/5)" icon="add"/>
+                  <q-btn :label="totalGastos" @click="crearGasto"  v-show="form.gastos.length < 4" icon="add"/>
                 </div>
               </div>
-              <button class="next" @click="next(), stophelp()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="NextGasto(), stophelp()" v-bind:disabled="!isGastosValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -171,7 +171,7 @@
               <div class="deuda_desglose" v-if="deudaExist">
                 <h2>¿De cuánto?</h2>
                 <q-field>
-                  <vue-autonumeric v-model="deuda"
+                  <vue-autonumeric v-model="form.deuda"
                     :options="{
                       currencySymbol: '$',
                       decimalPlaces: 2,
@@ -183,17 +183,17 @@
                     <div class="period">
                       <p>Frecuencia de pagos</p>
                       <div class="frecuencias">
-                        <input type="radio" id="radio_semanal" name="period" value="semanal" />
+                        <input type="radio" v-model="form.frecuenciaDeuda" id="radio_semanal" name="period" value="semanal" />
                         <label for="radio_semanal">Pago único</label>
-                        <input type="radio" id="radio_quincenal" name="period" value="quincenal" />
+                        <input type="radio" v-model="form.frecuenciaDeuda" id="radio_quincenal" name="period" value="quincenal" />
                         <label for="radio_quincenal">Quincenal</label>
-                        <input type="radio" id="radio_mensual" name="period" value="mensual" />
+                        <input type="radio" v-model="form.frecuenciaDeuda" id="radio_mensual" name="period" value="mensual" />
                         <label for="radio_mensual">Mensual</label>
                         </div>
                     </div>
                     <div class="cantidad">
                       <p>Cantidad</p>
-                      <vue-autonumeric v-model="deudaPagos"
+                      <vue-autonumeric v-model="form.cantidadDeuda"
                         :options="{
                           currencySymbol: '$',
                           decimalPlaces: 2,
@@ -228,7 +228,7 @@
                 <div class="cuanto-meta">
                   <h2>¿De cuánto?</h2>
                   <q-field>
-                    <vue-autonumeric v-model="meta"
+                    <vue-autonumeric v-model="form.cantidadMeta"
                         :options="{
                           currencySymbol: '$',
                           decimalPlaces: 2,
@@ -239,7 +239,7 @@
                 <div class="para-meta">
                   <h2>¿Para qué?</h2>
                   <q-field>
-                    <q-input v-model="metaProposito" type="text" placeholder="Ejemplo. Viaje a méxico"/>
+                    <q-input v-model="form.meta" type="text" placeholder="Ejemplo. Viaje a méxico"/>
                   </q-field>
                 </div>
               </div>
@@ -256,7 +256,6 @@
       </p>
       <button class="primary" @click="reset()">Reset</button>
     </div>
-
     <footer>
       <p>Todos los derechos reservados, Moneyko 2018.</p>
     </footer>
@@ -288,50 +287,62 @@
 import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn } from 'quasar'
 import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
 export default {
-  name: 'App',
+  name: 'Pasos',
   data () {
     return {
       openmodal: false,
       //
-      ingreso: '',
+      form: {
+        ingreso: null,
+        egresos: [],
+        gastos: [],
+        deuda: null,
+        frecuenciaDeuda: null,
+        cantidadDeuda: null,
+        cantidadMeta: null,
+        meta: null
+      },
       //
-      egreso: '',
-      selectOptions: [
-        {
-          label: 'Vivienda',
-          value: '1'
-        },
-        {
-          label: 'Despensa',
-          value: '2'
-        },
-        {
-          label: 'Transporte',
-          value: '3'
-        },
-        {
-          label: 'Gustos',
-          value: '4'
-        },
-        {
-          label: 'Servicios básicos',
-          value: '5'
-        }
-      ],
-      egresoAmount: '',
+      form_egreso: {
+        egreso: null,
+        frecuencia: null,
+        cantidad: 0
+      },
       //
-      gasto: '',
-      gastoAmount: '',
+      form_gasto: {
+        gasto: null,
+        frecuencia: null,
+        cantidad: 0
+      },
       //
       deudaExist: false,
       clickedDeuda: false,
-      deuda: '',
-      deudaPagos: '',
       //
       metaExist: false,
       clickedMeta: false,
-      meta: '',
-      metaProposito: '',
+      //
+      selectOptions: [
+        {
+          label: 'Vivienda',
+          value: 'vivienda'
+        },
+        {
+          label: 'Despensa',
+          value: 'despensa'
+        },
+        {
+          label: 'Transporte',
+          value: 'transporte'
+        },
+        {
+          label: 'Gustos',
+          value: 'gustos'
+        },
+        {
+          label: 'Servicios básicos',
+          value: 'servicios básicos'
+        }
+      ],
       //
       ready: false,
       finished: false,
@@ -341,12 +352,17 @@ export default {
     }
   },
   methods: {
+    // Stepper
     finish () {
       this.finished = true
     },
     reset () {
       this.$refs.stepper.reset()
       this.finished = false
+    },
+    prev () {
+      this.$refs.stepper.previous()
+      this.DisabledBack = true
     },
     next () {
       this.$refs.stepper.next()
@@ -360,25 +376,68 @@ export default {
     stophelp () {
       this.DisabledHelp = true
     },
-    prev () {
-      this.$refs.stepper.previous()
-      this.DisabledBack = true
+
+    // Egreso
+    NextEgreso () {
+      const form_egreso = this.form_egreso
+      this.form.egresos.push(form_egreso)
+      this.$refs.stepper.next()
     },
+    crearEgreso () {
+      const form_egreso = this.form_egreso
+      this.form.egresos.push(form_egreso)
+      this.resetFormEgreso()
+    },
+    resetFormEgreso () {
+      this.form_egreso = {
+        egreso: null,
+        frecuencia: null,
+        cantidad: 0
+      }
+    },
+
+    // Gasto
+    NextGasto () {
+      const form_gasto = this.form_gasto
+      this.form.gastos.push(form_gasto)
+      this.$refs.stepper.next()
+    },
+    crearGasto () {
+      const form_gasto = this.form_gasto
+      this.form.gastos.push(form_gasto)
+      this.resetFormGasto()
+    },
+    resetFormGasto () {
+      this.form_gasto = {
+        gasto: null,
+        frecuencia: null,
+        cantidad: 0
+      }
+    },
+
+    // Mandar información a otro archivo
+    sendData () {
+      this.$store.dispatch('valuador/finish', this.form, {
+        root: true
+      })
+    },
+
+    // Validaciones
     isIngresoValid: function () {
-      return this.ingreso !== ''
+      return this.form.ingreso !== null
     },
     isEgresoValid: function () {
-      return this.ingreso !== ''
+      return this.form_egreso.egreso !== null && this.form_egreso.cantidad !== 0 && this.form_egreso.frecuencia !== null
     },
     isGastosValid: function () {
-      return this.ingreso !== ''
+      return this.form_gasto.gasto !== null && this.form_gasto.cantidad !== 0 && this.form_gasto.frecuencia !== null
     },
     isDeudaValid: function () {
       if (this.clickedDeuda !== false) {
         if (this.deudaExist !== true) {
           return this.clickedDeuda !== false
         } else {
-          return this.deuda !== '' && this.deudaPagos !== ''
+          return this.form.deuda !== null && this.form.cantidadDeuda !== null && this.form.frecuenciaDeuda !== null
         }
       }
     },
@@ -387,9 +446,19 @@ export default {
         if (this.metaExist !== true) {
           return this.clickedmeta !== false
         } else {
-          return this.meta !== '' && this.metaProposito !== ''
+          return this.form.meta !== null && this.form.cantidadMeta !== null
         }
       }
+    }
+  },
+  computed: {
+    totalEgresos () {
+      const length = this.form.egresos.length + 1
+      return `Agregar otra opción (${length}/5)`
+    },
+    totalGastos () {
+      const length = this.form.gastos.length + 1
+      return `Agregar otra opción (${length}/5)`
     }
   },
   components: {
