@@ -574,7 +574,7 @@ export default {
   }
 
   .back, .help {
-    position: absolute;
+    position: fixed;
     left: calc(5% + 12px);
     background-color: transparent;
     z-index: 5000;
@@ -1248,6 +1248,11 @@ export default {
 
     .ingresos {
       padding: 50px 10% 100px 10% !important;
+
+      input {
+        margin-top: 60px !important;
+        font-size: 40px !important;
+      }
     }
 
     .egresos,
