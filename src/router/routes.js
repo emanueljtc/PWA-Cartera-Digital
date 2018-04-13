@@ -29,6 +29,14 @@ export default [
         }
       },
       {
+        path: '/presupuesto',
+        name: 'app.presupuesto',
+        component: () => import('pages/presupuesto'),
+        meta: {
+          requiresAuth: false
+        }
+      },
+      {
         path: '/correo',
         name: 'app.correo',
         component: () => import('pages/correo'),
