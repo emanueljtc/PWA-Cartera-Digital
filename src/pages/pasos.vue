@@ -1488,18 +1488,25 @@ export default {
     }
 
     .egresos, .gastos {
-      padding-bottom: 130px !important;
-    }
+       padding-bottom: 130px !important;
+       .content {
+        .collapsible-box {
+          margin-top: 40px;
+        }
 
-    .egresos, .gastos {
-      .q-select {
-        margin-bottom: 30px !important;
-        min-width: 100% !important;
+        .q-select, .q-list {
+          margin-bottom: 30px !important;
+          min-width: 100% !important;
+          left: 0% !important;
+        }
+        .q-list {
+          margin-bottom: 0px !important;
+        }
       }
 
       .row-m {
         display: initial;
-        width: 100%;
+        width: 100% !important;
 
         .cantidad_sub {
           display: none;
