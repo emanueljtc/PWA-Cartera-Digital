@@ -59,11 +59,11 @@
               <div class="input-field center-align">
                 <div class="row-m">
                   <div class="period">
-                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_semanal" name="period" value="semanal" />
+                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_semanal" name="period" value="Semanal" />
                     <label for="radio_semanal">Semanal</label>
-                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_quincenal" name="period" value="quincenal" />
+                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_quincenal" name="period" value="Quincenal" />
                     <label for="radio_quincenal">Quincenal</label>
-                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_mensual" name="period" value="mensual" />
+                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_mensual" name="period" value="Mensual" />
                     <label for="radio_mensual">Mensual</label>
                   </div>
                   <div class="cantidad">
@@ -78,6 +78,51 @@
                     </q-field>
                   </div>
                 </div>
+              </div>
+              <div class="collapsible-box">
+                <q-list v-for="(egreso, key) in form.egresos" :key="key">
+                    <q-collapsible group="somegroup" :label='egreso.egreso'>
+                    <div>
+                      <q-field>
+                          <q-select
+                            v-model="egreso.egreso"
+                            :options="selectOptions"
+                            float-label="Selecciona una opción"
+                          />
+                        </q-field>
+                        <div class="input-field center-align">
+                          <div class="row-m">
+                            <p class="frecuencia_sub">Frecuencia</p>
+                            <p class="cantidad_sub">Cantidad</p>
+                          </div>
+                        </div>
+                        <div class="input-field center-align">
+                          <div class="row-m">
+                            <div class="period">
+                              <input type="radio" v-model="egreso.frecuencia" :id="frecuenciaSemanalEgreso" :name="periodoagregadoEgreso" value="Semanal" />
+                              <label :for="frecuenciaSemanalEgreso">Semanal</label>
+                              <input type="radio" v-model="egreso.frecuencia" :id="frecuenciaQuincenalEgreso" :name="periodoagregadoEgreso" value="Quincenal" />
+                              <label :for="frecuenciaQuincenalEgreso">Quincenal</label>
+                              <input type="radio" v-model="egreso.frecuencia" :id="frecuenciaMensualEgreso" :name="periodoagregadoEgreso" value="Mensual" />
+                              <label :for="frecuenciaMensualEgreso">Mensual</label>
+                            </div>
+                            <div class="cantidad">
+                              <p class="cantidad_sub_mob">Cantidad</p>
+                              <q-field>
+                                 <vue-autonumeric v-model="egreso.cantidad"
+                                  :options="{
+                                    currencySymbol: '$',
+                                    decimalPlaces: 2,
+                                    minimumValue: 0,
+                                  }" :placeholder="egreso.cantidad"></vue-autonumeric>
+                              </q-field>
+                            </div>
+                          </div>
+                        </div>
+                        <q-btn flat label="Borrar" @click="deleteEgreso(egreso)" />
+                    </div>
+                  </q-collapsible>
+                </q-list>
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
@@ -117,11 +162,11 @@
               <div class="input-field center-align">
                 <div class="row-m">
                   <div class="period">
-                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_semanal" name="period" value="semanal" />
+                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_semanal" name="period" value="Semanal" />
                     <label for="radio_semanal">Semanal</label>
-                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_quincenal" name="period" value="quincenal" />
+                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_quincenal" name="period" value="Quincenal" />
                     <label for="radio_quincenal">Quincenal</label>
-                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_mensual" name="period" value="mensual" />
+                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_mensual" name="period" value="Mensual" />
                     <label for="radio_mensual">Mensual</label>
                   </div>
                   <div class="cantidad">
@@ -135,6 +180,50 @@
                     </q-field>
                   </div>
                 </div>
+              </div>
+              <div class="collapsible-box">
+                <q-list v-for="(gasto, key) in form.gastos" :key="key">
+                  <q-collapsible group="somegroup" :label='gasto.gasto'>
+                    <div>
+                      <q-field>
+                        <q-select
+                          v-model="gasto.gasto"
+                          :options="selectOptions"
+                          float-label="Selecciona una opción"
+                        />
+                      </q-field>
+                      <div class="input-field center-align">
+                        <div class="row-m">
+                          <p class="frecuencia_sub">Frecuencia</p>
+                          <p class="cantidad_sub">Cantidad</p>
+                        </div>
+                      </div>
+                      <div class="input-field center-align">
+                        <div class="row-m">
+                          <div class="period">
+                            <input type="radio" v-model="gasto.frecuencia" id="frecuenciaSemanalGasto" name="periodoagregadoGasto" value="Semanal" />
+                            <label for="frecuenciaSemanalGasto">Semanal</label>
+                            <input type="radio" v-model="gasto.frecuencia" id="frecuenciaQuincenalGasto" name="periodoagregadoGasto" value="Quincenal" />
+                            <label for="frecuenciaQuincenalGasto">Quincenal</label>
+                            <input type="radio" v-model="gasto.frecuencia" id="frecuenciaMensualGasto" name="periodoagregadoGasto" value="Mensual" />
+                            <label for="frecuenciaMensualGasto">Mensual</label>
+                          </div>
+                          <div class="cantidad">
+                            <q-field>
+                              <vue-autonumeric v-model="gasto.cantidad"
+                                :options="{
+                                  currencySymbol: '$',
+                                  decimalPlaces: 2,
+                                  minimumValue: 0,
+                                }" :placeholder="gasto.cantidad"></vue-autonumeric>
+                            </q-field>
+                          </div>
+                        </div>
+                      </div>
+                      <q-btn flat label="Borrar" @click="deleteGasto(gasto)" />
+                    </div>
+                  </q-collapsible>
+                </q-list>
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
@@ -284,7 +373,7 @@
 </template>
 
 <script>
-import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn } from 'quasar'
+import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, Notify } from 'quasar'
 import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
 export default {
   name: 'Pasos',
@@ -324,23 +413,23 @@ export default {
       selectOptions: [
         {
           label: 'Vivienda',
-          value: 'vivienda'
+          value: 'Vivienda'
         },
         {
           label: 'Despensa',
-          value: 'despensa'
+          value: 'Despensa'
         },
         {
           label: 'Transporte',
-          value: 'transporte'
+          value: 'Transporte'
         },
         {
           label: 'Gustos',
-          value: 'gustos'
+          value: 'Gustos'
         },
         {
           label: 'Servicios básicos',
-          value: 'servicios básicos'
+          value: 'Servicios básicos'
         }
       ],
       //
@@ -380,13 +469,35 @@ export default {
     // Egreso
     NextEgreso () {
       const form_egreso = this.form_egreso
-      this.form.egresos.push(form_egreso)
-      this.$refs.stepper.next()
+      const results = this.form.egresos.filter(function (element, index) {
+        return element.egreso === form_egreso.egreso
+      })
+      if (results.length > 0) {
+        this.$q.notify({
+          message: `Ya existe este tipo de egreso`,
+          timeout: 5000,
+          position: 'top-right'
+        })
+      } else {
+        this.form.egresos.push(form_egreso)
+        this.$refs.stepper.next()
+      }
     },
     crearEgreso () {
       const form_egreso = this.form_egreso
-      this.form.egresos.push(form_egreso)
-      this.resetFormEgreso()
+      const results = this.form.egresos.filter(function (element, index) {
+        return element.egreso === form_egreso.egreso
+      })
+      if (results.length > 0) {
+        this.$q.notify({
+          message: `Ya existe este tipo de egreso`,
+          timeout: 5000,
+          position: 'top-right'
+        })
+      } else {
+        this.form.egresos.push(form_egreso)
+        this.resetFormEgreso()
+      }
     },
     resetFormEgreso () {
       this.form_egreso = {
@@ -395,17 +506,41 @@ export default {
         cantidad: 0
       }
     },
-
+    deleteEgreso (egreso) {
+      this.form.egresos = this.form.egresos.filter((element, index) => element.egreso !== egreso.egreso)
+    },
     // Gasto
     NextGasto () {
       const form_gasto = this.form_gasto
-      this.form.gastos.push(form_gasto)
-      this.$refs.stepper.next()
+      const results = this.form.gastos.filter(function (element, index) {
+        return element.gasto === form_gasto.gasto
+      })
+      if (results.length > 0) {
+        this.$q.notify({
+          message: `Ya existe este tipo de gasto`,
+          timeout: 5000,
+          position: 'top-right'
+        })
+      } else {
+        this.form.gastos.push(form_gasto)
+        this.$refs.stepper.next()
+      }
     },
     crearGasto () {
       const form_gasto = this.form_gasto
-      this.form.gastos.push(form_gasto)
-      this.resetFormGasto()
+      const results = this.form.gastos.filter(function (element, index) {
+        return element.gasto === form_gasto.gasto
+      })
+      if (results.length > 0) {
+        this.$q.notify({
+          message: `Ya existe este tipo de gasto`,
+          timeout: 5000,
+          position: 'top-right'
+        })
+      } else {
+        this.form.gastos.push(form_gasto)
+        this.resetFormGasto()
+      }
     },
     resetFormGasto () {
       this.form_gasto = {
@@ -413,6 +548,9 @@ export default {
         frecuencia: null,
         cantidad: 0
       }
+    },
+    deleteGasto (gasto) {
+      this.form.gastos = this.form.gastos.filter((element, index) => element.gasto !== gasto.gasto)
     },
 
     // Mandar información a otro archivo
@@ -459,10 +597,44 @@ export default {
     totalGastos () {
       const length = this.form.gastos.length + 1
       return `Agregar otra opción (${length}/5)`
+    },
+    //
+    frecuenciaSemanalEgreso () {
+      const length = this.form.egresos.length
+      return `semanal_${length}`
+    },
+    frecuenciaQuincenalEgreso () {
+      const length = this.form.egresos.length
+      return `quincenal_${length}`
+    },
+    frecuenciaMensualEgreso () {
+      const length = this.form.egresos.length
+      return `mensual_${length}`
+    },
+    periodoagregadoEgreso () {
+      const length = this.form.egresos.length
+      return `periodo_${length}`
+    },
+    //
+    frecuenciaSemanalGasto () {
+      const length = this.form.gastos.length
+      return `semanal_gastos_${length}`
+    },
+    frecuenciaQuincenalGasto () {
+      const length = this.form.gastos.length
+      return `quincenal_gastos_${length}`
+    },
+    frecuenciaMensualGasto () {
+      const length = this.form.gastos.length
+      return `mensual_gastos_${length}`
+    },
+    periodoagregadoGasto () {
+      const length = this.form.gastos.length
+      return `periodo_gastos_${length}`
     }
   },
   components: {
-    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, VueAutonumeric
+    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, VueAutonumeric, Notify
   }
 }
 </script>
@@ -726,6 +898,54 @@ export default {
               text-align: center;
             }
 
+            .collapsible-box {
+              margin-bottom: 30px;
+              .q-list {
+                position: relative;
+                left: 27.5%;
+                width: 45%;
+
+                .q-collapsible {
+                  .q-collapsible-sub-item {
+                    padding-bottom: 50px;
+                  }
+                  .q-select {
+                    min-width: 95%;
+                  }
+
+                  .row-m {
+                    max-width: 95%;
+
+                    .period {
+                      margin-bottom: 0px;
+                    }
+                  }
+
+                  .q-item-label {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    font-size: 14px;
+                  }
+
+                  button {
+                    width: auto;
+                    height: auto;
+                    padding: 5px 10px;
+                    border-radius: 0px;
+                    margin: 0;
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    background: transparent;
+                    color: $dark-purple;
+                    font-weight: bold;
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+
             .q-select {
               min-width: 45%;
               display: inline-block !important;
@@ -790,7 +1010,7 @@ export default {
             }
 
             .period {
-              margin-bottom: 60px;
+              margin-bottom: 30px;
               float: left;
               width: 70%;
               input[type=radio], input[type=checkbox] {
@@ -1204,6 +1424,11 @@ export default {
     }
     .egresos, .gastos {
       .content {
+        .q-list {
+          width: 65% !important;
+          left: 17.5% !important;
+        }
+
         .q-select {
           width: 65%;
         }
