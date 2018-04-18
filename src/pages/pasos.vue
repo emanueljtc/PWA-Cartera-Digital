@@ -149,7 +149,7 @@
               <q-field>
                 <q-select
                   v-model="form_gasto.gasto"
-                  :options="selectOptions"
+                  :options="selectOptionsGastos"
                   float-label="Selecciona una opción"
                 />
               </q-field>
@@ -188,7 +188,7 @@
                       <q-field>
                         <q-select
                           v-model="gasto.gasto"
-                          :options="selectOptions"
+                          :options="selectOptionsGastos"
                           float-label="Selecciona una opción"
                         />
                       </q-field>
@@ -430,6 +430,28 @@ export default {
         {
           label: 'Servicios básicos',
           value: 'Servicios básicos'
+        }
+      ],
+      selectOptionsGastos: [
+        {
+          label: 'Smartphone',
+          value: 'Smartphone'
+        },
+        {
+          label: 'Luz',
+          value: 'Luz'
+        },
+        {
+          label: 'Gas',
+          value: 'Gas'
+        },
+        {
+          label: 'Agua',
+          value: 'Agua'
+        },
+        {
+          label: 'Telefonía',
+          value: 'Telefonía'
         }
       ],
       //
