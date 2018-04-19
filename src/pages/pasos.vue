@@ -22,7 +22,6 @@
                <vue-autonumeric v-model="form.ingreso"
                   :options="{
                     currencySymbol: '$',
-                    decimalPlaces: 2,
                     minimumValue: 0,
                   }" placeholder="$0.00"></vue-autonumeric>
               </q-field>
@@ -83,13 +82,6 @@
                 <q-list v-for="(egreso, key) in form.egresos" :key="key">
                     <q-collapsible group="somegroup" :label='egreso.egreso'>
                     <div>
-                      <q-field>
-                          <q-select
-                            v-model="egreso.egreso"
-                            :options="selectOptions"
-                            float-label="Selecciona una opción"
-                          />
-                        </q-field>
                         <div class="input-field center-align">
                           <div class="row-m">
                             <p class="frecuencia_sub">Frecuencia</p>
@@ -126,10 +118,10 @@
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn :label="totalEgresos" @click="crearEgreso"  v-show="form.egresos.length < 4" icon="add"/>
+                  <q-btn :label="totalEgresos" @click="crearEgreso(), egresoExist = true"  v-show="form.egresos.length < 4" icon="add"/>
                 </div>
               </div>
-              <button class="next" @click="NextEgreso()" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -139,7 +131,7 @@
         <!-- ===================================================== -->
         <q-step title="gastos-mayor" :ready="ready">
           <button class="back"
-            @click="$refs.stepper.previous()"
+            @click="$refs.stepper.previous(), help()"
           >
           </button>
           <div class="container valign-wrapper gastos">
@@ -185,13 +177,6 @@
                 <q-list v-for="(gasto, key) in form.gastos" :key="key">
                   <q-collapsible group="somegroup" :label='gasto.gasto'>
                     <div>
-                      <q-field>
-                        <q-select
-                          v-model="gasto.gasto"
-                          :options="selectOptionsGastos"
-                          float-label="Selecciona una opción"
-                        />
-                      </q-field>
                       <div class="input-field center-align">
                         <div class="row-m">
                           <p class="frecuencia_sub">Frecuencia</p>
@@ -227,10 +212,10 @@
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn :label="totalGastos" @click="crearGasto"  v-show="form.gastos.length < 4" icon="add"/>
+                  <q-btn :label="totalGastos" @click="crearGasto(), gastoExist = true"  v-show="form.gastos.length < 4" icon="add"/>
                 </div>
               </div>
-              <button class="next" @click="NextGasto(), stophelp()" v-bind:disabled="!isGastosValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
+              <button class="next" @click="NextGasto(), stophelp(), gastoExist = true" v-bind:disabled="!isGastosValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
           </div>
         </q-step>
@@ -410,6 +395,9 @@ export default {
       metaExist: false,
       clickedMeta: false,
       //
+      egresoExist: false,
+      gastoExist: false,
+      //
       selectOptions: [
         {
           label: 'Vivienda',
@@ -501,8 +489,12 @@ export default {
           position: 'top-right'
         })
       } else {
-        this.form.egresos.push(form_egreso)
-        this.$refs.stepper.next()
+        if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
+          this.form.egresos.push(form_egreso)
+          this.resetFormEgreso()
+        } else {
+          this.$refs.stepper.next()
+        }
       }
     },
     crearEgreso () {
@@ -517,8 +509,10 @@ export default {
           position: 'top-right'
         })
       } else {
-        this.form.egresos.push(form_egreso)
-        this.resetFormEgreso()
+        if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
+          this.form.egresos.push(form_egreso)
+          this.resetFormEgreso()
+        }
       }
     },
     resetFormEgreso () {
@@ -544,8 +538,12 @@ export default {
           position: 'top-right'
         })
       } else {
-        this.form.gastos.push(form_gasto)
-        this.$refs.stepper.next()
+        if (form_gasto.gasto !== null && form_gasto.frecuencia !== null && form_gasto.cantidad !== 0) {
+          this.form.gastos.push(form_gasto)
+          this.resetFormGasto()
+        } else {
+          this.$refs.stepper.next()
+        }
       }
     },
     crearGasto () {
@@ -560,8 +558,10 @@ export default {
           position: 'top-right'
         })
       } else {
-        this.form.gastos.push(form_gasto)
-        this.resetFormGasto()
+        if (form_gasto.gasto !== null && form_gasto.frecuencia !== null && form_gasto.cantidad !== 0) {
+          this.form.gastos.push(form_gasto)
+          this.resetFormGasto()
+        }
       }
     },
     resetFormGasto () {
@@ -587,10 +587,18 @@ export default {
       return this.form.ingreso !== null
     },
     isEgresoValid: function () {
-      return this.form_egreso.egreso !== null && this.form_egreso.cantidad !== 0 && this.form_egreso.frecuencia !== null
+      if (this.form.egresos.length > 0) {
+        return this.egresoExist !== false
+      } else {
+        return this.form_egreso.egreso !== null && this.form_egreso.cantidad !== 0 && this.form_egreso.frecuencia !== null
+      }
     },
     isGastosValid: function () {
-      return this.form_gasto.gasto !== null && this.form_gasto.cantidad !== 0 && this.form_gasto.frecuencia !== null
+      if (this.form.gastos.length > 0) {
+        return this.gastoExist !== false
+      } else {
+        return this.form_gasto.gasto !== null && this.form_gasto.cantidad !== 0 && this.form_gasto.frecuencia !== null
+      }
     },
     isDeudaValid: function () {
       if (this.clickedDeuda !== false) {
