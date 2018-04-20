@@ -27,7 +27,7 @@
           </q-field>
         </div>
         <!-- {{ form }} -->
-        <button class="primary" v-bind:disabled="!isCorreoValid()">Continuar</button>
+        <button class="primary" @click="$router.replace('/presupuesto')" v-bind:disabled="!isCorreoValid()">Continuar</button>
       </div>
     </div>
     <footer>
