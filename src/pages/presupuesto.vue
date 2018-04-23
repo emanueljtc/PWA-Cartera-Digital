@@ -126,7 +126,16 @@ export default {
   $os-bold: OpenSansBold;
 
   header {
-    display: none
+    display: block !important;
+    background-color: #fcfcfc;
+
+    .q-toolbar {
+      background-color: #fcfcfc !important;
+
+      .menu-icon {
+        display: block;
+      }
+    }
   }
 
   button {
@@ -162,7 +171,7 @@ export default {
     .presupuesto {
       min-height: 100vh;
       height: auto;
-      padding: 50px 5% 100px 5%;
+      padding: 100px 5% 100px 5%;
 
       .content {
         text-align: center;

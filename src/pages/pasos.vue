@@ -709,6 +709,10 @@ export default {
 
   header {
     display: initial !important;
+
+    .menu-icon {
+      display: none;
+    }
   }
 
   h2 {
