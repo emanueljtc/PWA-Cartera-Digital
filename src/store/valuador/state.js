@@ -1,3 +1,12 @@
 export default {
-  form: { a: 232233 }
+  form: {
+    ingreso: null,
+    egresos: [],
+    gastos: [],
+    deuda: null,
+    frecuenciaDeuda: null,
+    cantidadDeuda: null,
+    cantidadMeta: null,
+    meta: null
+  }
 }

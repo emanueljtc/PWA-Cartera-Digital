@@ -17,6 +17,9 @@
             <div class="grafica">
               <p class="total">Total: $10,000.00</p>
             </div>
+            <!-- <div v-for="(egreso, key) in form.egresos" :key="key">
+
+            </div> -->
             <div>
               <div class="data-box">
                 <div class="data">

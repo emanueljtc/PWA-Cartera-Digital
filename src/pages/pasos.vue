@@ -317,7 +317,7 @@
                   </q-field>
                 </div>
               </div>
-              <button class="next" @click="$router.replace('/correo')" v-bind:disabled="!isMetaValid()">Ver resultados</button>
+              <button class="next" @click="sendData" v-bind:disabled="!isMetaValid()">Ver resultados</button>
             </div>
           </div>
         </q-step>
@@ -376,6 +376,7 @@ export default {
         cantidadMeta: null,
         meta: null
       },
+      a: 'hola',
       //
       form_egreso: {
         egreso: null,
@@ -577,9 +578,12 @@ export default {
 
     // Mandar información a otro archivo
     sendData () {
-      this.$store.dispatch('valuador/finish', this.form, {
-        root: true
-      })
+      localStorage.setItem('storedDataA', this.a)
+      localStorage.setItem('storedData', this.form_egreso)
+      // this.$store.dispatch('valuador/finish', this.form, {
+      //   root: true
+      // })
+      // this.$router.replace('/correo')
     },
 
     // Validaciones

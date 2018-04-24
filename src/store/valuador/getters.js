@@ -1,3 +1,3 @@
-export const form = (state) => {
+export const setForm = (state) => {
   return state.form
 }
