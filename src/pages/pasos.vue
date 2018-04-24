@@ -19,7 +19,7 @@
               <h2>Ingresos</h2>
               <p>Especifica tus ingresos mensuales</p>
               <q-field>
-               <vue-autonumeric v-model="form.ingreso"
+               <vue-autonumeric v-model="ingreso"
                   :options="{
                     currencySymbol: '$',
                     minimumValue: 0,
@@ -79,7 +79,7 @@
                 </div>
               </div>
               <div class="collapsible-box">
-                <q-list v-for="(egreso, key) in form.egresos" :key="key">
+                <q-list v-for="(egreso, key) in egresos" :key="key">
                     <q-collapsible group="somegroup" :label='egreso.egreso'>
                     <div>
                         <div class="input-field center-align">
@@ -118,7 +118,7 @@
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn :label="totalEgresos" @click="crearEgreso(), egresoExist = true"  v-show="form.egresos.length < 4" icon="add"/>
+                  <q-btn :label="totalEgresos" @click="crearEgreso(), egresoExist = true"  v-show="egresos.length < 4" icon="add"/>
                 </div>
               </div>
               <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
@@ -174,7 +174,7 @@
                 </div>
               </div>
               <div class="collapsible-box">
-                <q-list v-for="(gasto, key) in form.gastos" :key="key">
+                <q-list v-for="(gasto, key) in gastos" :key="key">
                   <q-collapsible group="somegroup" :label='gasto.gasto'>
                     <div>
                       <div class="input-field center-align">
@@ -212,7 +212,7 @@
               </div>
               <div class="input-field center-align">
                 <div class="row-m">
-                  <q-btn :label="totalGastos" @click="crearGasto(), gastoExist = true"  v-show="form.gastos.length < 4" icon="add"/>
+                  <q-btn :label="totalGastos" @click="crearGasto(), gastoExist = true"  v-show="gastos.length < 4" icon="add"/>
                 </div>
               </div>
               <button class="next" @click="NextGasto(), stophelp(), gastoExist = true" v-bind:disabled="!isGastosValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
@@ -245,7 +245,7 @@
               <div class="deuda_desglose" v-if="deudaExist">
                 <h2>¿De cuánto?</h2>
                 <q-field>
-                  <vue-autonumeric v-model="form.deuda"
+                  <vue-autonumeric v-model="deuda"
                     :options="{
                       currencySymbol: '$',
                       decimalPlaces: 2,
@@ -257,17 +257,17 @@
                     <div class="period">
                       <p>Frecuencia de pagos</p>
                       <div class="frecuencias">
-                        <input type="radio" v-model="form.frecuenciaDeuda" id="radio_semanal" name="period" value="semanal" />
+                        <input type="radio" v-model="frecuenciaDeuda" id="radio_semanal" name="period" value="semanal" />
                         <label for="radio_semanal">Pago único</label>
-                        <input type="radio" v-model="form.frecuenciaDeuda" id="radio_quincenal" name="period" value="quincenal" />
+                        <input type="radio" v-model="frecuenciaDeuda" id="radio_quincenal" name="period" value="quincenal" />
                         <label for="radio_quincenal">Quincenal</label>
-                        <input type="radio" v-model="form.frecuenciaDeuda" id="radio_mensual" name="period" value="mensual" />
+                        <input type="radio" v-model="frecuenciaDeuda" id="radio_mensual" name="period" value="mensual" />
                         <label for="radio_mensual">Mensual</label>
                         </div>
                     </div>
                     <div class="cantidad">
                       <p>Cantidad</p>
-                      <vue-autonumeric v-model="form.cantidadDeuda"
+                      <vue-autonumeric v-model="cantidadDeuda"
                         :options="{
                           currencySymbol: '$',
                           decimalPlaces: 2,
@@ -302,7 +302,7 @@
                 <div class="cuanto-meta">
                   <h2>¿De cuánto?</h2>
                   <q-field>
-                    <vue-autonumeric v-model="form.cantidadMeta"
+                    <vue-autonumeric v-model="cantidadMeta"
                         :options="{
                           currencySymbol: '$',
                           decimalPlaces: 2,
@@ -313,11 +313,11 @@
                 <div class="para-meta">
                   <h2>¿Para qué?</h2>
                   <q-field>
-                    <q-input v-model="form.meta" type="text" placeholder="Ejemplo. Viaje a méxico"/>
+                    <q-input v-model="meta" type="text" placeholder="Ejemplo. Viaje a méxico"/>
                   </q-field>
                 </div>
               </div>
-              <button class="next" @click="sendData" v-bind:disabled="!isMetaValid()">Ver resultados</button>
+              <button class="next" @click="$router.replace('/correo')" v-bind:disabled="!isMetaValid()">Ver resultados</button>
             </div>
           </div>
         </q-step>
@@ -366,17 +366,14 @@ export default {
     return {
       openmodal: false,
       //
-      form: {
-        ingreso: null,
-        egresos: [],
-        gastos: [],
-        deuda: null,
-        frecuenciaDeuda: null,
-        cantidadDeuda: null,
-        cantidadMeta: null,
-        meta: null
-      },
-      a: 'hola',
+      ingreso: null,
+      egresos: [],
+      gastos: [],
+      deuda: null,
+      frecuenciaDeuda: null,
+      cantidadDeuda: null,
+      cantidadMeta: null,
+      meta: null,
       //
       form_egreso: {
         egreso: null,
@@ -477,10 +474,10 @@ export default {
       this.DisabledHelp = true
     },
 
-    // Egreso
+    // // Egreso
     NextEgreso () {
       const form_egreso = this.form_egreso
-      const results = this.form.egresos.filter(function (element, index) {
+      const results = this.egresos.filter(function (element, index) {
         return element.egreso === form_egreso.egreso
       })
       if (results.length > 0) {
@@ -491,8 +488,9 @@ export default {
         })
       } else {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
-          this.form.egresos.push(form_egreso)
+          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad})
           this.resetFormEgreso()
+          this.$refs.stepper.next()
         } else {
           this.$refs.stepper.next()
         }
@@ -500,7 +498,7 @@ export default {
     },
     crearEgreso () {
       const form_egreso = this.form_egreso
-      const results = this.form.egresos.filter(function (element, index) {
+      const results = this.egresos.filter(function (element, index) {
         return element.egreso === form_egreso.egreso
       })
       if (results.length > 0) {
@@ -511,7 +509,7 @@ export default {
         })
       } else {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
-          this.form.egresos.push(form_egreso)
+          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad})
           this.resetFormEgreso()
         }
       }
@@ -524,12 +522,13 @@ export default {
       }
     },
     deleteEgreso (egreso) {
-      this.form.egresos = this.form.egresos.filter((element, index) => element.egreso !== egreso.egreso)
+      this.egresos = this.egresos.filter((element, index) => element.egreso !== egreso.egreso)
     },
+
     // Gasto
     NextGasto () {
       const form_gasto = this.form_gasto
-      const results = this.form.gastos.filter(function (element, index) {
+      const results = this.gastos.filter(function (element, index) {
         return element.gasto === form_gasto.gasto
       })
       if (results.length > 0) {
@@ -540,8 +539,9 @@ export default {
         })
       } else {
         if (form_gasto.gasto !== null && form_gasto.frecuencia !== null && form_gasto.cantidad !== 0) {
-          this.form.gastos.push(form_gasto)
+          this.gastos.push({gasto: this.form_gasto.gasto, frecuencia: this.form_gasto.frecuencia, cantidad: this.form_gasto.cantidad})
           this.resetFormGasto()
+          this.$refs.stepper.next()
         } else {
           this.$refs.stepper.next()
         }
@@ -549,7 +549,7 @@ export default {
     },
     crearGasto () {
       const form_gasto = this.form_gasto
-      const results = this.form.gastos.filter(function (element, index) {
+      const results = this.gastos.filter(function (element, index) {
         return element.gasto === form_gasto.gasto
       })
       if (results.length > 0) {
@@ -560,7 +560,7 @@ export default {
         })
       } else {
         if (form_gasto.gasto !== null && form_gasto.frecuencia !== null && form_gasto.cantidad !== 0) {
-          this.form.gastos.push(form_gasto)
+          this.gastos.push({gasto: this.form_gasto.gasto, frecuencia: this.form_gasto.frecuencia, cantidad: this.form_gasto.cantidad})
           this.resetFormGasto()
         }
       }
@@ -573,32 +573,30 @@ export default {
       }
     },
     deleteGasto (gasto) {
-      this.form.gastos = this.form.gastos.filter((element, index) => element.gasto !== gasto.gasto)
+      this.gastos = this.gastos.filter((element, index) => element.gasto !== gasto.gasto)
     },
 
-    // Mandar información a otro archivo
-    sendData () {
-      localStorage.setItem('storedDataA', this.a)
-      localStorage.setItem('storedData', this.form_egreso)
-      // this.$store.dispatch('valuador/finish', this.form, {
-      //   root: true
-      // })
-      // this.$router.replace('/correo')
-    },
+    // // Mandar información a otro archivo
+    // sendData () {
+    //   // this.$store.dispatch('valuador/finish', this.form, {
+    //   //   root: true
+    //   // })
+    //   // this.$router.replace('/correo')
+    // },
 
     // Validaciones
     isIngresoValid: function () {
-      return this.form.ingreso !== null
+      return this.ingreso !== null
     },
     isEgresoValid: function () {
-      if (this.form.egresos.length > 0) {
+      if (this.egresos.length > 0) {
         return this.egresoExist !== false
       } else {
         return this.form_egreso.egreso !== null && this.form_egreso.cantidad !== 0 && this.form_egreso.frecuencia !== null
       }
     },
     isGastosValid: function () {
-      if (this.form.gastos.length > 0) {
+      if (this.gastos.length > 0) {
         return this.gastoExist !== false
       } else {
         return this.form_gasto.gasto !== null && this.form_gasto.cantidad !== 0 && this.form_gasto.frecuencia !== null
@@ -609,7 +607,7 @@ export default {
         if (this.deudaExist !== true) {
           return this.clickedDeuda !== false
         } else {
-          return this.form.deuda !== null && this.form.cantidadDeuda !== null && this.form.frecuenciaDeuda !== null
+          return this.deuda !== null && this.cantidadDeuda !== null && this.frecuenciaDeuda !== null
         }
       }
     },
@@ -618,53 +616,95 @@ export default {
         if (this.metaExist !== true) {
           return this.clickedmeta !== false
         } else {
-          return this.form.meta !== null && this.form.cantidadMeta !== null
+          return this.meta !== null && this.cantidadMeta !== null
         }
       }
     }
   },
   computed: {
     totalEgresos () {
-      const length = this.form.egresos.length + 1
+      const length = this.egresos.length + 1
       return `Agregar otra opción (${length}/5)`
     },
     totalGastos () {
-      const length = this.form.gastos.length + 1
+      const length = this.gastos.length + 1
       return `Agregar otra opción (${length}/5)`
     },
     //
     frecuenciaSemanalEgreso () {
-      const length = this.form.egresos.length
+      const length = this.egresos.length
       return `semanal_${length}`
     },
     frecuenciaQuincenalEgreso () {
-      const length = this.form.egresos.length
+      const length = this.egresos.length
       return `quincenal_${length}`
     },
     frecuenciaMensualEgreso () {
-      const length = this.form.egresos.length
+      const length = this.egresos.length
       return `mensual_${length}`
     },
     periodoagregadoEgreso () {
-      const length = this.form.egresos.length
+      const length = this.egresos.length
       return `periodo_${length}`
     },
     //
     frecuenciaSemanalGasto () {
-      const length = this.form.gastos.length
+      const length = this.gastos.length
       return `semanal_gastos_${length}`
     },
     frecuenciaQuincenalGasto () {
-      const length = this.form.gastos.length
+      const length = this.gastos.length
       return `quincenal_gastos_${length}`
     },
     frecuenciaMensualGasto () {
-      const length = this.form.gastos.length
+      const length = this.gastos.length
       return `mensual_gastos_${length}`
     },
     periodoagregadoGasto () {
-      const length = this.form.gastos.length
+      const length = this.gastos.length
       return `periodo_gastos_${length}`
+    }
+  },
+  watch: {
+    ingreso: {
+      handler () {
+        localStorage.setItem('ingreso', JSON.stringify(this.ingreso))
+      }
+    },
+    egresos: {
+      handler () {
+        localStorage.setItem('egresos', JSON.stringify(this.egresos))
+      }
+    },
+    gastos: {
+      handler () {
+        localStorage.setItem('gastos', JSON.stringify(this.gastos))
+      }
+    },
+    deuda: {
+      handler () {
+        localStorage.setItem('deuda', JSON.stringify(this.deuda))
+      }
+    },
+    frecuenciaDeuda: {
+      handler () {
+        localStorage.setItem('frecuencia de la deuda', JSON.stringify(this.frecuenciaDeuda))
+      }
+    },
+    cantidadDeuda: {
+      handler () {
+        localStorage.setItem('cantidad de la deuda', JSON.stringify(this.cantidadDeuda))
+      }
+    },
+    meta: {
+      handler () {
+        localStorage.setItem('meta', JSON.stringify(this.meta))
+      }
+    },
+    cantidadMeta: {
+      handler () {
+        localStorage.setItem('cantidad de la meta', JSON.stringify(this.cantidadMeta))
+      }
     }
   },
   components: {
