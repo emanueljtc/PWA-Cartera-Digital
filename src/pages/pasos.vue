@@ -238,7 +238,7 @@
                   label="Si"
                 />
                 <q-btn
-                  @click="deudaExist = false, clickedDeuda = true"
+                  @click="deudaExist = false, clickedDeuda = true, addDeuda()"
                   label="No"
                 />
               </div>
@@ -296,7 +296,7 @@
               <p>¿Tienes una meta financiera?</p>
               <div class="input-field center-align">
                 <q-btn @click="metaExist = true, clickedMeta = true" label="Si"/>
-                <q-btn @click="metaExist = false, clickedMeta = true" label="No"/>
+                <q-btn @click="metaExist = false, clickedMeta = true, addMeta()" label="No"/>
               </div>
               <div class="metas_desglose" v-if="metaExist">
                 <div class="cuanto-meta">
@@ -574,6 +574,16 @@ export default {
     },
     deleteGasto (gasto) {
       this.gastos = this.gastos.filter((element, index) => element.gasto !== gasto.gasto)
+    },
+
+    addDeuda () {
+      localStorage.setItem('deuda', JSON.stringify(this.deuda))
+      localStorage.setItem('frecuencia de la deuda', JSON.stringify(this.frecuenciaDeuda))
+      localStorage.setItem('cantidad de la deuda', JSON.stringify(this.cantidadDeuda))
+    },
+    addMeta () {
+      localStorage.setItem('meta', JSON.stringify(this.meta))
+      localStorage.setItem('cantidad de la meta', JSON.stringify(this.cantidadMeta))
     },
 
     // // Mandar información a otro archivo

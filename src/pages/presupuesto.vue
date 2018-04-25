@@ -15,52 +15,30 @@
           <!-- Targets -->
           <q-tab-pane name="actual">
             <div class="grafica">
-              <p class="total">Total: $10,000.00</p>
+              <!-- <p class="total">Total: $10,000.00</p> -->
+              <p class="total"><span>Total:</span> <vue-autonumeric v-model="ingreso" :options="{currencySymbol: '$'}" disabled /></p>
             </div>
-            <!-- <div v-for="(egreso, key) in form.egresos" :key="key">
-
-            </div> -->
-            <div>
+            <div v-for="(egreso, key) in egresos" :key="key">
               <div class="data-box">
                 <div class="data">
-                  <p class="porcentaje"><span>40%</span> Vivienda</p>
-                  <p class="cantidad">$4,500.00</p>
+                  <p class="porcentaje"><span>{{ porcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
+                  <p class="cantidad"> <vue-autonumeric v-model="egreso.cantidad" :options="{currencySymbol: '$'}" disabled /> </p>
                 </div>
               </div>
+            </div>
+            <div v-if="deuda !== null">
               <div class="data-box">
                 <div class="data">
-                  <p class="porcentaje"><span>20%</span> Despensa</p>
-                  <p class="cantidad">$2,000.00</p>
+                  <p class="porcentaje"><span>{{ porcentajeDeuda() }}%</span> Deuda</p>
+                  <p class="cantidad"><vue-autonumeric v-model="deuda" :options="{currencySymbol: '$'}" disabled /></p>
                 </div>
               </div>
+            </div>
+            <div v-if="ahorro !== null">
               <div class="data-box">
                 <div class="data">
-                  <p class="porcentaje"><span>10%</span> Transporte</p>
-                  <p class="cantidad">$1,000.00</p>
-                </div>
-              </div>
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span>10%</span> Gustos</p>
-                  <p class="cantidad">$1,000.00</p>
-                </div>
-              </div>
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span>10%</span> Serv. básicos</p>
-                  <p class="cantidad">$1,000.00</p>
-                </div>
-              </div>
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span>5%</span> Deuda</p>
-                  <p class="cantidad">$200.00</p>
-                </div>
-              </div>
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span>5%</span> Ahorro</p>
-                  <p class="cantidad">$200.00</p>
+                  <p class="porcentaje"><span>40%</span> Ahorro</p>
+                  <p class="cantidad"><vue-autonumeric v-model="ahorro" :options="{currencySymbol: '$'}" disabled /></p>
                 </div>
               </div>
             </div>
@@ -79,14 +57,52 @@
 <script>
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
 import VueHighcharts from 'vue-highcharts'
+import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
+
 export default {
   name: 'Presupuesto',
   data () {
     return {
+      ingreso: this.ingreso,
+      egresos: this.egresos,
+      gastos: this.gastos,
+      deuda: this.deuda,
+      frecuenciaDeuda: this.frecuenciaDeuda,
+      cantidadDeuda: this.cantidadDeuda,
+      meta: this.meta,
+      cantidadMeta: this.cantidadMeta,
+      ahorro: null
     }
   },
+  methods: {
+    porcentajeEgresos (egreso) {
+      const porcentajeE = Math.round((egreso.cantidad * 100) / this.ingreso)
+      return porcentajeE
+    },
+    porcentajeDeuda () {
+      const porcentajeD = Math.round((this.deuda * 100) / this.ingreso)
+      return porcentajeD
+    }
+    // calcularAhorro () {
+    //   let total = []
+    //   Object.entries(this.egresos).forEach(function (element, index) {
+    //     total.push(element.cantidad)
+    //   })
+    //   return total
+    // }
+  },
+  mounted () {
+    this.ingreso = JSON.parse(localStorage.getItem('ingreso'))
+    this.egresos = JSON.parse(localStorage.getItem('egresos'))
+    this.gastos = JSON.parse(localStorage.getItem('gastos'))
+    this.deuda = JSON.parse(localStorage.getItem('deuda'))
+    this.frecuenciaDeuda = JSON.parse(localStorage.getItem('frecuencia de la deuda'))
+    this.cantidadDeuda = JSON.parse(localStorage.getItem('cantidad de la deuda'))
+    this.meta = JSON.parse(localStorage.getItem('meta'))
+    this.cantidadMeta = JSON.parse(localStorage.getItem('cantidad de la meta'))
+  },
   components: {
-    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab
+    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, VueAutonumeric
   }
 }
 </script>
@@ -237,6 +253,21 @@ export default {
                   font-size: 20px;
                   font-weight: bold;
                   color: $dark-purple;
+
+                  span {
+                    margin-left: 12px;
+                  }
+
+                  input,
+                  textarea:disabled {
+                    width: 130px;
+                    background-color: $white;
+                    color: $dark-purple;
+                    border: none;
+                    opacity: 1 !important;
+                    cursor: default !important;
+                    text-align: center;
+                  }
                 }
               }
 
@@ -271,6 +302,18 @@ export default {
 
                 .cantidad {
                   float: right;
+
+                  input,
+                  textarea:disabled {
+                    position: relative;
+                    width: 150px;
+                    background-color: $white;
+                    color: $dark-purple;
+                    border: none;
+                    opacity: 1 !important;
+                    cursor: default !important;
+                    text-align: right;
+                  }
                 }
               }
             }
