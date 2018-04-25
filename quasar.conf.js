@@ -7,7 +7,7 @@ const envparser = require('./config/envparser')
 
 module.exports = function (ctx) {
   return {
-    plugins: ['oauth', 'i18n', 'axios', 'events'],
+    plugins: ['oauth', 'i18n', 'axios', 'events', 'vuelidate'],
     css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
