@@ -18,6 +18,9 @@
               <button class="btn btn-secondary">Inv. Plazos</button>
               <button class="btn btn-tree">CETES</button>
           </div>
+          <div class="grafica">
+              <img src="../statics/graf.png">
+          </div>
         </q-tabs>
         </div>
       </div>
@@ -161,6 +164,9 @@ $green: #c0d84a;
                   color: #3f224c;
                   background: $btn-tree;
               }
+          }
+          .grafica{
+              width: 100%;
           }
           .q-tabs-head {
             position: relative;
