@@ -21,6 +21,11 @@
           <div class="grafica">
               <img src="../statics/graf.png">
           </div>
+          <div class="meta">
+              <i class="fas fa-star"></i>
+              <p class="meta-text">Viaje a México</p>
+              <p class="meta-value">$3,000</p>
+          </div>
         </q-tabs>
         </div>
       </div>
@@ -167,6 +172,30 @@ $green: #c0d84a;
           }
           .grafica{
               width: 100%;
+          }
+          .meta{
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              text-align: center;
+              .meta-text{
+                 text-align: center;
+                 margin: auto;
+                 margin-left: 20%;
+              }
+              .meta-value{
+                  text-align: right ;
+              }
+              i {
+                 border: 1px solid yellow;
+                 color: yellow ;
+                 width: 40px;
+                 height: 25px;
+                 padding: 2px;
+                 border-radius: 20px;
+              }
+
           }
           .q-tabs-head {
             position: relative;
