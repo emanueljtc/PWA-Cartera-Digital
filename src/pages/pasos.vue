@@ -257,11 +257,11 @@
                     <div class="period">
                       <p>Frecuencia de pagos</p>
                       <div class="frecuencias">
-                        <input type="radio" v-model="frecuenciaDeuda" id="radio_semanal" name="period" value="semanal" />
+                        <input type="radio" v-model="frecuenciaDeuda" id="radio_semanal" name="period" value="Pago Único" />
                         <label for="radio_semanal">Pago único</label>
-                        <input type="radio" v-model="frecuenciaDeuda" id="radio_quincenal" name="period" value="quincenal" />
+                        <input type="radio" v-model="frecuenciaDeuda" id="radio_quincenal" name="period" value="Quincenal" />
                         <label for="radio_quincenal">Quincenal</label>
-                        <input type="radio" v-model="frecuenciaDeuda" id="radio_mensual" name="period" value="mensual" />
+                        <input type="radio" v-model="frecuenciaDeuda" id="radio_mensual" name="period" value="Mensual" />
                         <label for="radio_mensual">Mensual</label>
                         </div>
                     </div>
@@ -488,7 +488,7 @@ export default {
         })
       } else {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
-          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad})
+          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad, cantidadFinal: null})
           this.resetFormEgreso()
           this.$refs.stepper.next()
         } else {
@@ -509,7 +509,7 @@ export default {
         })
       } else {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
-          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad})
+          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad, cantidadFinal: null})
           this.resetFormEgreso()
         }
       }

@@ -21,24 +21,24 @@
             <div v-for="(egreso, key) in egresos" :key="key">
               <div class="data-box">
                 <div class="data">
-                  <p class="porcentaje"><span>{{ porcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
-                  <p class="cantidad"> <vue-autonumeric v-model="egreso.cantidad" :options="{currencySymbol: '$'}" disabled /> </p>
+                  <p class="porcentaje"><span> {{ calcularEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
+                  <p class="cantidad"> <vue-autonumeric v-model="egreso.cantidadFinal" :options="{currencySymbol: '$'}" disabled /> </p>
                 </div>
               </div>
             </div>
             <div v-if="deuda !== null">
               <div class="data-box">
                 <div class="data">
-                  <p class="porcentaje"><span>{{ porcentajeDeuda() }}%</span> Deuda</p>
-                  <p class="cantidad"><vue-autonumeric v-model="deuda" :options="{currencySymbol: '$'}" disabled /></p>
+                  <p class="porcentaje"><span>{{ calcularDeuda() }}%</span> Deuda</p>
+                  <p class="cantidad"><vue-autonumeric v-model="deudaFinal" :options="{currencySymbol: '$'}" disabled /></p>
                 </div>
               </div>
             </div>
-            <div v-if="ahorro !== null">
+            <div>
               <div class="data-box">
                 <div class="data">
-                  <p class="porcentaje"><span>40%</span> Ahorro</p>
-                  <p class="cantidad"><vue-autonumeric v-model="ahorro" :options="{currencySymbol: '$'}" disabled /></p>
+                  <p class="porcentaje"><span>{{ porcentajeAhorro }}%</span> Ahorro</p>
+                  <p class="cantidad"><vue-autonumeric v-model="ahorroCalcular" :options="{currencySymbol: '$'}" disabled /></p>
                 </div>
               </div>
             </div>
@@ -71,25 +71,65 @@ export default {
       cantidadDeuda: this.cantidadDeuda,
       meta: this.meta,
       cantidadMeta: this.cantidadMeta,
-      ahorro: null
+      //
+      deudaFinal: null,
+      egresoFinal: null,
+      egresosFinales: []
+    }
+  },
+  computed: {
+    ahorroCalcular () {
+      let totalIngreso = this.ingreso
+      let totalGastos = 0
+      this.egresos.forEach(function (egreso, index) {
+        totalGastos = totalGastos + egreso.cantidadFinal
+      })
+      let ahorro = totalIngreso - totalGastos - this.deudaFinal
+      return ahorro
+      // return this.egresos.reduce((memo, gasto) => {
+      //   return memo - gasto.cantidadFinal
+      // }, this.ingreso)
+    },
+    porcentajeAhorro () {
+      let totalIngreso = this.ingreso
+      let totalAhorro = this.ahorroCalcular
+
+      let porcentajeA = Math.round((totalAhorro * 100) / totalIngreso)
+      return porcentajeA
     }
   },
   methods: {
-    porcentajeEgresos (egreso) {
-      const porcentajeE = Math.round((egreso.cantidad * 100) / this.ingreso)
+    calcularEgresos (egreso) {
+      if (egreso.frecuencia === 'Semanal') {
+        const egresoCalc = egreso.cantidad * 4
+        egreso.cantidadFinal = egresoCalc
+      }
+      if (egreso.frecuencia === 'Quincenal') {
+        const egresoCalc = egreso.cantidad * 2
+        egreso.cantidadFinal = egresoCalc
+      }
+      if (egreso.frecuencia === 'Mensual') {
+        egreso.cantidadFinal = egreso.cantidad
+      }
+
+      const porcentajeE = Math.round((egreso.cantidadFinal * 100) / this.ingreso)
       return porcentajeE
     },
-    porcentajeDeuda () {
-      const porcentajeD = Math.round((this.deuda * 100) / this.ingreso)
+    calcularDeuda () {
+      if (this.frecuenciaDeuda === 'Pago Único') {
+        this.deudaFinal = this.deuda
+      }
+      if (this.frecuenciaDeuda === 'Quincenal') {
+        const deudaCalc = this.cantidadDeuda * 2
+        this.deudaFinal = deudaCalc
+      }
+      if (this.frecuenciaDeuda === 'Mensual') {
+        this.deudaFinal = this.cantidadDeuda
+      }
+
+      const porcentajeD = Math.round((this.deudaFinal * 100) / this.ingreso)
       return porcentajeD
     }
-    // calcularAhorro () {
-    //   let total = []
-    //   Object.entries(this.egresos).forEach(function (element, index) {
-    //     total.push(element.cantidad)
-    //   })
-    //   return total
-    // }
   },
   mounted () {
     this.ingreso = JSON.parse(localStorage.getItem('ingreso'))
@@ -261,7 +301,7 @@ export default {
                   input,
                   textarea:disabled {
                     width: 130px;
-                    background-color: $white;
+                    background-color: #fcfcfc;
                     color: $dark-purple;
                     border: none;
                     opacity: 1 !important;
@@ -287,6 +327,7 @@ export default {
                   font-weight: 600;
                   color: $dark-purple;
                   width: auto;
+                  margin: 10px 0px;
 
                   span {
                     position: absolute;
