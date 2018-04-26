@@ -7,7 +7,7 @@
         <div class="correo_input">
           <q-field>
             <q-input
-              v-model="correo" type="text" placeholder="ejemplo@mail.com"
+              v-model="form.email" type="email"  @blur="$v.form.email.$touch" :error="$v.form.email.$error" placeholder="ejemplo@mail.com"
               :before="[
                 {
                   icon: 'mail_outline'
@@ -26,8 +26,7 @@
             />
           </q-field>
         </div>
-        <!-- {{ form }} -->
-        <button class="primary" @click="$router.replace('/presupuesto')" v-bind:disabled="!isCorreoValid()">Continuar</button>
+        <button class="primary" @click="submit()" v-bind:disabled="!isCorreoValid()">Continuar</button>
       </div>
     </div>
     <footer>
@@ -38,26 +37,45 @@
 
 <script>
 import { QField, QInput } from 'quasar'
+import { required, email } from 'vuelidate/lib/validators'
 
 export default {
   data () {
     return {
-      correo: '',
-      password: '',
-      first_name: 'dsads',
-      last_name: 'dsafsdf'
+      form: {
+        email: ''
+      },
+      password: ''
+    }
+  },
+  validations: {
+    form: {
+      email: { required, email }
     }
   },
   methods: {
     isCorreoValid: function () {
       return this.correo !== '' && this.password !== ''
+    },
+    submit () {
+      this.$v.form.$touch()
+
+      if (this.$v.form.$error) {
+        this.$q.notify({
+          message: `Correo no válido`,
+          timeout: 5000,
+          position: 'top-right'
+        })
+      } else {
+        this.$router.replace('/presupuesto')
+      }
     }
   },
-  computed: {
-    form () {
-      return this.$store.state.valuador.form
-    }
-  },
+  // computed: {
+  //   form () {
+  //     return this.$store.state.valuador.form
+  //   }
+  // },
   components: {
     QField, QInput
   }
