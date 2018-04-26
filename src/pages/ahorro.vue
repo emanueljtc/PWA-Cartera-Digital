@@ -13,6 +13,11 @@
           <q-tab slot="title" name="gastos" label="Gastos" />
           <p class="sub-title">Tu ahorro a largo plazo es de</p>
           <h2 class="layer">$500</h2>
+          <div class="buttons">
+              <button class="btn btn-primary">Pagaré</button>
+              <button class="btn btn-secondary">Inv. Plazos</button>
+              <button class="btn btn-tree">CETES</button>
+          </div>
         </q-tabs>
         </div>
       </div>
@@ -45,6 +50,9 @@ $green: #c0d84a;
   $white: #ffffff;
   $gray: #dedede;
   $gray-button: #f6f6f6;
+  $btn-primary: #e03757;
+  $btn-secondary: #c0d84a;
+  $btn-tree: #f6f6f6;
 @font-face {
     font-family: Nunito;
     src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
@@ -127,6 +135,32 @@ $green: #c0d84a;
             text-align: center;
             color: $green;
             margin-top: 35px;
+          }
+          .buttons{
+              width: 100%;
+              .btn{
+                  height: 40px;
+                  margin: auto;
+                  margin-top: 30px;
+                  border-style: none;
+                  border-radius: 10px;
+                  font-size: 16px;
+                  font-family: Opensans;
+                  color: white;
+                  line-height: 1.56;
+                  font-weight: 600;
+              }
+              .btn-primary{
+                 width: 90px;
+                 background: $btn-primary;
+              }
+              .btn-secondary{
+                 background: $btn-secondary;
+              }
+              .btn-tree{
+                  color: #3f224c;
+                  background: $btn-tree;
+              }
           }
           .q-tabs-head {
             position: relative;
