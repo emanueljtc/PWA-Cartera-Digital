@@ -19,7 +19,16 @@
                 <button class="btn btn-tree">CETES</button>
             </div>
             <div class="grafica">
-                <img src="../statics/graf.png">
+                <!-- <img src="../statics/graf.png"> -->
+              <div class="highcharts" :style="styles">
+                <IHighCharts
+                  :options="options"
+                  :loading="loading"
+                  :resizable="true"
+                  @load="onLoad"
+                  @resize="onResize"
+                />
+              </div>
             </div>
             <div class="meta">
               <i class="fas fa-star"></i>
@@ -45,31 +54,68 @@
 
 <script>
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect } from 'quasar'
-import VueHighcharts from 'vue-highcharts'
+import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
-  data () {
-    return {
-      form_inversion: {
-        inv: null
+  data: () => ({
+    form_inversion: {
+      inv: null
+    },
+    selectOptions: [
+      {
+        label: 'Axend',
+        value: 'Axend'
       },
-      selectOptions: [
-        {
-          label: 'Axend',
-          value: 'Axend'
-        },
-        {
-          label: 'Kuspit',
-          value: 'Kuspit'
-        },
-        {
-          label: 'FeudoCapital',
-          value: 'Feudo Capital'
+      {
+        label: 'Kuspit',
+        value: 'Kuspit'
+      },
+      {
+        label: 'FeudoCapital',
+        value: 'Feudo Capital'
+      }
+    ],
+    styles: {},
+    loading: true,
+    options: {
+      title: {
+        text: ''
+      },
+      subtitle: {
+        text: ''
+      },
+      yAxis: {
+        title: {
+          text: ''
         }
-      ]
+      },
+      series: [{
+        name: 'Installation',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+      }, {
+        name: 'Manufacturing',
+        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+      }, {
+        name: 'Sales & Distribution',
+        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+      }, {
+        name: 'Project Development',
+        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+      }, {
+        name: 'Other',
+        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+      }]
+    }
+  }),
+  methods: {
+    onLoad (instance, HighCharts) {
+      console.log(instance, HighCharts)
+    },
+    onResize (width, height) {
+      console.log(width, height)
     }
   },
   components: {
-    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect
   }
 }
 </script>
