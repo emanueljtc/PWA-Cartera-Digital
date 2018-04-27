@@ -34,6 +34,8 @@
                   float-label="Opciones de Inversión"
                 />
               </q-field>
+              <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
+              <button type="submit" class="btn-next">Siguiente</button>
         </q-tabs>
         </div>
       </div>
@@ -226,6 +228,22 @@ $green: #c0d84a;
               font-size: 20px;
               min-width: 95%;
               font-weight: bold;
+            }
+            .btn-next{
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 67px;
+              margin: 0px !important;
+              border-radius: 0px;
+              border-style: none;
+              background-color: #64c9db;
+              color: white;
+              font-size: 20px;
+              font-weight: 500;
+              line-height: 1.25;
+              font-family: $nunito;
             }
           }
         }
