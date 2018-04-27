@@ -28,9 +28,10 @@
             </div>
              <q-field>
                 <q-select
-                  v-model="form_gasto.gasto"
+                  class="select"
+                  v-model="form_inversion.inv"
                   :options="selectOptions"
-                  float-label="Selecciona una opción"
+                  float-label="Opciones de Inversión"
                 />
               </q-field>
         </q-tabs>
@@ -46,31 +47,21 @@ import VueHighcharts from 'vue-highcharts'
 export default {
   data () {
     return {
-      form_gasto: {
-        gasto: null,
-        frecuencia: null,
-        cantidad: 0
+      form_inversion: {
+        inv: null
       },
       selectOptions: [
         {
-          label: 'Vivienda',
-          value: 'Vivienda'
+          label: 'Axend',
+          value: 'Axend'
         },
         {
-          label: 'Despensa',
-          value: 'Despensa'
+          label: 'Kuspit',
+          value: 'Kuspit'
         },
         {
-          label: 'Transporte',
-          value: 'Transporte'
-        },
-        {
-          label: 'Gustos',
-          value: 'Gustos'
-        },
-        {
-          label: 'Servicios básicos',
-          value: 'Servicios básicos'
+          label: 'FeudoCapital',
+          value: 'Feudo Capital'
         }
       ]
     }
@@ -206,7 +197,7 @@ $green: #c0d84a;
                 width: 100%;
               }
               .meta{
-                width: 50%;
+                width: 100%;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -215,7 +206,7 @@ $green: #c0d84a;
                   text-align: center;
                   margin: auto;
                   margin-left: 20%;
-                  font-size: 18px;
+                  font-size: 17px;
                   font-family: Opensans;
                 }
                 .meta-value{
@@ -229,6 +220,12 @@ $green: #c0d84a;
                   padding: 2px;
                   border-radius: 20px;
                 }
+            }
+            .select{
+              font-family: $nunito;
+              font-size: 20px;
+              min-width: 95%;
+              font-weight: bold;
             }
           }
         }
