@@ -6,26 +6,34 @@
           <h1>Ahorro</h1>
           <!-- <highcharts :options="options"></highcharts> -->
           <q-tabs>
-          <!-- Tabs - notice slot="title" -->
-          <q-tab slot="title" name="actual" label="Actual" />
-          <q-tab slot="title" name="recomendado" label="Recomendado" />
-          <q-tab default slot="title" name="ahorro" label="Ahorro" />
-          <q-tab slot="title" name="gastos" label="Gastos" />
-          <p class="sub-title">Tu ahorro a largo plazo es de</p>
-          <h2 class="layer">$500</h2>
-          <div class="buttons">
-              <button class="btn btn-primary">Pagaré</button>
-              <button class="btn btn-secondary">Inv. Plazos</button>
-              <button class="btn btn-tree">CETES</button>
-          </div>
-          <div class="grafica">
-              <img src="../statics/graf.png">
-          </div>
-          <div class="meta">
+            <!-- Tabs - notice slot="title" -->
+            <q-tab slot="title" name="actual" label="Actual" />
+            <q-tab slot="title" name="recomendado" label="Recomendado" />
+            <q-tab default slot="title" name="ahorro" label="Ahorro" />
+            <q-tab slot="title" name="gastos" label="Gastos" />
+            <p class="sub-title">Tu ahorro a largo plazo es de</p>
+            <h2 class="layer">$500</h2>
+            <div class="buttons">
+                <button class="btn btn-primary">Pagaré</button>
+                <button class="btn btn-secondary">Inv. Plazos</button>
+                <button class="btn btn-tree">CETES</button>
+            </div>
+            <div class="grafica">
+                <img src="../statics/graf.png">
+            </div>
+            <div class="meta">
               <i class="fas fa-star"></i>
               <p class="meta-text">Viaje a México</p>
               <p class="meta-value">$3,000</p>
-          </div>
+            </div>
+             <q-field>
+                <q-select
+                  class="select"
+                  v-model="form_inversion.inv"
+                  :options="selectOptions"
+                  float-label="Opciones de Inversión"
+                />
+              </q-field>
         </q-tabs>
         </div>
       </div>
@@ -34,15 +42,32 @@
 </template>
 
 <script>
-import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect } from 'quasar'
 import VueHighcharts from 'vue-highcharts'
 export default {
   data () {
     return {
+      form_inversion: {
+        inv: null
+      },
+      selectOptions: [
+        {
+          label: 'Axend',
+          value: 'Axend'
+        },
+        {
+          label: 'Kuspit',
+          value: 'Kuspit'
+        },
+        {
+          label: 'FeudoCapital',
+          value: 'Feudo Capital'
+        }
+      ]
     }
   },
   components: {
-    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab
+    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect
   }
 }
 </script>
@@ -114,39 +139,37 @@ $green: #c0d84a;
              font-size: 35px;
              color: $dark-purple;
              font-weight: bold;
-             margin-bottom: 30px;
+             margin-bottom: 0px;
+             margin-top: -100px;
             }
-        }
-    }
-     .q-tabs {
-          .sub-title{
-            // width: 340px;
-            height: 25px;
-            font-family: $os-bold;
-            font-size: 18px;
-            font-weight: normal;
-            font-style: normal;
-            font-stretch: normal;
-            line-height: 1.39;
-            letter-spacing: normal;
-            text-align: center;
-            color: $dark-purple;
-            margin-top: 35px;
-          }
-          .layer{
-           /*  width: 156px;
-            height: 25px; */
-            font-family: $nunito;
-            font-size: 40px;
-            font-weight: bold;
-            line-height: 0.63;
-            text-align: center;
-            color: $green;
-            margin-top: 35px;
-          }
-          .buttons{
-              width: 100%;
-              .btn{
+            .q-tabs{
+              .sub-title{
+                 height: 25px;
+                 font-family: $os-bold;
+                 font-size: 18px;
+                 font-weight: normal;
+                 font-style: normal;
+                 font-stretch: normal;
+                 line-height: 1.39;
+                 letter-spacing: normal;
+                 text-align: center;
+                 color: $dark-purple;
+                 margin-top: -3px;
+              }
+              .layer{
+              /*  width: 156px;
+                height: 25px; */
+                font-family: $nunito;
+                font-size: 40px;
+                font-weight: bold;
+                line-height: 0.63;
+                text-align: center;
+                color: $green;
+                margin-top: 35px;
+              }
+              .buttons{
+                width: 100%;
+                .btn{
                   height: 40px;
                   margin: auto;
                   margin-top: 30px;
@@ -157,131 +180,55 @@ $green: #c0d84a;
                   color: white;
                   line-height: 1.56;
                   font-weight: 600;
-              }
-              .btn-primary{
+                }
+                .btn-primary{
                  width: 90px;
                  background: $btn-primary;
-              }
-              .btn-secondary{
-                 background: $btn-secondary;
-              }
-              .btn-tree{
+                }
+                .btn-secondary{
+                  background: $btn-secondary;
+                }
+                .btn-tree{
                   color: #3f224c;
                   background: $btn-tree;
-              }
-          }
-          .grafica{
-              width: 100%;
-          }
-          .meta{
-              width: 100%;
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              text-align: center;
-              .meta-text{
-                 text-align: center;
-                 margin: auto;
-                 margin-left: 20%;
-              }
-              .meta-value{
-                  text-align: right ;
-              }
-              i {
-                 border: 1px solid yellow;
-                 color: yellow ;
-                 width: 40px;
-                 height: 25px;
-                 padding: 2px;
-                 border-radius: 20px;
-              }
-
-          }
-          .q-tabs-head {
-            position: relative;
-            left: 25%;
-            width: 50%;
-            border-bottom: 2px solid $gray;
-            overflow: visible;
-            background-color: #fcfcfc;
-
-            .q-tabs-scroller {
-              position: relative;
-              left: 50%;
-              transform: translateX(-50%);
-              overflow: visible;
-              .q-tab {
-                font-family: $os-bold;
-                font-size: 14px;
-                font-weight: bold;
-                color: $gray;
-                text-transform: capitalize;
-
-                .q-tabs-bar {
-                  color: $light-blue;
-                  bottom: -2px;
-                  border-bottom-width: 2px;
                 }
               }
-
-              .q-tab.active {
-                color: $light-blue;
+              .grafica{
+                width: 100%;
               }
+              .meta{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                text-align: center;
+                .meta-text{
+                  text-align: center;
+                  margin: auto;
+                  margin-left: 20%;
+                  font-size: 17px;
+                  font-family: Opensans;
+                }
+                .meta-value{
+                    text-align: right ;
+                }
+                i {
+                  border: 1px solid yellow;
+                  color: yellow ;
+                  width: 40px;
+                  height: 25px;
+                  padding: 2px;
+                  border-radius: 20px;
+                }
             }
-          }
-
-          .q-tabs-panes {
-            .q-tab-pane {
-              border: none;
-              padding: 30px;
-
-              .grafica {
-                margin-bottom: 50px;
-
-                .total {
-                  font-family: $nunitobold;
-                  font-size: 20px;
-                  font-weight: bold;
-                  color: $dark-purple;
-                }
-              }
-
-              .data-box {
-                position: relative;
-                width: 50%;
-                background-color: $white;
-                display: inline-block;
-                padding: 0 15px;
-                border-radius: 7px;
-                margin-bottom: 12px;
-
-                .porcentaje, .cantidad {
-                  position: relative;
-                  font-family: $os-semibold;
-                  font-size: 18px;
-                  font-weight: 600;
-                  color: $dark-purple;
-                  width: auto;
-
-                  span {
-                    position: absolute;
-                    left: 0;
-                    color: $light-blue;
-                  }
-                }
-
-                .porcentaje {
-                  float: left;
-                  padding-left: 60px;
-                }
-
-                .cantidad {
-                  float: right;
-                }
-              }
+            .select{
+              font-family: $nunito;
+              font-size: 20px;
+              min-width: 95%;
+              font-weight: bold;
             }
           }
         }
+    }
   }
-
 </style>
