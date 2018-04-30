@@ -9,7 +9,7 @@
           <!-- Tabs - notice slot="title" -->
           <q-tab default slot="title" name="actual" label="Actual" />
           <q-tab slot="title" name="recomendado" label="Recomendado" />
-          <q-tab slot="title" name="ahorro" label="Ahorro" />
+          <q-tab slot="title" name="ahorro" label="Ahorro" @click.native="$router.replace('/ahorro')" />
           <q-tab slot="title" name="gastos" label="Gastos" />
 
           <!-- Targets -->
@@ -45,7 +45,7 @@
              <button>Ver mi meta <i class="material-icons">arrow_forward</i></button>
           </q-tab-pane>
           <q-tab-pane name="recomendado">Recomendado</q-tab-pane>
-          <q-tab-pane name="ahorro">Ahorro</q-tab-pane>
+          <q-tab-pane name="ahorro" to="/ahorro" exact>Ahorro</q-tab-pane>
           <q-tab-pane name="gastos">Gastos</q-tab-pane>
         </q-tabs>
         </div>
