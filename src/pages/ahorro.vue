@@ -90,9 +90,8 @@ export default {
       },
       yAxis: {
         title: {
-          text: ''
-        },
-        min: 1
+          text: 'meses'
+        }
       },
       xAxis: {
         title: {
@@ -102,14 +101,14 @@ export default {
       plotOptions: {
         spline: {
           marker: {
-            enabled: true
+            enabled: false
           }
         }
       },
       series: [{
         name: 'Instalacion',
         data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
-        color: '#FF0000'
+        color: '#e03757'
       }, {
         name: 'Manufacturing',
         data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
@@ -300,6 +299,9 @@ $green: #c0d84a;
               }
               .grafica{
                 width: 100%;
+                .highcharts-loading{
+                  background-color: rgba(255, 255, 255, 0) !important;
+                }
               }
               .meta{
                 width: 100%;
