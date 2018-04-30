@@ -83,17 +83,24 @@ export default {
         type: 'spline'
       },
       title: {
-        text: ''
+        text: 'meses'
       },
       subtitle: {
         text: ''
       },
       yAxis: {
+        lineWidth: 1,
+        tickInterval: 1, // con este intervalo logro llegar a los 12 meses
+        min: 0,
+        max: 12,
         title: {
           text: 'meses'
         }
       },
       xAxis: {
+        labels: {
+          format: '{value} k'
+        },
         title: {
           text: ''
         }
@@ -101,21 +108,21 @@ export default {
       plotOptions: {
         spline: {
           marker: {
-            enabled: false
+            enabled: true
           }
         }
       },
       series: [{
         name: 'Pagaré',
-        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
+        data: [0, 6, 10, 10, 11, 10, 12],
         color: '#e03757'
       }, {
         name: 'Inv. Plazos',
-        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
+        data: [1, 3, 5, 6, 12],
         color: '#c0d84a'
       }, {
         name: 'CETES',
-        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387],
+        data: [0, 3, 5, 12],
         color: '#cdcdcd'
       }]
     }
