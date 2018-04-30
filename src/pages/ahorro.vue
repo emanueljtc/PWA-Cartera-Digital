@@ -12,41 +12,41 @@
             <q-tab default slot="title" name="ahorro" label="Ahorro" />
             <q-tab slot="title" name="gastos" label="Gastos" />
             <q-tab-pane name="ahorro">
+                <p class="sub-title">Tu ahorro a largo plazo es de</p>
+                <h2 class="layer">$500</h2>
+                <div class="buttons">
+                    <button class="btn btn-primary">Pagaré</button>
+                    <button class="btn btn-secondary">Inv. Plazos</button>
+                    <button class="btn btn-tree">CETES</button>
+                </div>
+                <div class="grafica">
+                    <!-- <img src="../statics/graf.png"> -->
+                  <div class="highcharts" :style="styles">
+                    <IHighCharts
+                      :options="options"
+                      :loading="loading"
+                      :resizable="true"
+                      @load="onLoad"
+                      @resize="onResize"
+                    />
+                  </div>
+                </div>
+                <div class="meta">
+                  <i class="fas fa-star"></i>
+                  <p class="meta-text">Viaje a México</p>
+                  <p class="meta-value">$3,000</p>
+                </div>
+                <q-field>
+                    <q-select
+                      class="select"
+                      v-model="form_inversion.inv"
+                      :options="selectOptions"
+                      float-label="Opciones de Inversión"
+                    />
+                  </q-field>
+                  <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
+                  <button type="submit" class="btn-next">Siguiente</button>
             </q-tab-pane>
-            <p class="sub-title">Tu ahorro a largo plazo es de</p>
-            <h2 class="layer">$500</h2>
-            <div class="buttons">
-                <button class="btn btn-primary">Pagaré</button>
-                <button class="btn btn-secondary">Inv. Plazos</button>
-                <button class="btn btn-tree">CETES</button>
-            </div>
-            <div class="grafica">
-                <!-- <img src="../statics/graf.png"> -->
-              <div class="highcharts" :style="styles">
-                <IHighCharts
-                  :options="options"
-                  :loading="loading"
-                  :resizable="true"
-                  @load="onLoad"
-                  @resize="onResize"
-                />
-              </div>
-            </div>
-            <div class="meta">
-              <i class="fas fa-star"></i>
-              <p class="meta-text">Viaje a México</p>
-              <p class="meta-value">$3,000</p>
-            </div>
-             <q-field>
-                <q-select
-                  class="select"
-                  v-model="form_inversion.inv"
-                  :options="selectOptions"
-                  float-label="Opciones de Inversión"
-                />
-              </q-field>
-              <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
-              <button type="submit" class="btn-next">Siguiente</button>
         </q-tabs>
         </div>
       </div>
@@ -193,6 +193,48 @@ $green: #c0d84a;
              margin-top: -100px;
             }
             .q-tabs{
+              .q-tabs-head {
+                position: relative;
+                left: 25%;
+                width: 50%;
+                border-bottom: 2px solid $gray;
+                overflow: visible;
+                background-color: #fcfcfc;
+
+                .q-tabs-scroller {
+                  position: relative;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  overflow: visible;
+                  .q-tab {
+                    font-family: $os-bold;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: $gray;
+                    text-transform: capitalize;
+
+                    .q-tabs-bar {
+                      color: $light-blue;
+                      bottom: -2px;
+                      border-bottom-width: 2px;
+                    }
+                  }
+
+                  .q-tab.active {
+                    color: $light-blue;
+                  }
+                }
+              }
+            .q-tabs-panes {
+             .q-tab-pane {
+              border: none;
+              padding: 30px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              width: 50%;
+              position: absolute;
+              left: 25%;
               .sub-title{
                  height: 25px;
                  font-family: $os-bold;
@@ -281,6 +323,7 @@ $green: #c0d84a;
               position: absolute;
               bottom: 0;
               left: 0;
+              top: 100%;
               width: 100%;
               height: 67px;
               margin: 0px !important;
@@ -295,6 +338,8 @@ $green: #c0d84a;
             }
           }
         }
+      }
     }
   }
+}
 </style>
