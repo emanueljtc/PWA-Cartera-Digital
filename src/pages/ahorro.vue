@@ -91,8 +91,8 @@ export default {
       yAxis: {
         lineWidth: 1,
         tickInterval: 1, // con este intervalo logro llegar a los 12 meses
-        min: 0,
-        max: 12,
+        min: 0, //establesco el minimo del intervalo
+        max: 12, // establesco el maximo en este caso 12 = 12 meses
         title: {
           text: 'meses'
         }
