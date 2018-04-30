@@ -11,6 +11,8 @@
             <q-tab slot="title" name="recomendado" label="Recomendado" />
             <q-tab default slot="title" name="ahorro" label="Ahorro" />
             <q-tab slot="title" name="gastos" label="Gastos" />
+            <q-tab-pane name="ahorro">
+            </q-tab-pane>
             <p class="sub-title">Tu ahorro a largo plazo es de</p>
             <h2 class="layer">$500</h2>
             <div class="buttons">
