@@ -41,13 +41,13 @@
           </i>
           <q-item-main label="Cuestionario" sublabel="" />
         </q-item>
-        <q-item @click.native="$router.replace('/')">
+        <q-item @click.native="$router.replace('/presupuesto')">
           <i>
             <img src="~assets/img/icons/presupuesto.svg" alt="Presupuesto">
           </i>
           <q-item-main label="Presupuesto" sublabel="" />
         </q-item>
-        <q-item @click.native="$router.replace('/')">
+        <q-item @click.native="$router.replace('/ahorro')">
           <q-item-side icon="timeline" />
           <q-item-main label="Ahorro" sublabel="" />
         </q-item>
