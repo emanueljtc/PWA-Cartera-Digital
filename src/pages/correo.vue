@@ -71,11 +71,32 @@ export default {
       }
     }
   },
-  // computed: {
-  //   form () {
-  //     return this.$store.state.valuador.form
-  //   }
-  // },
+  computed: {
+    getIngreso () {
+      return this.$store.state.valuador.ingreso
+    },
+    getEgresos () {
+      return this.$store.state.valuador.egresos
+    },
+    getGastos () {
+      return this.$store.state.valuador.gastos
+    },
+    getDeuda () {
+      return this.$store.state.valuador.deuda
+    },
+    getDeudaF () {
+      return this.$store.state.valuador.frecuenciaDeuda
+    },
+    getDeudaC () {
+      return this.$store.state.valuador.cantidadDeuda
+    },
+    getMetaC () {
+      return this.$store.state.valuador.cantidadMeta
+    },
+    getMeta () {
+      return this.$store.state.valuador.meta
+    }
+  },
   components: {
     QField, QInput
   }

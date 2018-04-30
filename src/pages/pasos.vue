@@ -317,7 +317,7 @@
                   </q-field>
                 </div>
               </div>
-              <button class="next" @click="$router.replace('/correo')" v-bind:disabled="!isMetaValid()">Ver resultados</button>
+              <button class="next" @click="sendData" v-bind:disabled="!isMetaValid()">Ver resultados</button>
             </div>
           </div>
         </q-step>
@@ -586,13 +586,19 @@ export default {
       localStorage.setItem('cantidad de la meta', JSON.stringify(this.cantidadMeta))
     },
 
-    // // Mandar información a otro archivo
-    // sendData () {
-    //   // this.$store.dispatch('valuador/finish', this.form, {
-    //   //   root: true
-    //   // })
-    //   // this.$router.replace('/correo')
-    // },
+    // Mandar información a otro archivo
+    sendData () {
+      this.$store.dispatch('valuador/ingreso', this.ingreso, { root: true })
+      this.$store.dispatch('valuador/egresos', this.egresos, { root: true })
+      this.$store.dispatch('valuador/gastos', this.gastos, { root: true })
+      this.$store.dispatch('valuador/deuda', this.deuda, { root: true })
+      this.$store.dispatch('valuador/frecuenciaDeuda', this.frecuenciaDeuda, { root: true })
+      this.$store.dispatch('valuador/cantidadDeuda', this.cantidadDeuda, { root: true })
+      this.$store.dispatch('valuador/cantidadMeta', this.cantidadMeta, { root: true })
+      this.$store.dispatch('valuador/meta', this.meta, { root: true })
+
+      this.$router.replace('/correo')
+    },
 
     // Validaciones
     isIngresoValid: function () {
