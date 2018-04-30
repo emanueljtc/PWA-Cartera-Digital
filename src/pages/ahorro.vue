@@ -106,15 +106,15 @@ export default {
         }
       },
       series: [{
-        name: 'Instalacion',
+        name: 'Pagaré',
         data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
         color: '#e03757'
       }, {
-        name: 'Manufacturing',
+        name: 'Inv. Plazos',
         data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
         color: '#c0d84a'
       }, {
-        name: 'Sales & Distribution',
+        name: 'CETES',
         data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387],
         color: '#cdcdcd'
       }]
