@@ -79,6 +79,9 @@ export default {
     styles: {},
     loading: true,
     options: {
+      chart: {
+        type: 'spline'
+      },
       title: {
         text: ''
       },
@@ -86,12 +89,21 @@ export default {
         text: ''
       },
       yAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         title: {
           text: ''
         }
       },
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false
+          },
+          pointStart: 2010
+        }
+      },
       series: [{
-        name: 'Installation',
+        name: 'Instalacion',
         data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
       }, {
         name: 'Manufacturing',
