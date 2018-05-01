@@ -34,7 +34,7 @@
                 <div class="meta">
                   <i class="fas fa-star"></i>
                   <p class="meta-text">Viaje a México</p>
-                  <p class="meta-value">{{cantidadMeta}}</p>
+                  <p class="meta-value">{{ cantidadMeta }}</p>
                 </div>
                 <q-field>
                     <q-select
@@ -59,76 +59,79 @@ import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect } from 'quasa
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 import Pasos from './pasos'
 export default {
-  data: () => ({
-    // cantidadMeta: this.cantidadMeta
-    form_inversion: {
-      inv: null
-    },
-    selectOptions: [
-      {
-        label: 'Axend',
-        value: 'Axend'
+  name: 'Ahorro',
+  data () {
+    return {
+      cantidadMeta: this.cantidadMeta,
+      form_inversion: {
+        inv: null
       },
-      {
-        label: 'Kuspit',
-        value: 'Kuspit'
-      },
-      {
-        label: 'FeudoCapital',
-        value: 'Feudo Capital'
-      }
-    ],
-    styles: {},
-    loading: true,
-    options: {
-      chart: {
-        type: 'spline'
-      },
-      title: {
-        text: 'meses'
-      },
-      subtitle: {
-        text: ''
-      },
-      yAxis: {
-        lineWidth: 1,
-        tickInterval: 1, // con este intervalo logro llegar a los 12 meses
-        min: 0, // se establece el minimo del intervalo
-        max: 12, // se establece el maximo en este caso 12 = 12 meses
-        title: {
-          text: 'meses'
+      selectOptions: [
+        {
+          label: 'Axend',
+          value: 'Axend'
+        },
+        {
+          label: 'Kuspit',
+          value: 'Kuspit'
+        },
+        {
+          label: 'FeudoCapital',
+          value: 'Feudo Capital'
         }
-      },
-      xAxis: {
-        labels: {
-          format: '{value} k'
+      ],
+      styles: {},
+      loading: true,
+      options: {
+        chart: {
+          type: 'spline'
         },
         title: {
+          text: 'meses'
+        },
+        subtitle: {
           text: ''
-        }
-      },
-      plotOptions: {
-        spline: {
-          marker: {
-            enabled: true
+        },
+        yAxis: {
+          lineWidth: 1,
+          tickInterval: 1, // con este intervalo logro llegar a los 12 meses
+          min: 0, // se establece el minimo del intervalo
+          max: 12, // se establece el maximo en este caso 12 = 12 meses
+          title: {
+            text: 'meses'
           }
-        }
-      },
-      series: [{
-        name: 'Pagaré',
-        data: [0, 6, 10, 10, 11, 10, 12],
-        color: '#e03757'
-      }, {
-        name: 'Inv. Plazos',
-        data: [1, 3, 5, 6, 12],
-        color: '#c0d84a'
-      }, {
-        name: 'CETES',
-        data: [0, 3, 5, 12],
-        color: '#cdcdcd'
-      }]
+        },
+        xAxis: {
+          labels: {
+            format: '{value} k'
+          },
+          title: {
+            text: ''
+          }
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              enabled: true
+            }
+          }
+        },
+        series: [{
+          name: 'Pagaré',
+          data: [0, 6, 10, 10, 11, 10, 12],
+          color: '#e03757'
+        }, {
+          name: 'Inv. Plazos',
+          data: [1, 3, 5, 6, 12],
+          color: '#c0d84a'
+        }, {
+          name: 'CETES',
+          data: [0, 3, 5, 12],
+          color: '#cdcdcd'
+        }]
+      }
     }
-  }),
+  },
   methods: {
     onLoad (instance, HighCharts) {
       console.log(instance, HighCharts)
@@ -138,7 +141,7 @@ export default {
     }
   },
   mounted () {
-    this.cantidadMeta = JSON.parse(localStorage.getItem('cantidad de la meta'))
+    this.cantidadMeta = console.log(JSON.parse(localStorage.getItem('cantidad de la meta')))
   },
   components: {
     IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos
