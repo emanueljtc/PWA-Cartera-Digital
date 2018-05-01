@@ -34,7 +34,7 @@
                 <div class="meta">
                   <i class="fas fa-star"></i>
                   <p class="meta-text">Viaje a México</p>
-                  <p class="meta-value">$3,000</p>
+                  <p class="meta-value">{{cantidadMeta}}</p>
                 </div>
                 <q-field>
                     <q-select
@@ -57,8 +57,10 @@
 <script>
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
+import Pasos from './pasos'
 export default {
   data: () => ({
+    // cantidadMeta: this.cantidadMeta
     form_inversion: {
       inv: null
     },
@@ -135,8 +137,11 @@ export default {
       console.log(width, height)
     }
   },
+  mounted () {
+    this.cantidadMeta = JSON.parse(localStorage.getItem('cantidad de la meta'))
+  },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos
   }
 }
 </script>
