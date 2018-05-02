@@ -33,7 +33,7 @@
                 </div>
                 <div class="meta">
                   <i class="fas fa-star"></i>
-                  <p class="meta-text">Viaje a México</p>
+                  <p class="meta-text">{{ nombreMeta }}</p>
                   <p class="meta-value">{{ cantidadMeta }}</p>
                 </div>
                 <q-field>
@@ -85,6 +85,7 @@ export default {
   data () {
     return {
       cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
+      nombreMeta: JSON.parse(localStorage.getItem('meta')),
       styles: {},
       loading: true,
       options: {
