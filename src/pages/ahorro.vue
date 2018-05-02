@@ -37,12 +37,34 @@
                   <p class="meta-value">{{ cantidadMeta }}</p>
                 </div>
                 <q-field>
-                    <q-select
+                    <!-- <q-select
                       class="select"
                       v-model="form_inversion.inv"
                       :options="selectOptions"
                       float-label="Opciones de Inversión"
-                    />
+                    /> -->
+                    <q-btn-dropdown label="Opciones de Inversión" class="select" glossy>
+                      <!-- dropdown content -->
+                      <q-list link>
+                       <q-item>
+                            <q-item-main>
+                              <q-item-tile label>Axend</q-item-tile>
+                            </q-item-main>
+                          </q-item>
+                          <q-item-separator inset />
+                          <q-item>
+                            <q-item-main>
+                              <q-item-tile label>Kuspit</q-item-tile>
+                            </q-item-main>
+                          </q-item>
+                          <q-item-separator inset />
+                          <q-item>
+                            <q-item-main>
+                              <q-item-tile label>Feudo Capital</q-item-tile>
+                            </q-item-main>
+                          </q-item>
+                      </q-list>
+                    </q-btn-dropdown>
                   </q-field>
                   <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
                   <button type="submit" class="btn-next">Siguiente</button>
@@ -55,7 +77,7 @@
 </template>
 
 <script>
-import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, QBtnDropdown } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 import Pasos from './pasos'
 export default {
@@ -144,7 +166,7 @@ export default {
     this.cantidadMeta = console.log(JSON.parse(localStorage.getItem('cantidad de la meta')))
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos, QBtnDropdown
   }
 }
 </script>
@@ -345,9 +367,10 @@ $green: #c0d84a;
             }
             .select{
               font-family: $nunito;
-              font-size: 20px;
+              font-size: 15px;
               min-width: 95%;
               font-weight: bold;
+              margin-top: 20px;
             }
             .btn-next{
               position: absolute;
