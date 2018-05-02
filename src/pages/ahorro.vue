@@ -82,12 +82,9 @@ import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 import Pasos from './pasos'
 export default {
   name: 'Ahorro',
-  mounted () {
-    this.cantidadMeta = console.log(JSON.parse(localStorage.getItem('cantidad de la meta')))
-  },
   data () {
     return {
-      cantidadMeta: this.cantidadMeta,
+      cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
       styles: {},
       loading: true,
       options: {
