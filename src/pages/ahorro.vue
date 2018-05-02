@@ -77,11 +77,14 @@
 </template>
 
 <script>
-import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, QBtnDropdown } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 import Pasos from './pasos'
 export default {
   name: 'Ahorro',
+  mounted () {
+    this.cantidadMeta = console.log(JSON.parse(localStorage.getItem('cantidad de la meta')))
+  },
   data () {
     return {
       cantidadMeta: this.cantidadMeta,
@@ -145,11 +148,8 @@ export default {
       console.log(width, height)
     }
   },
-  mounted () {
-    this.cantidadMeta = console.log(JSON.parse(localStorage.getItem('cantidad de la meta')))
-  },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos, QBtnDropdown
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
   }
 }
 </script>
