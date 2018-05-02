@@ -15,9 +15,9 @@
                 <p class="sub-title">Tu ahorro a largo plazo es de</p>
                 <h2 class="layer">$500</h2>
                 <div class="buttons">
-                    <button class="btn btn-primary">Pagaré</button>
-                    <button class="btn btn-secondary">Inv. Plazos</button>
-                    <button class="btn btn-tree">CETES</button>
+                    <button class="btn btn-primary">Axend</button>
+                    <button class="btn btn-secondary">Kuspit</button>
+                    <button class="btn btn-tree">Feudo Capital</button>
                 </div>
                 <div class="grafica">
                     <!-- <img src="../statics/graf.png"> -->
@@ -85,23 +85,6 @@ export default {
   data () {
     return {
       cantidadMeta: this.cantidadMeta,
-      form_inversion: {
-        inv: null
-      },
-      selectOptions: [
-        {
-          label: 'Axend',
-          value: 'Axend'
-        },
-        {
-          label: 'Kuspit',
-          value: 'Kuspit'
-        },
-        {
-          label: 'FeudoCapital',
-          value: 'Feudo Capital'
-        }
-      ],
       styles: {},
       loading: true,
       options: {
@@ -139,15 +122,15 @@ export default {
           }
         },
         series: [{
-          name: 'Pagaré',
+          name: 'Axend',
           data: [0, 6, 10, 10, 11, 10, 12],
           color: '#e03757'
         }, {
-          name: 'Inv. Plazos',
+          name: 'Kuspid',
           data: [1, 3, 5, 6, 12],
           color: '#c0d84a'
         }, {
-          name: 'CETES',
+          name: 'Feudo Capital',
           data: [0, 3, 5, 12],
           color: '#cdcdcd'
         }]
