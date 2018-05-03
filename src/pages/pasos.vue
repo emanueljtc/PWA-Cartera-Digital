@@ -416,16 +416,16 @@ export default {
       //
       selectOptions: [
         {
-          label: 'Vivienda',
-          value: 'Vivienda'
+          label: 'Renta',
+          value: 'Renta'
         },
         {
           label: 'Despensa',
           value: 'Despensa'
         },
         {
-          label: 'Transporte',
-          value: 'Transporte'
+          label: 'Gasolina/Uber',
+          value: 'Gasolina/Uber'
         },
         {
           label: 'Gustos',
