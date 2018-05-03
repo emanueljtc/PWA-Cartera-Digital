@@ -80,7 +80,7 @@
               </div>
               <div class="collapsible-box">
                 <q-list v-for="(egreso, key) in egresos" :key="key">
-                    <q-collapsible group="somegroup" :label='egreso.egreso'>
+                    <q-collapsible group="somegroup" :label='tituloEgreso(egreso)'>
                     <div>
                         <div class="input-field center-align">
                           <div class="row-m">
@@ -120,6 +120,15 @@
                 <div class="row-m">
                   <q-btn :label="totalEgresos" @click="crearEgreso(), egresoExist = true"  v-show="egresos.length < 4" icon="add"/>
                 </div>
+              </div>
+              <div class="total">
+                <p>Total: </p>
+                <vue-autonumeric v-model="CantidadTotalEgresos" disabled
+                  :options="{
+                    currencySymbol: '$',
+                    decimalPlaces: 2,
+                    minimumValue: 0,
+                  }" :placeholder="CantidadTotalEgresos"></vue-autonumeric>
               </div>
               <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
@@ -175,7 +184,7 @@
               </div>
               <div class="collapsible-box">
                 <q-list v-for="(gasto, key) in gastos" :key="key">
-                  <q-collapsible group="somegroup" :label='gasto.gasto'>
+                  <q-collapsible group="somegroup" :label='tituloGasto(gasto)'>
                     <div>
                       <div class="input-field center-align">
                         <div class="row-m">
@@ -214,6 +223,15 @@
                 <div class="row-m">
                   <q-btn :label="totalGastos" @click="crearGasto(), gastoExist = true"  v-show="gastos.length < 4" icon="add"/>
                 </div>
+              </div>
+              <div class="total">
+                <p>Total: </p>
+                <vue-autonumeric v-model="CantidadTotalGastos" disabled
+                  :options="{
+                    currencySymbol: '$',
+                    decimalPlaces: 2,
+                    minimumValue: 0,
+                  }" :placeholder="CantidadTotalGastos"></vue-autonumeric>
               </div>
               <button class="next" @click="NextGasto(), stophelp(), gastoExist = true" v-bind:disabled="!isGastosValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
             </div>
@@ -600,6 +618,15 @@ export default {
       this.$router.replace('/correo')
     },
 
+    tituloEgreso (egreso) {
+      const titulo = egreso.egreso + ' - ' + egreso.cantidad
+      return titulo
+    },
+    tituloGasto (gasto) {
+      const titulo = gasto.gasto + ' - ' + gasto.cantidad
+      return titulo
+    },
+
     // Validaciones
     isIngresoValid: function () {
       return this.ingreso !== null
@@ -638,6 +665,20 @@ export default {
     }
   },
   computed: {
+    CantidadTotalEgresos () {
+      let total = 0
+      this.egresos.forEach(function (element, index) {
+        total = total + element.cantidad
+      })
+      return total
+    },
+    CantidadTotalGastos () {
+      let total = 0
+      this.gastos.forEach(function (element, index) {
+        total = total + element.cantidad
+      })
+      return total
+    },
     totalEgresos () {
       const length = this.egresos.length + 1
       return `Agregar otra opción (${length}/5)`
@@ -1000,6 +1041,12 @@ export default {
                 width: 45%;
 
                 .q-collapsible {
+                  background-color: $gray-button;
+
+                  input {
+                    background-color: $gray-button;
+                  }
+
                   .q-collapsible-sub-item {
                     padding-bottom: 50px;
                   }
@@ -1175,7 +1222,7 @@ export default {
                 outline: 0;
                 cursor: pointer;
                 font-size: 16px;
-                margin-bottom: 50px;
+                margin-bottom: 10px;
                 padding: 0px;
               }
 
@@ -1187,6 +1234,34 @@ export default {
                 position: relative;
                 font-size: 30px;
                 top: 0;
+              }
+            }
+
+            .total {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 40px;
+              p {
+                font-family: $opensans;
+                font-size: 20px;
+                line-height: 1.25;
+                text-align: center;
+                color: $dark-purple;
+                margin: 0px;
+                width: auto;
+                margin-right: 10px;
+              }
+
+              input, .disabled {
+                background-color: transparent;
+                border: none;
+                color: $dark-purple;
+                opacity: 1 !important;
+                font-size: 20px;
+                font-family: $nunito;
+                width: 120px;
+                text-align: center;
               }
             }
           }
