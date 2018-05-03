@@ -146,7 +146,7 @@ export default {
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, Pasos, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
   }
 }
 </script>
