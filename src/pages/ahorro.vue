@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QSelect, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
