@@ -81,6 +81,14 @@ import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, 
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
+  computed: {
+    calcularAhorro () {
+      let totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
+      let totalGastos = JSON.parse(localStorage.getItem('gasto'))
+      let ahorro = totalIngreso - totalGastos
+      return ahorro
+    }
+  },
   data () {
     return {
       cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
@@ -291,6 +299,7 @@ $green: #c0d84a;
               .buttons{
                 width: 100%;
                 .btn{
+                  width: 100px;
                   height: 40px;
                   margin: auto;
                   margin-top: 30px;
@@ -312,6 +321,7 @@ $green: #c0d84a;
                 .btn-tree{
                   color: #3f224c;
                   background: $btn-tree;
+                  width: 115px;
                 }
               }
               .grafica{
