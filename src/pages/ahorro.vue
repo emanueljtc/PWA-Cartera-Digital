@@ -35,6 +35,7 @@
                   <i class="fas fa-star"></i>
                   <p class="meta-text">{{ nombreMeta }}</p>
                   <p class="meta-value">{{ cantidadMeta }}</p>
+                  <p class="meta-value">{{ ahorro }}</p>
                 </div>
                 <q-field>
                     <!-- <q-select
@@ -81,16 +82,11 @@ import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, 
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
-  computed: {
-    calcularAhorro () {
-      let totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
-      let totalGastos = JSON.parse(localStorage.getItem('gasto'))
-      let ahorro = totalIngreso - totalGastos
-      return ahorro
-    }
-  },
   data () {
     return {
+      totalIngreso: this.totalIngreso,
+      totalGastos: this.totalGastos,
+      ahorro: JSON.parse(localStorage.getItem('ingreso') * 2.12),
       cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
       nombreMeta: JSON.parse(localStorage.getItem('meta')),
       styles: {},
@@ -131,7 +127,7 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [0, 6, 10, 10, 11, 10, 12],
+          data: [0, 6, 10, 10, 11, 10, JSON.parse(localStorage.getItem('ingreso') * 2.12)],
           color: '#e03757'
         }, {
           name: 'Kuspid',
@@ -155,6 +151,10 @@ export default {
   },
   components: {
     IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
+  },
+  mounted () {
+    this.totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
+    this.totalGastos = 0
   }
 }
 </script>
