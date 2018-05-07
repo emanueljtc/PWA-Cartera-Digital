@@ -35,7 +35,7 @@
                   <i class="fas fa-star"></i>
                   <p class="meta-text">{{ nombreMeta }}</p>
                   <p class="meta-value">{{ cantidadMeta }}</p>
-                  <p class="meta-value">{{ ahorro }}</p>
+                  <p class="meta-value">{{ axend }}</p>
                 </div>
                 <q-field>
                     <!-- <q-select
@@ -84,9 +84,8 @@ export default {
   name: 'Ahorro',
   data () {
     return {
-      totalIngreso: this.totalIngreso,
-      totalGastos: this.totalGastos,
-      ahorro: JSON.parse(localStorage.getItem('ingreso') * 2.12),
+      // empezando a implementar formula
+      axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
       cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
       nombreMeta: JSON.parse(localStorage.getItem('meta')),
       styles: {},
