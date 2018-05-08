@@ -121,7 +121,7 @@ export default {
           min: 0, // se establece el minimo del intervalo
           max: 12, // se establece el maximo en este caso 12 = 12 meses
           title: {
-            text: 'meses'
+            text: ''
           }
         },
         xAxis: {
@@ -344,6 +344,9 @@ $green: #c0d84a;
                   .highcharts-loading{
                     background-color: rgba(255, 255, 255, 0) !important;
                   }
+                  .highcharts-credits{
+                    display: none;
+                  }
                   .meses{
                     width: 38px;
                     height: 25px;
@@ -357,7 +360,7 @@ $green: #c0d84a;
                     text-align: left;
                     color: #3f224c !important;
                     position: relative;
-                    left: 5%;
+                    left: 0%;
                     bottom: -11px;
                   }
                 }
@@ -370,13 +373,14 @@ $green: #c0d84a;
                   .meta-text{
                     text-align: center;
                     margin: auto;
-                    // margin-left: 20%;
+                    margin-left: -10%;
                     font-size: 17px;
                     font-family: Opensans;
                   }
                   .meta-value{
                       text-align: right;
                       left: -25px;
+                      top: 4px;
                       position: relative;
                   }
                   i {
@@ -388,7 +392,7 @@ $green: #c0d84a;
                     border-radius: 20px;
                     position: relative;
                     top: 7px;
-                    left: 3%;
+                    left: 6%;
                   }
               }
               .q-if-label{
@@ -448,7 +452,7 @@ $green: #c0d84a;
           position: relative !important;
           left: -12% !important;
           .meses{
-            left: 10% !important;
+            left: 3% !important;
           }
         }
       }
