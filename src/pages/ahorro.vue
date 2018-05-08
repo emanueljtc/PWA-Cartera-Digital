@@ -35,6 +35,7 @@
                   <i class="fas fa-star"></i>
                   <p class="meta-text">{{ nombreMeta }}</p>
                   <p class="meta-value">{{ cantidadMeta }}</p>
+                  <p class="meta-value">{{ axend }}</p>
                 </div>
                 <q-field>
                     <!-- <q-select
@@ -83,6 +84,8 @@ export default {
   name: 'Ahorro',
   data () {
     return {
+      // empezando a implementar formula
+      axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
       cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
       nombreMeta: JSON.parse(localStorage.getItem('meta')),
       styles: {},
@@ -123,7 +126,7 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [0, 6, 10, 10, 11, 10, 12],
+          data: [0, 6, 10, 10, 11, 10, JSON.parse(localStorage.getItem('ingreso') * 2.12)],
           color: '#e03757'
         }, {
           name: 'Kuspid',
@@ -147,6 +150,10 @@ export default {
   },
   components: {
     IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
+  },
+  mounted () {
+    this.totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
+    this.totalGastos = 0
   }
 }
 </script>
@@ -291,6 +298,7 @@ $green: #c0d84a;
               .buttons{
                 width: 100%;
                 .btn{
+                  width: 100px;
                   height: 40px;
                   margin: auto;
                   margin-top: 30px;
@@ -312,6 +320,7 @@ $green: #c0d84a;
                 .btn-tree{
                   color: #3f224c;
                   background: $btn-tree;
+                  width: 115px;
                 }
               }
               .grafica{
