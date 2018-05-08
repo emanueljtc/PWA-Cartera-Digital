@@ -34,7 +34,7 @@
                 <div class="meta">
                   <i class="fas fa-star"></i>
                   <p class="meta-text">{{ nombreMeta }}</p>
-                  <p class="meta-value">{{ cantidadMeta }}</p>
+                  <p class="meta-value">$ {{ cantidadMeta }}</p>
                 </div>
                 <q-field>
                     <q-select
@@ -90,24 +90,16 @@ export default {
       },
       selectOptions: [
         {
-          label: 'Renta',
-          value: 'Renta'
+          label: 'Axend',
+          value: 'Axend'
         },
         {
-          label: 'Despensa',
-          value: 'Despensa'
+          label: 'Kuspid',
+          value: 'Kuspid'
         },
         {
-          label: 'Gasolina/Uber',
-          value: 'Gasolina/Uber'
-        },
-        {
-          label: 'Gustos',
-          value: 'Gustos'
-        },
-        {
-          label: 'Servicios básicos',
-          value: 'Servicios básicos'
+          label: 'Feudo Capital',
+          value: 'Feudo Capital'
         }
       ],
       styles: {},
@@ -360,12 +352,14 @@ $green: #c0d84a;
                   .meta-text{
                     text-align: center;
                     margin: auto;
-                    margin-left: 20%;
+                    // margin-left: 20%;
                     font-size: 17px;
                     font-family: Opensans;
                   }
                   .meta-value{
-                      text-align: right ;
+                      text-align: right;
+                      left: -25px;
+                      position: relative;
                   }
                   i {
                     border: 1px solid yellow;
@@ -374,6 +368,9 @@ $green: #c0d84a;
                     height: 25px;
                     padding: 2px;
                     border-radius: 20px;
+                    position: relative;
+                    top: 7px;
+                    left: 3%;
                   }
               }
               .q-if-label{
@@ -428,6 +425,10 @@ $green: #c0d84a;
           width: 110% !important;
           left: -18px;
           position: relative;
+        }
+        .grafica{
+          position: relative !important;
+          left: -12% !important;
         }
       }
     }
