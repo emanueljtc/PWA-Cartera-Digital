@@ -373,13 +373,18 @@ $green: #c0d84a;
                   .meta-text{
                     text-align: center;
                     margin: auto;
-                    margin-left: -10%;
-                    font-size: 17px;
+                    margin-left: -5%;
+                    font-size: 18px;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1.39;
+                    letter-spacing: normal;
                     font-family: Opensans;
                   }
                   .meta-value{
                       text-align: right;
-                      left: -25px;
+                      left: -40px;
                       top: 4px;
                       position: relative;
                   }
