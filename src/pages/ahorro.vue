@@ -194,7 +194,7 @@ $green: #c0d84a;
   $btn-primary: #e03757;
   $btn-secondary: #c0d84a;
   $btn-tree: #f6f6f6;
-@font-face {
+  @font-face {
     font-family: Nunito;
     src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
   }
@@ -233,190 +233,203 @@ $green: #c0d84a;
   .layout-padding {
     position: relative;
     padding: 0;
-    .ahorros {
-         min-height: 100vh;
-         height: auto;
-         padding: 100px 5% 100px 5%;
-        .content {
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            h1 {
-             font-family: $nunitobold;
-             font-size: 35px;
-             color: $dark-purple;
-             font-weight: bold;
-             margin-bottom: 0px;
-             margin-top: -100px;
-            }
-            .q-tabs{
-              .q-tabs-head {
-                position: relative;
-                left: 25%;
-                width: 50%;
-                border-bottom: 2px solid $gray;
-                overflow: visible;
-                background-color: #fcfcfc;
-
-                .q-tabs-scroller {
+      .ahorros {
+          min-height: 100vh;
+          height: auto;
+          padding: 100px 5% 100px 5%;
+          .content {
+              text-align: center;
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              h1 {
+              font-family: $nunitobold;
+              font-size: 35px;
+              color: $dark-purple;
+              font-weight: bold;
+              margin-bottom: 0px;
+              margin-top: -100px;
+              }
+              .q-tabs{
+                .q-tabs-head {
                   position: relative;
-                  left: 50%;
-                  transform: translateX(-50%);
+                  left: 25%;
+                  width: 50%;
+                  border-bottom: 2px solid $gray;
                   overflow: visible;
-                  .q-tab {
-                    font-family: $os-bold;
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: $gray;
-                    text-transform: capitalize;
+                  background-color: #fcfcfc;
 
-                    .q-tabs-bar {
+                  .q-tabs-scroller {
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    overflow: visible;
+                    .q-tab {
+                      font-family: $os-bold;
+                      font-size: 14px;
+                      font-weight: bold;
+                      color: $gray;
+                      text-transform: capitalize;
+
+                      .q-tabs-bar {
+                        color: $light-blue;
+                        bottom: -2px;
+                        border-bottom-width: 2px;
+                      }
+                    }
+
+                    .q-tab.active {
                       color: $light-blue;
-                      bottom: -2px;
-                      border-bottom-width: 2px;
                     }
                   }
-
-                  .q-tab.active {
-                    color: $light-blue;
+                }
+              .q-tabs-panes {
+              .q-tab-pane {
+                border: none;
+                padding: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 50%;
+                position: absolute;
+                left: 25%;
+                .sub-title{
+                  height: 25px;
+                  font-family: $os-bold;
+                  font-size: 18px;
+                  font-weight: normal;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: 1.39;
+                  letter-spacing: normal;
+                  text-align: center;
+                  color: $dark-purple;
+                  margin-top: -3px;
+                }
+                .layer{
+                /*  width: 156px;
+                  height: 25px; */
+                  font-family: $nunito;
+                  font-size: 40px;
+                  font-weight: bold;
+                  line-height: 0.63;
+                  text-align: center;
+                  color: $green;
+                  margin-top: 35px;
+                }
+                .buttons{
+                  width: 100%;
+                  .btn{
+                    width: 100px;
+                    height: 40px;
+                    margin: auto;
+                    margin-top: 30px;
+                    border-style: none;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    font-family: Opensans;
+                    color: white;
+                    line-height: 1.56;
+                    font-weight: 600;
+                  }
+                  .btn-primary{
+                  width: 90px;
+                  background: $btn-primary;
+                  }
+                  .btn-secondary{
+                    background: $btn-secondary;
+                  }
+                  .btn-tree{
+                    color: #3f224c;
+                    background: $btn-tree;
+                    width: 115px;
                   }
                 }
-              }
-            .q-tabs-panes {
-             .q-tab-pane {
-              border: none;
-              padding: 30px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              width: 50%;
-              position: absolute;
-              left: 25%;
-              .sub-title{
-                 height: 25px;
-                 font-family: $os-bold;
-                 font-size: 18px;
-                 font-weight: normal;
-                 font-style: normal;
-                 font-stretch: normal;
-                 line-height: 1.39;
-                 letter-spacing: normal;
-                 text-align: center;
-                 color: $dark-purple;
-                 margin-top: -3px;
-              }
-              .layer{
-              /*  width: 156px;
-                height: 25px; */
-                font-family: $nunito;
-                font-size: 40px;
-                font-weight: bold;
-                line-height: 0.63;
-                text-align: center;
-                color: $green;
-                margin-top: 35px;
-              }
-              .buttons{
-                width: 100%;
-                .btn{
-                  width: 100px;
-                  height: 40px;
-                  margin: auto;
-                  margin-top: 30px;
-                  border-style: none;
-                  border-radius: 10px;
-                  font-size: 16px;
-                  font-family: Opensans;
-                  color: white;
-                  line-height: 1.56;
-                  font-weight: 600;
+                .grafica{
+                  width: 100%;
+                  .highcharts-loading{
+                    background-color: rgba(255, 255, 255, 0) !important;
+                  }
                 }
-                .btn-primary{
-                 width: 90px;
-                 background: $btn-primary;
-                }
-                .btn-secondary{
-                  background: $btn-secondary;
-                }
-                .btn-tree{
-                  color: #3f224c;
-                  background: $btn-tree;
-                  width: 115px;
-                }
-              }
-              .grafica{
-                width: 100%;
-                .highcharts-loading{
-                  background-color: rgba(255, 255, 255, 0) !important;
-                }
-              }
-              .meta{
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                text-align: center;
-                .meta-text{
+                .meta{
+                  width: 100%;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
                   text-align: center;
-                  margin: auto;
-                  margin-left: 20%;
-                  font-size: 17px;
-                  font-family: Opensans;
-                }
-                .meta-value{
-                    text-align: right ;
-                }
-                i {
-                  border: 1px solid yellow;
-                  color: yellow ;
-                  width: 40px;
-                  height: 25px;
-                  padding: 2px;
-                  border-radius: 20px;
-                }
-            }
-            .q-if-label{
-              color: #3f224c !important;
-            }
-            .select{
-              font-family: OpenSansSemi;
-              font-size: 16px !important;
-              font-weight: 600;
-              text-align: left;
-              width: 100%;
-              float: left;
-              max-width: 100%;
-              min-height: 36px !important;
-              padding-top: 12px;
-              position: relative;
-              flex-basis: 0;
-              flex-grow: 1;
-              min-width: 0;
-              flex-wrap: nowrap;
-              align-items: center;
-            }
-            .btn-next{
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              top: 100%;
-              width: 100%;
-              height: 67px;
-              margin: 0px !important;
-              border-radius: 0px;
-              border-style: none;
-              background-color: #64c9db;
-              color: white;
-              font-size: 20px;
-              font-weight: 500;
-              line-height: 1.25;
-              font-family: $nunito;
+                  .meta-text{
+                    text-align: center;
+                    margin: auto;
+                    margin-left: 20%;
+                    font-size: 17px;
+                    font-family: Opensans;
+                  }
+                  .meta-value{
+                      text-align: right ;
+                  }
+                  i {
+                    border: 1px solid yellow;
+                    color: yellow ;
+                    width: 40px;
+                    height: 25px;
+                    padding: 2px;
+                    border-radius: 20px;
+                  }
+              }
+              .q-if-label{
+                color: #3f224c !important;
+              }
+              .select{
+                font-family: $nunito;
+                font-size: 20px !important;
+                font-weight: 600;
+                text-align: left;
+                width: 100%;
+                float: left;
+                max-width: 100%;
+                min-height: 36px !important;
+                padding-top: 12px;
+                position: relative;
+                flex-basis: 0;
+                flex-grow: 1;
+                min-width: 0;
+                flex-wrap: nowrap;
+                align-items: center;
+              }
+              .btn-next{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                top: 100%;
+                width: 100%;
+                height: 67px;
+                margin: 0px !important;
+                border-radius: 0px;
+                border-style: none;
+                background-color: #64c9db;
+                color: white;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 1.25;
+                font-family: $nunito;
+              }
             }
           }
         }
       }
     }
   }
-}
+  @media screen and (max-width: 600px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        width: 100% !important;
+        left: 0 !important;
+        .buttons{
+          width: 110% !important;
+          left: -18px;
+          position: relative;
+        }
+      }
+    }
+  }
 </style>
