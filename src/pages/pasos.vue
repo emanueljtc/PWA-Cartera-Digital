@@ -1664,9 +1664,8 @@ export default {
         }
 
         .q-select, .q-list {
-          margin-bottom: 30px !important;
-          min-width: 100% !important;
-          left: 0% !important;
+            width: calc(100% - 24px);
+            float: left;
         }
         .q-list {
           margin-bottom: 0px !important;

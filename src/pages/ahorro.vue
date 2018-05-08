@@ -35,17 +35,15 @@
                   <i class="fas fa-star"></i>
                   <p class="meta-text">{{ nombreMeta }}</p>
                   <p class="meta-value">{{ cantidadMeta }}</p>
-                  <p class="meta-value">{{ axend }}</p>
                 </div>
                 <q-field>
-                    <!-- <q-select
+                    <q-select
                       class="select"
                       v-model="form_inversion.inv"
                       :options="selectOptions"
                       float-label="Opciones de Inversión"
-                    /> -->
-                    <q-btn-dropdown label="Opciones de Inversión" class="select" glossy>
-                      <!-- dropdown content -->
+                    />
+                    <!-- <q-btn-dropdown label="Opciones de Inversión" class="select" glossy>
                       <q-list link>
                        <q-item>
                             <q-item-main>
@@ -65,7 +63,7 @@
                             </q-item-main>
                           </q-item>
                       </q-list>
-                    </q-btn-dropdown>
+                    </q-btn-dropdown> -->
                   </q-field>
                   <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
                   <button type="submit" class="btn-next">Siguiente</button>
@@ -78,16 +76,40 @@
 </template>
 
 <script>
-import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
   data () {
     return {
-      // empezando a implementar formula
       axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
       cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
       nombreMeta: JSON.parse(localStorage.getItem('meta')),
+      form_inversion: {
+        inv: null
+      },
+      selectOptions: [
+        {
+          label: 'Renta',
+          value: 'Renta'
+        },
+        {
+          label: 'Despensa',
+          value: 'Despensa'
+        },
+        {
+          label: 'Gasolina/Uber',
+          value: 'Gasolina/Uber'
+        },
+        {
+          label: 'Gustos',
+          value: 'Gustos'
+        },
+        {
+          label: 'Servicios básicos',
+          value: 'Servicios básicos'
+        }
+      ],
       styles: {},
       loading: true,
       options: {
@@ -126,7 +148,7 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [0, 6, 10, 10, 11, 10, JSON.parse(localStorage.getItem('ingreso') * 2.12)],
+          data: [0, 6, JSON.parse(localStorage.getItem('ingreso') - 10 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 30 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 50 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 100 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25)],
           color: '#e03757'
         }, {
           name: 'Kuspid',
@@ -149,7 +171,7 @@ export default {
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
   },
   mounted () {
     this.totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
@@ -354,12 +376,25 @@ $green: #c0d84a;
                   border-radius: 20px;
                 }
             }
+            .q-if-label{
+              color: #3f224c !important;
+            }
             .select{
-              font-family: $nunito;
-              font-size: 15px;
-              min-width: 95%;
-              font-weight: bold;
-              margin-top: 20px;
+              font-family: OpenSansSemi;
+              font-size: 16px !important;
+              font-weight: 600;
+              text-align: left;
+              width: 100%;
+              float: left;
+              max-width: 100%;
+              min-height: 36px !important;
+              padding-top: 12px;
+              position: relative;
+              flex-basis: 0;
+              flex-grow: 1;
+              min-width: 0;
+              flex-wrap: nowrap;
+              align-items: center;
             }
             .btn-next{
               position: absolute;
