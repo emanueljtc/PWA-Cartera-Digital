@@ -125,6 +125,7 @@ export default {
           }
         },
         xAxis: {
+          min: 0,
           labels: {
             format: '{value} k'
           },
