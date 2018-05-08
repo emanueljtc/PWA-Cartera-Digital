@@ -20,6 +20,7 @@
                     <button class="btn btn-tree">Feudo Capital</button>
                 </div>
                 <div class="grafica">
+                <p class="meses">Meses</p>
                     <!-- <img src="../statics/graf.png"> -->
                   <div class="highcharts" :style="styles">
                     <IHighCharts
@@ -109,7 +110,7 @@ export default {
           type: 'spline'
         },
         title: {
-          text: 'meses'
+          text: ' '
         },
         subtitle: {
           text: ''
@@ -339,8 +340,25 @@ $green: #c0d84a;
                 }
                 .grafica{
                   width: 100%;
+                  margin-top: 40px;
                   .highcharts-loading{
                     background-color: rgba(255, 255, 255, 0) !important;
+                  }
+                  .meses{
+                    width: 38px;
+                    height: 25px;
+                    font-family: OpenSans;
+                    font-size: 12px !important;
+                    font-weight: bold;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 2.08;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #3f224c !important;
+                    position: relative;
+                    left: 5%;
+                    bottom: -11px;
                   }
                 }
                 .meta{
@@ -429,6 +447,9 @@ $green: #c0d84a;
         .grafica{
           position: relative !important;
           left: -12% !important;
+          .meses{
+            left: 10% !important;
+          }
         }
       }
     }
