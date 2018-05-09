@@ -8,7 +8,7 @@
         :options="{
         currencySymbol: '$',
         minimumValue: 0,
-        }" :placeholder="reloadIngreso()"></vue-autonumeric>
+        }" placeholder="$0.00"></vue-autonumeric>
       </q-field>
       <button class="next" @click="next()" v-bind:disabled="!isIngresoValid">Siguiente <i class="material-icons">arrow_forward</i></button>
    </div>
@@ -24,13 +24,19 @@ export default {
     return {
       form: {
         id: 1,
-        ingreso: null,
-        reloadIngreso: 0
+        ingreso: null
       }
     }
   },
   props: {
     ingresoId: 0
+  },
+  created () {
+    this.$store.dispatch('ingresos/get', this.form.id)
+      .then(item => {
+        this.form.id = item.id
+        this.form.ingreso = item.ingreso
+      })
   },
   methods: {
     next () {
@@ -41,33 +47,6 @@ export default {
           })
       } else {
         this.$emit('saved')
-      }
-    },
-    loadItem () {
-      if (this.ingresoId > 0) {
-        this.$store.dispatch('ingresos/get', this.ingresoId)
-          .then(item => {
-            this.form.id = item.id
-            this.form.ingreso = item.ingreso
-          })
-      }
-    },
-    reloadIngreso () {
-      if (this.ingresoId > 0) {
-        this.$store.dispatch('ingresos/get', this.ingresoId)
-          .then(item => {
-            this.form.reloadIngreso = item.ingreso
-          })
-      }
-      let value = this.form.reloadIngreso
-      let num = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return num
-    }
-  },
-  watch: {
-    itemId: (oldVal, newVal) => {
-      if (newVal > 0) {
-        this.loadItem()
       }
     }
   },
