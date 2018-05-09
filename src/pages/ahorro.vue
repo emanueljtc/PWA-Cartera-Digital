@@ -44,7 +44,7 @@
                       :options="selectOptions"
                       float-label="Opciones de Inversión"
                     /> -->
-                    <q-btn-dropdown label="Opciones de Inversión" class="select">
+                    <!-- <q-btn-dropdown label="Opciones de Inversión" class="select">
                       <q-list link>
                        <q-item>
                             <q-item-main>
@@ -67,7 +67,33 @@
                             </q-item-main>
                           </q-item>
                       </q-list>
-                    </q-btn-dropdown>
+                    </q-btn-dropdown> -->
+                      <q-list separator>
+                        <q-collapsible label="Opciones de Inversión" opened class="select">
+                          <div>
+                           <q-list link >
+                              <q-item>
+                                <q-item-main>
+                                  <q-item-tile label>Axend <a href="#" class="ver-ms">Ver más</a></q-item-tile>
+                                </q-item-main>
+                              </q-item>
+                              <q-item-separator inset />
+                              <q-item>
+                                <q-item-main>
+                                  <q-item-tile label>Kuspit <a href="#" class="ver-ms">Ver más</a></q-item-tile>
+                                </q-item-main>
+                              </q-item>
+                              <q-item-separator inset />
+                              <q-item>
+                                <q-item-main>
+                                  <q-item-tile label>Feudo Capital <a href="#" class="ver-ms-lg">Ver más</a></q-item-tile>
+                                </q-item-main>
+                              </q-item>
+                            </q-list>
+                          </div>
+
+                        </q-collapsible>
+                      </q-list>
                   </q-field>
                   <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
                   <button type="submit" class="btn-next">Siguiente <i class="material-icons">arrow_forward</i></button>
@@ -407,6 +433,9 @@ $green: #c0d84a;
               .q-if-label{
                 color: #3f224c !important;
               }
+              .q-list{
+                border: 0px solid !important;
+              }
              .select{
                 font-family: $nunito;
                 font-size: 18px !important;
@@ -414,6 +443,7 @@ $green: #c0d84a;
                 text-align: left;
                 width: 100%;
                 float: left;
+                left: 3% ;
                 max-width: 100%;
                 min-height: 36px !important;
                 padding-top: 12px;
@@ -425,10 +455,19 @@ $green: #c0d84a;
                 align-items: center;
                 box-shadow: 0 1px 5px rgba(0,0,0,0), 0 2px 2px rgba(0,0,0,0), 0 3px 1px -2px rgba(0,0,0,0) !important;
                 text-transform: none !important;
+                border: 0px solid !important;
               }
-              .Ver-ms{
-                position: relative;
-                left: 30%;
+              .ver-ms{
+               position: relative;
+               margin-left: 78%;
+               font-family: OpenSans;
+               font-size: 18px;
+              }
+               .ver-ms-lg{
+               position: relative;
+               margin-left: 68%;
+               font-family: OpenSans;
+               font-size: 18px;
               }
               .btn-next{
                    position: relative;
@@ -469,6 +508,12 @@ $green: #c0d84a;
           .meses{
             left: 3% !important;
           }
+        }
+        .ver-ms{
+          margin-left: 45% !important;
+        }
+        .ver-ms-lg{
+          margin-left: 22% !important;
         }
         .btn-next{
                 width: 120% !important;
