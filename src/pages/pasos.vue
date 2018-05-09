@@ -14,20 +14,7 @@
         <!-- Ingresos -->
         <!-- ===================================================== -->
         <q-step title="ingresos">
-          <div class="container valign-wrapper ingresos">
-            <div class="content">
-              <h2>Ingresos</h2>
-              <p>Especifica tus ingresos mensuales</p>
-              <q-field>
-               <vue-autonumeric v-model="ingreso"
-                  :options="{
-                    currencySymbol: '$',
-                    minimumValue: 0,
-                  }" placeholder="$0.00"></vue-autonumeric>
-              </q-field>
-              <button class="next" @click="next(), help(), back()" v-bind:disabled="!isIngresoValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
-            </div>
-          </div>
+          <capturar-ingreso @saved="next(), back(), help()" :ingreso-id="1"/>
         </q-step>
 
         <!-- ===================================================== -->
@@ -38,101 +25,7 @@
             @click="prev(), stophelp()"
           >
           </button>
-          <div class="container egresos">
-            <div class="content">
-              <h2>Egresos</h2>
-              <p>Especifica tus egresos</p>
-              <q-field>
-                <q-select
-                  v-model="form_egreso.egreso"
-                  :options="selectOptions"
-                  float-label="Selecciona una opción"
-                />
-              </q-field>
-              <div class="input-field center-align">
-                <div class="row-m">
-                  <p class="frecuencia_sub">Frecuencia</p>
-                  <p class="cantidad_sub">Cantidad</p>
-                </div>
-              </div>
-              <div class="input-field center-align">
-                <div class="row-m">
-                  <div class="period">
-                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_semanal" name="period" value="Semanal" />
-                    <label for="radio_semanal">Semanal</label>
-                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_quincenal" name="period" value="Quincenal" />
-                    <label for="radio_quincenal">Quincenal</label>
-                    <input type="radio" v-model="form_egreso.frecuencia" id="radio_mensual" name="period" value="Mensual" />
-                    <label for="radio_mensual">Mensual</label>
-                  </div>
-                  <div class="cantidad">
-                    <p class="cantidad_sub_mob">Cantidad</p>
-                    <q-field>
-                       <vue-autonumeric v-model="form_egreso.cantidad"
-                        :options="{
-                          currencySymbol: '$',
-                          decimalPlaces: 2,
-                          minimumValue: 0,
-                        }" placeholder="$0.00"></vue-autonumeric>
-                    </q-field>
-                  </div>
-                </div>
-              </div>
-              <div class="collapsible-box">
-                <q-list v-for="(egreso, key) in egresos" :key="key">
-                    <q-collapsible group="somegroup" :label='tituloEgreso(egreso)'>
-                    <div>
-                        <div class="input-field center-align">
-                          <div class="row-m">
-                            <p class="frecuencia_sub">Frecuencia</p>
-                            <p class="cantidad_sub">Cantidad</p>
-                          </div>
-                        </div>
-                        <div class="input-field center-align">
-                          <div class="row-m">
-                            <div class="period">
-                              <input type="radio" v-model="egreso.frecuencia" :id="frecuenciaSemanalEgreso" :name="periodoagregadoEgreso" value="Semanal" />
-                              <label :for="frecuenciaSemanalEgreso">Semanal</label>
-                              <input type="radio" v-model="egreso.frecuencia" :id="frecuenciaQuincenalEgreso" :name="periodoagregadoEgreso" value="Quincenal" />
-                              <label :for="frecuenciaQuincenalEgreso">Quincenal</label>
-                              <input type="radio" v-model="egreso.frecuencia" :id="frecuenciaMensualEgreso" :name="periodoagregadoEgreso" value="Mensual" />
-                              <label :for="frecuenciaMensualEgreso">Mensual</label>
-                            </div>
-                            <div class="cantidad">
-                              <p class="cantidad_sub_mob">Cantidad</p>
-                              <q-field>
-                                 <vue-autonumeric v-model="egreso.cantidad"
-                                  :options="{
-                                    currencySymbol: '$',
-                                    decimalPlaces: 2,
-                                    minimumValue: 0,
-                                  }" :placeholder="egreso.cantidad"></vue-autonumeric>
-                              </q-field>
-                            </div>
-                          </div>
-                        </div>
-                        <q-btn flat label="Borrar" @click="deleteEgreso(egreso)" />
-                    </div>
-                  </q-collapsible>
-                </q-list>
-              </div>
-              <div class="input-field center-align">
-                <div class="row-m">
-                  <q-btn :label="totalEgresos" @click="crearEgreso(), egresoExist = true"  v-show="egresos.length < 4" icon="add"/>
-                </div>
-              </div>
-              <div class="total">
-                <p>Total: </p>
-                <vue-autonumeric v-model="CantidadTotalEgresos" disabled
-                  :options="{
-                    currencySymbol: '$',
-                    decimalPlaces: 2,
-                    minimumValue: 0,
-                  }" :placeholder="CantidadTotalEgresos"></vue-autonumeric>
-              </div>
-              <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
-            </div>
-          </div>
+          <capturar-egresos @saved="next(), stophelp()"/>
         </q-step>
 
         <!-- ===================================================== -->
@@ -143,99 +36,7 @@
             @click="$refs.stepper.previous(), help()"
           >
           </button>
-          <div class="container valign-wrapper gastos">
-            <div class="content">
-              <h2>Gastos más fuertes</h2>
-              <p>¿Cuáles son tus gastos más fuertes?</p>
-              <q-field>
-                <q-select
-                  v-model="form_gasto.gasto"
-                  :options="selectOptionsGastos"
-                  float-label="Selecciona una opción"
-                />
-              </q-field>
-              <div class="input-field center-align">
-                <div class="row-m">
-                  <p class="frecuencia_sub">Frecuencia</p>
-                  <p class="cantidad_sub">Cantidad</p>
-                </div>
-              </div>
-              <div class="input-field center-align">
-                <div class="row-m">
-                  <div class="period">
-                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_semanal" name="period" value="Semanal" />
-                    <label for="radio_semanal">Semanal</label>
-                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_quincenal" name="period" value="Quincenal" />
-                    <label for="radio_quincenal">Quincenal</label>
-                    <input type="radio" v-model="form_gasto.frecuencia" id="radio_mensual" name="period" value="Mensual" />
-                    <label for="radio_mensual">Mensual</label>
-                  </div>
-                  <div class="cantidad">
-                    <q-field>
-                      <vue-autonumeric v-model="form_gasto.cantidad"
-                        :options="{
-                          currencySymbol: '$',
-                          decimalPlaces: 2,
-                          minimumValue: 0,
-                        }" placeholder="$0.00"></vue-autonumeric>
-                    </q-field>
-                  </div>
-                </div>
-              </div>
-              <div class="collapsible-box">
-                <q-list v-for="(gasto, key) in gastos" :key="key">
-                  <q-collapsible group="somegroup" :label='tituloGasto(gasto)'>
-                    <div>
-                      <div class="input-field center-align">
-                        <div class="row-m">
-                          <p class="frecuencia_sub">Frecuencia</p>
-                          <p class="cantidad_sub">Cantidad</p>
-                        </div>
-                      </div>
-                      <div class="input-field center-align">
-                        <div class="row-m">
-                          <div class="period">
-                            <input type="radio" v-model="gasto.frecuencia" id="frecuenciaSemanalGasto" name="periodoagregadoGasto" value="Semanal" />
-                            <label for="frecuenciaSemanalGasto">Semanal</label>
-                            <input type="radio" v-model="gasto.frecuencia" id="frecuenciaQuincenalGasto" name="periodoagregadoGasto" value="Quincenal" />
-                            <label for="frecuenciaQuincenalGasto">Quincenal</label>
-                            <input type="radio" v-model="gasto.frecuencia" id="frecuenciaMensualGasto" name="periodoagregadoGasto" value="Mensual" />
-                            <label for="frecuenciaMensualGasto">Mensual</label>
-                          </div>
-                          <div class="cantidad">
-                            <q-field>
-                              <vue-autonumeric v-model="gasto.cantidad"
-                                :options="{
-                                  currencySymbol: '$',
-                                  decimalPlaces: 2,
-                                  minimumValue: 0,
-                                }" :placeholder="gasto.cantidad"></vue-autonumeric>
-                            </q-field>
-                          </div>
-                        </div>
-                      </div>
-                      <q-btn flat label="Borrar" @click="deleteGasto(gasto)" />
-                    </div>
-                  </q-collapsible>
-                </q-list>
-              </div>
-              <div class="input-field center-align">
-                <div class="row-m">
-                  <q-btn :label="totalGastos" @click="crearGasto(), gastoExist = true"  v-show="gastos.length < 4" icon="add"/>
-                </div>
-              </div>
-              <div class="total">
-                <p>Total: </p>
-                <vue-autonumeric v-model="CantidadTotalGastos" disabled
-                  :options="{
-                    currencySymbol: '$',
-                    decimalPlaces: 2,
-                    minimumValue: 0,
-                  }" :placeholder="CantidadTotalGastos"></vue-autonumeric>
-              </div>
-              <button class="next" @click="NextGasto(), stophelp(), gastoExist = true" v-bind:disabled="!isGastosValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button>
-            </div>
-          </div>
+          <capturar-gastos @saved="next()"/>
         </q-step>
 
         <!-- ===================================================== -->
@@ -246,58 +47,7 @@
             @click="$refs.stepper.previous(), help()"
           >
           </button>
-          <div class="container valign-wrapper deuda">
-            <div class="content">
-              <h2>¿Tienes una deuda?</h2>
-              <p>Especifica tu deuda</p>
-              <div class="input-field center-align">
-                <q-btn
-                  @click="deudaExist = true, clickedDeuda = true"
-                  label="Si"
-                />
-                <q-btn
-                  @click="deudaExist = false, clickedDeuda = true, addDeuda()"
-                  label="No"
-                />
-              </div>
-              <div class="deuda_desglose" v-if="deudaExist">
-                <h2>¿De cuánto?</h2>
-                <q-field>
-                  <vue-autonumeric v-model="deuda"
-                    :options="{
-                      currencySymbol: '$',
-                      decimalPlaces: 2,
-                      minimumValue: 0,
-                    }" placeholder="$0.00"></vue-autonumeric>
-                </q-field>
-                <div class="input-field center-align">
-                  <div class="row-m">
-                    <div class="period">
-                      <p>Frecuencia de pagos</p>
-                      <div class="frecuencias">
-                        <input type="radio" v-model="frecuenciaDeuda" id="radio_semanal" name="period" value="Pago Único" />
-                        <label for="radio_semanal">Pago único</label>
-                        <input type="radio" v-model="frecuenciaDeuda" id="radio_quincenal" name="period" value="Quincenal" />
-                        <label for="radio_quincenal">Quincenal</label>
-                        <input type="radio" v-model="frecuenciaDeuda" id="radio_mensual" name="period" value="Mensual" />
-                        <label for="radio_mensual">Mensual</label>
-                        </div>
-                    </div>
-                    <div class="cantidad">
-                      <p>Cantidad</p>
-                      <vue-autonumeric v-model="cantidadDeuda"
-                        :options="{
-                          currencySymbol: '$',
-                          decimalPlaces: 2,
-                          minimumValue: 0,
-                        }" placeholder="$0.00"></vue-autonumeric>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button class="next" @click="next()" v-bind:disabled="!isDeudaValid()">Siguiente <i class="material-icons">arrow_forward</i></button>
-            </div>
-          </div>
+          <capturar-deuda @saved="next()"/>
         </q-step>
 
         <!-- ===================================================== -->
@@ -308,36 +58,7 @@
             @click="$refs.stepper.previous()"
           >
           </button>
-          <div class="container metas center-align">
-            <div class="content">
-              <h2>Metas</h2>
-              <p>¿Tienes una meta financiera?</p>
-              <div class="input-field center-align">
-                <q-btn @click="metaExist = true, clickedMeta = true" label="Si"/>
-                <q-btn @click="metaExist = false, clickedMeta = true, addMeta()" label="No"/>
-              </div>
-              <div class="metas_desglose" v-if="metaExist">
-                <div class="cuanto-meta">
-                  <h2>¿De cuánto?</h2>
-                  <q-field>
-                    <vue-autonumeric v-model="cantidadMeta"
-                        :options="{
-                          currencySymbol: '$',
-                          decimalPlaces: 2,
-                          minimumValue: 0,
-                        }" placeholder="$0.00"></vue-autonumeric>
-                  </q-field>
-                </div>
-                <div class="para-meta">
-                  <h2>¿Para qué?</h2>
-                  <q-field>
-                    <q-input v-model="meta" type="text" placeholder="Ejemplo. Viaje a méxico"/>
-                  </q-field>
-                </div>
-              </div>
-              <button class="next" @click="sendData" v-bind:disabled="!isMetaValid()">Ver resultados</button>
-            </div>
-          </div>
+          <capturar-metas @saved="finishPasos()"/>
         </q-step>
       </q-stepper>
     </q-slide-transition>
@@ -376,89 +97,19 @@
 </template>
 
 <script>
-import { QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, Notify } from 'quasar'
-import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
+import CapturarIngreso from 'src/components/CapturarIngreso'
+import CapturarEgresos from 'src/components/CapturarEgresos'
+import CapturarGastos from 'src/components/CapturarGastos'
+import CapturarDeuda from 'src/components/CapturarDeuda'
+import CapturarMetas from 'src/components/CapturarMetas'
+
+import { QStepper, QStep, QStepperNavigation, QSlideTransition, QModal } from 'quasar'
+
 export default {
   name: 'Pasos',
   data () {
     return {
       openmodal: false,
-      //
-      ingreso: null,
-      egresos: [],
-      gastos: [],
-      deuda: null,
-      frecuenciaDeuda: null,
-      cantidadDeuda: null,
-      cantidadMeta: null,
-      meta: null,
-      //
-      form_egreso: {
-        egreso: null,
-        frecuencia: null,
-        cantidad: 0
-      },
-      //
-      form_gasto: {
-        gasto: null,
-        frecuencia: null,
-        cantidad: 0
-      },
-      //
-      deudaExist: false,
-      clickedDeuda: false,
-      //
-      metaExist: false,
-      clickedMeta: false,
-      //
-      egresoExist: false,
-      gastoExist: false,
-      //
-      selectOptions: [
-        {
-          label: 'Renta',
-          value: 'Renta'
-        },
-        {
-          label: 'Despensa',
-          value: 'Despensa'
-        },
-        {
-          label: 'Gasolina/Uber',
-          value: 'Gasolina/Uber'
-        },
-        {
-          label: 'Gustos',
-          value: 'Gustos'
-        },
-        {
-          label: 'Servicios básicos',
-          value: 'Servicios básicos'
-        }
-      ],
-      selectOptionsGastos: [
-        {
-          label: 'Smartphone',
-          value: 'Smartphone'
-        },
-        {
-          label: 'Luz',
-          value: 'Luz'
-        },
-        {
-          label: 'Gas',
-          value: 'Gas'
-        },
-        {
-          label: 'Agua',
-          value: 'Agua'
-        },
-        {
-          label: 'Telefonía',
-          value: 'Telefonía'
-        }
-      ],
-      //
       ready: false,
       finished: false,
       opened: false,
@@ -492,280 +143,13 @@ export default {
       this.DisabledHelp = true
     },
 
-    // // Egreso
-    NextEgreso () {
-      const form_egreso = this.form_egreso
-      const results = this.egresos.filter(function (element, index) {
-        return element.egreso === form_egreso.egreso
-      })
-      if (results.length > 0) {
-        this.$q.notify({
-          message: `Ya existe este tipo de egreso`,
-          timeout: 5000,
-          position: 'top-right'
-        })
-      } else {
-        if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
-          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad, cantidadFinal: null})
-          this.resetFormEgreso()
-          this.$refs.stepper.next()
-        } else {
-          this.$refs.stepper.next()
-        }
-      }
-    },
-    crearEgreso () {
-      const form_egreso = this.form_egreso
-      const results = this.egresos.filter(function (element, index) {
-        return element.egreso === form_egreso.egreso
-      })
-      if (results.length > 0) {
-        this.$q.notify({
-          message: `Ya existe este tipo de egreso`,
-          timeout: 5000,
-          position: 'top-right'
-        })
-      } else {
-        if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
-          this.egresos.push({egreso: this.form_egreso.egreso, frecuencia: this.form_egreso.frecuencia, cantidad: this.form_egreso.cantidad, cantidadFinal: null})
-          this.resetFormEgreso()
-        }
-      }
-    },
-    resetFormEgreso () {
-      this.form_egreso = {
-        egreso: null,
-        frecuencia: null,
-        cantidad: 0
-      }
-    },
-    deleteEgreso (egreso) {
-      this.egresos = this.egresos.filter((element, index) => element.egreso !== egreso.egreso)
-    },
-
-    // Gasto
-    NextGasto () {
-      const form_gasto = this.form_gasto
-      const results = this.gastos.filter(function (element, index) {
-        return element.gasto === form_gasto.gasto
-      })
-      if (results.length > 0) {
-        this.$q.notify({
-          message: `Ya existe este tipo de gasto`,
-          timeout: 5000,
-          position: 'top-right'
-        })
-      } else {
-        if (form_gasto.gasto !== null && form_gasto.frecuencia !== null && form_gasto.cantidad !== 0) {
-          this.gastos.push({gasto: this.form_gasto.gasto, frecuencia: this.form_gasto.frecuencia, cantidad: this.form_gasto.cantidad})
-          this.resetFormGasto()
-          this.$refs.stepper.next()
-        } else {
-          this.$refs.stepper.next()
-        }
-      }
-    },
-    crearGasto () {
-      const form_gasto = this.form_gasto
-      const results = this.gastos.filter(function (element, index) {
-        return element.gasto === form_gasto.gasto
-      })
-      if (results.length > 0) {
-        this.$q.notify({
-          message: `Ya existe este tipo de gasto`,
-          timeout: 5000,
-          position: 'top-right'
-        })
-      } else {
-        if (form_gasto.gasto !== null && form_gasto.frecuencia !== null && form_gasto.cantidad !== 0) {
-          this.gastos.push({gasto: this.form_gasto.gasto, frecuencia: this.form_gasto.frecuencia, cantidad: this.form_gasto.cantidad})
-          this.resetFormGasto()
-        }
-      }
-    },
-    resetFormGasto () {
-      this.form_gasto = {
-        gasto: null,
-        frecuencia: null,
-        cantidad: 0
-      }
-    },
-    deleteGasto (gasto) {
-      this.gastos = this.gastos.filter((element, index) => element.gasto !== gasto.gasto)
-    },
-
-    addDeuda () {
-      localStorage.setItem('deuda', JSON.stringify(this.deuda))
-      localStorage.setItem('frecuencia de la deuda', JSON.stringify(this.frecuenciaDeuda))
-      localStorage.setItem('cantidad de la deuda', JSON.stringify(this.cantidadDeuda))
-    },
-    addMeta () {
-      localStorage.setItem('meta', JSON.stringify(this.meta))
-      localStorage.setItem('cantidad de la meta', JSON.stringify(this.cantidadMeta))
-    },
-
-    // Mandar información a otro archivo
-    sendData () {
-      this.$store.dispatch('valuador/ingreso', this.ingreso, { root: true })
-      this.$store.dispatch('valuador/egresos', this.egresos, { root: true })
-      this.$store.dispatch('valuador/gastos', this.gastos, { root: true })
-      this.$store.dispatch('valuador/deuda', this.deuda, { root: true })
-      this.$store.dispatch('valuador/frecuenciaDeuda', this.frecuenciaDeuda, { root: true })
-      this.$store.dispatch('valuador/cantidadDeuda', this.cantidadDeuda, { root: true })
-      this.$store.dispatch('valuador/cantidadMeta', this.cantidadMeta, { root: true })
-      this.$store.dispatch('valuador/meta', this.meta, { root: true })
-
+    // Terminar
+    finishPasos () {
       this.$router.replace('/correo')
-    },
-
-    tituloEgreso (egreso) {
-      const titulo = egreso.egreso + ' - ' + egreso.cantidad
-      return titulo
-    },
-    tituloGasto (gasto) {
-      const titulo = gasto.gasto + ' - ' + gasto.cantidad
-      return titulo
-    },
-
-    // Validaciones
-    isIngresoValid: function () {
-      return this.ingreso !== null
-    },
-    isEgresoValid: function () {
-      if (this.egresos.length > 0) {
-        return this.egresoExist !== false
-      } else {
-        return this.form_egreso.egreso !== null && this.form_egreso.cantidad !== 0 && this.form_egreso.frecuencia !== null
-      }
-    },
-    isGastosValid: function () {
-      if (this.gastos.length > 0) {
-        return this.gastoExist !== false
-      } else {
-        return this.form_gasto.gasto !== null && this.form_gasto.cantidad !== 0 && this.form_gasto.frecuencia !== null
-      }
-    },
-    isDeudaValid: function () {
-      if (this.clickedDeuda !== false) {
-        if (this.deudaExist !== true) {
-          return this.clickedDeuda !== false
-        } else {
-          return this.deuda !== null && this.cantidadDeuda !== null && this.frecuenciaDeuda !== null
-        }
-      }
-    },
-    isMetaValid: function () {
-      if (this.clickedMeta !== false) {
-        if (this.metaExist !== true) {
-          return this.clickedmeta !== false
-        } else {
-          return this.meta !== null && this.cantidadMeta !== null
-        }
-      }
-    }
-  },
-  computed: {
-    CantidadTotalEgresos () {
-      let total = 0
-      this.egresos.forEach(function (element, index) {
-        total = total + element.cantidad
-      })
-      return total
-    },
-    CantidadTotalGastos () {
-      let total = 0
-      this.gastos.forEach(function (element, index) {
-        total = total + element.cantidad
-      })
-      return total
-    },
-    totalEgresos () {
-      const length = this.egresos.length + 1
-      return `Agregar otra opción (${length}/5)`
-    },
-    totalGastos () {
-      const length = this.gastos.length + 1
-      return `Agregar otra opción (${length}/5)`
-    },
-    //
-    frecuenciaSemanalEgreso () {
-      const length = this.egresos.length
-      return `semanal_${length}`
-    },
-    frecuenciaQuincenalEgreso () {
-      const length = this.egresos.length
-      return `quincenal_${length}`
-    },
-    frecuenciaMensualEgreso () {
-      const length = this.egresos.length
-      return `mensual_${length}`
-    },
-    periodoagregadoEgreso () {
-      const length = this.egresos.length
-      return `periodo_${length}`
-    },
-    //
-    frecuenciaSemanalGasto () {
-      const length = this.gastos.length
-      return `semanal_gastos_${length}`
-    },
-    frecuenciaQuincenalGasto () {
-      const length = this.gastos.length
-      return `quincenal_gastos_${length}`
-    },
-    frecuenciaMensualGasto () {
-      const length = this.gastos.length
-      return `mensual_gastos_${length}`
-    },
-    periodoagregadoGasto () {
-      const length = this.gastos.length
-      return `periodo_gastos_${length}`
-    }
-  },
-  watch: {
-    ingreso: {
-      handler () {
-        localStorage.setItem('ingreso', JSON.stringify(this.ingreso))
-      }
-    },
-    egresos: {
-      handler () {
-        localStorage.setItem('egresos', JSON.stringify(this.egresos))
-      }
-    },
-    gastos: {
-      handler () {
-        localStorage.setItem('gastos', JSON.stringify(this.gastos))
-      }
-    },
-    deuda: {
-      handler () {
-        localStorage.setItem('deuda', JSON.stringify(this.deuda))
-      }
-    },
-    frecuenciaDeuda: {
-      handler () {
-        localStorage.setItem('frecuencia de la deuda', JSON.stringify(this.frecuenciaDeuda))
-      }
-    },
-    cantidadDeuda: {
-      handler () {
-        localStorage.setItem('cantidad de la deuda', JSON.stringify(this.cantidadDeuda))
-      }
-    },
-    meta: {
-      handler () {
-        localStorage.setItem('meta', JSON.stringify(this.meta))
-      }
-    },
-    cantidadMeta: {
-      handler () {
-        localStorage.setItem('cantidad de la meta', JSON.stringify(this.cantidadMeta))
-      }
     }
   },
   components: {
-    QStepper, QStep, QStepperNavigation, QSlideTransition, QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, VueAutonumeric, Notify
+    QStepper, QStep, QStepperNavigation, QSlideTransition, QModal, CapturarIngreso, CapturarEgresos, CapturarGastos, CapturarDeuda, CapturarMetas
   }
 }
 </script>
@@ -1041,12 +425,6 @@ export default {
                 width: 45%;
 
                 .q-collapsible {
-                  background-color: $gray-button;
-
-                  input {
-                    background-color: $gray-button;
-                  }
-
                   .q-collapsible-sub-item {
                     padding-bottom: 50px;
                   }
@@ -1082,6 +460,11 @@ export default {
                     color: $dark-purple;
                     font-weight: bold;
                     font-size: 13px;
+                  }
+
+                  .actualizar {
+                    left: 10px;
+                    right: initial;
                   }
                 }
               }
@@ -1237,31 +620,18 @@ export default {
               }
             }
 
-            .total {
-              display: flex;
-              justify-content: center;
-              align-items: center;
+            .total_egresos {
+              margin-top: 10px;
               margin-bottom: 40px;
-              p {
-                font-family: $opensans;
-                font-size: 20px;
-                line-height: 1.25;
-                text-align: center;
-                color: $dark-purple;
-                margin: 0px;
-                width: auto;
-                margin-right: 10px;
-              }
+            }
+          }
+        }
 
-              input, .disabled {
-                background-color: transparent;
-                border: none;
-                color: $dark-purple;
-                opacity: 1 !important;
-                font-size: 20px;
-                font-family: $nunito;
-                width: 120px;
-                text-align: center;
+        .gastos {
+          .content {
+            .row-m {
+              button {
+                margin-bottom: 50px;
               }
             }
           }
