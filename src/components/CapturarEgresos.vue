@@ -94,7 +94,6 @@
 <script>
 import { QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, Notify } from 'quasar'
 import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'Egresos',
@@ -302,7 +301,7 @@ export default {
     }
   },
   components: {
-    QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, Notify, VueAutonumeric, mapGetters
+    QField, QInput, QSelect, QRadio, QModal, QBtn, QCollapsible, Notify, VueAutonumeric
   }
 }
 </script>
