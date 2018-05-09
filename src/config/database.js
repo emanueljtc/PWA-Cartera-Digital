@@ -6,6 +6,7 @@ export default {
     'ingresos': '++id, ingreso',
     'egresos': '++id, egreso, frecuencia, cantidad, cantidadMensual',
     'gastos': '++id, gasto, frecuencia, cantidad, cantidadMensual',
-    'deuda': '++id, exist, deuda, frecuencia, cantidad, cantidadMensual'
+    'deuda': '++id, exist, deuda, frecuencia, cantidad, cantidadMensual',
+    'metas': '++id, exist, meta, proposito'
   }
 }
