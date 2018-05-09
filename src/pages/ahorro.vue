@@ -38,33 +38,33 @@
                   <p class="meta-value">$ {{ cantidadMeta }}</p>
                 </div>
                 <q-field>
-                    <q-select
+                    <!-- <q-select
                       class="select"
                       v-model="form_inversion.inv"
                       :options="selectOptions"
                       float-label="Opciones de Inversión"
-                    />
-                    <!-- <q-btn-dropdown label="Opciones de Inversión" class="select" glossy>
+                    /> -->
+                    <q-btn-dropdown label="Opciones de Inversión" class="select" glossy>
                       <q-list link>
                        <q-item>
                             <q-item-main>
-                              <q-item-tile label>Axend</q-item-tile>
+                              <q-item-tile label>Axend <a href="#" style="position: relative; left: 50%;">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                           <q-item-separator inset />
                           <q-item>
                             <q-item-main>
-                              <q-item-tile label>Kuspit</q-item-tile>
+                              <q-item-tile label>Kuspit <a href="#" style="position: relative; left: 50%;">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                           <q-item-separator inset />
                           <q-item>
                             <q-item-main>
-                              <q-item-tile label>Feudo Capital</q-item-tile>
+                              <q-item-tile label>Feudo Capital <a href="#" style="position: relative; left: 30%;">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                       </q-list>
-                    </q-btn-dropdown> -->
+                    </q-btn-dropdown>
                   </q-field>
                   <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
                   <button type="submit" class="btn-next">Siguiente</button>
@@ -406,7 +406,7 @@ $green: #c0d84a;
               }
               .select{
                 font-family: $nunito;
-                font-size: 20px !important;
+                font-size: 18px !important;
                 font-weight: 600;
                 text-align: left;
                 width: 100%;
