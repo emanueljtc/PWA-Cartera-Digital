@@ -8,7 +8,8 @@ export const build = (NAMESPACE, options) => {
   const COLLECTION = DB[CONFIG['dbTable']]
   const MUTATIONS = {
     ADD: NAMESPACE + '/add',
-    UPDATE: NAMESPACE + '/update'
+    UPDATE: NAMESPACE + '/update',
+    DELETE: NAMESPACE + '/erase'
   }
 
   const actions = {}
@@ -32,7 +33,7 @@ export const build = (NAMESPACE, options) => {
     })
   }
 
-  actions.all = ({ commit, state }) => {
+  actions.all = ({ commit, state, getters }) => {
     return new Promise((resolve, reject) => {
       COLLECTION.toArray().then((item) => {
         item.map((item) => {
@@ -45,8 +46,8 @@ export const build = (NAMESPACE, options) => {
             }
             commit(MUTATIONS.ADD, item, { root: true })
           })
-          resolve(state.collection)
         })
+        resolve(item)
       })
     })
   }
@@ -65,6 +66,17 @@ export const build = (NAMESPACE, options) => {
         } else {
           reject(item)
         }
+      }, (err) => {
+        reject(err)
+      })
+    })
+  }
+
+  actions.delete = ({ commit, state }, itemId) => {
+    return new Promise((resolve, reject) => {
+      COLLECTION.where({ id: itemId }).delete().then(() => {
+        commit(MUTATIONS.DELETE, itemId, { root: true })
+        resolve(itemId)
       }, (err) => {
         reject(err)
       })

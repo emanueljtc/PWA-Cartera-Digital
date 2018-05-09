@@ -3,7 +3,7 @@ import { build as gettersFactory } from '../generic/gettersFactory'
 import { build as mutationsFactory } from '../generic/mutationsFactory'
 import { build as actionsFactory } from '../generic/actionsFactory'
 
-const actions = actionsFactory('ingresos')
+const actions = actionsFactory('egresos')
 
 const getters = gettersFactory()
 

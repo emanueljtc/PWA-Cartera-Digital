@@ -12,7 +12,8 @@ const store = new Vuex.Store({
   modules: {
     users,
     valuador,
-    ingresos
+    ingresos,
+    egresos
   }
 })
 
