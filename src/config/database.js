@@ -5,6 +5,7 @@ export default {
     'queues': '++id,uuid,data,request_header,api,status,modified_at,retries,response_code,response_header,response_body,sequence_number',
     'ingresos': '++id, ingreso',
     'egresos': '++id, egreso, frecuencia, cantidad, cantidadMensual',
-    'gastos': '++id, gasto, frecuencia, cantidad, cantidadMensual'
+    'gastos': '++id, gasto, frecuencia, cantidad, cantidadMensual',
+    'deuda': '++id, exist, deuda, frecuencia, cantidad, cantidadMensual'
   }
 }

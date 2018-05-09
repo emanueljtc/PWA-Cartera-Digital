@@ -5,6 +5,7 @@ import users from './users'
 import ingresos from './ingresos'
 import egresos from './egresos'
 import gastos from './gastos'
+import deuda from './deuda'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
     users,
     ingresos,
     egresos,
-    gastos
+    gastos,
+    deuda
   }
 })
 
