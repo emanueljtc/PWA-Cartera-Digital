@@ -44,17 +44,18 @@
                       :options="selectOptions"
                       float-label="Opciones de Inversión"
                     /> -->
-                    <q-btn-dropdown label="Opciones de Inversión" class="select" glossy>
+                    <q-btn-dropdown label="Opciones de Inversión" class="select">
                       <q-list link>
                        <q-item>
                             <q-item-main>
-                              <q-item-tile label>Axend <a href="#" style="position: relative; left: 50%;">Ver más</a></q-item-tile>
+                              <q-item-tile label>Axend <a href="#" style="position: relative; left: 50%; font-family: OpenSans;
+                              font-size: 18px;">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                           <q-item-separator inset />
                           <q-item>
                             <q-item-main>
-                              <q-item-tile label>Kuspit <a href="#" style="position: relative; left: 50%;">Ver más</a></q-item-tile>
+                              <q-item-tile label>Kuspit <a href="#" class="Ver-ms">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                           <q-item-separator inset />
@@ -67,7 +68,7 @@
                     </q-btn-dropdown>
                   </q-field>
                   <!-- <button class="next" @click="NextEgreso(), stophelp(), egresoExist = true" v-bind:disabled="!isEgresoValid()" icon-right="fas fa-arrow-right">Siguiente <i class="material-icons">arrow_forward</i></button> -->
-                  <button type="submit" class="btn-next">Siguiente</button>
+                  <button type="submit" class="btn-next">Siguiente <i class="material-icons">arrow_forward</i></button>
             </q-tab-pane>
         </q-tabs>
         </div>
@@ -404,7 +405,7 @@ $green: #c0d84a;
               .q-if-label{
                 color: #3f224c !important;
               }
-              .select{
+             .select{
                 font-family: $nunito;
                 font-size: 18px !important;
                 font-weight: 600;
@@ -420,23 +421,29 @@ $green: #c0d84a;
                 min-width: 0;
                 flex-wrap: nowrap;
                 align-items: center;
+                box-shadow: 0 1px 5px rgba(0,0,0,0), 0 2px 2px rgba(0,0,0,0), 0 3px 1px -2px rgba(0,0,0,0) !important;
+                text-transform: none !important;
+              }
+              .Ver-ms{
+                position: relative;
+                left: 30%;
               }
               .btn-next{
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                top: 100%;
-                width: 100%;
-                height: 67px;
-                margin: 0px !important;
-                border-radius: 0px;
-                border-style: none;
-                background-color: #64c9db;
-                color: white;
-                font-size: 20px;
-                font-weight: 500;
-                line-height: 1.25;
-                font-family: $nunito;
+                   position: relative;
+                   font-family: Nunito;
+                   font-size: 20px;
+                   font-weight: 500;
+                   width: 300px;
+                   height: 50px;
+                   border-radius: 15px;
+                   background-color: #64c9db;
+                   color: white;
+                   border: 0px;
+                   cursor: pointer;
+                   margin-bottom: 15px;
+                   margin-top: 18px;
+                   margin-left: 25%;
+
               }
             }
           }
@@ -460,6 +467,15 @@ $green: #c0d84a;
           .meses{
             left: 3% !important;
           }
+        }
+        .btn-next{
+                width: 120% !important;
+                height: 67px !important;
+                /* margin: 0px !important; */
+                border-radius: 0px !important;
+                margin-left: -10% !important;
+                margin-bottom: -10% !important;
+
         }
       }
     }
