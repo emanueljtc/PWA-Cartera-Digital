@@ -176,7 +176,6 @@ export default {
     },
     crearEgreso () {
       let form_egreso = this.form_egreso
-      this.egresoId = this.form_egreso.id + 1
       let results = this.form.egresos.filter(function (element, index) {
         return element.egreso === form_egreso.egreso
       })
