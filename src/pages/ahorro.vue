@@ -74,19 +74,19 @@
                            <q-list link >
                               <q-item>
                                 <q-item-main>
-                                  <q-item-tile label>Axend <a href="#" class="ver-ms">Ver más</a></q-item-tile>
+                                  <q-item-tile label>Axend <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
                                 </q-item-main>
                               </q-item>
                               <q-item-separator inset />
                               <q-item>
                                 <q-item-main>
-                                  <q-item-tile label>Kuspit <a href="#" class="ver-ms">Ver más</a></q-item-tile>
+                                  <q-item-tile label>Kuspit <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
                                 </q-item-main>
                               </q-item>
                               <q-item-separator inset />
                               <q-item>
                                 <q-item-main>
-                                  <q-item-tile label>Feudo Capital <a href="#" class="ver-ms-lg">Ver más</a></q-item-tile>
+                                  <q-item-tile label>Feudo Capital <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
                                 </q-item-main>
                               </q-item>
                             </q-list>
@@ -459,15 +459,21 @@ $green: #c0d84a;
               }
               .ver-ms{
                position: relative;
-               margin-left: 78%;
                font-family: OpenSans;
                font-size: 18px;
+               font-weight: normal;
+               font-style: normal;
+               font-stretch: normal;
+               line-height: 1.39;
+               letter-spacing: normal;
+               text-align: left;
+               color: #af85bc;
               }
-               .ver-ms-lg{
-               position: relative;
-               margin-left: 68%;
-               font-family: OpenSans;
-               font-size: 18px;
+              .ver-ms-p{
+                margin-left: 78%;
+              }
+              .ver-ms-lg{
+                margin-left: 68%;
               }
               .btn-next{
                    position: relative;
@@ -509,7 +515,7 @@ $green: #c0d84a;
             left: 3% !important;
           }
         }
-        .ver-ms{
+        .ver-ms-p{
           margin-left: 45% !important;
         }
         .ver-ms-lg{
