@@ -55,13 +55,15 @@
                           <q-item-separator inset />
                           <q-item>
                             <q-item-main>
-                              <q-item-tile label>Kuspit <a href="#" class="Ver-ms">Ver más</a></q-item-tile>
+                              <q-item-tile label>Kuspit <a href="#" style="position: relative; left: 50%; font-family: OpenSans;
+                              font-size: 18px;">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                           <q-item-separator inset />
                           <q-item>
                             <q-item-main>
-                              <q-item-tile label>Feudo Capital <a href="#" style="position: relative; left: 30%;">Ver más</a></q-item-tile>
+                              <q-item-tile label>Feudo Capital <a href="#" style="position: relative; left: 30%; font-family: OpenSans;
+                              font-size: 18px;">Ver más</a></q-item-tile>
                             </q-item-main>
                           </q-item>
                       </q-list>
@@ -78,7 +80,7 @@
 </template>
 
 <script>
-import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
@@ -166,7 +168,7 @@ export default {
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible
   },
   mounted () {
     this.totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
