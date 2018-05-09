@@ -9,7 +9,7 @@
           label="Si"
         />
         <q-btn
-          @click="metaExist = false, clickedMeta = true, form.exist = false"
+          @click="metaExist = false, clickedMeta = true, deleteMeta()"
           label="No"
         />
       </div>
@@ -70,6 +70,14 @@ export default {
         .then(item => {
           this.$emit('saved', this.form)
         })
+    },
+    deleteMeta () {
+      this.form = {
+        id: 1,
+        exist: null,
+        meta: null,
+        proposito: null
+      }
     }
   },
   computed: {

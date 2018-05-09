@@ -9,7 +9,7 @@
           label="Si"
         />
         <q-btn
-          @click="deudaExist = false, clickedDeuda = true, form.exist = false"
+          @click="deudaExist = false, clickedDeuda = true, deleteDeuda()"
           label="No"
         />
       </div>
@@ -101,6 +101,16 @@ export default {
       }
       if (this.form.frecuencia === 'Mensual') {
         this.form.cantidadMensual = this.form.cantidad
+      }
+    },
+    deleteDeuda () {
+      this.form = {
+        id: 1,
+        exist: null,
+        deuda: null,
+        frecuencia: null,
+        cantidad: null,
+        cantidadMensual: null
       }
     }
   },
