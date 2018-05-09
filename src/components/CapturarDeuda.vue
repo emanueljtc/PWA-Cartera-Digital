@@ -3,6 +3,7 @@
     <div class="content">
       <h2>¿Tienes una deuda?</h2>
       <p>Especifica tu deuda</p>
+      {{ calcularCantidadMensual() }}
       <div class="input-field center-align">
         <q-btn
           @click="deudaExist = true, clickedDeuda = true, form.exist = true"
@@ -13,7 +14,7 @@
           label="No"
         />
       </div>
-      <div class="deuda_desglose" v-if="deudaExist">
+      <div class="deuda_desglose" v-if="form.exist">
         <h2>¿De cuánto?</h2>
         <q-field>
           <vue-autonumeric v-model="form.deuda"
@@ -106,7 +107,7 @@ export default {
     deleteDeuda () {
       this.form = {
         id: 1,
-        exist: null,
+        exist: false,
         deuda: null,
         frecuencia: null,
         cantidad: null,
@@ -128,10 +129,6 @@ export default {
           }
         }
       }
-    },
-    // Calcular la cantidad mensual de la deuda
-    EgresoCantidadMensual () {
-      return this.calcularCantidadMensual()
     }
   },
   components: {

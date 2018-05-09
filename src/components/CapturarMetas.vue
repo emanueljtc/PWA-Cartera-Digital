@@ -13,7 +13,7 @@
           label="No"
         />
       </div>
-      <div class="metas_desglose" v-if="metaExist">
+      <div class="metas_desglose" v-if="form.exist">
         <div class="cuanto-meta">
           <h2>¿De cuánto?</h2>
           <q-field>
@@ -74,7 +74,7 @@ export default {
     deleteMeta () {
       this.form = {
         id: 1,
-        exist: null,
+        exist: false,
         meta: null,
         proposito: null
       }
