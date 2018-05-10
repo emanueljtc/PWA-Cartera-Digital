@@ -145,6 +145,16 @@ export default {
   methods: {
     // Guardar egresos en store y db
     NextEgreso () {
+      if (this.form_egreso.frecuencia === 'Semanal') {
+        this.form_egreso.cantidadMensual = this.form_egreso.cantidad * 4
+      }
+      if (this.form_egreso.frecuencia === 'Quincenal') {
+        this.form_egreso.cantidadMensual = this.form_egreso.cantidad * 2
+      }
+      if (this.form_egreso.frecuencia === 'Mensual') {
+        this.form_egreso.cantidadMensual = this.form_egreso.cantidad
+      }
+
       let form_egreso = this.form_egreso
       let results = this.form.egresos.filter(function (element, index) {
         return element.egreso === form_egreso.egreso
@@ -174,6 +184,16 @@ export default {
       }
     },
     crearEgreso () {
+      if (this.form_egreso.frecuencia === 'Semanal') {
+        this.form_egreso.cantidadMensual = this.form_egreso.cantidad * 4
+      }
+      if (this.form_egreso.frecuencia === 'Quincenal') {
+        this.form_egreso.cantidadMensual = this.form_egreso.cantidad * 2
+      }
+      if (this.form_egreso.frecuencia === 'Mensual') {
+        this.form_egreso.cantidadMensual = this.form_egreso.cantidad
+      }
+
       let form_egreso = this.form_egreso
       let results = this.form.egresos.filter(function (element, index) {
         return element.egreso === form_egreso.egreso
@@ -216,18 +236,7 @@ export default {
         position: 'top-right'
       })
     },
-    // Calcular y actualizar la cantidad mensual de cada egreso
-    calcularCantidadMensual () {
-      if (this.form_egreso.frecuencia === 'Semanal') {
-        this.form_egreso.cantidadMensual = this.form_egreso.cantidad * 4
-      }
-      if (this.form_egreso.frecuencia === 'Quincenal') {
-        this.form_egreso.cantidadMensual = this.form_egreso.cantidad * 2
-      }
-      if (this.form_egreso.frecuencia === 'Mensual') {
-        this.form_egreso.cantidadMensual = this.form_egreso.cantidad
-      }
-    },
+    // Actualizar la cantidad mensual de cada egreso
     actualizarCantidadMensual (egreso) {
       if (egreso.frecuencia === 'Semanal') {
         egreso.cantidadMensual = egreso.cantidad * 4
@@ -292,10 +301,6 @@ export default {
     AgregarEgresos () {
       const length = this.form.egresos.length + 1
       return `Agregar otra opción (${length}/5)`
-    },
-    // Calcular la cantidad mensual de cada egreso
-    EgresoCantidadMensual () {
-      return this.calcularCantidadMensual()
     }
   },
   components: {

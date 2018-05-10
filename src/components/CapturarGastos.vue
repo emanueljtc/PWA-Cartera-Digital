@@ -142,6 +142,16 @@ export default {
   methods: {
     // Guardar gastos en store y db
     NextGasto () {
+      if (this.form_gasto.frecuencia === 'Semanal') {
+        this.form_gasto.cantidadMensual = this.form_gasto.cantidad * 4
+      }
+      if (this.form_gasto.frecuencia === 'Quincenal') {
+        this.form_gasto.cantidadMensual = this.form_gasto.cantidad * 2
+      }
+      if (this.form_gasto.frecuencia === 'Mensual') {
+        this.form_gasto.cantidadMensual = this.form_gasto.cantidad
+      }
+
       let form_gasto = this.form_gasto
       let results = this.form.gastos.filter(function (element, index) {
         return element.gasto === form_gasto.gasto
@@ -171,6 +181,16 @@ export default {
       }
     },
     crearGasto () {
+      if (this.form_gasto.frecuencia === 'Semanal') {
+        this.form_gasto.cantidadMensual = this.form_gasto.cantidad * 4
+      }
+      if (this.form_gasto.frecuencia === 'Quincenal') {
+        this.form_gasto.cantidadMensual = this.form_gasto.cantidad * 2
+      }
+      if (this.form_gasto.frecuencia === 'Mensual') {
+        this.form_gasto.cantidadMensual = this.form_gasto.cantidad
+      }
+
       let form_gasto = this.form_gasto
       let results = this.form.gastos.filter(function (element, index) {
         return element.gasto === form_gasto.gasto
@@ -213,18 +233,7 @@ export default {
         position: 'top-right'
       })
     },
-    // Calcular y actualizar la cantidad mensual de cada gasto
-    calcularCantidadMensual () {
-      if (this.form_gasto.frecuencia === 'Semanal') {
-        this.form_gasto.cantidadMensual = this.form_gasto.cantidad * 4
-      }
-      if (this.form_gasto.frecuencia === 'Quincenal') {
-        this.form_gasto.cantidadMensual = this.form_gasto.cantidad * 2
-      }
-      if (this.form_gasto.frecuencia === 'Mensual') {
-        this.form_gasto.cantidadMensual = this.form_gasto.cantidad
-      }
-    },
+    // Actualizar la cantidad mensual de cada gasto
     actualizarCantidadMensual (gasto) {
       if (gasto.frecuencia === 'Semanal') {
         gasto.cantidadMensual = gasto.cantidad * 4
@@ -279,10 +288,6 @@ export default {
     AgregarGastos () {
       const length = this.form.gastos.length + 1
       return `Agregar otra opción (${length}/5)`
-    },
-    // Calcular la cantidad mensual de cada gasto
-    GastoCantidadMensual () {
-      return this.calcularCantidadMensual()
     }
   },
   components: {

@@ -156,6 +156,7 @@ export default {
 
 <style lang="scss">
   $green: #c0d84a;
+  $dark-green: #21ba45;
   $yellow: #fbbb2f;
   $pink: #e03757;
   $dark-purple: #3f224c;
@@ -463,6 +464,7 @@ export default {
                   }
 
                   .actualizar {
+                    color: $dark-green;
                     left: 10px;
                     right: initial;
                   }
