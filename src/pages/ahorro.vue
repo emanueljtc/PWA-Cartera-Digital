@@ -136,7 +136,8 @@ export default {
       loading: true,
       options: {
         chart: {
-          type: 'spline'
+          type: 'spline',
+          inverted: false
         },
         title: {
           text: ' '
@@ -145,7 +146,6 @@ export default {
           text: ''
         },
         yAxis: {
-          min: 0,
           labels: {
             format: '{value} k'
           },
@@ -171,15 +171,15 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [0, 6, JSON.parse(localStorage.getItem('ingreso') - 10 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 30 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 50 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 100 * 1.25), JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25)],
+          data: [2, 5],
           color: '#e03757'
         }, {
           name: 'Kuspid',
-          data: [1, 3, 5, 6, 12],
+          data: [1, 4],
           color: '#c0d84a'
         }, {
           name: 'Feudo Capital',
-          data: [0, 3, 5, 12],
+          data: [4, 8],
           color: '#cdcdcd'
         }]
       }
