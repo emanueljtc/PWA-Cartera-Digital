@@ -34,8 +34,8 @@
                 </div>
                 <div class="meta">
                   <i class="fas fa-star"></i>
-                  <p class="meta-text">{{ nombreMeta }}</p>
-                  <p class="meta-value">$ {{ cantidadMeta }}</p>
+                  <p class="meta-text">{{ PrintProposito }}</p>
+                  <p class="meta-value">{{ PrintMeta  }}</p>
                 </div>
                 <q-field>
                     <!-- <q-select
@@ -106,15 +106,21 @@
 </template>
 
 <script>
+import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
   data () {
     return {
+      form: {
+        id: 1,
+        exist: null,
+        meta: null,
+        proposito: null
+      },
       axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
-      cantidadMeta: JSON.parse(localStorage.getItem('cantidad de la meta')),
-      nombreMeta: JSON.parse(localStorage.getItem('meta')),
+      // cantidadMeta: this.$store.dispatch('ingresos/get', 1).then(item => { this.form.ingreso = item.ingreso }),
       form_inversion: {
         inv: null
       },
@@ -196,12 +202,27 @@ export default {
       console.log(width, height)
     }
   },
-  components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible
+  created () {
+    this.$store.dispatch('metas/get', this.form.id)
+      .then(item => {
+        this.form.id = item.id
+        this.form.exist = item.exist
+        this.form.meta = item.meta
+        this.form.proposito = item.proposito
+      })
   },
-  mounted () {
-    this.totalIngreso = JSON.parse(localStorage.getItem('ingreso'))
-    this.totalGastos = 0
+  computed: {
+    PrintMeta () {
+      let value = this.form.meta
+      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return currencyNum
+    },
+    PrintProposito () {
+      return this.form.proposito
+    }
+  },
+  components: {
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas
   }
 }
 </script>
@@ -549,15 +570,7 @@ $green: #c0d84a;
               position: relative;
             }
             i {
-              border: 1px solid yellow;
-              color: yellow ;
-              width: 40px;
-              height: 25px;
-              padding: 2px;
-              border-radius: 20px;
-              position: relative;
-              top: 7px;
-              left: 6%;
+              left: -3% !important;
             }
           }
         .btn-next{
