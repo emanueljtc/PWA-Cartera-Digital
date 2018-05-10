@@ -174,15 +174,15 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [2, 7],
+          data: [4],
           color: '#e03757'
         }, {
           name: 'Kuspid',
-          data: [1, 4],
+          data: [1],
           color: '#c0d84a'
         }, {
           name: 'Feudo Capital',
-          data: [4, 8],
+          data: [3],
           color: '#cdcdcd'
         }]
       }
