@@ -14,35 +14,7 @@
 
           <!-- Targets -->
           <q-tab-pane name="actual">
-            <div class="grafica">
-              <!-- <p class="total">Total: $10,000.00</p> -->
-              <p class="total"><span>Total:</span> <vue-autonumeric v-model="ingreso" :options="{currencySymbol: '$'}" disabled /></p>
-            </div>
-            <div v-for="(egreso, key) in egresos" :key="key">
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span> {{ calcularEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
-                  <p class="cantidad"> <vue-autonumeric v-model="egreso.cantidadFinal" :options="{currencySymbol: '$'}" disabled /> </p>
-                </div>
-              </div>
-            </div>
-            <div v-if="deuda !== null">
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span>{{ calcularDeuda() }}%</span> Deuda</p>
-                  <p class="cantidad"><vue-autonumeric v-model="deudaFinal" :options="{currencySymbol: '$'}" disabled /></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="data-box">
-                <div class="data">
-                  <p class="porcentaje"><span>{{ porcentajeAhorro }}%</span> Ahorro</p>
-                  <p class="cantidad"><vue-autonumeric v-model="ahorroCalcular" :options="{currencySymbol: '$'}" disabled /></p>
-                </div>
-              </div>
-            </div>
-             <button>Ver mi meta <i class="material-icons">arrow_forward</i></button>
+            <presupuesto-actual />
           </q-tab-pane>
           <q-tab-pane name="recomendado">Recomendado</q-tab-pane>
           <q-tab-pane name="ahorro" to="/ahorro" exact>Ahorro</q-tab-pane>
@@ -55,94 +27,16 @@
 </template>
 
 <script>
+import PresupuestoActual from 'src/components/PresupuestoActual'
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
-import VueHighcharts from 'vue-highcharts'
-import VueAutonumeric from 'vue-autonumeric/src/components/VueAutonumeric.vue'
 
 export default {
   name: 'Presupuesto',
   data () {
-    return {
-      ingreso: this.ingreso,
-      egresos: this.egresos,
-      gastos: this.gastos,
-      deuda: this.deuda,
-      frecuenciaDeuda: this.frecuenciaDeuda,
-      cantidadDeuda: this.cantidadDeuda,
-      meta: this.meta,
-      cantidadMeta: this.cantidadMeta,
-      //
-      deudaFinal: null,
-      egresoFinal: null,
-      egresosFinales: []
-    }
-  },
-  computed: {
-    ahorroCalcular () {
-      let totalIngreso = this.ingreso
-      let totalGastos = 0
-      this.egresos.forEach(function (egreso, index) {
-        totalGastos = totalGastos + egreso.cantidadFinal
-      })
-      let ahorro = totalIngreso - totalGastos - this.deudaFinal
-      return ahorro
-      // return this.egresos.reduce((memo, gasto) => {
-      //   return memo - gasto.cantidadFinal
-      // }, this.ingreso)
-    },
-    porcentajeAhorro () {
-      let totalIngreso = this.ingreso
-      let totalAhorro = this.ahorroCalcular
-
-      let porcentajeA = Math.round((totalAhorro * 100) / totalIngreso)
-      return porcentajeA
-    }
-  },
-  methods: {
-    calcularEgresos (egreso) {
-      if (egreso.frecuencia === 'Semanal') {
-        const egresoCalc = egreso.cantidad * 4
-        egreso.cantidadFinal = egresoCalc
-      }
-      if (egreso.frecuencia === 'Quincenal') {
-        const egresoCalc = egreso.cantidad * 2
-        egreso.cantidadFinal = egresoCalc
-      }
-      if (egreso.frecuencia === 'Mensual') {
-        egreso.cantidadFinal = egreso.cantidad
-      }
-
-      const porcentajeE = Math.round((egreso.cantidadFinal * 100) / this.ingreso)
-      return porcentajeE
-    },
-    calcularDeuda () {
-      if (this.frecuenciaDeuda === 'Pago Único') {
-        this.deudaFinal = this.deuda
-      }
-      if (this.frecuenciaDeuda === 'Quincenal') {
-        const deudaCalc = this.cantidadDeuda * 2
-        this.deudaFinal = deudaCalc
-      }
-      if (this.frecuenciaDeuda === 'Mensual') {
-        this.deudaFinal = this.cantidadDeuda
-      }
-
-      const porcentajeD = Math.round((this.deudaFinal * 100) / this.ingreso)
-      return porcentajeD
-    }
-  },
-  mounted () {
-    this.ingreso = JSON.parse(localStorage.getItem('ingreso'))
-    this.egresos = JSON.parse(localStorage.getItem('egresos'))
-    this.gastos = JSON.parse(localStorage.getItem('gastos'))
-    this.deuda = JSON.parse(localStorage.getItem('deuda'))
-    this.frecuenciaDeuda = JSON.parse(localStorage.getItem('frecuencia de la deuda'))
-    this.cantidadDeuda = JSON.parse(localStorage.getItem('cantidad de la deuda'))
-    this.meta = JSON.parse(localStorage.getItem('meta'))
-    this.cantidadMeta = JSON.parse(localStorage.getItem('cantidad de la meta'))
+    return {}
   },
   components: {
-    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, VueAutonumeric
+    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual
   }
 }
 </script>
