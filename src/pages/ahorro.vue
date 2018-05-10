@@ -20,7 +20,7 @@
                     <button class="btn btn-tree">Feudo Capital</button>
                 </div>
                 <div class="grafica">
-                <p class="meses">Meses</p>
+                <p class="meses" style="display: none">Meses</p>
                     <!-- <img src="../statics/graf.png"> -->
                   <div class="highcharts" :style="styles">
                     <IHighCharts
@@ -145,19 +145,19 @@ export default {
           text: ''
         },
         yAxis: {
-          lineWidth: 1,
-          tickInterval: 1, // con este intervalo logro llegar a los 12 meses
-          min: 0, // se establece el minimo del intervalo
-          max: 12, // se establece el maximo en este caso 12 = 12 meses
+          min: 0,
+          labels: {
+            format: '{value} k'
+          },
           title: {
             text: ''
           }
         },
         xAxis: {
-          min: 0,
-          labels: {
-            format: '{value} k'
-          },
+          lineWidth: 1,
+          tickInterval: 1, // con este intervalo logro llegar a los 12 meses
+          min: 0, // se establece el minimo del intervalo
+          max: 12, // se establece el maximo en este caso 12 = 12 meses
           title: {
             text: ''
           }
@@ -521,6 +521,42 @@ $green: #c0d84a;
         .ver-ms-lg{
           margin-left: 22% !important;
         }
+        .meta{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          text-align: center;
+          .meta-text{
+            text-align: center;
+            margin: auto;
+            margin-left: -5%;
+            font-size: 18px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.39;
+            letter-spacing: normal;
+            font-family: Opensans;
+            }
+            .meta-value{
+              text-align: right;
+              left: -40px;
+              top: 4px;
+              position: relative;
+            }
+            i {
+              border: 1px solid yellow;
+              color: yellow ;
+              width: 40px;
+              height: 25px;
+              padding: 2px;
+              border-radius: 20px;
+              position: relative;
+              top: 7px;
+              left: 6%;
+            }
+          }
         .btn-next{
                 width: 120% !important;
                 height: 67px !important;
