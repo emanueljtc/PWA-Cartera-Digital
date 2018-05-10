@@ -38,36 +38,6 @@
                   <p class="meta-value">{{ PrintMeta  }}</p>
                 </div>
                 <q-field>
-                    <!-- <q-select
-                      class="select"
-                      v-model="form_inversion.inv"
-                      :options="selectOptions"
-                      float-label="Opciones de Inversión"
-                    /> -->
-                    <!-- <q-btn-dropdown label="Opciones de Inversión" class="select">
-                      <q-list link>
-                       <q-item>
-                            <q-item-main>
-                              <q-item-tile label>Axend <a href="#" style="position: relative; left: 50%; font-family: OpenSans;
-                              font-size: 18px;">Ver más</a></q-item-tile>
-                            </q-item-main>
-                          </q-item>
-                          <q-item-separator inset />
-                          <q-item>
-                            <q-item-main>
-                              <q-item-tile label>Kuspit <a href="#" style="position: relative; left: 50%; font-family: OpenSans;
-                              font-size: 18px;">Ver más</a></q-item-tile>
-                            </q-item-main>
-                          </q-item>
-                          <q-item-separator inset />
-                          <q-item>
-                            <q-item-main>
-                              <q-item-tile label>Feudo Capital <a href="#" style="position: relative; left: 30%; font-family: OpenSans;
-                              font-size: 18px;">Ver más</a></q-item-tile>
-                            </q-item-main>
-                          </q-item>
-                      </q-list>
-                    </q-btn-dropdown> -->
                       <q-list separator>
                         <q-collapsible label="Opciones de Inversión" opened class="select">
                           <div>
@@ -120,24 +90,6 @@ export default {
         proposito: null
       },
       axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
-      // cantidadMeta: this.$store.dispatch('ingresos/get', 1).then(item => { this.form.ingreso = item.ingreso }),
-      form_inversion: {
-        inv: null
-      },
-      selectOptions: [
-        {
-          label: 'Axend',
-          value: 'Axend'
-        },
-        {
-          label: 'Kuspid',
-          value: 'Kuspid'
-        },
-        {
-          label: 'Feudo Capital',
-          value: 'Feudo Capital'
-        }
-      ],
       styles: {},
       loading: true,
       options: {
