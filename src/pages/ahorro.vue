@@ -135,6 +135,9 @@ export default {
       styles: {},
       loading: true,
       options: {
+        lang: {
+          loading: ''
+        },
         chart: {
           type: 'spline',
           inverted: false
@@ -171,7 +174,7 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [2, 5],
+          data: [2, 7],
           color: '#e03757'
         }, {
           name: 'Kuspid',
