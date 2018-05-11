@@ -16,7 +16,7 @@
                 <h2 class="layer">$500</h2>
                 <div class="buttons">
                     <button class="btn btn-primary">Axend</button>
-                    <button class="btn btn-secondary">Kuspit</button>
+                    <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
                     <button class="btn btn-tree">Feudo Capital</button>
                 </div>
                 <div class="grafica">
@@ -498,29 +498,6 @@ $green: #c0d84a;
           margin-left: 22% !important;
         }
         .meta{
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          text-align: center;
-          .meta-text{
-            text-align: center;
-            margin: auto;
-            margin-left: -5%;
-            font-size: 18px;
-            font-weight: normal;
-            font-style: normal;
-            font-stretch: normal;
-            line-height: 1.39;
-            letter-spacing: normal;
-            font-family: Opensans;
-            }
-            .meta-value{
-              text-align: right;
-              left: -40px;
-              top: 4px;
-              position: relative;
-            }
             i {
               left: -3% !important;
             }
