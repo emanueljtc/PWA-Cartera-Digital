@@ -307,7 +307,7 @@ $green: #c0d84a;
                 margin-left: 68%;
               }
               .btn-next{
-                   position: relative;
+                   position: absolute;
                    font-family: Nunito;
                    font-size: 20px;
                    font-weight: 500;
@@ -320,7 +320,7 @@ $green: #c0d84a;
                    cursor: pointer;
                    margin-bottom: 15px;
                    margin-top: 18px;
-                   margin-left: 25%;
+                   margin-left: -20%;
 
               }
             }
@@ -358,11 +358,11 @@ $green: #c0d84a;
             }
           }
         .btn-next{
-                width: 120% !important;
+                width: 102% !important;
                 height: 67px !important;
                 /* margin: 0px !important; */
                 border-radius: 0px !important;
-                margin-left: -10% !important;
+                margin-left: -50% !important;
                 margin-bottom: -10% !important;
 
         }
