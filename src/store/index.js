@@ -7,6 +7,7 @@ import egresos from './egresos'
 import gastos from './gastos'
 import deuda from './deuda'
 import metas from './metas'
+import capital from './capital'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
     egresos,
     gastos,
     deuda,
-    metas
+    metas,
+    capital
   }
 })
 

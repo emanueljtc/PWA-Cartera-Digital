@@ -58,7 +58,18 @@
             @click="$refs.stepper.previous()"
           >
           </button>
-          <capturar-metas @saved="finishPasos()"/>
+          <capturar-metas @saved="next()"/>
+        </q-step>
+
+        <!-- ===================================================== -->
+        <!-- CapitalInicial -->
+        <!-- ===================================================== -->
+        <q-step title="CapitalInicial" :ready="ready">
+          <button class="back"
+            @click="$refs.stepper.previous()"
+          >
+          </button>
+          <capturar-capital-inicial @saved="finishPasos()"/>
         </q-step>
       </q-stepper>
     </q-slide-transition>
@@ -102,6 +113,7 @@ import CapturarEgresos from 'src/components/CapturarEgresos'
 import CapturarGastos from 'src/components/CapturarGastos'
 import CapturarDeuda from 'src/components/CapturarDeuda'
 import CapturarMetas from 'src/components/CapturarMetas'
+import CapturarCapitalInicial from 'src/components/CapturarCapitalInicial'
 
 import { QStepper, QStep, QStepperNavigation, QSlideTransition, QModal } from 'quasar'
 
@@ -149,7 +161,7 @@ export default {
     }
   },
   components: {
-    QStepper, QStep, QStepperNavigation, QSlideTransition, QModal, CapturarIngreso, CapturarEgresos, CapturarGastos, CapturarDeuda, CapturarMetas
+    QStepper, QStep, QStepperNavigation, QSlideTransition, QModal, CapturarIngreso, CapturarEgresos, CapturarGastos, CapturarDeuda, CapturarMetas, CapturarCapitalInicial
   }
 }
 </script>
@@ -639,7 +651,7 @@ export default {
           }
         }
 
-        .deuda, .metas {
+        .deuda, .metas, .capital {
           font-family: $nunito;
           min-height: 100vh;
           height: auto;
@@ -850,7 +862,7 @@ export default {
           }
         }
 
-        .metas {
+        .metas, .capital {
           .content {
             .metas_desglose {
               margin-top: 40px;
