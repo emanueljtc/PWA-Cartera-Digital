@@ -1,7 +1,7 @@
 <template>
 <div>
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
-        <h2 class="layer">$500</h2>
+        <h2 class="layer">{{ PrintAhorro }}</h2>
         <div class="buttons">
           <button class="btn btn-primary">Axend</button>
           <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import PresupuestoActual from '../components/PresupuestoActual'
+import CapturarIngreso from '../components/CapturarIngreso'
 import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
@@ -71,6 +71,7 @@ export default {
         meta: null,
         proposito: null,
         ingreso: null,
+        deuda: null,
         egreso: []
       },
       ahorro: null,
@@ -147,15 +148,14 @@ export default {
         this.form.meta = item.meta
         this.form.proposito = item.proposito
       })
-    this.$store.dispatch('ingresos/get', 1)
+    this.$store.dispatch('ingresos/get', this.form.id)
       .then(item => {
+        this.form.id = item.id
         this.form.ingreso = item.ingreso
       })
-    this.$store.dispatch('egresos/all')
-      .then(egresos => {
-        egresos.forEach((egreso) => {
-          this.form.egresos.push(egreso)
-        })
+    this.$store.dispatch('deuda/get', 1)
+      .then(item => {
+        this.form.deuda = item.cantidadMensual
       })
   },
   computed: {
@@ -166,10 +166,25 @@ export default {
     },
     PrintProposito () {
       return this.form.proposito
+    },
+    PrintIngreso () {
+      return this.form.ingreso
+    },
+    CalcularAhorro () {
+      let totalIngreso = this.form.ingreso
+      let totalEgresos = 4000
+      let ahorro = totalIngreso - totalEgresos
+      return ahorro
+    },
+    PrintAhorro () {
+      let ahorro = this.CalcularAhorro
+      let value = ahorro
+      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return currencyNum
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, PresupuestoActual
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso
   }
 }
 </script>
