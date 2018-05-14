@@ -52,11 +52,7 @@ export default {
   },
   computed: {
     isIngresoValid () {
-      if (this.form.reloadIngreso === 0) {
-        return this.form.ingreso !== null
-      } else {
-        return this.form.reloadIngreso !== 0
-      }
+      return this.form.ingreso !== null
     }
   },
   components: {
