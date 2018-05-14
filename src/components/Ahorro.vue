@@ -22,7 +22,7 @@
         <div class="meta">
            <i class="fas fa-star"></i>
            <p class="meta-text">{{ PrintProposito }}</p>
-           <p class="meta-value">{{ PrintMeta  }}</p>
+           <p class="meta-value">{{ PrintMeta }}</p>
         </div>
         <q-field>
             <q-list separator>
@@ -78,7 +78,7 @@ export default {
         capitalInicial: null
       },
       ahorro: null,
-      axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
+      axend: null,
       styles: {},
       loading: true,
       options: {
@@ -121,7 +121,7 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [4],
+          data: [2],
           color: '#e03757'
         }, {
           name: 'Kuspid',
@@ -198,6 +198,17 @@ export default {
       let value = ahorro
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
+    },
+    Axend () {
+      let ingreso = this.form.ingreso
+      let ahorro = this.CalcularAhorro
+      let axend = ingreso + ahorro * 1.25
+      return axend
+    },
+    PrintAxend () {
+      let a = this.Axend
+      let value = a
+      return parseFloat(value)
     },
     PrintCapitalInicial () {
       return this.form.capitalInicial
