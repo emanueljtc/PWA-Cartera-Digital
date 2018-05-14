@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import PresupuestoActual from '../components/PresupuestoActual'
 import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
@@ -155,7 +156,7 @@ export default {
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, PresupuestoActual
   }
 }
 </script>
