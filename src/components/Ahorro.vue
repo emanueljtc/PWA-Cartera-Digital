@@ -1,7 +1,7 @@
 <template>
 <div>
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
-        <h2 class="layer">{{ PrintEgresos }}</h2>
+        <h2 class="layer">{{ PrintAhorro }}</h2>
         <div class="buttons">
           <button class="btn btn-primary">Axend</button>
           <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
@@ -181,7 +181,7 @@ export default {
     },
     CalcularAhorro () {
       let totalIngreso = this.form.ingreso
-      let totalEgresos = 4000
+      let totalEgresos = this.form.egreso
       let ahorro = totalIngreso - totalEgresos
       return ahorro
     },
