@@ -202,7 +202,8 @@ export default {
     Axend () {
       let ingreso = this.form.ingreso
       let ahorro = this.CalcularAhorro
-      let axend = ingreso + ahorro * 1.25
+      let interes = 1.25
+      let axend = ingreso + ahorro * interes
       return axend
     },
     PrintAxend () {
