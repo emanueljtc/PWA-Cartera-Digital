@@ -1,7 +1,7 @@
 <template>
 <div>
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
-        <h2 class="layer">{{ PrintAhorro }}</h2>
+        <h2 class="layer">{{ PrintEgresos }}</h2>
         <div class="buttons">
           <button class="btn btn-primary">Axend</button>
           <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
@@ -58,6 +58,7 @@
 
 <script>
 import CapturarIngreso from '../components/CapturarIngreso'
+import CapturarEgresos from '../components/CapturarEgresos'
 import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
@@ -157,6 +158,11 @@ export default {
       .then(item => {
         this.form.deuda = item.cantidadMensual
       })
+    this.$store.dispatch('egresos/get', this.form.id)
+      .then(item => {
+        this.form.id = item.id
+        this.form.egreso = item.cantidad
+      })
   },
   computed: {
     PrintMeta () {
@@ -169,6 +175,9 @@ export default {
     },
     PrintIngreso () {
       return this.form.ingreso
+    },
+    PrintEgresos () {
+      return this.form.egreso
     },
     CalcularAhorro () {
       let totalIngreso = this.form.ingreso
@@ -184,7 +193,7 @@ export default {
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos
   }
 }
 </script>
