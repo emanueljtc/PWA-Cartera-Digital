@@ -1,7 +1,7 @@
 <template>
 <div>
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
-        <h2 class="layer">{{ PrintEgresos }}</h2>
+        <h2 class="layer">{{ PrintCapitalInicial }}</h2>
         <div class="buttons">
           <button class="btn btn-primary">Axend</button>
           <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
@@ -59,6 +59,7 @@
 <script>
 import CapturarIngreso from '../components/CapturarIngreso'
 import CapturarEgresos from '../components/CapturarEgresos'
+import CapturarCapitalInicial from '../components/CapturarCapitalInicial'
 import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
@@ -73,7 +74,8 @@ export default {
         proposito: null,
         ingreso: null,
         deuda: null,
-        egreso: []
+        egreso: [],
+        capitalInicial: null
       },
       ahorro: null,
       axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
@@ -163,6 +165,12 @@ export default {
         this.form.id = item.id
         this.form.egreso = item.cantidad
       })
+    this.$store.dispatch('capital/get', this.form.id)
+      .then(item => {
+        this.form.id = item.id
+        this.form.exist = item.exist
+        this.form.capitalInicial = item.capitalInicial
+      })
   },
   computed: {
     PrintMeta () {
@@ -181,7 +189,7 @@ export default {
     },
     CalcularAhorro () {
       let totalIngreso = this.form.ingreso
-      let totalEgresos = 4000
+      let totalEgresos = this.form.egreso
       let ahorro = totalIngreso - totalEgresos
       return ahorro
     },
@@ -190,10 +198,13 @@ export default {
       let value = ahorro
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
+    },
+    PrintCapitalInicial () {
+      return this.form.capitalInicial
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos
+    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos, CapturarCapitalInicial
   }
 }
 </script>
