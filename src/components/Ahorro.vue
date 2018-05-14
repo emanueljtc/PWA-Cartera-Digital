@@ -69,8 +69,11 @@ export default {
         id: 1,
         exist: null,
         meta: null,
-        proposito: null
+        proposito: null,
+        ingreso: null,
+        egreso: []
       },
+      ahorro: null,
       axend: JSON.parse(localStorage.getItem('ingreso') - 300 * 1.25),
       styles: {},
       loading: true,
@@ -143,6 +146,16 @@ export default {
         this.form.exist = item.exist
         this.form.meta = item.meta
         this.form.proposito = item.proposito
+      })
+    this.$store.dispatch('ingresos/get', 1)
+      .then(item => {
+        this.form.ingreso = item.ingreso
+      })
+    this.$store.dispatch('egresos/all')
+      .then(egresos => {
+        egresos.forEach((egreso) => {
+          this.form.egresos.push(egreso)
+        })
       })
   },
   computed: {
