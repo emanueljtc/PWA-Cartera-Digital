@@ -121,7 +121,7 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: [2],
+          data: this.PrintAxend, // obtener resultado de formula de Axend
           color: '#e03757'
         }, {
           name: 'Kuspid',
