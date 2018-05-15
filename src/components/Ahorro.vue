@@ -96,18 +96,18 @@ export default {
           text: ''
         },
         yAxis: {
-          labels: {
-            format: '{value} k'
-          },
+          lineWidth: 1,
+          tickInterval: 1, // con este intervalo logro llegar a los 12 meses
+          min: 0, // se establece el minimo del intervalo
+          max: 12, // se establece el maximo en este caso 12 = 12 meses
           title: {
             text: ''
           }
         },
         xAxis: {
-          lineWidth: 1,
-          tickInterval: 1, // con este intervalo logro llegar a los 12 meses
-          min: 0, // se establece el minimo del intervalo
-          max: 12, // se establece el maximo en este caso 12 = 12 meses
+          labels: {
+            format: '{value} k'
+          },
           title: {
             text: ''
           }
@@ -121,11 +121,11 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: this.PrintAxend, // obtener resultado del calculo de Axend
+          data: this.PrintAxend, // obtener resultados del calculo de Axend
           color: '#e03757'
         }, {
           name: 'Kuspid',
-          data: [1],
+          data: [1, 9],
           color: '#c0d84a'
         }, {
           name: 'Feudo Capital',
