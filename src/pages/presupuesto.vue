@@ -16,7 +16,9 @@
           <q-tab-pane name="actual">
             <presupuesto-actual />
           </q-tab-pane>
-          <q-tab-pane name="recomendado">Recomendado</q-tab-pane>
+          <q-tab-pane name="recomendado">
+            <presupuesto-recomendado />
+          </q-tab-pane>
           <q-tab-pane name="ahorro" to="/ahorro" exact>Ahorro</q-tab-pane>
           <q-tab-pane name="gastos">Gastos</q-tab-pane>
         </q-tabs>
@@ -28,6 +30,7 @@
 
 <script>
 import PresupuestoActual from 'src/components/PresupuestoActual'
+import PresupuestoRecomendado from 'src/components/PresupuestoRecomendado'
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
 
 export default {
@@ -36,7 +39,7 @@ export default {
     return {}
   },
   components: {
-    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual
+    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual, PresupuestoRecomendado
   }
 }
 </script>
