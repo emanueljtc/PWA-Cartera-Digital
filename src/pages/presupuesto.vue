@@ -16,9 +16,13 @@
           <q-tab-pane name="actual">
             <presupuesto-actual />
           </q-tab-pane>
-          <q-tab-pane name="recomendado">Recomendado</q-tab-pane>
+          <q-tab-pane name="recomendado">
+            <presupuesto-recomendado />
+          </q-tab-pane>
           <q-tab-pane name="ahorro" to="/ahorro" exact>Ahorro</q-tab-pane>
-          <q-tab-pane name="gastos">Gastos</q-tab-pane>
+          <q-tab-pane name="gastos">
+            <gastos />
+          </q-tab-pane>
         </q-tabs>
         </div>
       </div>
@@ -28,6 +32,8 @@
 
 <script>
 import PresupuestoActual from 'src/components/PresupuestoActual'
+import PresupuestoRecomendado from 'src/components/PresupuestoRecomendado'
+import Gastos from 'src/components/Gastos'
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
 
 export default {
@@ -36,7 +42,7 @@ export default {
     return {}
   },
   components: {
-    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual
+    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual, PresupuestoRecomendado, Gastos
   }
 }
 </script>
@@ -64,6 +70,11 @@ export default {
   }
 
   @font-face {
+    font-family: OpenSans;
+    src: url(~assets/fonts/OpenSans/OpenSans-Regular.ttf);
+  }
+
+  @font-face {
     font-family: OpenSansSemibold;
     src: url(~assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
   }
@@ -75,6 +86,7 @@ export default {
 
   $nunito: Nunito;
   $nunitobold: NunitoBold;
+  $opensans: OpenSans;
   $os-semibold: OpenSansSemibold;
   $os-bold: OpenSansBold;
 
@@ -258,6 +270,95 @@ export default {
     }
   }
 
+  .gastos-mayor {
+    position: relative;
+    height: auto;
+    margin: 0px;
+    width: 100%;
+
+    .content {
+      width: 100%;
+      h2 {
+        font-family: $nunitobold;
+        font-size: 35px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.27;
+        letter-spacing: normal;
+        text-align: center;
+        color: $dark-purple;
+        margin-bottom: 50px;
+      }
+
+      .circulos {
+        position: relative;
+        width: 100%;
+        min-height: 200px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+
+        .tu-precio, .precio-bajo {
+          position: relative;
+          width: 200px;
+          height: 200px;
+          border-radius: 100px;
+          background: green;
+          display: flex;
+
+          p {
+            font-family: $os-semibold;
+            width: auto;
+            margin: 0 15%;
+            color: $white;
+            font-size: 18px;
+            font-weight: 600;
+            font-style: normal;
+            line-height: 1.56;
+            letter-spacing: normal;
+            text-align: center;
+          }
+        }
+
+        .tu-precio {
+          background-color: rgba(63, 34, 76, 0.7);
+          margin-right: -35px;
+        }
+
+        .precio-bajo {
+          background-color: rgba(224, 55, 87, 0.7);
+          margin-left: -35px;
+          justify-content: flex-end;
+        }
+      }
+
+      .arrow {
+        font-size: 35px;
+        color: $dark-purple;
+        margin-bottom: 40px;
+      }
+
+      .ahorro {
+        p {
+          font-family: $opensans;
+          color: $dark-purple;
+          font-size: 18px;
+          font-weight: normal;
+          line-height: 1.39;
+          margin: 0;
+
+          span {
+            font-family: $nunitobold;
+            font-size: 60px;
+            font-weight: bold;
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 1000px) {
     .layout-padding {
       .presupuesto {
@@ -310,6 +411,49 @@ export default {
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .gastos-mayor {
+      padding: 0 5%;
+      padding-bottom: 50px;
+      .content {
+        h2 {
+          font-size: 25px !important;
+        }
+
+        .circulos {
+          min-height: 150px;
+          .tu-precio, .precio-bajo {
+            p {
+              font-size: 16px;
+            }
+          }
+
+          .tu-precio {
+            margin-right: -15px;
+          }
+
+          .precio-bajo {
+            margin-left: -15px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .gastos-mayor {
+      .content {
+        .circulos {
+          .tu-precio,
+          .precio-bajo {
+            width: 150px;
+            height: 150px;
           }
         }
       }
