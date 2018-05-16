@@ -121,15 +121,15 @@ export default {
         },
         series: [{
           name: 'Axend',
-          data: this.PrintAxend, // obtener resultados del calculo de Axend
+          data: [2, 3],
           color: '#e03757'
         }, {
           name: 'Kuspid',
-          data: [1, 9],
+          data: [1, 12, 10],
           color: '#c0d84a'
         }, {
           name: 'Feudo Capital',
-          data: [3],
+          data: [2, 8, 10, 23],
           color: '#cdcdcd'
         }]
       }
