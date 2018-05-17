@@ -39,6 +39,15 @@ export default [{
     }
   },
   {
+    path: '/presupuesto-recomendado',
+    name: 'app.presupuesto-recomendado',
+    component: () =>
+                    import('pages/presupuesto-recomendado'),
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: '/ahorro',
     name: 'app.ahorro',
     component: () =>

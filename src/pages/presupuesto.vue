@@ -8,20 +8,13 @@
           <q-tabs>
           <!-- Tabs - notice slot="title" -->
           <q-tab default slot="title" name="actual" label="Actual" />
-          <q-tab slot="title" name="recomendado" label="Recomendado" />
+          <q-tab slot="title" name="recomendado" label="Recomendado" @click.native="$router.replace('/presupuesto-recomendado')" />
           <q-tab slot="title" name="ahorro" label="Ahorro" @click.native="$router.replace('/ahorro')" />
-          <q-tab slot="title" name="gastos" label="Gastos" />
+          <q-tab slot="title" name="gastos" label="Gastos" @click.native="$router.replace('/gastos')" />
 
           <!-- Targets -->
           <q-tab-pane name="actual">
             <presupuesto-actual />
-          </q-tab-pane>
-          <q-tab-pane name="recomendado">
-            <presupuesto-recomendado />
-          </q-tab-pane>
-          <q-tab-pane name="ahorro" to="/ahorro" exact>Ahorro</q-tab-pane>
-          <q-tab-pane name="gastos">
-            <gastos />
           </q-tab-pane>
         </q-tabs>
         </div>
@@ -32,8 +25,6 @@
 
 <script>
 import PresupuestoActual from 'src/components/PresupuestoActual'
-import PresupuestoRecomendado from 'src/components/PresupuestoRecomendado'
-import Gastos from 'src/components/Gastos'
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
 
 export default {
@@ -42,7 +33,7 @@ export default {
     return {}
   },
   components: {
-    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual, PresupuestoRecomendado, Gastos
+    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual
   }
 }
 </script>
