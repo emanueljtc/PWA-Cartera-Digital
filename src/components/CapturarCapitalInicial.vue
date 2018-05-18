@@ -2,14 +2,14 @@
   <div class="container capital center-align">
     <div class="content">
       <h2>Capital Inicial</h2>
-      <p>¿Quieres iniciar tu ahorro desde cero?</p>
+      <p>¿Tienes un ahorro inicial?</p>
       <div class="input-field center-align">
-       <q-btn
-          @click="capitalExist = false, clickedCapital = true, deleteCapital()"
-          label="Si"
-        />
         <q-btn
           @click="capitalExist = true, clickedCapital = true, form.exist = true"
+          label="Si"
+        />
+       <q-btn
+          @click="capitalExist = false, clickedCapital = true, deleteCapital()"
           label="No"
         />
       </div>

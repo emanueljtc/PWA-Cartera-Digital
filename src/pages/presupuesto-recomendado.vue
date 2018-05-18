@@ -3,18 +3,18 @@
     <div class="layout-padding center-align">
       <div class="container presupuesto">
         <div class="content">
-          <h1>Gasto mayor</h1>
+          <h1>Presupuesto</h1>
           <!-- <highcharts :options="options"></highcharts> -->
           <q-tabs>
           <!-- Tabs - notice slot="title" -->
-          <q-tab slot="title" name="actual" label="Actual" @click.native="$router.replace('/presupuesto')"/>
-          <q-tab slot="title" name="recomendado" label="Recomendado" @click.native="$router.replace('/presupuesto-recomendado')" />
+          <q-tab slot="title" name="actual" label="Actual" @click.native="$router.replace('/presupuesto')" />
+          <q-tab default slot="title" name="recomendado" label="Recomendado" />
           <q-tab slot="title" name="ahorro" label="Ahorro" @click.native="$router.replace('/ahorro')" />
-          <q-tab default slot="title" name="gastos" label="Gastos" />
+          <q-tab slot="title" name="gastos" label="Gastos" @click.native="$router.replace('/gastos')" />
 
           <!-- Targets -->
-          <q-tab-pane name="gastos">
-            <gastos />
+          <q-tab-pane name="recomendado">
+            <presupuesto-recomendado />
           </q-tab-pane>
         </q-tabs>
         </div>
@@ -24,9 +24,7 @@
 </template>
 
 <script>
-import PresupuestoActual from 'src/components/PresupuestoActual'
 import PresupuestoRecomendado from 'src/components/PresupuestoRecomendado'
-import Gastos from 'src/components/Gastos'
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
 
 export default {
@@ -35,7 +33,7 @@ export default {
     return {}
   },
   components: {
-    QTabs, QTab, QTabPane, QRouteTab, PresupuestoActual, PresupuestoRecomendado, Gastos
+    QTabs, QTab, QTabPane, QRouteTab, PresupuestoRecomendado
   }
 }
 </script>

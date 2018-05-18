@@ -7,10 +7,10 @@
           <!-- <highcharts :options="options"></highcharts> -->
           <q-tabs>
             <!-- Tabs - notice slot="title" -->
-            <q-tab slot="title" name="actual" label="Actual" />
-            <q-tab slot="title" name="recomendado" label="Recomendado" />
+            <q-tab slot="title" name="actual" label="Actual" @click.native="$router.replace('/presupuesto')" />
+            <q-tab slot="title" name="recomendado" label="Recomendado" @click.native="$router.replace('/presupuesto-recomendado')" />
             <q-tab default slot="title" name="ahorro" label="Ahorro" />
-            <q-tab slot="title" name="gastos" label="Gastos" />
+            <q-tab slot="title" name="gastos" label="Gastos" @click.native="$router.replace('/gastos')" />
             <q-tab-pane name="ahorro">
                 <Ahorro></Ahorro>
             </q-tab-pane>
