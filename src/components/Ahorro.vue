@@ -98,7 +98,7 @@ export default {
         subtitle: {
           text: ''
         },
-        yAxis: {
+        xAxis: {
           lineWidth: 1,
           tickInterval: 1, // con este intervalo logro llegar a los 12 meses
           min: 0, // se establece el minimo del intervalo
@@ -107,7 +107,7 @@ export default {
             text: ''
           }
         },
-        xAxis: {
+        yAxis: {
           labels: {
             format: '{value} k'
           },
@@ -145,11 +145,11 @@ export default {
       let ingreso = this.form.ingreso
       let ahorro = this.CalcularAhorro
       let interes = 1.25
-      let axend = ingreso + ahorro * interes
-      console.log(axend)
+      let axend = parseInt(ingreso + ahorro * interes)
+      console.log(ingreso)
       let axendSeries = {
         name: 'Axend',
-        data: axend,
+        data: [axend],
         color: '#e03757'
       }
       this.$refs.highcharts.addSeries(axendSeries)
