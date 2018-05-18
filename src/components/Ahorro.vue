@@ -141,15 +141,25 @@ export default {
     onResize (width, height) {
       console.log(width, height)
     },
+    getAxendResult (ingreso, ahorro, interes) {
+      let formula = ingreso + ahorro * interes
+      return formula
+    },
+    getChartData (ingreso, ahorro, interes) {
+      let arrayData = []
+      for (let i = 0; i < 12; i++) {
+        arrayData.push(this.getAxendResult(ingreso, ahorro, interes))
+      }
+      return arrayData
+    },
     loadAxend () {
       let ingreso = this.form.ingreso
       let ahorro = this.CalcularAhorro
       let interes = 1.25
-      let axend = parseInt(ingreso + ahorro * interes)
       console.log(ingreso)
       let axendSeries = {
         name: 'Axend',
-        data: [axend],
+        data: this.getChartData(ingreso, ahorro, interes),
         color: '#e03757'
       }
       this.$refs.highcharts.addSeries(axendSeries)
