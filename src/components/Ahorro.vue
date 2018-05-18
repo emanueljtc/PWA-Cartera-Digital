@@ -10,13 +10,15 @@
         <div class="grafica">
             <p class="meses" style="display: none">Meses</p>
             <div class="highcharts" :style="styles">
-                <IHighCharts
+                <vue-highcharts
                     :options="options"
                     :loading="loading"
                     :resizable="true"
+                    ref = 'highcharts'
                     @load="onLoad"
                     @resize="onResize"
-                />
+                >
+                </vue-highcharts>
             </div>
         </div>
         <div class="meta">
@@ -62,7 +64,8 @@ import CapturarEgresos from '../components/CapturarEgresos'
 import CapturarCapitalInicial from '../components/CapturarCapitalInicial'
 import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
-import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
+import VueHighcharts from 'vue2-highcharts'
+// import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
   data () {
@@ -120,16 +123,12 @@ export default {
           }
         },
         series: [{
-          name: 'Axend',
-          data: [2, 3],
-          color: '#e03757'
-        }, {
           name: 'Kuspid',
           data: [1, 12, 10],
           color: '#c0d84a'
         }, {
           name: 'Feudo Capital',
-          data: [2, 8, 10, 23],
+          data: [2, 7, 16, 23],
           color: '#cdcdcd'
         }]
       }
@@ -141,9 +140,25 @@ export default {
     },
     onResize (width, height) {
       console.log(width, height)
+    },
+    loadAxend () {
+      let ingreso = this.form.ingreso
+      let ahorro = this.CalcularAhorro
+      let interes = 1.25
+      let axend = ingreso + ahorro * interes
+      console.log(axend)
+      let axendSeries = {
+        name: 'Axend',
+        data: axend,
+        color: '#e03757'
+      }
+      this.$refs.highcharts.addSeries(axendSeries)
     }
   },
   created () {
+    setTimeout(() => {
+      this.loadAxend()
+    }, 2000)
     this.$store.dispatch('metas/get', this.form.id)
       .then(item => {
         this.form.id = item.id
@@ -199,7 +214,7 @@ export default {
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
     },
-    Axend () {
+    /* Axend () {
       let ingreso = this.form.ingreso
       let ahorro = this.CalcularAhorro
       let interes = 1.25
@@ -210,13 +225,13 @@ export default {
       let a = this.Axend
       let value = a
       return parseFloat(value)
-    },
+    }, */
     PrintCapitalInicial () {
       return this.form.capitalInicial
     }
   },
   components: {
-    IHighCharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos, CapturarCapitalInicial
+    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos, CapturarCapitalInicial
   }
 }
 </script>
