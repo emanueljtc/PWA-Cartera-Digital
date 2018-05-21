@@ -224,18 +224,6 @@ export default {
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
     },
-    /* Axend () {
-      let ingreso = this.form.ingreso
-      let ahorro = this.CalcularAhorro
-      let interes = 1.25
-      let axend = ingreso + ahorro * interes
-      return axend
-    },
-    PrintAxend () {
-      let a = this.Axend
-      let value = a
-      return parseFloat(value)
-    }, */
     PrintCapitalInicial () {
       return this.form.capitalInicial
     }
