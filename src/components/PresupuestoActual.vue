@@ -1,6 +1,12 @@
 <template>
   <div class="container">
     <div class="grafica">
+      <vue-highcharts
+        :options="pieOptions"
+        ref="pieChart"
+      >
+      </vue-highcharts>
+      {{ Load() }}
       <p class="total"><span>Total:</span> {{ PrintIngreso }}</p>
     </div>
     <div class="egresos" v-for="(egreso, key) in form.egresos" :key="key">
@@ -41,7 +47,7 @@
 </template>
 
 <script>
-import VueHighcharts from 'vue-highcharts'
+import VueHighcharts from 'vue2-highcharts'
 export default {
   name: 'Actual',
   data () {
@@ -51,7 +57,46 @@ export default {
         deuda: null,
         egresos: []
       },
-      ahorro: null
+      asyncData: {
+        name: 'Cantidad',
+        data: [5000, 3000, 2400, 3000, 6600]
+      },
+      ahorro: null,
+      pieOptions: {
+        chart: {
+          type: 'pie',
+          options3d: {
+            enabled: false,
+            alpha: 45
+          },
+          backgroundColor: '#fcfcfc',
+          height: 270
+        },
+        title: {
+          text: ''
+        },
+        plotOptions: {
+          pie: {
+            innerSize: 100,
+            depth: 45
+          }
+        },
+        series: [
+          {
+            name: 'Cantidad',
+            data: []
+          }
+        ],
+        colors: [
+          '#64c9db',
+          '#c0d84a',
+          '#e03757',
+          '#59ba70',
+          '#af85bc',
+          '#fbbb2f',
+          '#6179bb'
+        ]
+      }
     }
   },
   created () {
@@ -60,16 +105,16 @@ export default {
         this.form.ingreso = item.ingreso
       })
 
-    this.$store.dispatch('deuda/get', 1)
-      .then(item => {
-        this.form.deuda = item.cantidadMensual
-      })
-
     this.$store.dispatch('egresos/all')
       .then(egresos => {
         egresos.forEach((egreso) => {
           this.form.egresos.push(egreso)
         })
+      })
+
+    this.$store.dispatch('deuda/get', 1)
+      .then(item => {
+        this.form.deuda = item.cantidadMensual
       })
   },
   methods: {
@@ -90,6 +135,13 @@ export default {
       })
       let ahorro = totalIngreso - totalEgresos - this.form.deuda
       this.ahorro = ahorro
+    },
+    Load () {
+      let pieChart = this.$refs.pieChart
+      let asyncData = this.asyncData
+      setTimeout(() => {
+        pieChart.addSeries(asyncData)
+      }, 500)
     }
   },
   computed: {

@@ -185,6 +185,24 @@ export default {
               .grafica {
                 margin-bottom: 50px;
 
+                .vue-highcharts {
+                  margin: 0px;
+                  padding: 0px;
+                  box-shadow: none;
+                  background-color: #fcfcfc;
+                  border: none;
+
+                  .highcharts-container {
+                    height: 260px !important;
+                  }
+
+                  .highcharts-credits,
+                  .highcharts-label,
+                  .highcharts-data-label-connector {
+                    display: none;
+                  }
+                }
+
                 .total {
                   font-family: $nunitobold;
                   font-size: 20px;
