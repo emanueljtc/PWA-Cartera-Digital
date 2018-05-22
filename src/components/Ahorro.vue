@@ -101,7 +101,7 @@ export default {
         xAxis: {
           lineWidth: 1,
           tickInterval: 1, // con este intervalo logro llegar a los 12 meses
-          min: 0, // se establece el minimo del intervalo
+          min: 1, // se establece el minimo del intervalo
           max: 12, // se establece el maximo en este caso 12 = 12 meses
           title: {
             text: ''
@@ -214,7 +214,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
           capitalFinal_8 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_8)
-          console.log(`mes 7: ${total}`)
+          console.log(`mes 8: ${total}`)
           continue
         }
         if (mes === 9) {
@@ -222,7 +222,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
           capitalFinal_9 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_9)
-          console.log(`mes 7: ${total}`)
+          console.log(`mes 9: ${total}`)
           continue
         }
         if (mes === 10) {
@@ -230,7 +230,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
           capitalFinal_10 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_10)
-          console.log(`mes 7: ${total}`)
+          console.log(`mes 10: ${total}`)
           continue
         }
       }
