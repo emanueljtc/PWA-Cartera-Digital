@@ -141,25 +141,67 @@ export default {
     onResize (width, height) {
       console.log(width, height)
     },
-    getAxendResult (ingreso, ahorro, interes) {
-      let formula = ingreso + ahorro * interes
-      return formula
-    },
-    getChartData (ingreso, ahorro, interes) {
-      let arrayData = []
-      for (let i = 0; i < 12; i++) {
-        arrayData.push(this.getAxendResult(ingreso, ahorro, interes))
+    getAxendResult (capitalInicial, ahorro, interes) {
+      let capitalRecopilada = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let total = []
+      for (let mes = 1; mes <= 12; mes++) {
+        if (mes === 1) {
+          capitalFinal_1 = (capitalInicial + ahorro) * interes / 100 + ahorro
+          total.push(capitalFinal_1)
+          console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          console.log(`mes 5: ${total}`)
+          continue
+        }
       }
+      return total
+    },
+    getChartData (capitalInicial, ahorro, interes) {
+      let arrayData = this.getAxendResult(capitalInicial, ahorro, interes)
       return arrayData
     },
     loadAxend () {
-      let ingreso = this.form.ingreso
+      let capitalInicial = this.form.capitalInicial
       let ahorro = this.CalcularAhorro
       let interes = 1.25
-      console.log(ingreso)
       let axendSeries = {
         name: 'Axend',
-        data: this.getChartData(ingreso, ahorro, interes),
+        data: this.getChartData(capitalInicial, ahorro, interes),
         color: '#e03757'
       }
       this.$refs.highcharts.addSeries(axendSeries)
@@ -181,7 +223,7 @@ export default {
         this.form.id = item.id
         this.form.ingreso = item.ingreso
       })
-    this.$store.dispatch('deuda/get', 1)
+    this.$store.dispatch('deuda/get', this.form.id)
       .then(item => {
         this.form.deuda = item.cantidadMensual
       })
@@ -215,7 +257,9 @@ export default {
     CalcularAhorro () {
       let totalIngreso = this.form.ingreso
       let totalEgresos = this.form.egreso
-      let ahorro = totalIngreso - totalEgresos
+      let totalEgresoM = this.form.deuda
+      let ahorro = totalIngreso - totalEgresos - totalEgresoM
+      // console.log(ahorro)
       return ahorro
     },
     PrintAhorro () {
