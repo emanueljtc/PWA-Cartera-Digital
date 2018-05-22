@@ -3,23 +3,34 @@
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
         <h2 class="layer">{{ PrintCapitalInicial }}</h2>
         <div class="buttons">
-          <button class="btn btn-primary">Axend</button>
-          <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
-          <button class="btn btn-tree">Feudo Capital</button>
+          <button class="btn btn-primary " @click="axend_button" >Axend</button>
+          <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
+          <button class="btn btn-tree" @click="feudo_button">Feudo Capital</button>
         </div>
         <div class="grafica">
-            <p class="meses" style="display: none">Meses</p>
-            <div class="highcharts" :style="styles">
+            <p class="meses">Meses</p>
+            <div class="highcharts" :style="styles"  v-show="mostrar_axend">
                 <vue-highcharts
                     :options="options"
                     :loading="loading"
                     :resizable="true"
-                    ref = 'highcharts'
+                    ref = 'highcharts_axend'
                     @load="onLoad"
                     @resize="onResize"
                 >
                 </vue-highcharts>
             </div>
+           <!--  <div class="highcharts" :style="styles"  v-show="mostrar_kuspit">
+                <vue-highcharts
+                    :options="options"
+                    :loading="loading"
+                    :resizable="true"
+                    ref = 'highcharts_kuspit'
+                    @load="onLoad"
+                    @resize="onResize"
+                >
+                </vue-highcharts>
+            </div> -->
         </div>
         <div class="meta">
            <i class="fas fa-star"></i>
@@ -80,6 +91,9 @@ export default {
         egreso: [],
         capitalInicial: null
       },
+      mostrar_axend: true,
+      mostrar_kuspit: true,
+      mostrar_feudo: false,
       ahorro: null,
       axend: null,
       styles: {},
@@ -108,6 +122,7 @@ export default {
           }
         },
         yAxis: {
+          min: 500,
           labels: {
             format: '{value} k'
           },
@@ -122,15 +137,7 @@ export default {
             }
           }
         },
-        series: [{
-          name: 'Kuspid',
-          data: [1, 12, 10],
-          color: '#c0d84a'
-        }, {
-          name: 'Feudo Capital',
-          data: [2, 7, 16, 23],
-          color: '#cdcdcd'
-        }]
+        series: []
       }
     }
   },
@@ -140,6 +147,17 @@ export default {
     },
     onResize (width, height) {
       console.log(width, height)
+    },
+    axend_button: function () {
+      this.mostrar_axend = !this.mostrar_axend
+      this.mostrar_kuspit = !this.mostrar_kuspit
+    },
+    kuspit_button: function () {
+      this.mostrar_axend = this.mostrar_axend
+      this.mostrar_kuspit = !this.mostrar_kuspit
+    },
+    feudo_button: function () {
+      this.mostrar_feudo = !this.mostrar_feudo
     },
     getAxendResult (capitalInicial, ahorro, interes) {
       let capitalRecopilada = 0
@@ -236,8 +254,18 @@ export default {
       }
       return total
     },
-    getChartData (capitalInicial, ahorro, interes) {
-      let arrayData = this.getAxendResult(capitalInicial, ahorro, interes)
+    getChartData_axend (capitalInicial, ahorro, interes) {
+      let arrayData_axend = this.getAxendResult(capitalInicial, ahorro, interes)
+      return arrayData_axend
+    },
+    // Kuspit
+    getKuspitResult () {
+      let num = [10000, 3000, 9000]
+      return num
+    },
+    getChartData_kuspit () {
+      let arrayData = this.getKuspitResult()
+      console.log(arrayData)
       return arrayData
     },
     loadAxend () {
@@ -246,10 +274,16 @@ export default {
       let interes = 1.25
       let axendSeries = {
         name: 'Axend',
-        data: this.getChartData(capitalInicial, ahorro, interes),
+        data: this.getChartData_axend(capitalInicial, ahorro, interes),
         color: '#e03757'
       }
-      this.$refs.highcharts.addSeries(axendSeries)
+      let kuspitSeries = {
+        name: 'Kuspit',
+        data: this.getChartData_kuspit(),
+        color: 'green'
+      }
+      this.$refs.highcharts_axend.addSeries(axendSeries)
+      this.$refs.highcharts_axend.addSeries(kuspitSeries)
     }
   },
   created () {
