@@ -1,12 +1,17 @@
 <template>
   <div class="container">
     <div class="grafica">
+      <vue-highcharts
+        :options="pieOptions"
+        ref="pieChart"
+      >
+      </vue-highcharts>
       <p class="total"><span>Total:</span> {{ PrintIngreso }}</p>
     </div>
     <div class="egresos" v-for="(egreso, key) in form.egresos" :key="key">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ PorcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (egreso.id === 1), 'element-two': (egreso.id === 2), 'element-three': (egreso.id === 3), 'element-four': (egreso.id === 4), 'element-five': (egreso.id === 5)}">{{ PorcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
           <p class="cantidad"> {{ PrintEgresos(egreso) }} </p>
         </div>
       </div>
@@ -14,24 +19,25 @@
     <div class="deuda" v-if="form.deuda !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ PorcentajeDeuda }}%</span> Deuda</p>
+          <p class="porcentaje"><span v-bind:class="{'element-two': (form.egresos.length === 1), 'element-three': (form.egresos.length === 2), 'element-four': (form.egresos.length === 3), 'element-five': (form.egresos.length === 4), 'element-six': (form.egresos.length === 5), 'element-seven': (form.egresos.length === 6)}">{{ PorcentajeDeuda }}%</span> Deuda</p>
           <p class="cantidad">{{ PrintDeuda }}</p>
         </div>
       </div>
     </div>
-    {{ AgregarAhorro() }}
+    {{ CalcularAhorro() }}
+    {{ CalcularExcedente() }}
     <div class="ahorro" v-if="ahorro > 0">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ PorcentajeAhorro }}%</span> Ahorro</p>
+          <p class="porcentaje"><span v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">{{ PorcentajeAhorro }}%</span> Ahorro</p>
           <p class="cantidad"> {{ PrintAhorro }} </p>
         </div>
       </div>
     </div>
-    <div class="excedente" v-if="ahorro < 0">
+    <div class="excedente" v-if="excedente > 0">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ PorcentajeExcedente }}%</span> Cantidad Excedente</p>
+          <p class="porcentaje"><span v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">{{ PorcentajeExcedente }}%</span> Cantidad Excedente</p>
           <p class="cantidad"> {{ PrintExcedente }} </p>
         </div>
       </div>
@@ -41,7 +47,7 @@
 </template>
 
 <script>
-import VueHighcharts from 'vue-highcharts'
+import VueHighcharts from 'vue2-highcharts'
 export default {
   name: 'Actual',
   data () {
@@ -51,25 +57,72 @@ export default {
         deuda: null,
         egresos: []
       },
-      ahorro: null
+      position: [],
+      ahorro: null,
+      excedente: null,
+      pieOptions: {
+        chart: {
+          type: 'pie',
+          options3d: {
+            enabled: false,
+            alpha: 45
+          },
+          backgroundColor: '#fcfcfc',
+          height: 300
+        },
+        title: {
+          text: ''
+        },
+        plotOptions: {
+          pie: {
+            innerSize: 100,
+            depth: 45
+          }
+        },
+        series: [
+          {
+            name: 'Cantidad',
+            data: []
+          }
+        ],
+        colors: [
+          '#64c9db',
+          '#c0d84a',
+          '#e03757',
+          '#59ba70',
+          '#af85bc',
+          '#fbbb2f',
+          '#6179bb',
+          '#7cb5ec',
+          '#434348',
+          '#90ed7d',
+          '#f7a35c',
+          '#8085e9'
+        ]
+      }
     }
   },
   created () {
+    setTimeout(() => {
+      this.loadChart()
+    }, 500)
     this.$store.dispatch('ingresos/get', 1)
       .then(item => {
         this.form.ingreso = item.ingreso
-      })
-
-    this.$store.dispatch('deuda/get', 1)
-      .then(item => {
-        this.form.deuda = item.cantidadMensual
       })
 
     this.$store.dispatch('egresos/all')
       .then(egresos => {
         egresos.forEach((egreso) => {
           this.form.egresos.push(egreso)
+          this.position.push(egreso.id)
         })
+      })
+
+    this.$store.dispatch('deuda/get', 1)
+      .then(item => {
+        this.form.deuda = item.cantidadMensual
+        this.position.push(item.id)
       })
   },
   methods: {
@@ -82,15 +135,54 @@ export default {
       let porcentaje = Math.round((egreso.cantidadMensual * 100) / this.form.ingreso)
       return porcentaje
     },
-    AgregarAhorro () {
+    CalcularAhorro () {
       let totalIngreso = this.form.ingreso
       let totalEgresos = 0
       this.form.egresos.forEach(function (egreso, index) {
         totalEgresos = totalEgresos + egreso.cantidadMensual
       })
       let ahorro = totalIngreso - totalEgresos - this.form.deuda
-      this.ahorro = ahorro
+      if (ahorro > 0) {
+        this.ahorro = ahorro
+      } else {
+        this.ahorro = null
+      }
+    },
+    CalcularExcedente () {
+      let totalIngreso = this.form.ingreso
+      let totalEgresos = 0
+      this.form.egresos.forEach(function (egreso, index) {
+        totalEgresos = totalEgresos + egreso.cantidadMensual
+      })
+      let total = totalEgresos + this.form.deuda
+      let excedente = total - totalIngreso
+      if (excedente > 0) {
+        this.excedente = excedente
+      } else {
+        this.excedente = null
+      }
+    },
+    loadChart () {
+      let dataPrueba = []
+      let egresos = this.form.egresos
+      let deuda = this.form.deuda
+      let ahorro = this.ahorro
+      let excedente = this.excedente
+
+      egresos.forEach(function (egresos) {
+        dataPrueba.push(egresos.cantidadMensual)
+      })
+      dataPrueba.push(deuda)
+      dataPrueba.push(ahorro)
+      dataPrueba.push(excedente)
+
+      let DataPie = {
+        name: 'Presupuesto',
+        data: (dataPrueba)
+      }
+      this.$refs.pieChart.addSeries(DataPie)
     }
+    //
   },
   computed: {
     PrintIngreso () {
@@ -104,34 +196,15 @@ export default {
       return currencyNum
     },
     //
-    CalcularAhorro () {
-      let totalIngreso = this.form.ingreso
-      let totalEgresos = 0
-      this.form.egresos.forEach(function (egreso, index) {
-        totalEgresos = totalEgresos + egreso.cantidadMensual
-      })
-      let ahorro = totalIngreso - totalEgresos - this.form.deuda
-      return ahorro
-    },
     PrintAhorro () {
-      let ahorro = this.CalcularAhorro
+      let ahorro = this.ahorro
       let value = ahorro
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
     },
     //
-    CalcularExcedente () {
-      let totalIngreso = this.form.ingreso
-      let totalEgresos = 0
-      this.form.egresos.forEach(function (egreso, index) {
-        totalEgresos = totalEgresos + egreso.cantidadMensual
-      })
-      let total = totalEgresos + this.form.deuda
-      let excedente = total - totalIngreso
-      return excedente
-    },
     PrintExcedente () {
-      let excedente = this.CalcularExcedente
+      let excedente = this.excedente
       let value = excedente
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
@@ -142,12 +215,12 @@ export default {
       return porcentaje
     },
     PorcentajeAhorro () {
-      let ahorro = this.CalcularAhorro
+      let ahorro = this.ahorro
       let porcentaje = Math.round((ahorro * 100) / this.form.ingreso)
       return porcentaje
     },
     PorcentajeExcedente () {
-      let excedente = this.CalcularExcedente
+      let excedente = this.excedente
       let porcentaje = Math.round((excedente * 100) / this.form.ingreso)
       return porcentaje
     }
