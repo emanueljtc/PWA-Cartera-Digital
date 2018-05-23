@@ -3,18 +3,40 @@
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
         <h2 class="layer">{{ PrintCapitalInicial }}</h2>
         <div class="buttons">
-          <button class="btn btn-primary">Axend</button>
-          <button class="btn btn-secondary highcharts-series-1">Kuspit</button>
-          <button class="btn btn-tree">Feudo Capital</button>
+          <button class="btn btn-primary " @click="axend_button" >Axend</button>
+          <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
+          <button class="btn btn-tree" @click="feudo_button">Feudo Capital</button>
         </div>
         <div class="grafica">
-            <p class="meses" style="display: none">Meses</p>
-            <div class="highcharts" :style="styles">
+            <p class="meses">Meses</p>
+            <div class="highcharts" :style="styles"  v-show="mostrar_axend">
                 <vue-highcharts
                     :options="options"
                     :loading="loading"
                     :resizable="true"
-                    ref = 'highcharts'
+                    ref = 'highcharts_axend'
+                    @load="onLoad"
+                    @resize="onResize"
+                >
+                </vue-highcharts>
+            </div>
+            <div class="highcharts" :style="styles"  v-show="mostrar_kuspit">
+                <vue-highcharts
+                    :options="options"
+                    :loading="loading"
+                    :resizable="true"
+                    ref = 'highchart_kuspit'
+                    @load="onLoad"
+                    @resize="onResize"
+                >
+                </vue-highcharts>
+            </div>
+            <div class="highcharts" :style="styles"  v-show="mostrar_feudo">
+                <vue-highcharts
+                    :options="options"
+                    :loading="loading"
+                    :resizable="true"
+                    ref = 'highchart_feudo'
                     @load="onLoad"
                     @resize="onResize"
                 >
@@ -80,6 +102,9 @@ export default {
         egreso: [],
         capitalInicial: null
       },
+      mostrar_axend: true,
+      mostrar_kuspit: true,
+      mostrar_feudo: false,
       ahorro: null,
       axend: null,
       styles: {},
@@ -101,13 +126,14 @@ export default {
         xAxis: {
           lineWidth: 1,
           tickInterval: 1, // con este intervalo logro llegar a los 12 meses
-          min: 0, // se establece el minimo del intervalo
+          min: 1, // se establece el minimo del intervalo
           max: 12, // se establece el maximo en este caso 12 = 12 meses
           title: {
             text: ''
           }
         },
         yAxis: {
+          min: 500,
           labels: {
             format: '{value} k'
           },
@@ -122,15 +148,7 @@ export default {
             }
           }
         },
-        series: [{
-          name: 'Kuspid',
-          data: [1, 12, 10],
-          color: '#c0d84a'
-        }, {
-          name: 'Feudo Capital',
-          data: [2, 7, 16, 23],
-          color: '#cdcdcd'
-        }]
+        series: []
       }
     }
   },
@@ -141,24 +159,40 @@ export default {
     onResize (width, height) {
       console.log(width, height)
     },
-    getAxendResult (capitalInicial, ahorro, interes) {
+    axend_button: function () {
+      this.mostrar_axend = !this.mostrar_axend
+      this.mostraruspit = !this.mostraruspit
+    },
+    kuspit_button: function () {
+      this.mostrar_axend = this.mostrar_axend
+      this.mostraruspit = !this.mostraruspit
+    },
+    feudo_button: function () {
+      this.mostrar_feudo = !this.mostrar_feudo
+    },
+    getAxendResult (capitalInicial, ahorro, interes_axend) {
       let capitalRecopilada = 0
       let capitalFinal_1 = 0
       let capitalFinal_2 = 0
       let capitalFinal_3 = 0
       let capitalFinal_4 = 0
       let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
       let total = []
-      for (let mes = 1; mes <= 12; mes++) {
+      for (let mes = 1; mes <= 10; mes++) {
         if (mes === 1) {
-          capitalFinal_1 = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalFinal_1 = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           total.push(capitalFinal_1)
           console.log(`mes 1: ${total}`)
           continue
         }
         if (mes === 2) {
           capitalInicial = capitalFinal_1
-          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_2 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_2)
           console.log(`mes 2: ${total}`)
@@ -166,7 +200,7 @@ export default {
         }
         if (mes === 3) {
           capitalInicial = capitalFinal_2
-          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_3 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_3)
           console.log(`mes 3: ${total}`)
@@ -174,7 +208,7 @@ export default {
         }
         if (mes === 4) {
           capitalInicial = capitalFinal_3
-          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_4 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_4)
           console.log(`mes 4: ${total}`)
@@ -182,29 +216,284 @@ export default {
         }
         if (mes === 5) {
           capitalInicial = capitalFinal_4
-          capitalRecopilada = (capitalInicial + ahorro) * interes / 100 + ahorro
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_5 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_5)
           console.log(`mes 5: ${total}`)
           continue
         }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          console.log(`mes 10: ${total}`)
+          continue
+        }
       }
       return total
     },
-    getChartData (capitalInicial, ahorro, interes) {
-      let arrayData = this.getAxendResult(capitalInicial, ahorro, interes)
+    getChartData_axend (capitalInicial, ahorro, interes_axend) {
+      let arrayData_axend = this.getAxendResult(capitalInicial, ahorro, interes_axend)
+      return arrayData_axend
+    },
+    // Kuspit
+    getKuspitResult (capitalInicial, ahorro, interes_kuspit) {
+      let capitalRecopilada = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let total = []
+      for (let mes = 1; mes <= 10; mes++) {
+        if (mes === 1) {
+          capitalFinal_1 = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          total.push(capitalFinal_1)
+          console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          console.log(`mes 5: ${total}`)
+          continue
+        }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          console.log(`mes 10: ${total}`)
+          continue
+        }
+      }
+      return total
+    },
+    getChartData_kuspit (capitalInicial, ahorro, interes_kuspit) {
+      let arrayData = this.getKuspitResult(capitalInicial, ahorro, interes_kuspit)
+      console.log(arrayData)
+      return arrayData
+    },
+    getFeudoResult (capitalInicial, ahorro, interes_feudo) {
+      let capitalRecopilada = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let total = []
+      for (let mes = 1; mes <= 10; mes++) {
+        if (mes === 1) {
+          capitalFinal_1 = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          total.push(capitalFinal_1)
+          console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          console.log(`mes 5: ${total}`)
+          continue
+        }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          console.log(`mes 10: ${total}`)
+          continue
+        }
+      }
+      return total
+    },
+    getChartData_feudo (capitalInicial, ahorro, interes_feudo) {
+      let arrayData = this.getFeudoResult(capitalInicial, ahorro, interes_feudo)
+      console.log(arrayData)
       return arrayData
     },
     loadAxend () {
-      let capitalInicial = this.form.capitalInicial
-      let ahorro = this.CalcularAhorro
-      let interes = 1.25
+      var capitalInicial = this.form.capitalInicial
+      var ahorro = this.CalcularAhorro
+      const interes_axend = 1.25
+      const interes_kuspit = 1.44
+      const interes_feudo = 0
       let axendSeries = {
         name: 'Axend',
-        data: this.getChartData(capitalInicial, ahorro, interes),
+        data: this.getChartData_axend(capitalInicial, ahorro, interes_axend),
         color: '#e03757'
       }
-      this.$refs.highcharts.addSeries(axendSeries)
+      let kuspitSeries = {
+        name: 'Kuspit',
+        data: this.getChartData_kuspit(capitalInicial, ahorro, interes_kuspit),
+        color: '#c0d84a'
+      }
+      let feudoSeries = {
+        name: 'Feudo Capital',
+        data: this.getChartData_feudo(capitalInicial, ahorro, interes_feudo),
+        color: '#737272'
+      }
+      this.$refs.highcharts_axend.addSeries(axendSeries)
+      this.$refs.highchart_kuspit.addSeries(kuspitSeries)
+      this.$refs.highchart_feudo.addSeries(feudoSeries)
     }
   },
   created () {
