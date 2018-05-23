@@ -188,19 +188,21 @@ export default {
       let capitalFinal_7 = 0
       let capitalFinal_8 = 0
       let capitalFinal_9 = 0
-      let capitalFinal_10_a = 0
+      let capitalFinal_10 = 0
+      let capitalFinal_11 = 0
+      let capitalFinal_12 = 0
       let total = []
-      for (let mes = 1; mes <= 11; mes++) {
+      for (let mes = 1; mes <= 13; mes++) {
         if (mes === 1) {
           capitalFinal_0 = 0
           total.push(capitalFinal_0)
-          console.log(`mes 0: ${total}`)
+          // console.log(`mes 0: ${total}`)
           continue
         }
         if (mes === 2) {
           capitalFinal_1 = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${total}`)
+          // console.log(`mes 1: ${total}`)
           continue
         }
         if (mes === 3) {
@@ -270,13 +272,29 @@ export default {
         if (mes === 11) {
           capitalInicial = capitalFinal_9
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
-          capitalFinal_10_a = capitalRecopilada + capitalInicial
-          total.push(capitalFinal_10_a)
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+        if (mes === 12) {
+          capitalInicial = capitalFinal_10
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_11 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_11)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+        if (mes === 13) {
+          capitalInicial = capitalFinal_11
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_12 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_12)
           // console.log(`mes 10: ${total}`)
           continue
         }
       }
-      console.log(`ahorro a largo plazo : ${capitalFinal_10_a}`)
+      console.log(`ahorro a largo plazo : ${capitalFinal_10}`)
       return total
     },
     getChartData_axend (capitalInicial, ahorro, interes_axend) {
