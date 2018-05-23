@@ -103,7 +103,7 @@ export default {
         capitalInicial: null
       },
       mostrar_axend: true,
-      mostrar_kuspit: true,
+      mostrar_kuspit: false,
       mostrar_feudo: false,
       ahorro: null,
       axend: null,
@@ -160,15 +160,19 @@ export default {
       console.log(width, height)
     },
     axend_button: function () {
-      this.mostrar_axend = !this.mostrar_axend
-      this.mostraruspit = !this.mostraruspit
+      this.mostrar_axend = true
+      this.mostrar_kuspit = false
+      this.mostrar_feudo = false
     },
     kuspit_button: function () {
-      this.mostrar_axend = this.mostrar_axend
-      this.mostraruspit = !this.mostraruspit
+      this.mostrar_kuspit = true
+      this.mostrar_feudo = false
+      this.mostrar_axend = false
     },
     feudo_button: function () {
-      this.mostrar_feudo = !this.mostrar_feudo
+      this.mostrar_kuspit = false
+      this.mostrar_axend = false
+      this.mostrar_feudo = true
     },
     getAxendResult (capitalInicial, ahorro, interes_axend) {
       let capitalRecopilada = 0
