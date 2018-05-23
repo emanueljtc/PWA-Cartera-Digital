@@ -484,12 +484,12 @@ export default {
       let kuspitSeries = {
         name: 'Kuspit',
         data: this.getChartData_kuspit(capitalInicial, ahorro, interes_kuspit),
-        color: 'green'
+        color: '#c0d84a'
       }
       let feudoSeries = {
         name: 'Feudo Capital',
         data: this.getChartData_feudo(capitalInicial, ahorro, interes_feudo),
-        color: 'black'
+        color: '#737272'
       }
       this.$refs.highcharts_axend.addSeries(axendSeries)
       this.$refs.highchart_kuspit.addSeries(kuspitSeries)
