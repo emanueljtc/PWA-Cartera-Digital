@@ -1,7 +1,9 @@
 <template>
 <div>
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
-        <h2 class="layer">{{ PrintCapitalInicial }}</h2>
+        <h2 class="layer" v-show="mostrar_axend">{{ Print_Ahorro_LG_A }}</h2>
+        <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
+        <h2 class="layer" v-show="mostrar_feudo">{{ Print_Ahorro_LG_F }}</h2>
         <div class="buttons">
           <button class="btn btn-primary " @click="axend_button" >Axend</button>
           <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
@@ -185,13 +187,13 @@ export default {
       let capitalFinal_7 = 0
       let capitalFinal_8 = 0
       let capitalFinal_9 = 0
-      let capitalFinal_10 = 0
+      let capitalFinal_10_a = 0
       let total = []
       for (let mes = 1; mes <= 10; mes++) {
         if (mes === 1) {
           capitalFinal_1 = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${total}`)
+          // console.log(`mes 1: ${total}`)
           continue
         }
         if (mes === 2) {
@@ -199,7 +201,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_2 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_2)
-          console.log(`mes 2: ${total}`)
+          // console.log(`mes 2: ${total}`)
           continue
         }
         if (mes === 3) {
@@ -207,7 +209,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_3 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_3)
-          console.log(`mes 3: ${total}`)
+          // console.log(`mes 3: ${total}`)
           continue
         }
         if (mes === 4) {
@@ -215,7 +217,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_4 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_4)
-          console.log(`mes 4: ${total}`)
+          // console.log(`mes 4: ${total}`)
           continue
         }
         if (mes === 5) {
@@ -223,7 +225,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_5 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_5)
-          console.log(`mes 5: ${total}`)
+          // console.log(`mes 5: ${total}`)
           continue
         }
         if (mes === 6) {
@@ -231,7 +233,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_6 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_6)
-          console.log(`mes 6: ${total}`)
+          // console.log(`mes 6: ${total}`)
           continue
         }
         if (mes === 7) {
@@ -239,7 +241,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_7 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_7)
-          console.log(`mes 7: ${total}`)
+          // console.log(`mes 7: ${total}`)
           continue
         }
         if (mes === 8) {
@@ -247,7 +249,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_8 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_8)
-          console.log(`mes 8: ${total}`)
+          // console.log(`mes 8: ${total}`)
           continue
         }
         if (mes === 9) {
@@ -255,18 +257,19 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
           capitalFinal_9 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_9)
-          console.log(`mes 9: ${total}`)
+          // console.log(`mes 9: ${total}`)
           continue
         }
         if (mes === 10) {
           capitalInicial = capitalFinal_9
           capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
-          capitalFinal_10 = capitalRecopilada + capitalInicial
-          total.push(capitalFinal_10)
-          console.log(`mes 10: ${total}`)
+          capitalFinal_10_a = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10_a)
+          // console.log(`mes 10: ${total}`)
           continue
         }
       }
+      console.log(`ahorro a largo plazo : ${capitalFinal_10_a}`)
       return total
     },
     getChartData_axend (capitalInicial, ahorro, interes_axend) {
@@ -291,7 +294,7 @@ export default {
         if (mes === 1) {
           capitalFinal_1 = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${total}`)
+          // console.log(`mes 1: ${total}`)
           continue
         }
         if (mes === 2) {
@@ -299,7 +302,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_2 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_2)
-          console.log(`mes 2: ${total}`)
+          // console.log(`mes 2: ${total}`)
           continue
         }
         if (mes === 3) {
@@ -307,7 +310,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_3 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_3)
-          console.log(`mes 3: ${total}`)
+          // console.log(`mes 3: ${total}`)
           continue
         }
         if (mes === 4) {
@@ -315,7 +318,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_4 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_4)
-          console.log(`mes 4: ${total}`)
+          // console.log(`mes 4: ${total}`)
           continue
         }
         if (mes === 5) {
@@ -323,7 +326,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_5 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_5)
-          console.log(`mes 5: ${total}`)
+          // console.log(`mes 5: ${total}`)
           continue
         }
         if (mes === 6) {
@@ -331,7 +334,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_6 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_6)
-          console.log(`mes 6: ${total}`)
+          // console.log(`mes 6: ${total}`)
           continue
         }
         if (mes === 7) {
@@ -339,7 +342,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_7 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_7)
-          console.log(`mes 7: ${total}`)
+          // console.log(`mes 7: ${total}`)
           continue
         }
         if (mes === 8) {
@@ -347,7 +350,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_8 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_8)
-          console.log(`mes 8: ${total}`)
+          // console.log(`mes 8: ${total}`)
           continue
         }
         if (mes === 9) {
@@ -355,7 +358,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_9 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_9)
-          console.log(`mes 9: ${total}`)
+          // console.log(`mes 9: ${total}`)
           continue
         }
         if (mes === 10) {
@@ -363,7 +366,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_10 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_10)
-          console.log(`mes 10: ${total}`)
+          // console.log(`mes 10: ${total}`)
           continue
         }
       }
@@ -371,7 +374,7 @@ export default {
     },
     getChartData_kuspit (capitalInicial, ahorro, interes_kuspit) {
       let arrayData = this.getKuspitResult(capitalInicial, ahorro, interes_kuspit)
-      console.log(arrayData)
+      // console.log(arrayData)
       return arrayData
     },
     getFeudoResult (capitalInicial, ahorro, interes_feudo) {
@@ -391,7 +394,7 @@ export default {
         if (mes === 1) {
           capitalFinal_1 = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${total}`)
+          // console.log(`mes 1: ${total}`)
           continue
         }
         if (mes === 2) {
@@ -399,7 +402,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_2 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_2)
-          console.log(`mes 2: ${total}`)
+          // console.log(`mes 2: ${total}`)
           continue
         }
         if (mes === 3) {
@@ -407,7 +410,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_3 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_3)
-          console.log(`mes 3: ${total}`)
+          // console.log(`mes 3: ${total}`)
           continue
         }
         if (mes === 4) {
@@ -415,7 +418,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_4 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_4)
-          console.log(`mes 4: ${total}`)
+          // console.log(`mes 4: ${total}`)
           continue
         }
         if (mes === 5) {
@@ -423,7 +426,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_5 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_5)
-          console.log(`mes 5: ${total}`)
+          // console.log(`mes 5: ${total}`)
           continue
         }
         if (mes === 6) {
@@ -431,7 +434,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_6 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_6)
-          console.log(`mes 6: ${total}`)
+          // console.log(`mes 6: ${total}`)
           continue
         }
         if (mes === 7) {
@@ -439,7 +442,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_7 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_7)
-          console.log(`mes 7: ${total}`)
+          // console.log(`mes 7: ${total}`)
           continue
         }
         if (mes === 8) {
@@ -447,7 +450,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_8 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_8)
-          console.log(`mes 8: ${total}`)
+          // console.log(`mes 8: ${total}`)
           continue
         }
         if (mes === 9) {
@@ -455,7 +458,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_9 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_9)
-          console.log(`mes 9: ${total}`)
+          // console.log(`mes 9: ${total}`)
           continue
         }
         if (mes === 10) {
@@ -463,7 +466,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_10 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_10)
-          console.log(`mes 10: ${total}`)
+          // console.log(`mes 10: ${total}`)
           continue
         }
       }
@@ -471,7 +474,7 @@ export default {
     },
     getChartData_feudo (capitalInicial, ahorro, interes_feudo) {
       let arrayData = this.getFeudoResult(capitalInicial, ahorro, interes_feudo)
-      console.log(arrayData)
+      // console.log(arrayData)
       return arrayData
     },
     loadAxend () {
@@ -557,9 +560,318 @@ export default {
     },
     PrintAhorro () {
       let ahorro = this.CalcularAhorro
-      let value = ahorro
-      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let value = ahorro * 1.24 / 100 * 100
+      let currencyNum = '$' + ' ' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
+    },
+    Axend () {
+      let capitalInicial = this.form.capitalInicial
+      let ahorro = this.CalcularAhorro
+      const interes_axend = 1.25
+      let capitalRecopilada = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let total = []
+      for (let mes = 1; mes <= 10; mes++) {
+        if (mes === 1) {
+          capitalFinal_1 = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          total.push(capitalFinal_1)
+          // console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          // console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          // console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          // console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          // console.log(`mes 5: ${total}`)
+          continue
+        }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          // console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          // console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          // console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          // console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = (capitalInicial + ahorro) * interes_axend / 100 + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+      }
+      return capitalFinal_10
+    },
+    Print_Ahorro_LG_A () {
+      let value = this.Axend
+      let cantidad = '$' + ' ' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return cantidad
+    },
+    Kuspit () {
+      let capitalInicial = this.form.capitalInicial
+      let ahorro = this.CalcularAhorro
+      const interes_kuspit = 1.44
+      let capitalRecopilada = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let total = []
+      for (let mes = 1; mes <= 10; mes++) {
+        if (mes === 1) {
+          capitalFinal_1 = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          total.push(capitalFinal_1)
+          // console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          // console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          // console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          // console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          // console.log(`mes 5: ${total}`)
+          continue
+        }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          // console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          // console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          // console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          // console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+      }
+      return capitalFinal_10
+    },
+    Print_Ahorro_LG_K () {
+      let value = this.Kuspit
+      let cantidad = '$' + ' ' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return cantidad
+    },
+    FeudoCapital () {
+      let capitalInicial = this.form.capitalInicial
+      let ahorro = this.CalcularAhorro
+      const interes_feudo = 0
+      let capitalRecopilada = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let total = []
+      for (let mes = 1; mes <= 10; mes++) {
+        if (mes === 1) {
+          capitalFinal_1 = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          total.push(capitalFinal_1)
+          // console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          // console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          // console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          // console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          // console.log(`mes 5: ${total}`)
+          continue
+        }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          // console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          // console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          // console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          // console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+      }
+      return capitalFinal_10
+    },
+    Print_Ahorro_LG_F () {
+      let value = this.FeudoCapital
+      let cantidad = '$' + ' ' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return cantidad
     },
     PrintCapitalInicial () {
       return this.form.capitalInicial
