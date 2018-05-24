@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="alcance">
-          <p class="alcance-text">Para alcanzar tu meta necesitas N meses</p>
+          <p class="alcance-text">Para alcanzar tu meta necesitas 12 meses</p>
         </div>
         <div class="meta">
            <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
