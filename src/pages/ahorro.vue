@@ -200,7 +200,13 @@ $green: #c0d84a;
                 }
                 .grafica{
                   width: 100%;
-                  margin-top: 40px;
+                  margin-top: -15px;
+                  margin-bottom: -15%;
+                  .vue-highcharts{
+                    border: 1px solid rgba(0, 0, 0, -0.9) !important;
+                    background: rgba(255, 255, 255, 0) !important;
+                    box-shadow: 0 0 45px rgba(0, 0, 0, -0.8) !important;
+                  }
                   .highcharts-loading{
                     background-color: rgba(255, 255, 255, 0) !important;
                   }
@@ -221,7 +227,7 @@ $green: #c0d84a;
                     color: #3f224c !important;
                     position: relative;
                     left: 0%;
-                    bottom: -11px;
+                    bottom: -57px;
                   }
                 }
                 .meta{
@@ -353,6 +359,7 @@ $green: #c0d84a;
         .grafica{
           position: relative !important;
           // left: -12% !important;
+          margin-bottom: -30% !important;
           .meses{
             left: 3% !important;
           }
