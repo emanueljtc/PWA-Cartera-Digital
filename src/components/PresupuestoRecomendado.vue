@@ -13,7 +13,7 @@
     <div class="renta" v-if="form_recomendado.renta !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (form_recomendado.renta !== null)}">{{ porcentaje.renta }}%</span> Renta/Hipoteca</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('renta') === 0)}">{{ porcentaje.renta }}%</span> Renta/Hipoteca</p>
           <p class="cantidad"> {{ PrintRenta}} </p>
         </div>
       </div>
@@ -21,7 +21,7 @@
     <div class="despensa" v-if="form_recomendado.despensa !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (form_recomendado.renta === null), 'element-two': (form_recomendado.despensa !== null && form_recomendado.renta !== null)}">{{ porcentaje.despensa }}%</span> Despensa</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('despensa') === 0), 'element-two': (servicios_existentes.indexOf('despensa') === 1)}">{{ porcentaje.despensa }}%</span> Despensa</p>
           <p class="cantidad"> {{ PrintDespensa }} </p>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="gasolina" v-if="form_recomendado.gasolina !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (form_recomendado.renta === null && form_recomendado.despensa === null), 'element-two': (form_recomendado.despensa !== null && form_recomendado.renta !== null)}">{{ porcentaje.gasolina }}%</span> Gasolina/Uber</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('gasolina') === 0), 'element-two': (servicios_existentes.indexOf('gasolina') === 1), 'element-three': (servicios_existentes.indexOf('gasolina') === 2)}">{{ porcentaje.gasolina }}%</span> Gasolina/Uber</p>
           <p class="cantidad"> {{ PrintGasolina }} </p>
         </div>
       </div>
@@ -37,7 +37,7 @@
     <div class="gustos" v-if="form_recomendado.gustos !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.gustos }}%</span> Gustos</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('gustos') === 0), 'element-two': (servicios_existentes.indexOf('gustos') === 1), 'element-three': (servicios_existentes.indexOf('gustos') === 2), 'element-four': (servicios_existentes.indexOf('gustos') === 3)}">{{ porcentaje.gustos }}%</span> Gustos</p>
           <p class="cantidad"> {{ PrintGustos }} </p>
         </div>
       </div>
@@ -45,7 +45,7 @@
     <div class="servicios" v-if="form_recomendado.servicios !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.servicios }}%</span> Servicios Básicos</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('servicios') === 0), 'element-two': (servicios_existentes.indexOf('servicios') === 1), 'element-three': (servicios_existentes.indexOf('servicios') === 2), 'element-four': (servicios_existentes.indexOf('servicios') === 3), 'element-five': (servicios_existentes.indexOf('servicios') === 4)}">{{ porcentaje.servicios }}%</span> Servicios Básicos</p>
           <p class="cantidad"> {{ PrintServicios }} </p>
         </div>
       </div>
@@ -53,7 +53,7 @@
     <div class="deuda" v-if="form_recomendado.deuda !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.deuda }}%</span> Deuda</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('deuda') === 0), 'element-two': (servicios_existentes.indexOf('deuda') === 1), 'element-three': (servicios_existentes.indexOf('deuda') === 2), 'element-four': (servicios_existentes.indexOf('deuda') === 3), 'element-five': (servicios_existentes.indexOf('deuda') === 4), 'element-six': (servicios_existentes.indexOf('deuda') === 5)}">{{ porcentaje.deuda }}%</span> Deuda</p>
           <p class="cantidad">{{ PrintDeuda }}</p>
         </div>
       </div>
@@ -61,13 +61,14 @@
     <div class="ahorro" v-if="form_recomendado.ahorro !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.ahorro }}%</span> Ahorro</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('ahorro') === 0), 'element-two': (servicios_existentes.indexOf('ahorro') === 1), 'element-three': (servicios_existentes.indexOf('ahorro') === 2), 'element-four': (servicios_existentes.indexOf('ahorro') === 3), 'element-five': (servicios_existentes.indexOf('ahorro') === 4), 'element-six': (servicios_existentes.indexOf('ahorro') === 5), 'element-seven': (servicios_existentes.indexOf('ahorro') === 6)}">{{ porcentaje.ahorro }}%</span> Ahorro</p>
           <p class="cantidad">{{ PrintAhorro }}</p>
         </div>
       </div>
     </div>
 
-    <button>Ver mi meta <i class="material-icons">arrow_forward</i></button>
+    <button @click="$router.replace('/ahorro')">Ver mi meta <i class="material-icons">arrow_forward</i></button>
+    <!-- {{ indexOff() }} -->
   </div>
 </template>
 
@@ -99,6 +100,7 @@ export default {
         deuda: null,
         ahorro: null
       },
+      servicios_existentes: [],
       porcentaje: {
         renta: null,
         despensa: null,
@@ -1017,33 +1019,43 @@ export default {
 
       if (renta !== null) {
         dataPrueba.push(renta)
+        this.servicios_existentes.push('renta')
       }
       if (despensa !== null) {
         dataPrueba.push(despensa)
+        this.servicios_existentes.push('despensa')
       }
       if (gasolina !== null) {
         dataPrueba.push(gasolina)
+        this.servicios_existentes.push('gasolina')
       }
       if (gustos !== null) {
         dataPrueba.push(gustos)
+        this.servicios_existentes.push('gustos')
       }
       if (servicios !== null) {
         dataPrueba.push(servicios)
+        this.servicios_existentes.push('servicios')
       }
       if (deuda !== null) {
         dataPrueba.push(deuda)
+        this.servicios_existentes.push('deuda')
       }
       if (ahorro !== null) {
         dataPrueba.push(ahorro)
+        this.servicios_existentes.push('ahorro')
       }
-
-      console.log(dataPrueba)
 
       let DataPie = {
         name: 'Presupuesto',
         data: (dataPrueba)
       }
       this.$refs.pieChart.addSeries(DataPie)
+    },
+    indexOff () {
+      let servicio = this.servicios_existentes
+      let posicion = servicio.indexOf('despensa')
+      console.log(posicion)
     }
   },
   computed: {
