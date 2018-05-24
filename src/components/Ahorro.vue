@@ -535,21 +535,7 @@ export default {
       // console.log(arrayData)
       return arrayData
     },
-    getFeudoResult (capitalInicial, ahorro, interes_feudo) {
-      let capitalRecopilada = 0
-      let capitalFinal_0 = 0
-      let capitalFinal_1 = 0
-      let capitalFinal_2 = 0
-      let capitalFinal_3 = 0
-      let capitalFinal_4 = 0
-      let capitalFinal_5 = 0
-      let capitalFinal_6 = 0
-      let capitalFinal_7 = 0
-      let capitalFinal_8 = 0
-      let capitalFinal_9 = 0
-      let capitalFinal_10 = 0
-      let capitalFinal_11 = 0
-      let capitalFinal_12 = 0
+    getFeudoResult (capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let total = []
       for (let mes = 1; mes <= 13; mes++) {
         if (mes === 1) {
@@ -655,8 +641,8 @@ export default {
       }
       return total
     },
-    getChartData_feudo (capitalInicial, ahorro, interes_feudo) {
-      let arrayData = this.getFeudoResult(capitalInicial, ahorro, interes_feudo)
+    getChartData_feudo (capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
+      let arrayData = this.getFeudoResult(capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12)
       // console.log(arrayData)
       return arrayData
     },
@@ -682,7 +668,7 @@ export default {
       const interes_feudo = 0
       let SinInversion_Series = {
         name: 'Sin Inversion',
-        data: this.getChartData_SinInversion(capitalInicial, ahorro),
+        data: this.getChartData_SinInversion(capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12),
         color: 'blue'
       }
       let axendSeries = {
@@ -692,7 +678,7 @@ export default {
       }
       let kuspitSeries = {
         name: 'Kuspit',
-        data: this.getChartData_kuspit(capitalInicial, ahorro, interes_kuspit),
+        data: this.getChartData_kuspit(capitalInicial, ahorro, interes_kuspit, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12),
         color: '#c0d84a'
       }
       let feudoSeries = {
