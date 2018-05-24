@@ -15,7 +15,7 @@
       <div class="ahorro">
         <p>Podrías estar ahorrando</p>
         <p><span> {{ PrintAhorro }} </span></p>
-        <p>en Internet</p>
+        <p>en {{ gastoMayor }}</p>
       </div>
     </div>
   </div>

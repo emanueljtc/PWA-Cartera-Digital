@@ -116,6 +116,54 @@ export default {
     }
   }
 
+  .element-one {
+    color: #64c9db !important;
+  }
+
+  .element-two {
+    color: #c0d84a !important;
+  }
+
+  .element-three {
+    color: #e03757 !important;
+  }
+
+  .element-four {
+    color: #59ba70 !important;
+  }
+
+  .element-five {
+    color: #af85bc !important;
+  }
+
+  .element-six {
+    color: #fbbb2f !important;
+  }
+
+  .element-seven {
+    color: #6179bb !important;
+  }
+
+  .element-eight {
+    color: #7cb5ec !important;
+  }
+
+  .element-nine {
+    color: #434348 !important;
+  }
+
+  .element-ten {
+    color: #90ed7d !important;
+  }
+
+  .element-eleven {
+    color: #f7a35c !important;
+  }
+
+  .element-twelve {
+    color: #8085e9 !important;
+  }
+
   .q-layout-page-container {
     padding: 0px !important;
     background-color: #fcfcfc;
@@ -184,6 +232,24 @@ export default {
 
               .grafica {
                 margin-bottom: 50px;
+
+                .vue-highcharts {
+                  margin: 0px;
+                  padding: 0px;
+                  box-shadow: none;
+                  background-color: #fcfcfc;
+                  border: none;
+
+                  .highcharts-container {
+                    height: 260px !important;
+                  }
+
+                  .highcharts-credits,
+                  .highcharts-label,
+                  .highcharts-data-label-connector {
+                    display: none;
+                  }
+                }
 
                 .total {
                   font-family: $nunitobold;
