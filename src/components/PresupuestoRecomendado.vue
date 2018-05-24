@@ -1,6 +1,11 @@
 <template>
   <div class="container">
     <div class="grafica">
+      <vue-highcharts
+        :options="pieOptions"
+        ref="pieChart"
+      >
+      </vue-highcharts>
       <p class="total"><span>Total:</span> {{ PrintIngreso }}</p>
     </div>
     {{ ChangeValidation() }}
@@ -8,7 +13,7 @@
     <div class="renta" v-if="form_recomendado.renta !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.renta }}%</span> Renta/Hipoteca</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (form_recomendado.renta !== null)}">{{ porcentaje.renta }}%</span> Renta/Hipoteca</p>
           <p class="cantidad"> {{ PrintRenta}} </p>
         </div>
       </div>
@@ -16,7 +21,7 @@
     <div class="despensa" v-if="form_recomendado.despensa !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.despensa }}%</span> Despensa</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (form_recomendado.renta === null), 'element-two': (form_recomendado.despensa !== null && form_recomendado.renta !== null)}">{{ porcentaje.despensa }}%</span> Despensa</p>
           <p class="cantidad"> {{ PrintDespensa }} </p>
         </div>
       </div>
@@ -24,7 +29,7 @@
     <div class="gasolina" v-if="form_recomendado.gasolina !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span>{{ porcentaje.gasolina }}%</span> Gasolina/Uber</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (form_recomendado.renta === null && form_recomendado.despensa === null), 'element-two': (form_recomendado.despensa !== null && form_recomendado.renta !== null)}">{{ porcentaje.gasolina }}%</span> Gasolina/Uber</p>
           <p class="cantidad"> {{ PrintGasolina }} </p>
         </div>
       </div>
@@ -67,6 +72,7 @@
 </template>
 
 <script>
+import VueHighcharts from 'vue2-highcharts'
 export default {
   name: 'Recomendado',
   data () {
@@ -101,10 +107,53 @@ export default {
         servicios: null,
         deuda: null,
         ahorro: null
+      },
+      pieOptions: {
+        chart: {
+          type: 'pie',
+          options3d: {
+            enabled: false,
+            alpha: 45
+          },
+          backgroundColor: '#fcfcfc',
+          height: 300
+        },
+        title: {
+          text: ''
+        },
+        plotOptions: {
+          pie: {
+            innerSize: 100,
+            depth: 45
+          }
+        },
+        series: [
+          {
+            name: 'Cantidad',
+            data: []
+          }
+        ],
+        colors: [
+          '#64c9db',
+          '#c0d84a',
+          '#e03757',
+          '#59ba70',
+          '#af85bc',
+          '#fbbb2f',
+          '#6179bb',
+          '#7cb5ec',
+          '#434348',
+          '#90ed7d',
+          '#f7a35c',
+          '#8085e9'
+        ]
       }
     }
   },
   created () {
+    setTimeout(() => {
+      this.loadChart()
+    }, 500)
     this.$store.dispatch('ingresos/get', 1)
       .then(item => {
         this.form.ingreso = item.ingreso
@@ -955,6 +1004,46 @@ export default {
         porcentaje.servicios = 10
         porcentaje.ahorro = 65
       }
+    },
+    loadChart () {
+      let dataPrueba = []
+      let renta = this.form_recomendado.renta
+      let despensa = this.form_recomendado.despensa
+      let gasolina = this.form_recomendado.gasolina
+      let gustos = this.form_recomendado.gustos
+      let servicios = this.form_recomendado.servicios
+      let deuda = this.form_recomendado.deuda
+      let ahorro = this.form_recomendado.ahorro
+
+      if (renta !== null) {
+        dataPrueba.push(renta)
+      }
+      if (despensa !== null) {
+        dataPrueba.push(despensa)
+      }
+      if (gasolina !== null) {
+        dataPrueba.push(gasolina)
+      }
+      if (gustos !== null) {
+        dataPrueba.push(gustos)
+      }
+      if (servicios !== null) {
+        dataPrueba.push(servicios)
+      }
+      if (deuda !== null) {
+        dataPrueba.push(deuda)
+      }
+      if (ahorro !== null) {
+        dataPrueba.push(ahorro)
+      }
+
+      console.log(dataPrueba)
+
+      let DataPie = {
+        name: 'Presupuesto',
+        data: (dataPrueba)
+      }
+      this.$refs.pieChart.addSeries(DataPie)
     }
   },
   computed: {
@@ -998,6 +1087,9 @@ export default {
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
     }
+  },
+  components: {
+    VueHighcharts
   }
 }
 </script>

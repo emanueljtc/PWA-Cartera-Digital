@@ -11,7 +11,7 @@
     <div class="egresos" v-for="(egreso, key) in form.egresos" :key="key">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (egreso.id === 1), 'element-two': (egreso.id === 2), 'element-three': (egreso.id === 3), 'element-four': (egreso.id === 4), 'element-five': (egreso.id === 5)}">{{ PorcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (form.egresos.indexOf(egreso) === 0), 'element-two': (form.egresos.indexOf(egreso) === 1), 'element-three': (form.egresos.indexOf(egreso) === 2), 'element-four': (form.egresos.indexOf(egreso) === 3), 'element-five': (form.egresos.indexOf(egreso) === 4) }">{{ PorcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
           <p class="cantidad"> {{ PrintEgresos(egreso) }} </p>
         </div>
       </div>
@@ -122,7 +122,9 @@ export default {
     this.$store.dispatch('deuda/get', 1)
       .then(item => {
         this.form.deuda = item.cantidadMensual
-        this.position.push(item.id)
+        if (item.deuda !== null) {
+          this.position.push(item.id)
+        }
       })
   },
   methods: {
@@ -172,9 +174,15 @@ export default {
       egresos.forEach(function (egresos) {
         dataPrueba.push(egresos.cantidadMensual)
       })
-      dataPrueba.push(deuda)
-      dataPrueba.push(ahorro)
-      dataPrueba.push(excedente)
+      if (deuda !== null) {
+        dataPrueba.push(deuda)
+      }
+      if (ahorro !== null) {
+        dataPrueba.push(ahorro)
+      }
+      if (excedente !== null) {
+        dataPrueba.push(excedente)
+      }
 
       let DataPie = {
         name: 'Presupuesto',
