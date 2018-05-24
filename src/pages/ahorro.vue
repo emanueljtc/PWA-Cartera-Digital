@@ -226,14 +226,11 @@ $green: #c0d84a;
                 }
                 .meta{
                   width: 100%;
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: center;
-                  text-align: center;
+                  display: inline-block;
                   .meta-text{
                     text-align: center;
                     margin: auto;
-                    margin-left: -5%;
+                    margin-left: -20%;
                     font-size: 18px;
                     font-weight: normal;
                     font-style: normal;
@@ -257,7 +254,7 @@ $green: #c0d84a;
                     border-radius: 20px;
                     position: relative;
                     top: 7px;
-                    left: 6%;
+                    margin-right: 2%;
                   }
               }
               .q-if-label{
