@@ -67,7 +67,6 @@ $green: #c0d84a;
     font-family: OpenSansBold;
     src: url(~assets/fonts/OpenSans/OpenSans-Bold.ttf);
   }
-
   $nunito: Nunito;
   $nunitobold: NunitoBold;
   $os-semibold: OpenSansSemibold;
@@ -206,6 +205,17 @@ $green: #c0d84a;
                     border: 1px solid rgba(0, 0, 0, -0.9) !important;
                     background: rgba(255, 255, 255, 0) !important;
                     box-shadow: 0 0 45px rgba(0, 0, 0, -0.8) !important;
+                    tspan{
+                      font-family: OpenSans;
+                      font-size: 12px;
+                      font-weight: bold;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 2.08;
+                      letter-spacing: normal;
+                      text-align: left;
+                      color: #3f224c;
+                    }
                   }
                   .highcharts-loading{
                     background-color: rgba(255, 255, 255, 0) !important;
