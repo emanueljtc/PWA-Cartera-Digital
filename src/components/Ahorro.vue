@@ -11,6 +11,17 @@
         </div>
         <div class="grafica">
             <p class="meses">Meses</p>
+            <div class="highcharts" :style="styles"  v-show="mostrar_SinInv">
+                <vue-highcharts
+                    :options="options"
+                    :loading="loading"
+                    :resizable="true"
+                    ref = 'highcharts_SinInversion'
+                    @load="onLoad"
+                    @resize="onResize"
+                >
+                </vue-highcharts>
+            </div>
             <div class="highcharts" :style="styles"  v-show="mostrar_axend">
                 <vue-highcharts
                     :options="options"
@@ -104,7 +115,8 @@ export default {
         egreso: [],
         capitalInicial: null
       },
-      mostrar_axend: true,
+      mostrar_SinInv: true,
+      mostrar_axend: false,
       mostrar_kuspit: false,
       mostrar_feudo: false,
       ahorro: null,
@@ -165,16 +177,143 @@ export default {
       this.mostrar_axend = true
       this.mostrar_kuspit = false
       this.mostrar_feudo = false
+      this.mostrar_SinInv = false
     },
     kuspit_button: function () {
       this.mostrar_kuspit = true
       this.mostrar_feudo = false
       this.mostrar_axend = false
+      this.mostrar_SinInv = false
     },
     feudo_button: function () {
       this.mostrar_kuspit = false
       this.mostrar_axend = false
       this.mostrar_feudo = true
+      this.mostrar_SinInv = false
+    },
+    get_SinInversion_Result (capitalInicial, ahorro) {
+      let capitalRecopilada = 0
+      let capitalFinal_0 = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let capitalFinal_11 = 0
+      let capitalFinal_12 = 0
+      let total = []
+      for (let mes = 1; mes <= 13; mes++) {
+        if (mes === 1) {
+          capitalFinal_0 = 0
+          total.push(capitalFinal_0)
+          // console.log(`mes 0: ${total}`)
+          continue
+        }
+        if (mes === 2) {
+          capitalFinal_1 = capitalInicial + ahorro
+          total.push(capitalFinal_1)
+          // console.log(`mes 1: ${total}`)
+          continue
+        }
+        if (mes === 3) {
+          capitalInicial = capitalFinal_1
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_2 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_2)
+          // console.log(`mes 2: ${total}`)
+          continue
+        }
+        if (mes === 4) {
+          capitalInicial = capitalFinal_2
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_3 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_3)
+          // console.log(`mes 3: ${total}`)
+          continue
+        }
+        if (mes === 5) {
+          capitalInicial = capitalFinal_3
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_4 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_4)
+          // console.log(`mes 4: ${total}`)
+          continue
+        }
+        if (mes === 6) {
+          capitalInicial = capitalFinal_4
+          capitalRecopilada = capitalInicial
+          capitalFinal_5 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_5)
+          // console.log(`mes 5: ${total}`)
+          continue
+        }
+        if (mes === 7) {
+          capitalInicial = capitalFinal_5
+          capitalRecopilada = capitalInicial
+          capitalFinal_6 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_6)
+          // console.log(`mes 6: ${total}`)
+          continue
+        }
+        if (mes === 8) {
+          capitalInicial = capitalFinal_6
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_7 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_7)
+          // console.log(`mes 7: ${total}`)
+          continue
+        }
+        if (mes === 9) {
+          capitalInicial = capitalFinal_7
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_8 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_8)
+          // console.log(`mes 8: ${total}`)
+          continue
+        }
+        if (mes === 10) {
+          capitalInicial = capitalFinal_8
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_9 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_9)
+          // console.log(`mes 9: ${total}`)
+          continue
+        }
+        if (mes === 11) {
+          capitalInicial = capitalFinal_9
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_10 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_10)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+        if (mes === 12) {
+          capitalInicial = capitalFinal_10
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_11 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_11)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+        if (mes === 13) {
+          capitalInicial = capitalFinal_11
+          capitalRecopilada = capitalInicial + ahorro
+          capitalFinal_12 = capitalRecopilada + capitalInicial
+          total.push(capitalFinal_12)
+          // console.log(`mes 10: ${total}`)
+          continue
+        }
+      }
+      return total
+    },
+    getChartData_SinInversion (capitalInicial, ahorro) {
+      let arrayData_axend = this.get_SinInversion_Result(capitalInicial, ahorro)
+      return arrayData_axend
     },
     getAxendResult (capitalInicial, ahorro, interes_axend) {
       let capitalRecopilada = 0
@@ -408,7 +547,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_11 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_11)
-          // console.log(`mes 10: ${total}`)
+          console.log(`mes 10: ${total}`)
           continue
         }
         if (mes === 13) {
@@ -533,7 +672,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_11 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_11)
-          // console.log(`mes 10: ${total}`)
+          // console.log(`mes 11: ${total}`)
           continue
         }
         if (mes === 13) {
@@ -541,7 +680,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_feudo / 100 + ahorro
           capitalFinal_12 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_12)
-          // console.log(`mes 10: ${total}`)
+          // console.log(`mes 12: ${total}`)
           continue
         }
       }
@@ -558,6 +697,11 @@ export default {
       const interes_axend = 1.25
       const interes_kuspit = 1.44
       const interes_feudo = 0
+      let SinInversion_Series = {
+        name: 'Sin Inversion',
+        data: this.getChartData_SinInversion(capitalInicial, ahorro),
+        color: 'blue'
+      }
       let axendSeries = {
         name: 'Axend',
         data: this.getChartData_axend(capitalInicial, ahorro, interes_axend),
@@ -573,6 +717,7 @@ export default {
         data: this.getChartData_feudo(capitalInicial, ahorro, interes_feudo),
         color: '#737272'
       }
+      this.$refs.highcharts_SinInversion.addSeries(SinInversion_Series)
       this.$refs.highcharts_axend.addSeries(axendSeries)
       this.$refs.highchart_kuspit.addSeries(kuspitSeries)
       this.$refs.highchart_feudo.addSeries(feudoSeries)
