@@ -410,21 +410,7 @@ export default {
       return arrayData_axend
     },
     // Kuspit
-    getKuspitResult (capitalInicial, ahorro, interes_kuspit) {
-      let capitalRecopilada = 0
-      let capitalFinal_0 = 0
-      let capitalFinal_1 = 0
-      let capitalFinal_2 = 0
-      let capitalFinal_3 = 0
-      let capitalFinal_4 = 0
-      let capitalFinal_5 = 0
-      let capitalFinal_6 = 0
-      let capitalFinal_7 = 0
-      let capitalFinal_8 = 0
-      let capitalFinal_9 = 0
-      let capitalFinal_10 = 0
-      let capitalFinal_11 = 0
-      let capitalFinal_12 = 0
+    getKuspitResult (capitalInicial, ahorro, interes_kuspit, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let total = []
       for (let mes = 1; mes <= 13; mes++) {
         if (mes === 1) {
@@ -530,8 +516,8 @@ export default {
       }
       return total
     },
-    getChartData_kuspit (capitalInicial, ahorro, interes_kuspit) {
-      let arrayData = this.getKuspitResult(capitalInicial, ahorro, interes_kuspit)
+    getChartData_kuspit (capitalInicial, ahorro, interes_kuspit, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
+      let arrayData = this.getKuspitResult(capitalInicial, ahorro, interes_kuspit, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12)
       // console.log(arrayData)
       return arrayData
     },
