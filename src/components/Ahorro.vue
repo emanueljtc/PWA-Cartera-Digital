@@ -60,8 +60,8 @@
            <p class="meta-value">{{ PrintMeta }}</p>
         </div>
         <q-field>
-            <q-list separator>
-                <q-collapsible label="Opciones de Inversión" opened class="select">
+            <q-list>
+                <q-collapsible label="Opciones de Inversión" close class="select">
                     <div>
                         <q-list link >
                             <q-item>
