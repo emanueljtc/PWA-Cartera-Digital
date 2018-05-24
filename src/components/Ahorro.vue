@@ -298,21 +298,7 @@ export default {
       let arrayData_axend = this.get_SinInversion_Result(capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12)
       return arrayData_axend
     },
-    getAxendResult (capitalInicial, ahorro, interes_axend) {
-      let capitalRecopilada = 0
-      let capitalFinal_0 = 0
-      let capitalFinal_1 = 0
-      let capitalFinal_2 = 0
-      let capitalFinal_3 = 0
-      let capitalFinal_4 = 0
-      let capitalFinal_5 = 0
-      let capitalFinal_6 = 0
-      let capitalFinal_7 = 0
-      let capitalFinal_8 = 0
-      let capitalFinal_9 = 0
-      let capitalFinal_10 = 0
-      let capitalFinal_11 = 0
-      let capitalFinal_12 = 0
+    getAxendResult (capitalInicial, ahorro, interes_axend, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let total = []
       for (let mes = 1; mes <= 13; mes++) {
         if (mes === 1) {
@@ -419,7 +405,7 @@ export default {
       console.log(`ahorro a largo plazo : ${capitalFinal_10}`)
       return total
     },
-    getChartData_axend (capitalInicial, ahorro, interes_axend) {
+    getChartData_axend (capitalInicial, ahorro, interes_axend, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let arrayData_axend = this.getAxendResult(capitalInicial, ahorro, interes_axend)
       return arrayData_axend
     },
@@ -701,7 +687,7 @@ export default {
       }
       let axendSeries = {
         name: 'Axend',
-        data: this.getChartData_axend(capitalInicial, ahorro, interes_axend),
+        data: this.getChartData_axend(capitalInicial, ahorro, interes_axend, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12),
         color: '#e03757'
       }
       let kuspitSeries = {
