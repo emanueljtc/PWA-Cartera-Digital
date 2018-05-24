@@ -366,6 +366,12 @@ $green: #c0d84a;
             i {
               left: -3% !important;
             }
+            .meta-text{
+              margin-right: 50% !important;
+            }
+            .meta-value{
+              left: -5px !important;
+            }
           }
         .btn-next{
                 width: 102% !important;
