@@ -184,9 +184,13 @@ $green: #c0d84a;
                     line-height: 1.56;
                     font-weight: 600;
                   }
+                  .btn-cero{
+                    width: 90px;
+                    background: #fbbb40;
+                  }
                   .btn-primary{
-                  width: 90px;
-                  background: $btn-primary;
+                    width: 90px;
+                    background: $btn-primary;
                   }
                   .btn-secondary{
                     background: $btn-secondary;
