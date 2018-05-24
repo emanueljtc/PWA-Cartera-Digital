@@ -379,7 +379,6 @@ $green: #c0d84a;
         .btn-next{
                 width: 102% !important;
                 height: 67px !important;
-                /* margin: 0px !important; */
                 border-radius: 0px !important;
                 margin-left: -50% !important;
                 margin-bottom: -10% !important;
