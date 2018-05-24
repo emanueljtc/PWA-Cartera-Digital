@@ -101,8 +101,7 @@ $green: #c0d84a;
               font-size: 35px;
               color: $dark-purple;
               font-weight: bold;
-              margin-bottom: 0px;
-              margin-top: -100px;
+              margin-bottom: 30px;
               }
               .q-tabs{
                 .q-tabs-head {
@@ -338,6 +337,17 @@ $green: #c0d84a;
           width: 110% !important;
           left: -18px;
           position: relative;
+          margin-bottom: -35px !important;
+          .btn-primary{
+            width: 100px !important;
+            left: -117px !important;
+          }
+          .btn-secondary{
+            background: $btn-secondary;
+          }
+          .btn-tree{
+           left: 101px !important;
+          }
         }
         .grafica{
           position: relative !important;
