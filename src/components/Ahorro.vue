@@ -55,8 +55,7 @@
             </div>
         </div>
         <div class="meta">
-           <i class="fas fa-star"></i>
-           <p class="meta-text">{{ PrintProposito }}</p>
+           <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
            <p class="meta-value">{{ PrintMeta }}</p>
         </div>
         <q-field>
