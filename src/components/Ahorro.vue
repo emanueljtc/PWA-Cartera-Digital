@@ -486,7 +486,7 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           capitalFinal_9 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_9)
-          console.log(`mes 9: ${parseFloat(total).toFixed(2)}`)
+          console.log(`mes 9: ${total}`)
           continue
         }
         if (mes === 11) {
