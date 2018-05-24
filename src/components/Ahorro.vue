@@ -188,21 +188,7 @@ export default {
       this.mostrar_feudo = true
       this.mostrar_SinInv = false
     },
-    get_SinInversion_Result (capitalInicial, ahorro) {
-      let capitalRecopilada = 0
-      let capitalFinal_0 = 0
-      let capitalFinal_1 = 0
-      let capitalFinal_2 = 0
-      let capitalFinal_3 = 0
-      let capitalFinal_4 = 0
-      let capitalFinal_5 = 0
-      let capitalFinal_6 = 0
-      let capitalFinal_7 = 0
-      let capitalFinal_8 = 0
-      let capitalFinal_9 = 0
-      let capitalFinal_10 = 0
-      let capitalFinal_11 = 0
-      let capitalFinal_12 = 0
+    get_SinInversion_Result (capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let total = []
       for (let mes = 1; mes <= 13; mes++) {
         if (mes === 1) {
@@ -308,8 +294,8 @@ export default {
       }
       return total
     },
-    getChartData_SinInversion (capitalInicial, ahorro) {
-      let arrayData_axend = this.get_SinInversion_Result(capitalInicial, ahorro)
+    getChartData_SinInversion (capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
+      let arrayData_axend = this.get_SinInversion_Result(capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12)
       return arrayData_axend
     },
     getAxendResult (capitalInicial, ahorro, interes_axend) {
@@ -691,6 +677,20 @@ export default {
     loadAxend () {
       var capitalInicial = this.form.capitalInicial
       var ahorro = this.CalcularAhorro
+      let capitalRecopilada = 0
+      let capitalFinal_0 = 0
+      let capitalFinal_1 = 0
+      let capitalFinal_2 = 0
+      let capitalFinal_3 = 0
+      let capitalFinal_4 = 0
+      let capitalFinal_5 = 0
+      let capitalFinal_6 = 0
+      let capitalFinal_7 = 0
+      let capitalFinal_8 = 0
+      let capitalFinal_9 = 0
+      let capitalFinal_10 = 0
+      let capitalFinal_11 = 0
+      let capitalFinal_12 = 0
       const interes_axend = 1.25
       const interes_kuspit = 1.44
       const interes_feudo = 0
@@ -711,7 +711,7 @@ export default {
       }
       let feudoSeries = {
         name: 'Feudo Capital',
-        data: this.getChartData_feudo(capitalInicial, ahorro, interes_feudo),
+        data: this.getChartData_feudo(capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12),
         color: '#737272'
       }
       this.$refs.highcharts_SinInversion.addSeries(SinInversion_Series)
