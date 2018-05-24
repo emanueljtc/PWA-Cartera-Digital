@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <button>Ver mi meta <i class="material-icons">arrow_forward</i></button>
+    <button @click="$router.replace('/ahorro')">Ver mi meta <i class="material-icons">arrow_forward</i></button>
   </div>
 </template>
 
