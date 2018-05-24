@@ -58,6 +58,9 @@
                 </vue-highcharts>
             </div>
         </div>
+        <div class="alcance">
+          <p class="alcance-text">Para alcanzar tu meta necesitas N meses</p>
+        </div>
         <div class="meta">
            <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
            <p class="meta-value">{{ PrintMeta }}</p>
@@ -148,13 +151,16 @@ export default {
           }
         },
         yAxis: {
-          allowDecimals: false,
+          allowDecimals: true,
           labels: {
             format: '{value} k'
           },
           title: {
             text: ''
           }
+        },
+        tooltip: {
+          pointFormat: '{point.y:.2f} $'
         },
         plotOptions: {
           spline: {

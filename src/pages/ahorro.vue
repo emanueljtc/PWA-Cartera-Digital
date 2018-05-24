@@ -244,6 +244,21 @@ $green: #c0d84a;
                     bottom: -57px;
                   }
                 }
+                .alcance {
+                  margin-bottom: 5%;
+                  margin-top: 36px;
+                  .alcance-text{
+                     font-family: OpenSans;
+                     font-size: 15px;
+                     font-weight: normal;
+                     font-style: normal;
+                     font-stretch: normal;
+                     line-height: 1.39;
+                     letter-spacing: normal;
+                     text-align: center;
+                     color: #3f224c;
+                  }
+                }
                 .meta{
                   width: 90%;
                   display: inline-block;
