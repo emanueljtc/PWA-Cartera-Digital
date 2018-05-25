@@ -3,7 +3,7 @@
     <div class="layout-padding center-align">
       <div class="container presupuesto">
         <div class="content">
-          <h1>Presupuesto</h1>
+          <h1>Diagnóstico</h1>
           <!-- <highcharts :options="options"></highcharts> -->
           <q-tabs>
           <!-- Tabs - notice slot="title" -->
