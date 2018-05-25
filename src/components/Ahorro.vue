@@ -72,7 +72,10 @@
                         <q-list link >
                             <q-item>
                                 <q-item-main>
-                                    <q-item-tile label>Axend <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
+                                    <q-item-tile label><a @click="descriptions_axend_buttons">Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
+                                    <p class="descriptions" v-show="descriptions_axend">
+                                      Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
+                                    </p>
                                 </q-item-main>
                             </q-item>
                             <q-item-separator inset />
@@ -104,7 +107,6 @@ import CapturarCapitalInicial from '../components/CapturarCapitalInicial'
 import CapturarMetas from '../components/CapturarMetas'
 import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
 import VueHighcharts from 'vue2-highcharts'
-// import IHighCharts from 'vue-highcharts-v5/src/HighCharts.js'
 export default {
   name: 'Ahorro',
   data () {
@@ -123,6 +125,7 @@ export default {
       mostrar_axend: false,
       mostrar_kuspit: false,
       mostrar_feudo: false,
+      descriptions_axend: false,
       ahorro: null,
       axend: null,
       styles: {},
@@ -145,7 +148,7 @@ export default {
           lineWidth: 1,
           tickInterval: 1, // con este intervalo logro llegar a los 12 meses
           min: 1, // se establece el minimo del intervalo
-          max: 12, // se establece el maximo en este caso 12 = 12 meses
+          max: 12, // se establece el maximo en este caso 12 meses
           title: {
             text: ''
           }
@@ -160,7 +163,7 @@ export default {
           }
         },
         tooltip: {
-          pointFormat: '{point.y:.2f} $'
+          pointFormat: '{point.y:.2f} $' // decimales
         },
         plotOptions: {
           spline: {
@@ -179,6 +182,9 @@ export default {
     },
     onResize (width, height) {
       console.log(width, height)
+    },
+    descriptions_axend_buttons: function () {
+      this.descriptions_axend = !this.descriptions_axend
     },
     sinInv_button: function () {
       this.mostrar_axend = false
@@ -210,13 +216,11 @@ export default {
         if (mes === 1) {
           capitalFinal_0 = 0
           total.push(capitalFinal_0)
-          console.log(`mes 0: ${total}`)
           continue
         }
         if (mes === 2) {
           capitalFinal_1 = (capitalInicial + ahorro) * 0 / 100 + ahorro
           total.push(capitalFinal_1)
-          // console.log(`mes 1: ${total}`)
           continue
         }
         if (mes === 3) {
@@ -224,7 +228,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_2 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_2)
-          // console.log(`mes 2: ${total}`)
           continue
         }
         if (mes === 4) {
@@ -232,7 +235,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_3 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_3)
-          // console.log(`mes 3: ${total}`)
           continue
         }
         if (mes === 5) {
@@ -240,7 +242,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_4 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_4)
-          // console.log(`mes 4: ${total}`)
           continue
         }
         if (mes === 6) {
@@ -248,7 +249,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_5 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_5)
-          // console.log(`mes 5: ${total}`)
           continue
         }
         if (mes === 7) {
@@ -256,7 +256,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_6 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_6)
-          // console.log(`mes 6: ${total}`)
           continue
         }
         if (mes === 8) {
@@ -264,7 +263,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_7 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_7)
-          // console.log(`mes 7: ${total}`)
           continue
         }
         if (mes === 9) {
@@ -272,7 +270,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_8 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_8)
-          // console.log(`mes 8: ${total}`)
           continue
         }
         if (mes === 10) {
@@ -280,7 +277,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_9 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_9)
-          // console.log(`mes 9: ${total}`)
           continue
         }
         if (mes === 11) {
@@ -288,7 +284,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_10 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_10)
-          // console.log(`mes 10: ${total}`)
           continue
         }
         if (mes === 12) {
@@ -296,7 +291,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_11 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_11)
-          // console.log(`mes 11: ${total}`)
           continue
         }
         if (mes === 13) {
@@ -304,7 +298,6 @@ export default {
           capitalRecopilada = (capitalInicial + ahorro) * 0 / 100 + ahorro
           capitalFinal_12 = capitalRecopilada + capitalInicial
           total.push(capitalFinal_12)
-          // console.log(`mes 12: ${total}`)
           continue
         }
       }
@@ -405,7 +398,6 @@ export default {
           continue
         }
       }
-      console.log(`ahorro a largo plazo : ${capitalFinal_10}`)
       return total
     },
     getChartData_axend (capitalInicial, ahorro, interes_axend, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
@@ -424,7 +416,6 @@ export default {
         if (mes === 2) {
           capitalFinal_1 = (capitalInicial + ahorro) * interes_kuspit / 100 + ahorro
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${parseFloat(capitalFinal_1).toFixed(2)}`)
           continue
         }
         if (mes === 3) {
@@ -517,7 +508,6 @@ export default {
         if (mes === 1) {
           capitalFinal_0 = 0
           total.push(capitalFinal_0)
-          console.log(`mes 0: ${total}`)
           continue
         }
         if (mes === 2) {
@@ -608,6 +598,11 @@ export default {
     getChartData_feudo (capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let arrayData = this.getFeudoResult(capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12)
       return arrayData
+    },
+    comparar (capitalFinal_1) {
+      let meta = this.PrintMeta
+      console.log(meta)
+      return meta
     },
     loadAxend () {
       var capitalInicial = this.form.capitalInicial
