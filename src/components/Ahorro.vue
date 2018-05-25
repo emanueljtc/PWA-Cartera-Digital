@@ -73,7 +73,7 @@
                             <q-item>
                                 <q-item-main>
                                     <q-item-tile label><a @click="descriptions_axend_buttons">Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
-                                    <p class="descriptions" v-show="descriptions_axend">
+                                    <p class="descriptions animated fadeIn" v-show="descriptions_axend">
                                       Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
                                     </p>
                                 </q-item-main>
