@@ -73,7 +73,7 @@
                             <q-item>
                                 <q-item-main>
                                     <q-item-tile label><a @click="descriptions_axend_buttons">Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
-                                    <p class="descriptions animated fadeIn" v-show="descriptions_axend">
+                                    <p class="descriptions animated slideInDown" v-show="descriptions_axend">
                                       Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
                                     </p>
                                 </q-item-main>
@@ -82,7 +82,7 @@
                                 <q-item>
                                     <q-item-main>
                                         <q-item-tile label><a @click="descriptions_kuspit_buttons">Kuspit</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
-                                        <p class="descriptions animated fadeIn" v-show="descriptions_kuspit">
+                                        <p class="descriptions animated slideInDown" v-show="descriptions_kuspit">
                                           Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
                                         </p>
                                     </q-item-main>
@@ -90,7 +90,10 @@
                             <q-item-separator inset />
                                 <q-item>
                                     <q-item-main>
-                                        <q-item-tile label>Feudo Capital <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
+                                        <q-item-tile label><a @click="descriptions_feudo_buttons">Feudo Capital</a> <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
+                                        <p class="descriptions animated slideInDown" v-show="descriptions_feudo">
+                                          Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
+                                        </p>
                                     </q-item-main>
                                 </q-item>
                         </q-list>
@@ -130,6 +133,7 @@ export default {
       mostrar_feudo: false,
       descriptions_axend: false,
       descriptions_kuspit: false,
+      descriptions_feudo: false,
       ahorro: null,
       axend: null,
       styles: {},
@@ -192,6 +196,9 @@ export default {
     },
     descriptions_kuspit_buttons: function () {
       this.descriptions_kuspit = !this.descriptions_kuspit
+    },
+    descriptions_feudo_buttons: function () {
+      this.descriptions_feudo = !this.descriptions_feudo
     },
     sinInv_button: function () {
       this.mostrar_axend = false
