@@ -267,9 +267,19 @@ export default {
     },
     // Dar el id a cada egreso
     setId () {
-      let array = this.form.egresos
-      let lastElement = array[array.length - 1]
-      let setid = lastElement.id + 1
+      let array = null
+      let arrayLenght = this.form.egresos.length
+      let lastElement = null
+      let setid = 0
+
+      if (arrayLenght > 0) {
+        array = this.form.egresos
+        lastElement = array[array.length - 1]
+        setid = lastElement.id + 1
+      } else {
+        setid = 1
+      }
+
       this.form_egreso.id = setid
     },
     // Crear ids y names unicos en cada input de los formularios
