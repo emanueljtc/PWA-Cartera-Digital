@@ -13,7 +13,7 @@
       </div>
       <i class="material-icons arrow">arrow_downward</i>
       <div class="ahorro">
-        <p>Podrías estar ahorrando</p>
+        <p>{{ AhorroText() }}</p>
         <p><span> {{ PrintAhorro }} </span></p>
         <p>en {{ gastoMayor }}</p>
       </div>
@@ -86,8 +86,22 @@ export default {
       }
       return seleccionar
     },
+    AhorroText () {
+      let text = ''
+      if (this.gastoMayorCantidad > this.precioBajoSeleccionado) {
+        text = 'Podrías estar ahorrando'
+      } else {
+        text = 'Estas ahorrando'
+      }
+      return text
+    },
     Ahorro () {
-      let ahorro = this.gastoMayorCantidad - this.precioBajoSeleccionado
+      let ahorro = 0
+      if (this.gastoMayorCantidad > this.precioBajoSeleccionado) {
+        ahorro = this.gastoMayorCantidad - this.precioBajoSeleccionado
+      } else {
+        ahorro = this.precioBajoSeleccionado - this.gastoMayorCantidad
+      }
       return ahorro
     }
   },
