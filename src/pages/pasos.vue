@@ -13,36 +13,35 @@
         <!-- ===================================================== -->
         <!-- Ingresos -->
         <!-- ===================================================== -->
-        <q-step title="ingresos">
+        <q-step title="ingresos" :order="1">
           <capturar-ingreso @saved="next(), back(), help()" :ingreso-id="1"/>
         </q-step>
 
         <!-- ===================================================== -->
         <!-- Egresos -->
         <!-- ===================================================== -->
-        <q-step title="egresos" :ready="ready">
+        <q-step title="egresos" :ready="ready" :order="2">
           <button class="back"
-            @click="prev(), stophelp()"
+            @click="prev(), stophelp(), egresos()"
           >
           </button>
-          <capturar-egresos @saved="next(), stophelp()"/>
+          <capturar-egresos @saved="next(), stophelp()" @update="update"/>
         </q-step>
 
         <!-- ===================================================== -->
         <!-- Gastos más fuertes -->
         <!-- ===================================================== -->
-        <q-step title="gastos-mayor" :ready="ready">
+        <q-step title="gastos-mayor" :ready="ready" :order="3" v-if="serviciosBasicosExist">
           <button class="back"
             @click="$refs.stepper.previous(), help()"
           >
           </button>
           <capturar-gastos @saved="next()"/>
         </q-step>
-
         <!-- ===================================================== -->
         <!-- Deuda -->
         <!-- ===================================================== -->
-        <q-step title="deuda" :ready="ready">
+        <q-step title="deuda" :ready="ready" :order="4">
           <button class="back"
             @click="$refs.stepper.previous(), help()"
           >
@@ -53,7 +52,7 @@
         <!-- ===================================================== -->
         <!-- Metas -->
         <!-- ===================================================== -->
-        <q-step title="metas" :ready="ready">
+        <q-step title="metas" :ready="ready" :order="5">
           <button class="back"
             @click="$refs.stepper.previous()"
           >
@@ -64,7 +63,7 @@
         <!-- ===================================================== -->
         <!-- CapitalInicial -->
         <!-- ===================================================== -->
-        <q-step title="CapitalInicial" :ready="ready">
+        <q-step title="CapitalInicial" :ready="ready" :order="6">
           <button class="back"
             @click="$refs.stepper.previous()"
           >
@@ -121,6 +120,10 @@ export default {
   name: 'Pasos',
   data () {
     return {
+      form: {
+        egresos: []
+      },
+      serviciosBasicosExist: false,
       openmodal: false,
       ready: false,
       finished: false,
@@ -128,6 +131,14 @@ export default {
       DisabledBack: true,
       DisabledHelp: true
     }
+  },
+  created () {
+    this.$store.dispatch('egresos/all')
+      .then(egresos => {
+        egresos.forEach((egreso) => {
+          this.form.egresos.push(egreso)
+        })
+      })
   },
   methods: {
     // Stepper
@@ -158,6 +169,12 @@ export default {
     // Terminar
     finishPasos () {
       this.$router.replace('/correo')
+    },
+
+    update (serviciosBasicosExist) {
+      this.serviciosBasicosExist = serviciosBasicosExist
+      // this.$refs.stepper.next()
+      // this.DisabledHelp = true
     }
   },
   components: {
