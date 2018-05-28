@@ -91,7 +91,7 @@ export default {
       if (this.gastoMayorCantidad > this.precioBajoSeleccionado) {
         text = 'Podrías estar ahorrando'
       } else {
-        text = 'Estas ahorrando'
+        text = '¡Muy bien! Estas ahorrando'
       }
       return text
     },
