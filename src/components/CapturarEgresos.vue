@@ -4,6 +4,7 @@
       <h2>Egresos</h2>
       <p>Especifica tus egresos</p>
       {{ setId() }}
+      {{ ServiciosBasicos() }}
       <q-field>
         <q-select
           v-model="form_egreso.egreso"
@@ -109,6 +110,7 @@ export default {
         cantidad: 0,
         cantidadMensual: null
       },
+      serviciosBasicosExist: false,
       //
       selectOptions: [
         {
@@ -172,11 +174,11 @@ export default {
             this.form.egresos.push(form_egreso)
             this.$store.dispatch('egresos/store', form_egreso)
               .then(item => {
-                this.$emit('saved', form_egreso)
+                this.$emit('saved', this.serviciosBasicosExist)
               })
             this.resetFormEgreso()
           } else {
-            this.$emit('saved', form_egreso)
+            this.$emit('saved', this.serviciosBasicosExist)
           }
         } else {
           this.resetFormEgreso()
@@ -281,6 +283,17 @@ export default {
       }
 
       this.form_egreso.id = setid
+    },
+    // Servicios básicos existe
+    ServiciosBasicos () {
+      let servicios = false
+      this.form.egresos.forEach(function (egreso) {
+        if (egreso.egreso === 'Servicios básicos') {
+          servicios = true
+        }
+      })
+      this.serviciosBasicosExist = servicios
+      this.$emit('update', this.serviciosBasicosExist)
     },
     // Crear ids y names unicos en cada input de los formularios
     frecuenciaSemanalEgreso (egreso) {

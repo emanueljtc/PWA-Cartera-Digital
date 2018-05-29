@@ -67,7 +67,7 @@ export default {
           position: 'top-right'
         })
       } else {
-        this.$router.replace('/presupuesto')
+        this.$router.replace('/diagnostico')
       }
     }
   },

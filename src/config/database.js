@@ -8,6 +8,7 @@ export default {
     'gastos': '++id, gasto, frecuencia, cantidad, cantidadMensual',
     'deuda': '++id, exist, deuda, frecuencia, cantidad, cantidadMensual',
     'metas': '++id, meta, proposito',
-    'capital': '++id, exist, capitalInicial'
+    'capital': '++id, exist, capitalInicial',
+    'ahorro': '++id, ahorro'
   }
 }
