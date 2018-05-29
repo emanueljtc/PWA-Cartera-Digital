@@ -8,67 +8,42 @@
       </vue-highcharts>
       <p class="total"><span>Total:</span> {{ PrintIngreso }}</p>
     </div>
-    {{ ChangeValidation() }}
-    {{ Calcular() }}
-    <div class="renta" v-if="form_recomendado.renta !== null">
+    {{ GuardarAhorro() }}
+    <div class="egresos" v-for="(egreso, key) in form.egresos" :key="key">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('renta') === 0)}">{{ porcentaje.renta }}%</span> Renta/Hipoteca</p>
-          <p class="cantidad"> {{ PrintRenta}} </p>
+          <p class="porcentaje"><span v-bind:class="{'element-one': (form.egresos.indexOf(egreso) === 0), 'element-two': (form.egresos.indexOf(egreso) === 1), 'element-three': (form.egresos.indexOf(egreso) === 2), 'element-four': (form.egresos.indexOf(egreso) === 3), 'element-five': (form.egresos.indexOf(egreso) === 4) }">{{ PorcentajeEgresos(egreso) }}%</span> {{ egreso.egreso }}</p>
+          <p class="cantidad"> {{ PrintEgresos(egreso) }} </p>
         </div>
       </div>
     </div>
-    <div class="despensa" v-if="form_recomendado.despensa !== null">
+    <div class="deuda" v-if="form.deuda !== null">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('despensa') === 0), 'element-two': (servicios_existentes.indexOf('despensa') === 1)}">{{ porcentaje.despensa }}%</span> Despensa</p>
-          <p class="cantidad"> {{ PrintDespensa }} </p>
-        </div>
-      </div>
-    </div>
-    <div class="gasolina" v-if="form_recomendado.gasolina !== null">
-      <div class="data-box">
-        <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('gasolina') === 0), 'element-two': (servicios_existentes.indexOf('gasolina') === 1), 'element-three': (servicios_existentes.indexOf('gasolina') === 2)}">{{ porcentaje.gasolina }}%</span> Gasolina/Uber</p>
-          <p class="cantidad"> {{ PrintGasolina }} </p>
-        </div>
-      </div>
-    </div>
-    <div class="gustos" v-if="form_recomendado.gustos !== null">
-      <div class="data-box">
-        <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('gustos') === 0), 'element-two': (servicios_existentes.indexOf('gustos') === 1), 'element-three': (servicios_existentes.indexOf('gustos') === 2), 'element-four': (servicios_existentes.indexOf('gustos') === 3)}">{{ porcentaje.gustos }}%</span> Gustos</p>
-          <p class="cantidad"> {{ PrintGustos }} </p>
-        </div>
-      </div>
-    </div>
-    <div class="servicios" v-if="form_recomendado.servicios !== null">
-      <div class="data-box">
-        <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('servicios') === 0), 'element-two': (servicios_existentes.indexOf('servicios') === 1), 'element-three': (servicios_existentes.indexOf('servicios') === 2), 'element-four': (servicios_existentes.indexOf('servicios') === 3), 'element-five': (servicios_existentes.indexOf('servicios') === 4)}">{{ porcentaje.servicios }}%</span> Servicios Básicos</p>
-          <p class="cantidad"> {{ PrintServicios }} </p>
-        </div>
-      </div>
-    </div>
-    <div class="deuda" v-if="form_recomendado.deuda !== null">
-      <div class="data-box">
-        <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('deuda') === 0), 'element-two': (servicios_existentes.indexOf('deuda') === 1), 'element-three': (servicios_existentes.indexOf('deuda') === 2), 'element-four': (servicios_existentes.indexOf('deuda') === 3), 'element-five': (servicios_existentes.indexOf('deuda') === 4), 'element-six': (servicios_existentes.indexOf('deuda') === 5)}">{{ porcentaje.deuda }}%</span> Deuda</p>
+          <p class="porcentaje"><span v-bind:class="{'element-two': (form.egresos.length === 1), 'element-three': (form.egresos.length === 2), 'element-four': (form.egresos.length === 3), 'element-five': (form.egresos.length === 4), 'element-six': (form.egresos.length === 5), 'element-seven': (form.egresos.length === 6)}">{{ PorcentajeDeuda }}%</span> Deuda</p>
           <p class="cantidad">{{ PrintDeuda }}</p>
         </div>
       </div>
     </div>
-    <div class="ahorro" v-if="form_recomendado.ahorro !== null">
+    {{ CalcularAhorro() }}
+    {{ CalcularExcedente() }}
+    <div class="ahorro" v-if="ahorro > 0">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-one': (servicios_existentes.indexOf('ahorro') === 0), 'element-two': (servicios_existentes.indexOf('ahorro') === 1), 'element-three': (servicios_existentes.indexOf('ahorro') === 2), 'element-four': (servicios_existentes.indexOf('ahorro') === 3), 'element-five': (servicios_existentes.indexOf('ahorro') === 4), 'element-six': (servicios_existentes.indexOf('ahorro') === 5), 'element-seven': (servicios_existentes.indexOf('ahorro') === 6)}">{{ porcentaje.ahorro }}%</span> Ahorro</p>
-          <p class="cantidad">{{ PrintAhorro }}</p>
+          <p class="porcentaje"><span v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">{{ PorcentajeAhorro }}%</span> Ahorro</p>
+          <p class="cantidad"> {{ PrintAhorro }} </p>
         </div>
       </div>
     </div>
-
+    <div class="excedente" v-if="excedente > 0">
+      <div class="data-box">
+        <div class="data">
+          <p class="porcentaje"><span v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">{{ PorcentajeExcedente }}%</span> Cantidad Excedente</p>
+          <p class="cantidad"> {{ PrintExcedente }} </p>
+        </div>
+      </div>
+    </div>
     <button @click="$router.replace('/ahorro')">Ver mi meta <i class="material-icons">arrow_forward</i></button>
-    <!-- {{ indexOff() }} -->
   </div>
 </template>
 
@@ -81,35 +56,16 @@ export default {
       form: {
         ingreso: null,
         deuda: null,
-        egresos: []
+        egresos: [],
+        egresosActualizados: []
       },
-      egresos_validation: {
-        renta: false,
-        despensa: false,
-        gasolina: false,
-        gustos: false,
-        servicios: false,
-        deuda: false
-      },
-      form_recomendado: {
-        renta: null,
-        despensa: null,
-        gasolina: null,
-        gustos: null,
-        servicios: null,
-        deuda: null,
+      ahorroDB: {
+        id: 1,
         ahorro: null
       },
-      servicios_existentes: [],
-      porcentaje: {
-        renta: null,
-        despensa: null,
-        gasolina: null,
-        gustos: null,
-        servicios: null,
-        deuda: null,
-        ahorro: null
-      },
+      position: [],
+      ahorro: null,
+      excedente: null,
       pieOptions: {
         chart: {
           type: 'pie',
@@ -161,889 +117,95 @@ export default {
         this.form.ingreso = item.ingreso
       })
 
-    this.$store.dispatch('deuda/get', 1)
-      .then(item => {
-        this.form.deuda = item.cantidadMensual
-      })
-
     this.$store.dispatch('egresos/all')
       .then(egresos => {
         egresos.forEach((egreso) => {
           this.form.egresos.push(egreso)
+          this.position.push(egreso.id)
         })
+      })
+
+    this.$store.dispatch('deuda/get', 1)
+      .then(item => {
+        this.form.deuda = item.cantidadMensual
+        if (item.deuda !== null) {
+          this.position.push(item.id)
+        }
       })
   },
   methods: {
-    ChangeValidation () {
-      let validation = this.egresos_validation
+    PrintEgresos (egreso) {
+      let cantidadMensual = egreso.cantidadMensual
+      let actualizar = cantidadMensual - (cantidadMensual * 0.10)
+
+      let value = actualizar
+      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return currencyNum
+    },
+    PorcentajeEgresos (egreso) {
+      let cantidadMensual = egreso.cantidadMensual
+      let actualizar = cantidadMensual - (cantidadMensual * 0.10)
+
+      let porcentaje = Math.round((actualizar * 100) / this.form.ingreso)
+      return porcentaje
+    },
+    CalcularAhorro () {
+      let totalIngreso = this.form.ingreso
+      let totalEgresos = 0
       this.form.egresos.forEach(function (egreso, index) {
-        if (egreso.egreso === 'Renta/Hipoteca') {
-          validation.renta = true
-        }
-        if (egreso.egreso === 'Despensa') {
-          validation.despensa = true
-        }
-        if (egreso.egreso === 'Gasolina/Uber') {
-          validation.gasolina = true
-        }
-        if (egreso.egreso === 'Gustos') {
-          validation.gustos = true
-        }
-        if (egreso.egreso === 'Servicios básicos') {
-          validation.servicios = true
-        }
+        let cantidadMensual = egreso.cantidadMensual
+        let actualizar = cantidadMensual - (cantidadMensual * 0.10)
+
+        totalEgresos = totalEgresos + actualizar
       })
-      if (this.form.deuda !== null) {
-        validation.deuda = true
+      let ahorro = totalIngreso - totalEgresos - this.form.deuda
+      if (ahorro > 0) {
+        this.ahorro = ahorro
+      } else {
+        this.ahorro = null
       }
     },
-    Calcular () {
-      let validation = this.egresos_validation
-      let recomendado = this.form_recomendado
-      let porcentaje = this.porcentaje
+    CalcularExcedente () {
+      let totalIngreso = this.form.ingreso
+      let totalEgresos = 0
+      this.form.egresos.forEach(function (egreso, index) {
+        let cantidadMensual = egreso.cantidadMensual
+        let actualizar = cantidadMensual - (cantidadMensual * 0.10)
 
-      // 1
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.60
-        //
-        porcentaje.renta = 25
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 60
+        totalEgresos = totalEgresos + actualizar
+      })
+      let total = totalEgresos + this.form.deuda
+      let excedente = total - totalIngreso
+      if (excedente > 0) {
+        this.excedente = excedente
+      } else {
+        this.excedente = null
       }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.60
-        //
-        porcentaje.renta = 25
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 60
-      }
-
-      // 5
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      // 10
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      // 15
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.renta = 25
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      // 20
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.20
-        recomendado.ahorro = this.form.ingreso * 0.35
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 20
-        porcentaje.ahorro = 35
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      // 25
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.40
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 40
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.20
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 20
-      }
-
-      // 30
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.30
-        //
-        porcentaje.renta = 25
-        porcentaje.deuda = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 30
-      }
-
-      if (validation.renta === true && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.renta = this.form.ingreso * 0.25
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.20
-        //
-        porcentaje.renta = 25
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 20
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.75
-        //
-        porcentaje.despensa = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 75
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      // 35
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.75
-        //
-        porcentaje.despensa = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 75
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.despensa = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      // 40
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.15
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.60
-        //
-        porcentaje.despensa = 10
-        porcentaje.deuda = 15
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 60
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      // 45
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.45
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 45
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.despensa = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      if (validation.renta === false && validation.despensa === true && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.despensa = this.form.ingreso * 0.10
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.45
-        //
-        porcentaje.despensa = 10
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 45
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === false) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.20
-        recomendado.ahorro = this.form.ingreso * 0.70
-        //
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 20
-        porcentaje.ahorro = 70
-      }
-
-      // 50
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.75
-        //
-        porcentaje.gasolina = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 75
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === false) {
-        recomendado.gasolina = this.form.ingreso * 0.15
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.60
-        //
-        porcentaje.gasolina = 15
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 60
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === false && validation.deuda === true) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.gasolina = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.gasolina = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 65
-      }
-
-      // 55
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === false && validation.servicios === true && validation.deuda === true) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.55
-        //
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 55
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === true && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.gasolina = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.deuda = this.form.ingreso * 0.15
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.50
-        //
-        porcentaje.gasolina = 10
-        porcentaje.servicios = 10
-        porcentaje.deuda = 15
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 50
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === false) {
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.ahorro = this.form.ingreso * 0.85
-        //
-        porcentaje.gustos = 15
-        porcentaje.ahorro = 85
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === false) {
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.ahorro = this.form.ingreso * 0.75
-        //
-        porcentaje.gustos = 15
-        porcentaje.servicios = 10
-        porcentaje.ahorro = 75
-      }
-
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === false && validation.deuda === true) {
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.ahorro = this.form.ingreso * 0.75
-        //
-        porcentaje.gustos = 15
-        porcentaje.deuda = 10
-        porcentaje.ahorro = 75
-      }
-
-      // 60
-      if (validation.renta === false && validation.despensa === false && validation.gasolina === false && validation.gustos === true && validation.servicios === true && validation.deuda === true) {
-        recomendado.gustos = this.form.ingreso * 0.15
-        recomendado.deuda = this.form.ingreso * 0.10
-        recomendado.servicios = this.form.ingreso * 0.10
-        recomendado.ahorro = this.form.ingreso * 0.65
-        //
-        porcentaje.deuda = 10
-        porcentaje.gustos = 15
-        porcentaje.servicios = 10
-        porcentaje.ahorro = 65
-      }
+    },
+    GuardarAhorro () {
+      let ahorroDB = this.ahorroDB
+      ahorroDB.ahorro = this.ahorro
+      this.$store.dispatch('ahorro/store', ahorroDB)
+      console.log(ahorroDB)
     },
     loadChart () {
       let dataPrueba = []
-      let renta = this.form_recomendado.renta
-      let despensa = this.form_recomendado.despensa
-      let gasolina = this.form_recomendado.gasolina
-      let gustos = this.form_recomendado.gustos
-      let servicios = this.form_recomendado.servicios
-      let deuda = this.form_recomendado.deuda
-      let ahorro = this.form_recomendado.ahorro
+      let egresos = this.form.egresos
+      let deuda = this.form.deuda
+      let ahorro = this.ahorro
+      let excedente = this.excedente
 
-      if (renta !== null) {
-        dataPrueba.push(renta)
-        this.servicios_existentes.push('renta')
-      }
-      if (despensa !== null) {
-        dataPrueba.push(despensa)
-        this.servicios_existentes.push('despensa')
-      }
-      if (gasolina !== null) {
-        dataPrueba.push(gasolina)
-        this.servicios_existentes.push('gasolina')
-      }
-      if (gustos !== null) {
-        dataPrueba.push(gustos)
-        this.servicios_existentes.push('gustos')
-      }
-      if (servicios !== null) {
-        dataPrueba.push(servicios)
-        this.servicios_existentes.push('servicios')
-      }
+      egresos.forEach(function (egresos) {
+        dataPrueba.push(egresos.cantidadMensual)
+      })
       if (deuda !== null) {
         dataPrueba.push(deuda)
-        this.servicios_existentes.push('deuda')
       }
       if (ahorro !== null) {
         dataPrueba.push(ahorro)
-        this.servicios_existentes.push('ahorro')
+      }
+      if (excedente !== null) {
+        dataPrueba.push(excedente)
       }
 
       let DataPie = {
@@ -1051,12 +213,8 @@ export default {
         data: (dataPrueba)
       }
       this.$refs.pieChart.addSeries(DataPie)
-    },
-    indexOff () {
-      let servicio = this.servicios_existentes
-      let posicion = servicio.indexOf('despensa')
-      console.log(posicion)
     }
+    //
   },
   computed: {
     PrintIngreso () {
@@ -1064,40 +222,39 @@ export default {
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
     },
-    PrintRenta () {
-      let value = this.form_recomendado.renta
-      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return currencyNum
-    },
-    PrintDespensa () {
-      let value = this.form_recomendado.despensa
-      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return currencyNum
-    },
-    PrintGasolina () {
-      let value = this.form_recomendado.gasolina
-      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return currencyNum
-    },
-    PrintGustos () {
-      let value = this.form_recomendado.gustos
-      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return currencyNum
-    },
-    PrintServicios () {
-      let value = this.form_recomendado.servicios
-      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return currencyNum
-    },
     PrintDeuda () {
-      let value = this.form_recomendado.deuda
+      let value = this.form.deuda
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
     },
+    //
     PrintAhorro () {
-      let value = this.form_recomendado.ahorro
+      let ahorro = this.ahorro
+      let value = ahorro
       let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
       return currencyNum
+    },
+    //
+    PrintExcedente () {
+      let excedente = this.excedente
+      let value = excedente
+      let currencyNum = '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return currencyNum
+    },
+    //
+    PorcentajeDeuda () {
+      let porcentaje = Math.round((this.form.deuda * 100) / this.form.ingreso)
+      return porcentaje
+    },
+    PorcentajeAhorro () {
+      let ahorro = this.ahorro
+      let porcentaje = Math.round((ahorro * 100) / this.form.ingreso)
+      return porcentaje
+    },
+    PorcentajeExcedente () {
+      let excedente = this.excedente
+      let porcentaje = Math.round((excedente * 100) / this.form.ingreso)
+      return porcentaje
     }
   },
   components: {
