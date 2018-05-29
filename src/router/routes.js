@@ -30,8 +30,8 @@ export default [{
     }
   },
   {
-    path: '/presupuesto',
-    name: 'app.presupuesto',
+    path: '/diagnostico',
+    name: 'app.diagnostico',
     component: () =>
                     import('pages/presupuesto'),
     meta: {
@@ -39,8 +39,8 @@ export default [{
     }
   },
   {
-    path: '/presupuesto-recomendado',
-    name: 'app.presupuesto-recomendado',
+    path: '/presupuesto',
+    name: 'app.presupuesto',
     component: () =>
                     import('pages/presupuesto-recomendado'),
     meta: {
