@@ -61,6 +61,12 @@
                 </vue-highcharts>
             </div>
         </div>
+        <q-table
+          title="Sin Inversion"
+          :data="tableData"
+          :columns="columns"
+          row-key="name"
+        /><br>
         <div class="meta">
            <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
            <p class="meta-value">{{ PrintMeta }}</p>
@@ -111,7 +117,7 @@ import CapturarIngreso from '../components/CapturarIngreso'
 import CapturarEgresos from '../components/CapturarEgresos'
 import CapturarCapitalInicial from '../components/CapturarCapitalInicial'
 import CapturarMetas from '../components/CapturarMetas'
-import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible } from 'quasar'
+import { QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, QTable, QTh, QTr, QTd, QTableColumns } from 'quasar'
 import VueHighcharts from 'vue2-highcharts'
 export default {
   name: 'Ahorro',
@@ -181,7 +187,65 @@ export default {
           }
         },
         series: []
-      }
+      },
+      columns: [
+        {
+          name: 'desc',
+          required: true,
+          label: 'Capital Inicial',
+          align: 'left',
+          field: 'CI',
+          sortable: true
+        },
+        {
+          name: 'desc',
+          required: true,
+          label: 'Ahorro Recomendado',
+          align: 'left',
+          field: 'AR',
+          sortable: true
+        },
+        {
+          name: 'desc',
+          required: true,
+          label: 'Interes',
+          align: 'left',
+          field: 'I',
+          sortable: true
+        },
+        {
+          name: 'desc',
+          required: true,
+          label: 'Capital Recopilado',
+          align: 'left',
+          field: 'CR',
+          sortable: true
+        },
+        {
+          name: 'desc',
+          required: true,
+          label: 'Capital Final',
+          align: 'left',
+          field: 'CF',
+          sortable: true
+        }
+      ],
+      tableData: [
+        {
+          CI: 0,
+          AR: 2000,
+          I: 0,
+          CR: 2000,
+          CF: 2000
+        },
+        {
+          CI: 2000,
+          AR: 2000,
+          I: 0,
+          CR: 4000,
+          CF: 4000
+        }
+      ]
     }
   },
   methods: {
@@ -1732,7 +1796,7 @@ export default {
     }
   },
   components: {
-    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos, CapturarCapitalInicial
+    VueHighcharts, QTabs, QTab, QTabPane, QRouteTab, QField, QInput, QBtnDropdown, QList, QSelect, QListHeader, QItem, QItemSide, QItemTile, QItemSeparator, QItemMain, QSideLink, QCollapsible, CapturarMetas, CapturarIngreso, CapturarEgresos, CapturarCapitalInicial, QTable, QTh, QTr, QTd, QTableColumns
   }
 }
 </script>
