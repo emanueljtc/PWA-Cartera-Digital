@@ -673,6 +673,7 @@ export default {
           }
         } else {
           i = i + 1
+          mes = 'más de 12'
         }
       })
       console.log(Meta)
@@ -693,6 +694,7 @@ export default {
           }
         } else {
           i = i + 1
+          mes = 'más de 12'
         }
       })
       console.log(Meta)
@@ -713,6 +715,7 @@ export default {
           }
         } else {
           i = i + 1
+          mes = 'más de 12'
         }
       })
       console.log(Meta)
@@ -732,9 +735,9 @@ export default {
           }
         } else {
           i = i + 1
+          mes = 'más de 12'
         }
       })
-      console.log(Meta)
       return mes
     }
   },
