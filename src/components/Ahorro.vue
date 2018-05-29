@@ -5,6 +5,9 @@
         <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
         <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
         <h2 class="layer" v-show="mostrar_feudo" style="color: #727171">{{ Print_Ahorro_LG_F }}</h2>
+        <div class="alcance">
+          <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
+        </div>
         <div class="buttons">
           <button class="btn btn-cero " @click="sinInv_button" >Sin Inv.</button>
           <button class="btn btn-primary " @click="axend_button" >Axend</button>
@@ -57,9 +60,6 @@
                 >
                 </vue-highcharts>
             </div>
-        </div>
-        <div class="alcance">
-          <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span>  <span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
         </div>
         <div class="meta">
            <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
@@ -724,7 +724,6 @@ export default {
       let i = 0
       let mes = 0
       let MetaAlcanzada = false
-
       feudo.forEach(function (element) {
         if (element >= Meta) {
           if (MetaAlcanzada === false) {
