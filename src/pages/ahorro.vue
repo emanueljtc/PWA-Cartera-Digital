@@ -204,7 +204,7 @@ $green: #c0d84a;
                 .grafica{
                   width: 100%;
                   margin-top: -15px;
-                  margin-bottom: -15%;
+                  margin-bottom: -10%;
                   .vue-highcharts{
                     border: 1px solid rgba(0, 0, 0, -0.9) !important;
                     background: rgba(255, 255, 255, 0) !important;
@@ -247,6 +247,26 @@ $green: #c0d84a;
                 .q-table-container {
                   border-radius: 0 !important;
                   box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
+                }
+                .q-table {
+                  .relative-position{
+                    display: none;
+                  }
+                  thead {
+                    tr {
+                      background: #f0f0f0 !important;
+                      th.sortable {
+                        font-family: OpenSans;
+                        font-size: 12px;
+                        font-weight: bold;
+                        font-style: normal;
+                        line-height: 2.08;
+                        letter-spacing: normal;
+                        font-stretch: normal;
+                        color: #585454;
+                      }
+                    }
+                  }
                 }
                 .alcance {
                   margin-bottom: 5%;
