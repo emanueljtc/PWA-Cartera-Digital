@@ -35,18 +35,15 @@ export default {
 
 <style lang="scss">
 $green: #c0d84a;
-  $yellow: #fbbb2f;
+  $orange: #fbbb40;
   $pink: #e03757;
   $dark-purple: #3f224c;
-  $link: #361a44;
-  $purple: #af85bc;
+  $link: #af85bc;
   $light-blue: #64c9db;
   $white: #ffffff;
-  $gray: #dedede;
-  $gray-button: #f6f6f6;
-  $btn-primary: #e03757;
+  $gray: #eae7e7;
+  $gray-light: #fcfcfc;
   $btn-secondary: #c0d84a;
-  $btn-tree: #eae7e7;
   @font-face {
     font-family: Nunito;
     src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
@@ -72,10 +69,10 @@ $green: #c0d84a;
   $os-bold: OpenSansBold;
   header {
     display: block !important;
-    background-color: #fcfcfc;
+    background-color: $gray-light;
 
     .q-toolbar {
-      background-color: #fcfcfc !important;
+      background-color: $gray-light !important;
 
       .menu-icon {
         display: block;
@@ -108,7 +105,7 @@ $green: #c0d84a;
                   width: 50%;
                   border-bottom: 2px solid $gray;
                   overflow: visible;
-                  background-color: #fcfcfc;
+                  background-color: $gray-light;
 
                   .q-tabs-scroller {
                     position: relative;
@@ -179,24 +176,24 @@ $green: #c0d84a;
                     border-radius: 10px;
                     font-size: 16px;
                     font-family: Opensans;
-                    color: white;
+                    color: $white;
                     line-height: 1.56;
                     font-weight: 600;
                   }
                   .btn-cero{
                     width: 90px;
-                    background: #fbbb40;
+                    background: $orange;
                   }
                   .btn-primary{
                     width: 90px;
-                    background: $btn-primary;
+                    background: $pink;
                   }
                   .btn-secondary{
-                    background: $btn-secondary;
+                    background: $green;
                   }
                   .btn-tree{
-                    color: #3f224c;
-                    background: $btn-tree;
+                    color: $dark-purple;
+                    background: $gray;
                     width: 115px;
                   }
                 }
@@ -217,7 +214,7 @@ $green: #c0d84a;
                       line-height: 2.08;
                       letter-spacing: normal;
                       text-align: left;
-                      color: #3f224c;
+                      color: $dark-purple;
                     }
                   }
                   .highcharts-loading{
@@ -237,7 +234,7 @@ $green: #c0d84a;
                     line-height: 2.08;
                     letter-spacing: normal;
                     text-align: left;
-                    color: #3f224c !important;
+                    color: $dark-purple !important;
                     position: relative;
                     left: 0%;
                     bottom: -57px;
@@ -246,30 +243,30 @@ $green: #c0d84a;
                 .tableInv {
                   thead {
                     tr {
-                      background: #fcbc41 !important;
+                      background: $orange !important;
                     }
                   }
                 }
                 .tableAxend {
                   thead {
                     tr {
-                      background: rgb(225, 74, 88) !important;
+                      background: $pink !important;
                     }
                   }
                 }
                 .tableKuspit {
                   thead {
                     tr {
-                      background: #c0d84a !important;
+                      background: $green !important;
                     }
                   }
                 }
                 .tableFeudo {
                   thead {
                     tr {
-                      background: #eae7e7 !important;
+                      background: $gray !important;
                       th.sortable {
-                        color : #3f224c !important;
+                        color : $dark-purple !important;
                       }
                     }
                   }
@@ -292,7 +289,7 @@ $green: #c0d84a;
                         line-height: 2.08;
                         letter-spacing: normal;
                         font-stretch: normal;
-                        color: #f9f9f9;
+                        color: $gray;
                       }
                     }
                   }
@@ -313,7 +310,7 @@ $green: #c0d84a;
                      line-height: 1.39;
                      letter-spacing: normal;
                      text-align: center;
-                     color: #3f224c;
+                     color: $dark-purple;
                   }
                 }
                 .meta{
@@ -341,8 +338,8 @@ $green: #c0d84a;
                     position: relative;
                   }
                   i {
-                    border: 1px solid yellow;
-                    color: yellow ;
+                    border: 1px solid $orange;
+                    color: $orange ;
                     width: 27px;
                     height: 27px;
                     padding: 3px;
@@ -355,7 +352,7 @@ $green: #c0d84a;
                 margin-top: 22px;
               }
               .q-if-label{
-                color: #3f224c !important;
+                color: $dark-purple !important;
               }
               .q-list{
                 border: 0px solid !important;
@@ -392,7 +389,7 @@ $green: #c0d84a;
                line-height: 1.39;
                letter-spacing: normal;
                text-align: left;
-               color: #af85bc;
+               color: $link;
               }
               .ver-ms-p{
                 margin-left: 62%;
@@ -408,8 +405,8 @@ $green: #c0d84a;
                    width: 300px;
                    height: 50px;
                    border-radius: 15px;
-                   background-color: #64c9db;
-                   color: white;
+                   background-color: $light-blue;
+                   color: $white;
                    border: 0px;
                    cursor: pointer;
                    margin-bottom: 15px;
