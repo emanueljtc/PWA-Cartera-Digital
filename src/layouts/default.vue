@@ -176,7 +176,7 @@ export default {
       padding-top: 0px;
 
       .q-list-header {
-        background-color: #371d43;
+        background-color: #371d43 !important;
         text-align: center;
         padding: 30px 0;
         line-height: initial;
@@ -186,15 +186,21 @@ export default {
       .q-item {
         font-size: 18px;
         padding: 15px 16px;
+        cursor: pointer !important;
+        border-bottom: none !important;
 
         .q-item-main {
           margin: 0px;
         }
 
-        i {
-          color: $white;
+        i, .q-item-label {
+          color: $white !important;
           margin-right: 24px;
         }
+      }
+
+      .q-item:hover {
+        background: rgba(189,189,189,0.5) !important;
       }
 
       .logout-box {
@@ -210,6 +216,7 @@ export default {
         }
 
         p {
+          color: $white !important;
           font-size: 12px;
           margin-top: 15px;
           padding: 0 16px 24px 16px;
