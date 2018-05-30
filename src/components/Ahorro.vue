@@ -5,6 +5,10 @@
         <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
         <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
         <h2 class="layer" v-show="mostrar_feudo" style="color: #727171">{{ Print_Ahorro_LG_F }}</h2>
+         <div class="meta">
+           <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
+           <p class="meta-value">{{ PrintMeta }}</p>
+        </div>
         <div class="alcance">
           <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
         </div>
@@ -67,10 +71,6 @@
           :columns="columns"
           row-key="name"
         /><br>
-        <div class="meta">
-           <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
-           <p class="meta-value">{{ PrintMeta }}</p>
-        </div>
         <q-field>
             <q-list>
                 <q-collapsible label="Opciones de Inversión" close class="select">
