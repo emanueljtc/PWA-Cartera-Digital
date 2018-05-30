@@ -88,17 +88,17 @@
         <q-icon name="close" />
       </button>
       <h4>Tus egresos corresponden a:</h4>
-      <h3>Vivienda</h3>
+      <h3>Renta/Hipoteca</h3>
       <p>Alquiler, Mantenimientos</p>
       <hr>
       <h3>Despensa</h3>
       <p>Comidas, Bebidas, <br> Artículos de aseo personal, <br> Limpieza del hogar</p>
       <hr>
-      <h3>Transporte</h3>
+      <h3>Gasolina/Uber</h3>
       <p>Combustible, Otros</p>
       <hr>
       <h3>Gustos</h3>
-      <p>Salidas, Diversión</p>
+      <p>Salidas, Diversión, Starbucks, Tacos,<br> Otros Gastos</p>
       <hr>
       <h3>Servicios básicos</h3>
       <p>Smartphone, Gas, Luz, Agua, <br> Telefonía/Internet</p>

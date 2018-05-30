@@ -38,7 +38,7 @@ export default {
       },
       gastoMayorCantidad: 0,
       gastoMayor: null,
-      precioBajoSeleccionado: '500.00'
+      precioBajoSeleccionado: 0
     }
   },
   created () {

@@ -3,12 +3,11 @@
     <div class="layout-padding center-align">
       <div class="container presupuesto">
         <div class="content">
-          <h1>Diagnóstico</h1>
-          <!-- <highcharts :options="options"></highcharts> -->
+          <h1>Diagnóstico Actual</h1>
           <q-tabs>
           <!-- Tabs - notice slot="title" -->
           <q-tab default slot="title" name="actual" label="Actual" />
-          <q-tab slot="title" name="recomendado" label="Recomendado" @click.native="$router.replace('/presupuesto')" />
+          <q-tab slot="title" name="recomendado" label="Ideal" @click.native="$router.replace('/presupuesto')" />
           <q-tab slot="title" name="ahorro" label="Ahorro" @click.native="$router.replace('/ahorro')" />
           <q-tab slot="title" name="gastos" label="Gastos" @click.native="$router.replace('/gastos')" />
 
