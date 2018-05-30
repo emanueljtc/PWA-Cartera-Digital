@@ -284,7 +284,7 @@ $green: #c0d84a;
                   .meta-value{
                     text-align: right;
                     left: 10%;
-                    top: -26px;
+                    top: -30px;
                     position: relative;
                   }
                   i {

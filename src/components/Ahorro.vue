@@ -66,7 +66,6 @@
             </div>
         </div>
         <q-table
-          class="table"
           title="Sin Inversion"
           :data="tableData"
           :columns="columns"
