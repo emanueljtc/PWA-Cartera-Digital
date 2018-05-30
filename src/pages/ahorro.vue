@@ -460,7 +460,7 @@ $green: #c0d84a;
         .grafica{
           position: relative !important;
           // left: -12% !important;
-          margin-bottom: -30% !important;
+          margin-bottom: -20% !important;
           .meses{
             left: 3% !important;
           }
