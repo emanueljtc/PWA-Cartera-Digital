@@ -267,6 +267,10 @@ $green: #c0d84a;
                     }
                   }
                 }
+                .items-center, .flex-center{
+                  // comentar siguiente linea si es necesario activar la paginacion de la tabla
+                  display: none !important;
+                }
                 .alcance {
                   margin-bottom: 5%;
                   margin-top: 15%;
@@ -337,7 +341,7 @@ $green: #c0d84a;
                 max-width: 100%;
                 min-height: 36px !important;
                 padding-top: 12px;
-                margin-top: -30px;
+                margin-top: -20px;
                 position: relative;
                 flex-basis: 0;
                 flex-grow: 1;

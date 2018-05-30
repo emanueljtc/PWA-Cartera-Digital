@@ -67,10 +67,32 @@
         </div>
         <q-table
           title=""
-          :data="tableData"
+          :data="tableData_S_INV"
           :columns="columns"
           row-key="name"
           v-show="mostrar_SinInv"
+          :pagination.sync="pagination"
+        />
+        <q-table
+          title=""
+          :data="tableData_Axend"
+          :columns="columns"
+          row-key="name"
+          v-show="mostrar_axend"
+        />
+        <q-table
+          title=""
+          :data="tableData_Kuspit"
+          :columns="columns"
+          row-key="name"
+          v-show="mostrar_kuspit"
+        />
+        <q-table
+          title=""
+          :data="tableData_Feudo"
+          :columns="columns"
+          row-key="name"
+          v-show="mostrar_feudo"
         />
         <q-field>
             <q-list>
@@ -189,6 +211,12 @@ export default {
         },
         series: []
       },
+      pagination: {
+        sortBy: null, // String, column "name" property value
+        descending: false,
+        page: 1,
+        rowsPerPage: 1 // current rows per page being displayed
+      },
       columns: [
         {
           name: 'desc',
@@ -227,7 +255,55 @@ export default {
           sortable: true
         }
       ],
-      tableData: [
+      tableData_S_INV: [
+        {
+          CI: 0,
+          AR: 2000,
+          I: 0,
+          CR: 2000,
+          CF: 2000
+        },
+        {
+          CI: 2000,
+          AR: 2000,
+          I: 0,
+          CR: 4000,
+          CF: 4000
+        }
+      ],
+      tableData_Axend: [
+        {
+          CI: 0,
+          AR: 2000,
+          I: 1.24,
+          CR: 2028,
+          CF: 2028
+        },
+        {
+          CI: 2028,
+          AR: 2000,
+          I: 0,
+          CR: 4000,
+          CF: 4000
+        }
+      ],
+      tableData_Kuspit: [
+        {
+          CI: 0,
+          AR: 2000,
+          I: 0,
+          CR: 2000,
+          CF: 2000
+        },
+        {
+          CI: 2000,
+          AR: 2000,
+          I: 0,
+          CR: 4000,
+          CF: 4000
+        }
+      ],
+      tableData_Feudo: [
         {
           CI: 0,
           AR: 2000,
