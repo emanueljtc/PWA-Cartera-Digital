@@ -227,10 +227,6 @@ $green: #c0d84a;
                   .highcharts-credits, .highcharts-legend-item{
                     display: none;
                   }
-                  .q-table-container {
-                    border-radius: 0 !important;
-                    box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
-                  }
                   .meses{
                     width: 38px;
                     height: 25px;
@@ -247,6 +243,10 @@ $green: #c0d84a;
                     left: 0%;
                     bottom: -57px;
                   }
+                }
+                .q-table-container {
+                  border-radius: 0 !important;
+                  box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
                 }
                 .alcance {
                   margin-bottom: 5%;
