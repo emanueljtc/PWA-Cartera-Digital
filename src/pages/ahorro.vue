@@ -203,7 +203,7 @@ $green: #c0d84a;
                 .grafica{
                   width: 100%;
                   margin-top: -15px;
-                  margin-bottom: -15%;
+                  margin-bottom: -10%;
                   .vue-highcharts{
                     border: 1px solid rgba(0, 0, 0, -0.9) !important;
                     background: rgba(255, 255, 255, 0) !important;
@@ -246,6 +246,26 @@ $green: #c0d84a;
                 .q-table-container {
                   border-radius: 0 !important;
                   box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
+                }
+                .q-table {
+                  .relative-position{
+                    display: none;
+                  }
+                  thead {
+                    tr {
+                      background: #f0f0f0 !important;
+                      th.sortable {
+                        font-family: OpenSans;
+                        font-size: 12px;
+                        font-weight: bold;
+                        font-style: normal;
+                        line-height: 2.08;
+                        letter-spacing: normal;
+                        font-stretch: normal;
+                        color: #585454;
+                      }
+                    }
+                  }
                 }
                 .alcance {
                   margin-bottom: 5%;
@@ -317,7 +337,7 @@ $green: #c0d84a;
                 max-width: 100%;
                 min-height: 36px !important;
                 padding-top: 12px;
-                margin-top: 20px;
+                margin-top: -30px;
                 position: relative;
                 flex-basis: 0;
                 flex-grow: 1;
@@ -369,19 +389,74 @@ $green: #c0d84a;
       }
     }
   }
+  @media screen and (max-width: 1000px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        width: 100% !important;
+        left: 0 !important;
+        .meta{
+            i {
+              left: -3% !important;
+            }
+            .meta-text{
+              margin-right: 50% !important;
+              margin-left: -11% !important;
+            }
+            .meta-value{
+              top: -30px !important;
+              left: -5px !important;
+            }
+          }
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        width: 100% !important;
+        left: 0 !important;
+        .meta{
+            i {
+              left: -3% !important;
+            }
+            .meta-text{
+              margin-right: 50% !important;
+              margin-left: -11% !important;
+            }
+            .meta-value{
+              top: -30px !important;
+              left: -5px !important;
+            }
+          }
+      }
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        width: 100% !important;
+        left: 0 !important;
+        .meta{
+            i {
+              left: -3% !important;
+            }
+            .meta-text{
+              margin-right: 50% !important;
+              margin-left: -11% !important;
+            }
+            .meta-value{
+              top: -30px !important;
+              left: -5px !important;
+            }
+          }
+      }
+    }
+  }
   @media screen and (max-width: 700px) {
     .q-tabs-panes {
       .q-tab-pane {
         width: 100% !important;
         left: 0 !important;
-        .grafica{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -15% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
         .ver-ms-p{
           margin-left: 60% !important;
         }
@@ -426,10 +501,10 @@ $green: #c0d84a;
           }
         }
         .ver-ms-p{
-          margin-left: 59% !important;
+          margin-left: 56% !important;
         }
         .ver-ms-lg{
-          margin-left: 55% !important;
+          margin-left: 52% !important;
         }
         .meta{
             i {
@@ -469,10 +544,10 @@ $green: #c0d84a;
           }
         }
         .ver-ms-p{
-          margin-left: 12% !important;
+          margin-left: 52% !important;
         }
         .ver-ms-lg{
-          margin-left: 5% !important;
+          margin-left: 48% !important;
         }
         .meta{
             i {
@@ -494,6 +569,42 @@ $green: #c0d84a;
                 margin-left: -50% !important;
                 margin-bottom: -10% !important;
 
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        .ver-ms-p{
+          margin-left: 30% !important;
+        }
+        .ver-ms-lg{
+          margin-left: 24% !important;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        .ver-ms-p{
+          margin-left: 30% !important;
+        }
+        .ver-ms-lg{
+          margin-left: 24% !important;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 430px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        .ver-ms-p{
+          margin-left: 24% !important;
+        }
+        .ver-ms-lg{
+          margin-left: 17% !important;
         }
       }
     }
