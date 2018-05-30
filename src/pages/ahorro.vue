@@ -392,10 +392,10 @@ $green: #c0d84a;
                color: $link;
               }
               .ver-ms-p{
-                margin-left: 62%;
+                margin-left: 75%;
               }
               .ver-ms-lg{
-                margin-left: 59%;
+                margin-left: 65%;
               }
               .btn-next{
                    position: absolute;
@@ -489,10 +489,10 @@ $green: #c0d84a;
         width: 100% !important;
         left: 0 !important;
         .ver-ms-p{
-          margin-left: 60% !important;
+          margin-left: 75% !important;
         }
         .ver-ms-lg{
-          margin-left: 56% !important;
+          margin-left: 65% !important;
         }
         .meta{
             i {
@@ -532,10 +532,10 @@ $green: #c0d84a;
           }
         }
         .ver-ms-p{
-          margin-left: 56% !important;
+          margin-left: 74% !important;
         }
         .ver-ms-lg{
-          margin-left: 52% !important;
+          margin-left: 63% !important;
         }
         .meta{
             i {
@@ -575,10 +575,10 @@ $green: #c0d84a;
           }
         }
         .ver-ms-p{
-          margin-left: 52% !important;
+          margin-left: 65% !important;
         }
         .ver-ms-lg{
-          margin-left: 48% !important;
+          margin-left: 52% !important;
         }
         .meta{
             i {
@@ -608,10 +608,10 @@ $green: #c0d84a;
     .q-tabs-panes {
       .q-tab-pane {
         .ver-ms-p{
-          margin-left: 30% !important;
+          margin-left: 62% !important;
         }
         .ver-ms-lg{
-          margin-left: 24% !important;
+          margin-left: 45% !important;
         }
       }
     }
@@ -620,10 +620,10 @@ $green: #c0d84a;
     .q-tabs-panes {
       .q-tab-pane {
         .ver-ms-p{
-          margin-left: 30% !important;
+          margin-left: 59% !important;
         }
         .ver-ms-lg{
-          margin-left: 24% !important;
+          margin-left: 41% !important;
         }
       }
     }
@@ -632,10 +632,10 @@ $green: #c0d84a;
     .q-tabs-panes {
       .q-tab-pane {
         .ver-ms-p{
-          margin-left: 24% !important;
+          margin-left: 50% !important;
         }
         .ver-ms-lg{
-          margin-left: 17% !important;
+          margin-left: 29% !important;
         }
       }
     }
