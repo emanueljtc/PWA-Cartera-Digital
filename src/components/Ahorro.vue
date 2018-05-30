@@ -78,27 +78,27 @@
                         <q-list link >
                             <q-item>
                                 <q-item-main>
-                                    <q-item-tile label><a @click="descriptions_axend_buttons">Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
+                                    <q-item-tile label><a @click="descriptions_axend_buttons">Plataforma Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
                                     <p class="descriptions animated slideInDown" v-show="descriptions_axend">
-                                      Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
+                                     Axend es la plataforma global de inversiones alternativas, que conecta personas con sus oportunidades de inversión ideales: Préstamos Pyme, Persona-a-Persona, Proyectos Excluvisos, Bienes Raíces, con tipo de riesgo de desde F hasta doble A. Rendimiento promedio de 15% anualizado.
                                     </p>
                                 </q-item-main>
                             </q-item>
                             <q-item-separator inset />
                                 <q-item>
                                     <q-item-main>
-                                        <q-item-tile label><a @click="descriptions_kuspit_buttons">Kuspit</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
+                                        <q-item-tile label><a @click="descriptions_kuspit_buttons">Plataforma Kuspit</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
                                         <p class="descriptions animated slideInDown" v-show="descriptions_kuspit">
-                                          Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
+                                          Invierte en un click… treídea, en donde estés… Applicación en donde te brinda una educación para invertir en la Bolsa. Inversiones desde 100 pesos. Tipo de Riesgo desde D hasta triple A. Rendimiento promedio de 17.25%
                                         </p>
                                     </q-item-main>
                                 </q-item>
                             <q-item-separator inset />
                                 <q-item>
                                     <q-item-main>
-                                        <q-item-tile label><a @click="descriptions_feudo_buttons">Feudo Capital</a> <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
+                                        <q-item-tile label><a @click="descriptions_feudo_buttons">Plataforma Feudo C.</a> <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
                                         <p class="descriptions animated slideInDown" v-show="descriptions_feudo">
-                                          Amet commodo non velit eu officia quis. Deserunt id veniam enim nostrud esse proident commodo incididunt. Fugiat exercitation amet laboris incididunt velit ipsum ex esse aliqua et exercitation. Occaecat commodo aliqua qui proident labore minim dolore eu dolor ut fugiat.
+                                          Podrás invertir de manera inteligente, inversión en bienes raíces. Capital destinado al financiamiento de construcciones y amenidades elite en México. Tipo de Riesgo desde B hasta triple A. Rendimiento promedio dentro de los términos y condiciones.
                                         </p>
                                     </q-item-main>
                                 </q-item>

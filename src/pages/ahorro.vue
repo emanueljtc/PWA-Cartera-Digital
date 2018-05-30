@@ -337,10 +337,10 @@ $green: #c0d84a;
                color: #af85bc;
               }
               .ver-ms-p{
-                margin-left: 78%;
+                margin-left: 62%;
               }
               .ver-ms-lg{
-                margin-left: 68%;
+                margin-left: 59%;
               }
               .btn-next{
                    position: absolute;
@@ -361,6 +361,65 @@ $green: #c0d84a;
               }
             }
           }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        width: 100% !important;
+        left: 0 !important;
+        .buttons{
+          width: 110% !important;
+          left: -18px;
+          position: relative;
+          margin-bottom: -35px !important;
+          .btn-primary{
+            width: 100px !important;
+            left: -117px !important;
+          }
+          .btn-secondary{
+            background: $btn-secondary;
+          }
+          .btn-tree{
+           left: 101px !important;
+          }
+        }
+        .grafica{
+          position: relative !important;
+          // left: -12% !important;
+          margin-bottom: -15% !important;
+          .meses{
+            left: 3% !important;
+          }
+        }
+        .ver-ms-p{
+          margin-left: 60% !important;
+        }
+        .ver-ms-lg{
+          margin-left: 56% !important;
+        }
+        .meta{
+            i {
+              left: -3% !important;
+            }
+            .meta-text{
+              margin-right: 50% !important;
+              margin-left: -11% !important;
+            }
+            .meta-value{
+              top: -30px !important;
+              left: -5px !important;
+            }
+          }
+        .btn-next{
+                width: 102% !important;
+                height: 67px !important;
+                border-radius: 0px !important;
+                margin-left: -50% !important;
+                margin-bottom: -10% !important;
+
         }
       }
     }
@@ -395,10 +454,10 @@ $green: #c0d84a;
           }
         }
         .ver-ms-p{
-          margin-left: 45% !important;
+          margin-left: 12% !important;
         }
         .ver-ms-lg{
-          margin-left: 22% !important;
+          margin-left: 5% !important;
         }
         .meta{
             i {
