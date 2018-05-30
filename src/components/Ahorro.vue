@@ -70,7 +70,8 @@
           :data="tableData"
           :columns="columns"
           row-key="name"
-        /><br>
+          v-show="mostrar_SinInv"
+        />
         <q-field>
             <q-list>
                 <q-collapsible label="Opciones de Inversión" close class="select">
@@ -192,21 +193,19 @@ export default {
         {
           name: 'desc',
           required: true,
-          label: 'Capital Inicial',
+          label: 'Capital I.',
           align: 'left',
           field: 'CI',
           sortable: true
         },
         {
-          name: 'desc',
           required: true,
-          label: 'Ahorro Recomendado',
+          label: 'Ahorro R.',
           align: 'left',
           field: 'AR',
           sortable: true
         },
         {
-          name: 'desc',
           required: true,
           label: 'Interes',
           align: 'left',
@@ -214,17 +213,15 @@ export default {
           sortable: true
         },
         {
-          name: 'desc',
           required: true,
-          label: 'Capital Recopilado',
+          label: 'Capital R.',
           align: 'left',
           field: 'CR',
           sortable: true
         },
         {
-          name: 'desc',
           required: true,
-          label: 'Capital Final',
+          label: 'Capital F.',
           align: 'left',
           field: 'CF',
           sortable: true
