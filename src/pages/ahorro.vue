@@ -47,7 +47,7 @@ $green: #c0d84a;
   $gray-button: #f6f6f6;
   $btn-primary: #e03757;
   $btn-secondary: #c0d84a;
-  $btn-tree: #f6f6f6;
+  $btn-tree: #eae7e7;
   @font-face {
     font-family: Nunito;
     src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
@@ -175,7 +175,7 @@ $green: #c0d84a;
                     width: 100px;
                     height: 40px;
                     margin: auto;
-                    margin-top: 30px;
+                    margin-top: 2%;
                     border-style: none;
                     border-radius: 10px;
                     font-size: 16px;
