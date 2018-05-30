@@ -246,7 +246,7 @@ $green: #c0d84a;
                 }
                 .alcance {
                   margin-bottom: 5%;
-                  margin-top: 36px;
+                  margin-top: 15%;
                   .alcance-text{
                      font-family: OpenSans;
                      font-size: 15px;
@@ -371,22 +371,6 @@ $green: #c0d84a;
       .q-tab-pane {
         width: 100% !important;
         left: 0 !important;
-        .buttons{
-          width: 110% !important;
-          left: -18px;
-          position: relative;
-          margin-bottom: -35px !important;
-          .btn-primary{
-            width: 100px !important;
-            left: -117px !important;
-          }
-          .btn-secondary{
-            background: $btn-secondary;
-          }
-          .btn-tree{
-           left: 101px !important;
-          }
-        }
         .grafica{
           position: relative !important;
           // left: -12% !important;
@@ -430,22 +414,6 @@ $green: #c0d84a;
       .q-tab-pane {
         width: 100% !important;
         left: 0 !important;
-        .buttons{
-          width: 110% !important;
-          left: -18px;
-          position: relative;
-          margin-bottom: -35px !important;
-          .btn-primary{
-            width: 100px !important;
-            left: -117px !important;
-          }
-          .btn-secondary{
-            background: $btn-secondary;
-          }
-          .btn-tree{
-           left: 101px !important;
-          }
-        }
         .grafica{
           position: relative !important;
           // left: -12% !important;
@@ -489,22 +457,6 @@ $green: #c0d84a;
       .q-tab-pane {
         width: 100% !important;
         left: 0 !important;
-        .buttons{
-          width: 110% !important;
-          left: -18px;
-          position: relative;
-          margin-bottom: -35px !important;
-          .btn-primary{
-            width: 100px !important;
-            left: -117px !important;
-          }
-          .btn-secondary{
-            background: $btn-secondary;
-          }
-          .btn-tree{
-           left: 101px !important;
-          }
-        }
         .grafica{
           position: relative !important;
           // left: -12% !important;
