@@ -243,6 +243,37 @@ $green: #c0d84a;
                     bottom: -57px;
                   }
                 }
+                .tableInv {
+                  thead {
+                    tr {
+                      background: #fcbc41 !important;
+                    }
+                  }
+                }
+                .tableAxend {
+                  thead {
+                    tr {
+                      background: rgb(225, 74, 88) !important;
+                    }
+                  }
+                }
+                .tableKuspit {
+                  thead {
+                    tr {
+                      background: #c0d84a !important;
+                    }
+                  }
+                }
+                .tableFeudo {
+                  thead {
+                    tr {
+                      background: #eae7e7 !important;
+                      th.sortable {
+                        color : #3f224c !important;
+                      }
+                    }
+                  }
+                }
                 .q-table-container {
                   border-radius: 0 !important;
                   box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
@@ -253,7 +284,6 @@ $green: #c0d84a;
                   }
                   thead {
                     tr {
-                      background: #f0f0f0 !important;
                       th.sortable {
                         font-family: OpenSans;
                         font-size: 12px;
@@ -262,7 +292,7 @@ $green: #c0d84a;
                         line-height: 2.08;
                         letter-spacing: normal;
                         font-stretch: normal;
-                        color: #585454;
+                        color: #f9f9f9;
                       }
                     }
                   }

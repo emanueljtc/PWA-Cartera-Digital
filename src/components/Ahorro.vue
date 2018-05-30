@@ -67,6 +67,7 @@
         </div>
         <q-table
           title=""
+          class="tableInv"
           :data="tableData_S_INV"
           :columns="columns"
           row-key="name"
@@ -75,6 +76,7 @@
         />
         <q-table
           title=""
+          class="tableAxend"
           :data="tableData_Axend"
           :columns="columns"
           row-key="name"
@@ -82,6 +84,7 @@
         />
         <q-table
           title=""
+          class="tableKuspit"
           :data="tableData_Kuspit"
           :columns="columns"
           row-key="name"
@@ -89,6 +92,7 @@
         />
         <q-table
           title=""
+          class="tableFeudo"
           :data="tableData_Feudo"
           :columns="columns"
           row-key="name"
