@@ -230,7 +230,7 @@ export default {
               padding: 30px;
 
               .grafica {
-                margin-bottom: 50px;
+                margin-bottom: 20px;
 
                 .vue-highcharts {
                   margin: 0px;
@@ -240,7 +240,7 @@ export default {
                   border: none;
 
                   .highcharts-container {
-                    height: 260px !important;
+                    height: 275px !important;
                   }
 
                   .highcharts-credits,
@@ -249,8 +249,8 @@ export default {
                     display: none;
                   }
                 }
-
-                .total {
+              }
+              .total {
                   font-family: $nunitobold;
                   font-size: 20px;
                   font-weight: bold;
@@ -270,9 +270,7 @@ export default {
                     cursor: default !important;
                     text-align: center;
                   }
-                }
               }
-
               .data-box {
                 position: relative;
                 width: 50%;
