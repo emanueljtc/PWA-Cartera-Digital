@@ -401,20 +401,20 @@ $green: #c0d84a;
                 margin-left: 65%;
               }
               .btn-next{
-                   position: absolute;
-                   font-family: Nunito;
-                   font-size: 20px;
-                   font-weight: 500;
-                   width: 300px;
-                   height: 50px;
-                   border-radius: 15px;
-                   background-color: $light-blue;
-                   color: $white;
-                   border: 0px;
-                   cursor: pointer;
-                   margin-bottom: 15px;
-                   margin-top: 18px;
-                   margin-left: -20%;
+                position: relative;
+                font-family: Nunito;
+                font-size: 20px;
+                font-weight: 500;
+                width: 300px;
+                height: 50px;
+                border-radius: 15px;
+                background-color: #64c9db;
+                color: white;
+                border: 0px;
+                outliner: 0;
+                cursor: pointer;
+                margin-bottom: 15px;
+                margin-top: 50px;
 
               }
             }
@@ -581,10 +581,12 @@ $green: #c0d84a;
             }
           }
         .btn-next{
-                width: 102% !important;
-                border-radius: 0px !important;
-                margin-left: -2% !important;
-                margin-bottom: 0px !important;
+               position: absolute !important;
+               width: 100% !important;
+               left: 0 !important;
+               bottom: 0 !important;
+               border-radius: 0px !important;
+               margin: 0px !important;
 
         }
       }
