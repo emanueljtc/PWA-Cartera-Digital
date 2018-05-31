@@ -10,6 +10,7 @@
             <q-tab slot="title" name="recomendado" label="Ideal" @click.native="$router.replace('/presupuesto')" />
             <q-tab default slot="title" name="ahorro" label="Ahorro" />
             <q-tab slot="title" name="gastos" label="Gastos" @click.native="$router.replace('/gastos')" />
+            <!-- Targets -->
             <q-tab-pane name="ahorro">
                 <Ahorro />
             </q-tab-pane>
@@ -92,11 +93,11 @@ $green: #c0d84a;
               padding: 0;
               width: 100%;
               h1 {
-              font-family: $nunitobold;
-              font-size: 35px;
-              color: $dark-purple;
-              font-weight: bold;
-              margin-bottom: 30px;
+                font-family: $nunitobold;
+                font-size: 35px;
+                color: $dark-purple;
+                font-weight: bold;
+                margin-bottom: 30px;
               }
               .q-tabs{
                 .q-tabs-head {
@@ -132,298 +133,297 @@ $green: #c0d84a;
                   }
                 }
               .q-tabs-panes {
-              .q-tab-pane {
-                border: none;
-                padding: 30px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 50%;
-                position: absolute;
-                left: 25%;
-                .sub-title{
-                  height: 25px;
-                  font-family: $os-bold;
-                  font-size: 18px;
-                  font-weight: normal;
-                  font-style: normal;
-                  font-stretch: normal;
-                  line-height: 1.39;
-                  letter-spacing: normal;
-                  text-align: center;
-                  color: $dark-purple;
-                  margin-top: -3px;
-                }
-                .layer{
-                /*  width: 156px;
-                  height: 25px; */
-                  font-family: $nunito;
-                  font-size: 40px;
-                  font-weight: bold;
-                  line-height: 0.63;
-                  text-align: center;
-                  color: $green;
-                  margin-top: 35px;
-                }
-                button{
-                  position: relative;
-                }
-                .buttons{
-                  width: 100%;
-                  .btn{
-                    width: 100px;
-                    height: 40px;
-                    margin: auto;
-                    margin-top: 2%;
-                    border-style: none;
-                    border-radius: 10px;
-                    font-size: 16px;
-                    font-family: Opensans;
-                    color: $white;
-                    line-height: 1.56;
-                    font-weight: 600;
-                  }
-                  .btn-cero{
-                    width: 90px;
-                    background: $orange;
-                  }
-                  .btn-primary{
-                    width: 90px;
-                    background: $pink;
-                  }
-                  .btn-secondary{
-                    background: $green;
-                  }
-                  .btn-tree{
-                    color: $dark-purple;
-                    background: $gray;
-                    width: 115px;
-                  }
-                }
-                .grafica{
-                  width: 100%;
-                  margin-top: -15px;
-                  margin-bottom: -10%;
-                  .vue-highcharts{
-                    border: 1px solid rgba(0, 0, 0, -0.9) !important;
-                    background: rgba(255, 255, 255, 0) !important;
-                    box-shadow: 0 0 45px rgba(0, 0, 0, -0.8) !important;
-                    tspan{
-                      font-family: OpenSans;
-                      font-size: 12px;
-                      font-weight: bold;
-                      font-style: normal;
-                      font-stretch: normal;
-                      line-height: 2.08;
-                      letter-spacing: normal;
-                      text-align: left;
-                      color: $dark-purple;
-                    }
-                  }
-                  .highcharts-loading{
-                    background-color: rgba(255, 255, 255, 0) !important;
-                  }
-                  .highcharts-credits, .highcharts-legend-item{
-                    display: none;
-                  }
-                  .meses{
-                    width: 38px;
-                    height: 25px;
-                    font-family: OpenSans;
-                    font-size: 12px !important;
-                    font-weight: bold;
-                    font-style: normal;
-                    font-stretch: normal;
-                    line-height: 2.08;
-                    letter-spacing: normal;
-                    text-align: left;
-                    color: $dark-purple !important;
-                    position: relative;
-                    left: 0%;
-                    bottom: -57px;
-                  }
-                }
-                .tableInv {
-                  thead {
-                    tr {
-                      background: $orange !important;
-                    }
-                  }
-                }
-                .tableAxend {
-                  thead {
-                    tr {
-                      background: $pink !important;
-                    }
-                  }
-                }
-                .tableKuspit {
-                  thead {
-                    tr {
-                      background: $green !important;
-                    }
-                  }
-                }
-                .tableFeudo {
-                  thead {
-                    tr {
-                      background: $gray !important;
-                      th.sortable {
-                        color : $dark-purple !important;
-                      }
-                    }
-                  }
-                }
-                .q-table-container {
-                  border-radius: 0 !important;
-                  box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
-                }
-                .q-table {
-                  .relative-position{
-                    display: none;
-                  }
-                  thead {
-                    tr {
-                      th.sortable {
-                        font-family: OpenSans;
-                        font-size: 12px;
-                        font-weight: bold;
-                        font-style: normal;
-                        line-height: 2.08;
-                        letter-spacing: normal;
-                        font-stretch: normal;
-                        color: $gray;
-                      }
-                    }
-                  }
-                }
-                .items-center, .flex-center{
-                  // comentar siguiente linea si es necesario activar la paginacion de la tabla
-                  display: none !important;
-                }
-                .alcance {
-                  margin-bottom: 5%;
-                  margin-top: 15%;
-                  .alcance-text{
-                     font-family: OpenSans;
-                     font-size: 15px;
-                     font-weight: normal;
-                     font-style: normal;
-                     font-stretch: normal;
-                     line-height: 1.39;
-                     letter-spacing: normal;
-                     text-align: center;
-                     color: $dark-purple;
-                  }
-                }
-                .meta{
-                  width: 90%;
-                  display: inline-block;
+                .q-tab-pane {
+                  border: none;
+                  padding: 30px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  width: 50%;
                   position: absolute;
-                  right: 15%;
-                  margin-top: 2%;
-                  .meta-text{
-                    text-align: center;
-                    margin: auto;
-                    margin-left: -25%;
+                  left: 25%;
+                  .sub-title{
+                    height: 25px;
+                    font-family: $os-bold;
                     font-size: 18px;
                     font-weight: normal;
                     font-style: normal;
                     font-stretch: normal;
                     line-height: 1.39;
                     letter-spacing: normal;
-                    font-family: Opensans;
+                    text-align: center;
+                    color: $dark-purple;
+                    margin-top: -3px;
                   }
-                  .meta-value{
-                    text-align: right;
-                    left: 10%;
-                    top: -30px;
+                  .layer{
+                  /*  width: 156px;
+                    height: 25px; */
+                    font-family: $nunito;
+                    font-size: 40px;
+                    font-weight: bold;
+                    line-height: 0.63;
+                    text-align: center;
+                    color: $green;
+                    margin-top: 35px;
+                  }
+                  button{
                     position: relative;
                   }
-                  i {
-                    border: 1px solid $orange;
-                    color: $orange ;
-                    width: 27px;
-                    height: 27px;
-                    padding: 3px;
-                    border-radius: 20px;
-                    margin: auto;
-                    margin-right: 7px;
+                  .buttons{
+                    width: 100%;
+                    .btn{
+                      width: 100px;
+                      height: 40px;
+                      margin: auto;
+                      margin-top: 2%;
+                      border-style: none;
+                      border-radius: 10px;
+                      font-size: 16px;
+                      font-family: Opensans;
+                      color: $white;
+                      line-height: 1.56;
+                      font-weight: 600;
+                    }
+                    .btn-cero{
+                      width: 90px;
+                      background: $orange;
+                    }
+                    .btn-primary{
+                      width: 90px;
+                      background: $pink;
+                    }
+                    .btn-secondary{
+                      background: $green;
+                    }
+                    .btn-tree{
+                      color: $dark-purple;
+                      background: $gray;
+                      width: 115px;
+                    }
                   }
-              }
-              .items-start{
-                margin-top: 22px;
-              }
-              .q-if-label{
-                color: $dark-purple !important;
-              }
-              .q-list{
-                border: 0px solid !important;
-              }
-             .select{
-                font-family: $nunito;
-                font-size: 18px !important;
-                font-weight: 600;
-                text-align: left;
-                width: 100%;
-                left: 3% ;
-                max-width: 100%;
-                min-height: 36px !important;
-                padding-top: 12px;
-                margin-top: -20px;
-                margin-bottom: 20px;
-                position: relative;
-                flex-basis: 0;
-                flex-grow: 1;
-                min-width: 0;
-                flex-wrap: nowrap;
-                align-items: center;
-                box-shadow: 0 1px 5px rgba(0,0,0,0), 0 2px 2px rgba(0,0,0,0), 0 3px 1px -2px rgba(0,0,0,0) !important;
-                text-transform: none !important;
-                border: 0px solid !important;
-              }
-              .descriptions{
-                  background-color: #e2e0e0;
-                  padding: 15px;
-              }
-              .ver-ms{
-               position: relative;
-               font-family: OpenSans;
-               font-size: 18px;
-               font-weight: normal;
-               font-style: normal;
-               font-stretch: normal;
-               line-height: 1.39;
-               letter-spacing: normal;
-               text-align: left;
-               color: $link;
-              }
-              .ver-ms-p{
-                margin-left: 75%;
-              }
-              .ver-ms-lg{
-                margin-left: 65%;
-              }
-              .btn-next{
-                position: relative;
-                font-family: Nunito;
-                font-size: 20px;
-                font-weight: 500;
-                width: 300px;
-                height: 50px;
-                border-radius: 15px;
-                background-color: #64c9db;
-                color: white;
-                border: 0px;
-                outliner: 0;
-                cursor: pointer;
-                margin-bottom: 15px;
-                margin-top: 50px;
+                  .grafica{
+                    width: 100%;
+                    margin-top: -15px;
+                    margin-bottom: -10%;
+                    .vue-highcharts{
+                      border: 1px solid rgba(0, 0, 0, -0.9) !important;
+                      background: rgba(255, 255, 255, 0) !important;
+                      box-shadow: 0 0 45px rgba(0, 0, 0, -0.8) !important;
+                      tspan{
+                        font-family: OpenSans;
+                        font-size: 12px;
+                        font-weight: bold;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: 2.08;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: $dark-purple;
+                      }
+                    }
+                    .highcharts-loading{
+                      background-color: rgba(255, 255, 255, 0) !important;
+                    }
+                    .highcharts-credits, .highcharts-legend-item{
+                      display: none;
+                    }
+                    .meses{
+                      width: 38px;
+                      height: 25px;
+                      font-family: OpenSans;
+                      font-size: 12px !important;
+                      font-weight: bold;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 2.08;
+                      letter-spacing: normal;
+                      text-align: left;
+                      color: $dark-purple !important;
+                      position: relative;
+                      left: 0%;
+                      bottom: -57px;
+                    }
+                  }
+                  .tableInv {
+                    thead {
+                      tr {
+                        background: $orange !important;
+                      }
+                    }
+                  }
+                  .tableAxend {
+                    thead {
+                      tr {
+                        background: $pink !important;
+                      }
+                    }
+                  }
+                  .tableKuspit {
+                    thead {
+                      tr {
+                        background: $green !important;
+                      }
+                    }
+                  }
+                  .tableFeudo {
+                    thead {
+                      tr {
+                        background: $gray !important;
+                        th.sortable {
+                          color : $dark-purple !important;
+                        }
+                      }
+                    }
+                  }
+                  .q-table-container {
+                    border-radius: 0 !important;
+                    box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
+                  }
+                  .q-table {
+                    .relative-position{
+                      display: none;
+                    }
+                    thead {
+                      tr {
+                        th.sortable {
+                          font-family: OpenSans;
+                          font-size: 12px;
+                          font-weight: bold;
+                          font-style: normal;
+                          line-height: 2.08;
+                          letter-spacing: normal;
+                          font-stretch: normal;
+                          color: $gray;
+                        }
+                      }
+                    }
+                  }
+                  .items-center, .flex-center{
+                    // comentar siguiente linea si es necesario activar la paginacion de la tabla
+                    display: none !important;
+                  }
+                  .alcance {
+                    margin-bottom: 5%;
+                    margin-top: 15%;
+                    .alcance-text{
+                      font-family: OpenSans;
+                      font-size: 15px;
+                      font-weight: normal;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 1.39;
+                      letter-spacing: normal;
+                      text-align: center;
+                      color: $dark-purple;
+                    }
+                  }
+                  .meta{
+                    width: 60%;
+                    display: inline-block;
+                    position: absolute;
+                    right: 32%;
+                    margin-top: 2%;
+                    .meta-text{
+                      text-align: center;
+                      margin: auto;
+                      font-size: 18px;
+                      font-weight: normal;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 1.39;
+                      letter-spacing: normal;
+                      font-family: Opensans;
+                    }
+                    .meta-value{
+                      text-align: right;
+                      left: 10%;
+                      top: -30px;
+                      position: relative;
+                    }
+                    i {
+                      border: 1px solid $orange;
+                      color: $orange ;
+                      width: 27px;
+                      height: 27px;
+                      padding: 3px;
+                      border-radius: 20px;
+                      margin: auto;
+                      margin-right: 7px;
+                    }
+                }
+                .items-start{
+                  margin-top: 22px;
+                }
+                .q-if-label{
+                  color: $dark-purple !important;
+                }
+                .q-list{
+                  border: 0px solid !important;
+                }
+                .select{
+                    font-family: $nunito;
+                    font-size: 18px !important;
+                    font-weight: 600;
+                    text-align: left;
+                    width: 100%;
+                    left: 3% ;
+                    max-width: 100%;
+                    min-height: 36px !important;
+                    padding-top: 12px;
+                    margin-top: -20px;
+                    margin-bottom: 20px;
+                    position: relative;
+                    flex-basis: 0;
+                    flex-grow: 1;
+                    min-width: 0;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    box-shadow: 0 1px 5px rgba(0,0,0,0), 0 2px 2px rgba(0,0,0,0), 0 3px 1px -2px rgba(0,0,0,0) !important;
+                    text-transform: none !important;
+                    border: 0px solid !important;
+                  }
+                  .descriptions{
+                      background-color: #e2e0e0;
+                      padding: 15px;
+                  }
+                  .ver-ms{
+                  position: relative;
+                  font-family: OpenSans;
+                  font-size: 18px;
+                  font-weight: normal;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: 1.39;
+                  letter-spacing: normal;
+                  text-align: left;
+                  color: $link;
+                  }
+                  .ver-ms-p{
+                    margin-left: 75%;
+                  }
+                  .ver-ms-lg{
+                    margin-left: 65%;
+                  }
+                  .btn-next{
+                    position: relative;
+                    font-family: Nunito;
+                    font-size: 20px;
+                    font-weight: 500;
+                    width: 300px;
+                    height: 50px;
+                    border-radius: 15px;
+                    background-color: #64c9db;
+                    color: white;
+                    border: 0px;
+                    outliner: 0;
+                    cursor: pointer;
+                    margin-bottom: 15px;
+                    margin-top: 50px;
 
+                  }
+                }
               }
             }
-          }
-        }
       }
     }
   }
@@ -518,6 +518,10 @@ $green: #c0d84a;
     }
   }
    @media screen and (max-width: 640px) {
+    .q-tabs .q-tabs-head {
+      width: 100% !important;
+      left: 0% !important;
+    }
     .q-tabs-panes {
       .q-tab-pane {
         width: 100% !important;
@@ -577,11 +581,11 @@ $green: #c0d84a;
             }
             .meta-text{
               margin-right: 50% !important;
-              margin-left: -11% !important;
+              // margin-left: -11% !important;
             }
             .meta-value{
               top: -30px !important;
-              left: -5px !important;
+              left: 62px !important;
             }
           }
         .btn-next{
