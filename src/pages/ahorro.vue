@@ -640,4 +640,16 @@ $green: #c0d84a;
       }
     }
   }
+  @media only screen and (max-width: 375px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        .ver-ms-p{
+          margin-left: 45% !important;
+        }
+        .ver-ms-lg{
+          margin-left: 22% !important;
+        }
+      }
+    }
+  }
 </style>
