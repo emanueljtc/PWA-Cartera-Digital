@@ -468,6 +468,10 @@ $green: #c0d84a;
     }
   }
   @media screen and (max-width: 800px) {
+    .q-tabs .q-tabs-head {
+      width: 100% !important;
+      left: 0% !important;
+    }
     .q-tabs-panes {
       .q-tab-pane {
         width: 100% !important;
@@ -489,6 +493,10 @@ $green: #c0d84a;
     }
   }
   @media screen and (max-width: 700px) {
+    .q-tabs .q-tabs-head {
+      width: 100% !important;
+      left: 0% !important;
+    }
     .q-tabs-panes {
       .q-tab-pane {
         width: 100% !important;
@@ -554,6 +562,10 @@ $green: #c0d84a;
     }
   }
   @media screen and (max-width: 600px) {
+    .q-tabs .q-tabs-head {
+      width: 100% !important;
+      left: 0% !important;
+    }
     .q-tabs-panes {
       .q-tab-pane {
         width: 100% !important;
