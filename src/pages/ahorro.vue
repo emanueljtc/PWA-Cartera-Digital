@@ -534,7 +534,7 @@ $green: #c0d84a;
         left: 0 !important;
         .grafica{
           position: relative !important;
-          margin-bottom: -15% !important;
+          margin-bottom: -15%;
           .meses{
             left: 3% !important;
           }
@@ -573,7 +573,7 @@ $green: #c0d84a;
         .grafica{
           position: relative !important;
           // left: -12% !important;
-          margin-bottom: -20% !important;
+          margin-bottom: -16% !important;
           .meses{
             left: 3% !important;
           }
@@ -609,9 +609,31 @@ $green: #c0d84a;
       }
     }
   }
+   @media only screen and (max-width: 550px) {
+    .q-tabs-panes {
+      .q-tab-pane {
+        .grafica{
+          position: relative !important;
+          // left: -12% !important;
+          margin-bottom: -20% !important;
+          .meses{
+            left: 3% !important;
+          }
+        }
+      }
+    }
+  }
   @media only screen and (max-width: 500px) {
     .q-tabs-panes {
       .q-tab-pane {
+        .grafica{
+          position: relative !important;
+          // left: -12% !important;
+          margin-bottom: -20% !important;
+          .meses{
+            left: 3% !important;
+          }
+        }
         .ver-ms-p{
           margin-left: 62% !important;
         }
@@ -623,6 +645,14 @@ $green: #c0d84a;
   }
   @media only screen and (max-width: 450px) {
     .q-tabs-panes {
+      .grafica{
+          position: relative !important;
+          // left: -12% !important;
+          margin-bottom: -20% !important;
+          .meses{
+            left: 3% !important;
+          }
+        }
       .q-tab-pane {
         .ver-ms-p{
           margin-left: 59% !important;
@@ -636,6 +666,14 @@ $green: #c0d84a;
   @media only screen and (max-width: 430px) {
     .q-tabs-panes {
       .q-tab-pane {
+        .grafica{
+          position: relative !important;
+          // left: -12% !important;
+          margin-bottom: -26% !important;
+          .meses{
+            left: 3% !important;
+          }
+        }
         .ver-ms-p{
           margin-left: 50% !important;
         }
@@ -648,6 +686,14 @@ $green: #c0d84a;
   @media only screen and (max-width: 375px) {
     .q-tabs-panes {
       .q-tab-pane {
+        .grafica{
+          position: relative !important;
+          // left: -12% !important;
+          margin-bottom: -30% !important;
+          .meses{
+            left: 3% !important;
+          }
+        }
         .ver-ms-p{
           margin-left: 45% !important;
         }

@@ -446,7 +446,10 @@ export default {
       border-radius: 0px;
       margin: 0px;
     }
-
+    .q-tabs-panes .q-tab-pane .grafica {
+    position: relative !important;
+    margin-bottom: 5% !important;
+    }
     .layout-padding {
       .presupuesto {
         .content {
