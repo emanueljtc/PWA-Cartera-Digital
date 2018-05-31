@@ -366,12 +366,12 @@ $green: #c0d84a;
                 font-weight: 600;
                 text-align: left;
                 width: 100%;
-                float: left;
                 left: 3% ;
                 max-width: 100%;
                 min-height: 36px !important;
                 padding-top: 12px;
                 margin-top: -20px;
+                margin-bottom: 20px;
                 position: relative;
                 flex-basis: 0;
                 flex-grow: 1;
@@ -510,14 +510,6 @@ $green: #c0d84a;
               left: -5px !important;
             }
           }
-        .btn-next{
-                width: 102% !important;
-                height: 67px !important;
-                border-radius: 0px !important;
-                margin-left: -50% !important;
-                margin-bottom: -10% !important;
-
-        }
       }
     }
   }
@@ -553,14 +545,6 @@ $green: #c0d84a;
               left: -5px !important;
             }
           }
-        .btn-next{
-                width: 102% !important;
-                height: 67px !important;
-                border-radius: 0px !important;
-                margin-left: -50% !important;
-                margin-bottom: -10% !important;
-
-        }
       }
     }
   }
@@ -598,10 +582,9 @@ $green: #c0d84a;
           }
         .btn-next{
                 width: 102% !important;
-                height: 67px !important;
                 border-radius: 0px !important;
-                margin-left: -50% !important;
-                margin-bottom: -10% !important;
+                margin-left: -2% !important;
+                margin-bottom: 0px !important;
 
         }
       }
