@@ -382,6 +382,10 @@ $green: #c0d84a;
                 text-transform: none !important;
                 border: 0px solid !important;
               }
+              .descriptions{
+                  background-color: #e2e0e0;
+                  padding: 15px;
+              }
               .ver-ms{
                position: relative;
                font-family: OpenSans;
