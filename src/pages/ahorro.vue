@@ -11,7 +11,7 @@
             <q-tab default slot="title" name="ahorro" label="Ahorro" />
             <q-tab slot="title" name="gastos" label="Gastos" @click.native="$router.replace('/gastos')" />
             <q-tab-pane name="ahorro">
-                <Ahorro></Ahorro>
+                <Ahorro />
             </q-tab-pane>
         </q-tabs>
         </div>
@@ -164,6 +164,9 @@ $green: #c0d84a;
                   text-align: center;
                   color: $green;
                   margin-top: 35px;
+                }
+                button{
+                  position: relative;
                 }
                 .buttons{
                   width: 100%;
