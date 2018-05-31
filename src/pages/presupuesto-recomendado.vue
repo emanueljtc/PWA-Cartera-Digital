@@ -240,7 +240,7 @@ export default {
                   border: none;
 
                   .highcharts-container {
-                    height: 260px !important;
+                    height: 275px !important;
                   }
 
                   .highcharts-credits,

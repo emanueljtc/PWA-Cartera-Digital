@@ -249,8 +249,7 @@ export default {
                     display: none;
                   }
                 }
-              }
-              .total {
+                .total {
                   font-family: $nunitobold;
                   font-size: 20px;
                   font-weight: bold;
@@ -270,6 +269,7 @@ export default {
                     cursor: default !important;
                     text-align: center;
                   }
+                }
               }
               .data-box {
                 position: relative;

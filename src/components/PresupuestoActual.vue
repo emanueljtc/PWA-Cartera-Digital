@@ -6,8 +6,8 @@
         ref="pieChart"
       >
       </vue-highcharts>
-    </div>
       <p class="total"><span>Total:</span> {{ PrintIngreso }}</p>
+    </div>
     <div class="egresos" v-for="(egreso, key) in form.egresos" :key="key">
       <div class="data-box">
         <div class="data">
