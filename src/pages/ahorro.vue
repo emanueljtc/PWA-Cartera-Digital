@@ -366,7 +366,6 @@ $green: #c0d84a;
                     font-weight: 600;
                     text-align: left;
                     width: 100%;
-                    left: 3% ;
                     max-width: 100%;
                     min-height: 36px !important;
                     padding-top: 12px;
@@ -415,7 +414,6 @@ $green: #c0d84a;
                     background-color: #64c9db;
                     color: white;
                     border: 0px;
-                    outliner: 0;
                     cursor: pointer;
                     margin-bottom: 15px;
                     margin-top: 50px;
@@ -528,7 +526,6 @@ $green: #c0d84a;
         left: 0 !important;
         .grafica{
           position: relative !important;
-          // left: -12% !important;
           margin-bottom: -15% !important;
           .meses{
             left: 3% !important;
