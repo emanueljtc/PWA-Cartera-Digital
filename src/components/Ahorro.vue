@@ -18,7 +18,7 @@
           <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
           <button class="btn btn-tree" @click="feudo_button">Feudo Capital</button>
         </div>
-        <div class="grafica">
+        <div class="grafica_ahorro">
             <!-- <p class="meses">Meses</p> -->
             <div class="highcharts" :style="styles"  v-show="mostrar_SinInv">
                 <vue-highcharts

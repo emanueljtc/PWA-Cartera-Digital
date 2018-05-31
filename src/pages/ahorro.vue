@@ -201,7 +201,7 @@ $green: #c0d84a;
                       width: 115px;
                     }
                   }
-                  .grafica{
+                  .grafica_ahorro{
                     width: 100%;
                     margin-top: -15px;
                     margin-bottom: -10%;
@@ -532,7 +532,7 @@ $green: #c0d84a;
       .q-tab-pane {
         width: 100% !important;
         left: 0 !important;
-        .grafica{
+        .grafica_ahorro{
           position: relative !important;
           margin-bottom: -15%;
           .meses{
@@ -570,7 +570,7 @@ $green: #c0d84a;
       .q-tab-pane {
         width: 100% !important;
         left: 0 !important;
-        .grafica{
+        .grafica_ahorro{
           position: relative !important;
           // left: -12% !important;
           margin-bottom: -16% !important;
@@ -612,7 +612,7 @@ $green: #c0d84a;
    @media only screen and (max-width: 550px) {
     .q-tabs-panes {
       .q-tab-pane {
-        .grafica{
+        .grafica_ahorro{
           position: relative !important;
           // left: -12% !important;
           margin-bottom: -20% !important;
@@ -626,7 +626,7 @@ $green: #c0d84a;
   @media only screen and (max-width: 500px) {
     .q-tabs-panes {
       .q-tab-pane {
-        .grafica{
+        .grafica_ahorro{
           position: relative !important;
           // left: -12% !important;
           margin-bottom: -20% !important;
@@ -645,7 +645,7 @@ $green: #c0d84a;
   }
   @media only screen and (max-width: 450px) {
     .q-tabs-panes {
-      .grafica{
+      .grafica_ahorro{
           position: relative !important;
           // left: -12% !important;
           margin-bottom: -20% !important;
@@ -666,7 +666,7 @@ $green: #c0d84a;
   @media only screen and (max-width: 430px) {
     .q-tabs-panes {
       .q-tab-pane {
-        .grafica{
+        .grafica_ahorro{
           position: relative !important;
           // left: -12% !important;
           margin-bottom: -26% !important;
@@ -686,7 +686,7 @@ $green: #c0d84a;
   @media only screen and (max-width: 375px) {
     .q-tabs-panes {
       .q-tab-pane {
-        .grafica{
+        .grafica_ahorro{
           position: relative !important;
           // left: -12% !important;
           margin-bottom: -30% !important;
