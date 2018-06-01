@@ -1,6 +1,7 @@
 <template>
   <div>
     {{ tabla_axendComputed }}
+    {{ tabla_kuspitComputed }}
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
         <h2 class="layer" v-show="mostrar_SinInv" style="color: #fbbb40">{{ Print_Ahorro_LG_S_Inv }}</h2>
         <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
@@ -280,22 +281,7 @@ export default {
         }
       ],
       tableData_Axend: [],
-      tableData_Kuspit: [
-        {
-          CI: 0,
-          AR: 2000,
-          I: 0,
-          CR: 2000,
-          CF: 2000
-        },
-        {
-          CI: 2000,
-          AR: 2000,
-          I: 0,
-          CR: 4000,
-          CF: 4000
-        }
-      ],
+      tableData_Kuspit: [],
       tableData_Feudo: [
         {
           CI: 0,
@@ -911,6 +897,100 @@ export default {
           print_cantidadFinal = parseFloat(cantidadFinal).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
 
           this.tableData_Axend.push(add)
+        }
+      }
+    },
+    tabla_kuspit () {
+      let capitalInicial = this.form.capitalInicial
+      let ahorro = this.CalcularAhorro
+      let interes = (capitalInicial + ahorro) * 0.014375
+      let cantidadRecopilada = ahorro + interes
+      let cantidadFinal = capitalInicial + cantidadRecopilada
+
+      let print_capitalInicial = parseFloat(capitalInicial).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_ahorro = parseFloat(ahorro).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_interes = parseFloat(interes).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_cantidadRecopilada = parseFloat(cantidadRecopilada).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_cantidadFinal = parseFloat(cantidadFinal).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+
+      let add = {
+        CI: null,
+        AR: null,
+        I: null,
+        CR: null,
+        CF: null
+      }
+
+      for (let i = 0; i < 12; i++) {
+        add = {
+          CI: print_capitalInicial,
+          AR: print_ahorro,
+          I: print_interes,
+          CR: print_cantidadRecopilada,
+          CF: print_cantidadFinal
+        }
+
+        if (capitalInicial !== null) {
+          capitalInicial = cantidadFinal
+          ahorro = this.CalcularAhorro
+          interes = (capitalInicial + ahorro) * 0.014375
+          cantidadRecopilada = ahorro + interes
+          cantidadFinal = capitalInicial + cantidadRecopilada
+
+          print_capitalInicial = parseFloat(capitalInicial).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_ahorro = parseFloat(ahorro).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_interes = parseFloat(interes).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_cantidadRecopilada = parseFloat(cantidadRecopilada).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_cantidadFinal = parseFloat(cantidadFinal).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+
+          this.tableData_Kuspit.push(add)
+        }
+      }
+    },
+    tabla_feudo () {
+      let capitalInicial = this.form.capitalInicial
+      let ahorro = this.CalcularAhorro
+      let interes = (capitalInicial + ahorro) * 0.014375
+      let cantidadRecopilada = ahorro + interes
+      let cantidadFinal = capitalInicial + cantidadRecopilada
+
+      let print_capitalInicial = parseFloat(capitalInicial).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_ahorro = parseFloat(ahorro).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_interes = parseFloat(interes).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_cantidadRecopilada = parseFloat(cantidadRecopilada).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      let print_cantidadFinal = parseFloat(cantidadFinal).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+
+      let add = {
+        CI: null,
+        AR: null,
+        I: null,
+        CR: null,
+        CF: null
+      }
+
+      for (let i = 0; i < 12; i++) {
+        add = {
+          CI: print_capitalInicial,
+          AR: print_ahorro,
+          I: print_interes,
+          CR: print_cantidadRecopilada,
+          CF: print_cantidadFinal
+        }
+
+        if (capitalInicial !== null) {
+          capitalInicial = cantidadFinal
+          ahorro = this.CalcularAhorro
+          interes = (capitalInicial + ahorro) * 0.014375
+          cantidadRecopilada = ahorro + interes
+          cantidadFinal = capitalInicial + cantidadRecopilada
+
+          print_capitalInicial = parseFloat(capitalInicial).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_ahorro = parseFloat(ahorro).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_interes = parseFloat(interes).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_cantidadRecopilada = parseFloat(cantidadRecopilada).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          print_cantidadFinal = parseFloat(cantidadFinal).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+
+          this.tableData_Kuspit.push(add)
         }
       }
     }
@@ -1907,6 +1987,9 @@ export default {
     //
     tabla_axendComputed () {
       return this.tabla_axend()
+    },
+    tabla_kuspitComputed () {
+      return this.tabla_kuspit()
     }
   },
   components: {
