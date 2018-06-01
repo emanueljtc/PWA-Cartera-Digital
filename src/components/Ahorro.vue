@@ -2,6 +2,7 @@
   <div>
     {{ tabla_axendComputed }}
     {{ tabla_kuspitComputed }}
+    {{ tabla_feudoComputed }}
     <p class="sub-title">Tu ahorro a largo plazo es de</p>
         <h2 class="layer" v-show="mostrar_SinInv" style="color: #fbbb40">{{ Print_Ahorro_LG_S_Inv }}</h2>
         <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
@@ -282,22 +283,7 @@ export default {
       ],
       tableData_Axend: [],
       tableData_Kuspit: [],
-      tableData_Feudo: [
-        {
-          CI: 0,
-          AR: 2000,
-          I: 0,
-          CR: 2000,
-          CF: 2000
-        },
-        {
-          CI: 2000,
-          AR: 2000,
-          I: 0,
-          CR: 4000,
-          CF: 4000
-        }
-      ]
+      tableData_Feudo: []
     }
   },
   methods: {
@@ -950,7 +936,7 @@ export default {
     tabla_feudo () {
       let capitalInicial = this.form.capitalInicial
       let ahorro = this.CalcularAhorro
-      let interes = (capitalInicial + ahorro) * 0.014375
+      let interes = 0
       let cantidadRecopilada = ahorro + interes
       let cantidadFinal = capitalInicial + cantidadRecopilada
 
@@ -980,7 +966,7 @@ export default {
         if (capitalInicial !== null) {
           capitalInicial = cantidadFinal
           ahorro = this.CalcularAhorro
-          interes = (capitalInicial + ahorro) * 0.014375
+          interes = 0
           cantidadRecopilada = ahorro + interes
           cantidadFinal = capitalInicial + cantidadRecopilada
 
@@ -990,7 +976,7 @@ export default {
           print_cantidadRecopilada = parseFloat(cantidadRecopilada).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
           print_cantidadFinal = parseFloat(cantidadFinal).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
 
-          this.tableData_Kuspit.push(add)
+          this.tableData_Feudo.push(add)
         }
       }
     }
@@ -1990,6 +1976,9 @@ export default {
     },
     tabla_kuspitComputed () {
       return this.tabla_kuspit()
+    },
+    tabla_feudoComputed () {
+      return this.tabla_feudo()
     }
   },
   components: {
