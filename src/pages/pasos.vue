@@ -333,6 +333,7 @@ export default {
 
   .q-list {
     padding: 0px;
+    margin-bottom: 5px;
     .q-item {
       color: $dark-purple;
       font-family: $os-semibold;
@@ -1039,12 +1040,12 @@ export default {
     }
     .total_egresos {
       position: relative;
-      margin-top: 35% !important;
-      margin-bottom: 0% !important;
+      margin-top: 8% !important;
+      margin-bottom: -15% !important;
     }
     .next {
       position: absolute;
-      bottom: 0;
+      bottom: -8px;
       left: 0;
       width: 100%;
       margin: 0px !important;
@@ -1079,7 +1080,7 @@ export default {
             float: left;
         }
         .q-list {
-          margin-bottom: 0px !important;
+          margin-bottom: 5px !important;
           width: 100% !important;
           left: -1.5% !important;
         }
@@ -1115,9 +1116,8 @@ export default {
         }
 
         .q-btn {
-          position: absolute !important;
-          left: 5% !important;
-          bottom: 60px !important;
+          left: -13% !important;
+          bottom: -15px !important;
           margin: 0px !important;
         }
       }
