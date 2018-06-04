@@ -467,190 +467,84 @@ export default {
     }
   }
   @media screen and (max-width: 1000px) {
-    .q-tabs-panes {
-      .q-tab-pane {
-        width: 100% !important;
-        left: 0 !important;
-        .meta{
-            i {
-              left: -3% !important;
+    .layout-padding {
+      .ahorros {
+        .content {
+          .q-tabs {
+            .q-tabs-head {
+              width: 80% !important;
+              left: 10% !important;
             }
-            .meta-text{
-              margin-right: 50% !important;
-              margin-left: -11% !important;
-            }
-            .meta-value{
-              top: -30px !important;
-              left: -5px !important;
+            .q-tabs-panes {
+              .wrapper {
+                width: 80% !important;
+                left: 10% !important;
+              }
             }
           }
-      }
-    }
-  }
-  @media screen and (max-width: 900px) {
-    .q-tabs-panes {
-      .q-tab-pane {
-        width: 100% !important;
-        left: 0 !important;
-        .meta{
-            i {
-              left: -3% !important;
-            }
-            .meta-text{
-              margin-right: 50% !important;
-              margin-left: -11% !important;
-            }
-            .meta-value{
-              top: -30px !important;
-              left: -5px !important;
-            }
-          }
-      }
-    }
-  }
-  @media screen and (max-width: 800px) {
-    .q-tabs .q-tabs-head {
-      width: 100% !important;
-      left: 0% !important;
-    }
-    .q-tabs-panes {
-      .q-tab-pane {
-        width: 100% !important;
-        left: 0 !important;
-        .meta{
-            i {
-              left: -3% !important;
-            }
-            .meta-text{
-              margin-right: 50% !important;
-              margin-left: -11% !important;
-            }
-            .meta-value{
-              top: -30px !important;
-              left: -5px !important;
-            }
-          }
+        }
       }
     }
   }
   @media screen and (max-width: 700px) {
-    .q-tabs .q-tabs-head {
-      width: 100% !important;
-      left: 0% !important;
-    }
-    .q-tabs-panes {
-      .q-tab-pane {
-        width: 100% !important;
-        left: 0 !important;
-        .ver-ms-p{
-          margin-left: 75% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 65% !important;
-        }
-        .meta{
-            i {
-              left: -3% !important;
+    .layout-padding {
+      .ahorros {
+        .content {
+          .q-tabs {
+            .q-tabs-head {
+              width: 100% !important;
+              left: 0% !important;
             }
-            .meta-text{
-              margin-right: 50% !important;
-              margin-left: -11% !important;
-            }
-            .meta-value{
-              top: -30px !important;
-              left: -5px !important;
+            .q-tabs-panes {
+              .wrapper {
+                width: 95% !important;
+                left: 2.5% !important;
+
+                .grafica_ahorro {
+                  display: flex;
+                  justify-content: center;
+                }
+              }
             }
           }
-      }
-    }
-  }
-   @media screen and (max-width: 640px) {
-    .q-tabs .q-tabs-head {
-      width: 100% !important;
-      left: 0% !important;
-    }
-    .q-tabs-panes {
-      .q-tab-pane {
-        width: 100% !important;
-        left: 0 !important;
-        .grafica_ahorro{
-          position: relative !important;
-          margin-bottom: -15%;
-          .meses{
-            left: 3% !important;
-          }
         }
-        .ver-ms-p{
-          margin-left: 74% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 63% !important;
-        }
-        .meta{
-            i {
-              left: -3% !important;
-            }
-            .meta-text{
-              margin-right: 50% !important;
-              margin-left: -11% !important;
-            }
-            .meta-value{
-              top: -30px !important;
-              left: -5px !important;
-            }
-          }
       }
     }
   }
   @media screen and (max-width: 600px) {
-    .q-tabs .q-tabs-head {
-      width: 100% !important;
-      left: 0% !important;
-    }
-    .q-tabs-panes {
-      .q-tab-pane {
-        width: 100% !important;
-        left: 0 !important;
-        .grafica_ahorro{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -16% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
-        .ver-ms-p{
-          margin-left: 65% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 52% !important;
-        }
-        .meta{
-            i {
-              left: -3% !important;
-            }
-            .meta-text{
-              margin-right: 50% !important;
-              // margin-left: -11% !important;
-            }
-            .meta-value{
-              top: -30px !important;
-              left: 62px !important;
-            }
-          }
-        .btn-next{
-               position: absolute !important;
-               width: 100% !important;
-               left: 0 !important;
-               bottom: 0 !important;
-               border-radius: 0px !important;
-               margin: 0px !important;
+    .layout-padding {
+      .ahorros {
+        padding: 100px 0;
+        .content {
+          .q-tabs {
+            .q-tabs-panes {
+              .wrapper {
+                position: initial !important;
+                width: 100% !important;
+                padding: 0 25px;
+              }
+              .q-tab-pane {
+                padding: 30px 0px;
 
+                .vue-highcharts {
+                  margin: 0;
+                }
+                .btn-next{
+                 position: absolute !important;
+                 width: 100% !important;
+                 left: 0 !important;
+                 bottom: 0 !important;
+                 border-radius: 0px !important;
+                 margin: 0px !important;
+                }
+              }
+            }
+          }
         }
       }
     }
   }
-   @media only screen and (max-width: 550px) {
+  @media only screen and (max-width: 550px) {
     .q-tabs-panes {
       .q-tab-pane {
         .grafica_ahorro{
