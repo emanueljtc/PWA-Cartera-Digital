@@ -220,6 +220,9 @@ $green: #c0d84a;
                         text-align: left;
                         color: $dark-purple;
                       }
+                      .highcharts-background {
+                        fill: transparent;
+                      }
                     }
                     .highcharts-loading{
                       background-color: rgba(255, 255, 255, 0) !important;
@@ -285,7 +288,9 @@ $green: #c0d84a;
                     }
                     thead {
                       tr {
+                        text-align: center;
                         th.sortable {
+                          text-align: center;
                           font-family: OpenSans;
                           font-size: 12px;
                           font-weight: bold;
@@ -293,7 +298,18 @@ $green: #c0d84a;
                           line-height: 2.08;
                           letter-spacing: normal;
                           font-stretch: normal;
-                          color: $gray;
+                          color: $white;
+
+                          i {
+                            display: none;
+                          }
+                        }
+                      }
+                    }
+                    tbody {
+                      tr {
+                        td {
+                          text-align: center;
                         }
                       }
                     }
