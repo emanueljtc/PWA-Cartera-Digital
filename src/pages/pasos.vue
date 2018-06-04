@@ -261,7 +261,6 @@ export default {
     background-color: $light-blue;
     color: white;
     border: 0px;
-    outliner: 0;
     cursor: pointer;
     margin-bottom: 15px;
     margin-top: 100px;
@@ -1040,12 +1039,12 @@ export default {
     }
     .total_egresos {
       position: relative;
-      margin-top: 8% !important;
-      margin-bottom: -15% !important;
+      margin-top: 2% !important;
+      margin-bottom: -19% !important;
     }
     .next {
-      position: absolute;
-      bottom: -8px;
+      position: fixed;
+      bottom: 0px;
       left: 0;
       width: 100%;
       margin: 0px !important;
@@ -1072,7 +1071,7 @@ export default {
        padding-bottom: 130px !important;
        .content {
         .collapsible-box {
-          margin-top: 40px;
+          margin-top: 25px;
         }
 
         .q-select, .q-list {

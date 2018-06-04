@@ -238,7 +238,8 @@ export default {
                   box-shadow: none;
                   background-color: #fcfcfc;
                   border: none;
-
+                  position: relative;
+                  left: -1%;
                   .highcharts-container {
                     height: 275px !important;
                   }
@@ -254,10 +255,8 @@ export default {
                   font-size: 20px;
                   font-weight: bold;
                   color: $dark-purple;
-
-                  span {
-                    margin-left: 12px;
-                  }
+                  position: relative;
+                  left: -1%;
 
                   input,
                   textarea:disabled {
@@ -436,6 +435,11 @@ export default {
   }
 
   @media screen and (max-width: 600px) {
+    .grafica {
+      .vue-highcharts{
+        left: -1% !important;
+      }
+    }
     button {
       position: absolute;
       width: 100%;
@@ -472,10 +476,21 @@ export default {
   }
 
   @media screen and (max-width: 500px) {
+    .grafica {
+      .vue-highcharts{
+        left: 2% !important;
+      }
+    }
     .gastos-mayor {
       padding: 0 5%;
       padding-bottom: 50px;
       .content {
+        .grafica {
+          .total {
+            position: relative;
+            left: 5% !important;
+          }
+        }
         h2 {
           font-size: 25px !important;
         }
@@ -502,13 +517,11 @@ export default {
 
   @media screen and (max-width: 400px) {
     .gastos-mayor {
-      .content {
-        .circulos {
-          .tu-precio,
+      .circulos {
+        .tu-precio,
           .precio-bajo {
             width: 150px;
             height: 150px;
-          }
         }
       }
     }
