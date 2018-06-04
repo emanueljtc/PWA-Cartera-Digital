@@ -343,6 +343,12 @@ export default {
     .q-item:hover {
       background-color: $gray !important;
     }
+    .collapsible {
+      width: 153%;
+      position: absolute;
+      left: -69px;
+      top: 35px;
+    }
   }
 
   .row-m {
@@ -1031,7 +1037,11 @@ export default {
       font-size: 18px;
       margin-top: 5px;
     }
-
+    .total_egresos {
+      position: relative;
+      margin-top: 35% !important;
+      margin-bottom: 0% !important;
+    }
     .next {
       position: absolute;
       bottom: 0;
@@ -1070,6 +1080,8 @@ export default {
         }
         .q-list {
           margin-bottom: 0px !important;
+          width: 100% !important;
+          left: -1.5% !important;
         }
       }
 
