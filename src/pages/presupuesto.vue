@@ -502,7 +502,6 @@ export default {
               font-size: 16px;
             }
           }
-
           .tu-precio {
             margin-right: -15px;
           }
