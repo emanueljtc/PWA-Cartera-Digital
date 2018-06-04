@@ -1,148 +1,150 @@
 <template>
   <div>
-    {{ tabla_axendComputed }}
-    {{ tabla_kuspitComputed }}
-    {{ tabla_feudoComputed }}
-    {{ tabla_sinComputed }}
-    <p class="sub-title">Tu ahorro a largo plazo es de</p>
-        <h2 class="layer" v-show="mostrar_SinInv" style="color: #fbbb40">{{ Print_Ahorro_LG_S_Inv }}</h2>
-        <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
-        <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
-        <h2 class="layer" v-show="mostrar_feudo" style="color: #727171">{{ Print_Ahorro_LG_F }}</h2>
-         <div class="meta">
-           <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
-           <p class="meta-value">{{ PrintMeta }}</p>
-        </div>
-        <div class="alcance">
-          <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
-        </div>
-        <div class="buttons">
-          <button class="btn btn-cero " @click="sinInv_button" >Sin Inv.</button>
-          <button class="btn btn-primary " @click="axend_button" >Axend</button>
-          <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
-          <button class="btn btn-tree" @click="feudo_button">Feudo Capital</button>
-        </div>
-        <div class="grafica_ahorro">
-            <!-- <p class="meses">Meses</p> -->
-            <div class="highcharts" :style="styles"  v-show="mostrar_SinInv">
-                <vue-highcharts
-                    :options="options"
-                    :loading="loading"
-                    :resizable="true"
-                    ref = 'highcharts_SinInversion'
-                    @load="onLoad"
-                    @resize="onResize"
-                >
-                </vue-highcharts>
-            </div>
-            <div class="highcharts" :style="styles"  v-show="mostrar_axend">
-                <vue-highcharts
-                    :options="options"
-                    :loading="loading"
-                    :resizable="true"
-                    ref = 'highcharts_axend'
-                    @load="onLoad"
-                    @resize="onResize"
-                >
-                </vue-highcharts>
-            </div>
-            <div class="highcharts" :style="styles"  v-show="mostrar_kuspit">
-                <vue-highcharts
-                    :options="options"
-                    :loading="loading"
-                    :resizable="true"
-                    ref = 'highchart_kuspit'
-                    @load="onLoad"
-                    @resize="onResize"
-                >
-                </vue-highcharts>
-            </div>
-            <div class="highcharts" :style="styles"  v-show="mostrar_feudo">
-                <vue-highcharts
-                    :options="options"
-                    :loading="loading"
-                    :resizable="true"
-                    ref = 'highchart_feudo'
-                    @load="onLoad"
-                    @resize="onResize"
-                >
-                </vue-highcharts>
-            </div>
-        </div>
-        <q-table
-          title=""
-          class="tableInv"
-          :data="tableData_S_INV"
-          :columns="columns"
-          row-key="name"
-          v-show="mostrar_SinInv"
-          :pagination.sync="pagination"
-        />
-        <q-table
-          title=""
-          class="tableAxend"
-          :data="tableData_Axend"
-          :columns="columns"
-          row-key="name"
-          v-show="mostrar_axend"
-          :pagination.sync="pagination"
-        />
-        <q-table
-          title=""
-          class="tableKuspit"
-          :data="tableData_Kuspit"
-          :columns="columns"
-          row-key="name"
-          v-show="mostrar_kuspit"
-          :pagination.sync="pagination"
-        />
-        <q-table
-          title=""
-          class="tableFeudo"
-          :data="tableData_Feudo"
-          :columns="columns"
-          row-key="name"
-          v-show="mostrar_feudo"
-          :pagination.sync="pagination"
-        />
-        <q-field>
-            <q-list>
-                <q-collapsible label="Opciones de Inversión" close class="select">
-                    <div>
-                        <q-list link >
-                            <q-item>
-                                <q-item-main>
-                                    <q-item-tile label><a @click="descriptions_axend_buttons">Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
-                                    <p class="descriptions animated slideInDown" v-show="descriptions_axend">
-                                     Axend es la plataforma global de inversiones alternativas, que conecta personas con sus oportunidades de inversión ideales: Préstamos Pyme, Persona-a-Persona, Proyectos Excluvisos, Bienes Raíces, con tipo de riesgo de desde F hasta doble A. Rendimiento promedio de 15% anualizado.
-                                    </p>
-                                </q-item-main>
-                            </q-item>
-                            <q-item-separator inset />
-                                <q-item>
-                                    <q-item-main>
-                                        <q-item-tile label><a @click="descriptions_kuspit_buttons">Kuspit</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
-                                        <p class="descriptions animated slideInDown" v-show="descriptions_kuspit">
-                                          Invierte en un click… treídea, en donde estés… Applicación en donde te brinda una educación para invertir en la Bolsa. Inversiones desde 100 pesos. Tipo de Riesgo desde D hasta triple A. Rendimiento promedio de 17.25%
-                                        </p>
-                                    </q-item-main>
-                                </q-item>
-                            <q-item-separator inset />
-                                <q-item>
-                                    <q-item-main>
-                                        <q-item-tile label><a @click="descriptions_feudo_buttons">Feudo Capital</a> <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
-                                        <p class="descriptions animated slideInDown" v-show="descriptions_feudo">
-                                          Podrás invertir de manera inteligente, inversión en bienes raíces. Capital destinado al financiamiento de construcciones y amenidades elite en México. Tipo de Riesgo desde B hasta triple A. Rendimiento promedio dentro de los términos y condiciones.
-                                        </p>
-                                    </q-item-main>
-                                </q-item>
-                        </q-list>
-                    </div>
+    <div class="wrapper">
+      {{ tabla_axendComputed }}
+      {{ tabla_kuspitComputed }}
+      {{ tabla_feudoComputed }}
+      {{ tabla_sinComputed }}
+      <p class="sub-title">Tu ahorro a largo plazo es de</p>
+          <h2 class="layer" v-show="mostrar_SinInv" style="color: #fbbb40">{{ Print_Ahorro_LG_S_Inv }}</h2>
+          <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
+          <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
+          <h2 class="layer" v-show="mostrar_feudo" style="color: #727171">{{ Print_Ahorro_LG_F }}</h2>
+           <div class="meta">
+             <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
+             <p class="meta-value">{{ PrintMeta }}</p>
+          </div>
+          <div class="alcance">
+            <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-cero " @click="sinInv_button" >Sin Inv.</button>
+            <button class="btn btn-primary " @click="axend_button" >Axend</button>
+            <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
+            <button class="btn btn-tree" @click="feudo_button">Feudo Capital</button>
+          </div>
+          <div class="grafica_ahorro">
+              <!-- <p class="meses">Meses</p> -->
+              <div class="highcharts" :style="styles"  v-show="mostrar_SinInv">
+                  <vue-highcharts
+                      :options="options"
+                      :loading="loading"
+                      :resizable="true"
+                      ref = 'highcharts_SinInversion'
+                      @load="onLoad"
+                      @resize="onResize"
+                  >
+                  </vue-highcharts>
+              </div>
+              <div class="highcharts" :style="styles"  v-show="mostrar_axend">
+                  <vue-highcharts
+                      :options="options"
+                      :loading="loading"
+                      :resizable="true"
+                      ref = 'highcharts_axend'
+                      @load="onLoad"
+                      @resize="onResize"
+                  >
+                  </vue-highcharts>
+              </div>
+              <div class="highcharts" :style="styles"  v-show="mostrar_kuspit">
+                  <vue-highcharts
+                      :options="options"
+                      :loading="loading"
+                      :resizable="true"
+                      ref = 'highchart_kuspit'
+                      @load="onLoad"
+                      @resize="onResize"
+                  >
+                  </vue-highcharts>
+              </div>
+              <div class="highcharts" :style="styles"  v-show="mostrar_feudo">
+                  <vue-highcharts
+                      :options="options"
+                      :loading="loading"
+                      :resizable="true"
+                      ref = 'highchart_feudo'
+                      @load="onLoad"
+                      @resize="onResize"
+                  >
+                  </vue-highcharts>
+              </div>
+          </div>
+          <q-table
+            title=""
+            class="tableInv"
+            :data="tableData_S_INV"
+            :columns="columns"
+            row-key="name"
+            v-show="mostrar_SinInv"
+            :pagination.sync="pagination"
+          />
+          <q-table
+            title=""
+            class="tableAxend"
+            :data="tableData_Axend"
+            :columns="columns"
+            row-key="name"
+            v-show="mostrar_axend"
+            :pagination.sync="pagination"
+          />
+          <q-table
+            title=""
+            class="tableKuspit"
+            :data="tableData_Kuspit"
+            :columns="columns"
+            row-key="name"
+            v-show="mostrar_kuspit"
+            :pagination.sync="pagination"
+          />
+          <q-table
+            title=""
+            class="tableFeudo"
+            :data="tableData_Feudo"
+            :columns="columns"
+            row-key="name"
+            v-show="mostrar_feudo"
+            :pagination.sync="pagination"
+          />
+          <q-field>
+              <q-list>
+                  <q-collapsible label="Opciones de Inversión" close class="select">
+                      <div>
+                          <q-list link >
+                              <q-item>
+                                  <q-item-main>
+                                      <q-item-tile label><a @click="descriptions_axend_buttons">Axend</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
+                                      <p class="descriptions animated slideInDown" v-show="descriptions_axend">
+                                       Axend es la plataforma global de inversiones alternativas, que conecta personas con sus oportunidades de inversión ideales: Préstamos Pyme, Persona-a-Persona, Proyectos Excluvisos, Bienes Raíces, con tipo de riesgo de desde F hasta doble A. Rendimiento promedio de 15% anualizado.
+                                      </p>
+                                  </q-item-main>
+                              </q-item>
+                              <q-item-separator inset />
+                                  <q-item>
+                                      <q-item-main>
+                                          <q-item-tile label><a @click="descriptions_kuspit_buttons">Kuspit</a> <a href="#" class="ver-ms ver-ms-p">Ver más</a></q-item-tile>
+                                          <p class="descriptions animated slideInDown" v-show="descriptions_kuspit">
+                                            Invierte en un click… treídea, en donde estés… Applicación en donde te brinda una educación para invertir en la Bolsa. Inversiones desde 100 pesos. Tipo de Riesgo desde D hasta triple A. Rendimiento promedio de 17.25%
+                                          </p>
+                                      </q-item-main>
+                                  </q-item>
+                              <q-item-separator inset />
+                                  <q-item>
+                                      <q-item-main>
+                                          <q-item-tile label><a @click="descriptions_feudo_buttons">Feudo Capital</a> <a href="#" class="ver-ms ver-ms-lg">Ver más</a></q-item-tile>
+                                          <p class="descriptions animated slideInDown" v-show="descriptions_feudo">
+                                            Podrás invertir de manera inteligente, inversión en bienes raíces. Capital destinado al financiamiento de construcciones y amenidades elite en México. Tipo de Riesgo desde B hasta triple A. Rendimiento promedio dentro de los términos y condiciones.
+                                          </p>
+                                      </q-item-main>
+                                  </q-item>
+                          </q-list>
+                      </div>
 
-                </q-collapsible>
-            </q-list>
-        </q-field>
-       <button type="submit" class="btn-next">Siguiente <i class="material-icons">arrow_forward</i></button>
+                  </q-collapsible>
+              </q-list>
+          </q-field>
+         <button type="submit" class="btn-next">Siguiente <i class="material-icons">arrow_forward</i></button>
+    </div>
   </div>
 </template>
 
@@ -184,7 +186,9 @@ export default {
         },
         chart: {
           type: 'spline',
-          inverted: false
+          inverted: false,
+          width: null,
+          height: null
         },
         title: {
           text: ' '

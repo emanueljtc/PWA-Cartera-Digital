@@ -35,16 +35,20 @@ export default {
 </script>
 
 <style lang="scss">
-$green: #c0d84a;
+  $green: #c0d84a;
+  $yellow: #fbbb2f;
   $orange: #fbbb40;
   $pink: #e03757;
   $dark-purple: #3f224c;
   $link: #af85bc;
   $light-blue: #64c9db;
+  $purple: #af85bc;
   $white: #ffffff;
   $gray: #eae7e7;
   $gray-light: #fcfcfc;
+  $gray-button: #f6f6f6;
   $btn-secondary: #c0d84a;
+
   @font-face {
     font-family: Nunito;
     src: url(~assets/fonts/Nunito/Nunito-Regular.ttf);
@@ -56,6 +60,11 @@ $green: #c0d84a;
   }
 
   @font-face {
+    font-family: OpenSans;
+    src: url(~assets/fonts/OpenSans/OpenSans-Regular.ttf);
+  }
+
+  @font-face {
     font-family: OpenSansSemibold;
     src: url(~assets/fonts/OpenSans/OpenSans-SemiBold.ttf);
   }
@@ -64,10 +73,13 @@ $green: #c0d84a;
     font-family: OpenSansBold;
     src: url(~assets/fonts/OpenSans/OpenSans-Bold.ttf);
   }
+
   $nunito: Nunito;
   $nunitobold: NunitoBold;
+  $opensans: OpenSans;
   $os-semibold: OpenSansSemibold;
   $os-bold: OpenSansBold;
+
   header {
     display: block !important;
     background-color: $gray-light;
@@ -80,6 +92,12 @@ $green: #c0d84a;
       }
     }
   }
+
+  .q-layout-page-container {
+    padding: 0px !important;
+    background-color: $gray-light;
+  }
+
   .layout-padding {
     position: relative;
     padding: 0;
@@ -136,40 +154,39 @@ $green: #c0d84a;
                 .q-tab-pane {
                   border: none;
                   padding: 30px;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  width: 50%;
-                  position: absolute;
-                  left: 25%;
+
+                  .wrapper {
+                    position: relative;
+                    width: 50%;
+                    left: 25%;
+                  }
+
                   .sub-title{
-                    height: 25px;
-                    font-family: $os-bold;
+                    font-family: $opensans;
                     font-size: 18px;
-                    font-weight: normal;
+                    font-weight: bold;
                     font-style: normal;
                     font-stretch: normal;
                     line-height: 1.39;
                     letter-spacing: normal;
                     text-align: center;
                     color: $dark-purple;
-                    margin-top: -3px;
+                    margin: 0px;
                   }
                   .layer{
-                  /*  width: 156px;
-                    height: 25px; */
                     font-family: $nunito;
                     font-size: 40px;
                     font-weight: bold;
                     line-height: 0.63;
                     text-align: center;
                     color: $green;
-                    margin-top: 35px;
+                    margin-top: 22px;
                   }
                   button{
                     position: relative;
                   }
                   .buttons{
+                    position: relative;
                     width: 100%;
                     .btn{
                       width: 100px;
@@ -203,8 +220,6 @@ $green: #c0d84a;
                   }
                   .grafica_ahorro{
                     width: 100%;
-                    margin-top: -15px;
-                    margin-bottom: -10%;
                     .vue-highcharts{
                       border: 1px solid rgba(0, 0, 0, -0.9) !important;
                       background: rgba(255, 255, 255, 0) !important;
@@ -279,6 +294,7 @@ $green: #c0d84a;
                     }
                   }
                   .q-table-container {
+                    margin-top: -25px;
                     border-radius: 0 !important;
                     box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
                   }
@@ -315,12 +331,10 @@ $green: #c0d84a;
                     }
                   }
                   .items-center, .flex-center{
-                    // comentar siguiente linea si es necesario activar la paginacion de la tabla
                     display: none !important;
                   }
                   .alcance {
-                    margin-bottom: 5%;
-                    margin-top: 15%;
+                    margin-top: 30px;
                     .alcance-text{
                       font-family: OpenSans;
                       font-size: 15px;
@@ -331,16 +345,15 @@ $green: #c0d84a;
                       letter-spacing: normal;
                       text-align: center;
                       color: $dark-purple;
+                      margin: 0px;
                     }
                   }
                   .meta{
-                    width: 60%;
-                    display: inline-block;
-                    position: absolute;
-                    right: 32%;
-                    margin-top: 2%;
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 30px;
                     .meta-text{
-                      text-align: center;
+                      text-align: right;
                       margin: auto;
                       font-size: 18px;
                       font-weight: normal;
@@ -349,11 +362,19 @@ $green: #c0d84a;
                       line-height: 1.39;
                       letter-spacing: normal;
                       font-family: Opensans;
+                      padding-left: 75px;
+                      padding-right: 15px;
                     }
                     .meta-value{
-                      text-align: right;
-                      left: 10%;
-                      top: -30px;
+                      font-size: 17px;
+                      font-weight: normal;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 1.39;
+                      letter-spacing: normal;
+                      font-family: Opensans;
+                      padding-left: 15px;
+                      text-align: left;
                       position: relative;
                     }
                     i {
@@ -397,14 +418,24 @@ $green: #c0d84a;
                     text-transform: none !important;
                     border: 0px solid !important;
                   }
+                  .q-item:hover {
+                    background-color: transparent;
+                  }
+                  .q-item-section {
+                    .q-item-label {
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    }
+                  }
                   .descriptions{
-                      background-color: #e2e0e0;
-                      padding: 15px;
+                    padding: 15px 0px;
+                    text-align: justify;
                   }
                   .ver-ms{
                   position: relative;
                   font-family: OpenSans;
-                  font-size: 18px;
+                  font-size: 16px;
                   font-weight: normal;
                   font-style: normal;
                   font-stretch: normal;
@@ -412,12 +443,6 @@ $green: #c0d84a;
                   letter-spacing: normal;
                   text-align: left;
                   color: $link;
-                  }
-                  .ver-ms-p{
-                    margin-left: 75%;
-                  }
-                  .ver-ms-lg{
-                    margin-left: 65%;
                   }
                   .btn-next{
                     position: relative;
