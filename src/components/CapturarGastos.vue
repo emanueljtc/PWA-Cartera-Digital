@@ -127,6 +127,14 @@ export default {
         {
           label: 'Telefonía',
           value: 'Telefonía'
+        },
+        {
+          label: 'Cable',
+          value: 'Cable'
+        },
+        {
+          label: 'Internet',
+          value: 'Internet'
         }
       ]
     }
