@@ -526,6 +526,10 @@ export default {
               .q-tab-pane {
                 padding: 30px 0px;
 
+                .highcharts {
+                  max-width: 100%;
+                }
+
                 .vue-highcharts {
                   margin: 0;
                 }
@@ -540,100 +544,6 @@ export default {
               }
             }
           }
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 550px) {
-    .q-tabs-panes {
-      .q-tab-pane {
-        .grafica_ahorro{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -20% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 500px) {
-    .q-tabs-panes {
-      .q-tab-pane {
-        .grafica_ahorro{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -20% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
-        .ver-ms-p{
-          margin-left: 62% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 45% !important;
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 450px) {
-    .q-tabs-panes {
-      .grafica_ahorro{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -20% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
-      .q-tab-pane {
-        .ver-ms-p{
-          margin-left: 59% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 41% !important;
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 430px) {
-    .q-tabs-panes {
-      .q-tab-pane {
-        .grafica_ahorro{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -26% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
-        .ver-ms-p{
-          margin-left: 50% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 29% !important;
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 375px) {
-    .q-tabs-panes {
-      .q-tab-pane {
-        .grafica_ahorro{
-          position: relative !important;
-          // left: -12% !important;
-          margin-bottom: -30% !important;
-          .meses{
-            left: 3% !important;
-          }
-        }
-        .ver-ms-p{
-          margin-left: 45% !important;
-        }
-        .ver-ms-lg{
-          margin-left: 22% !important;
         }
       }
     }
