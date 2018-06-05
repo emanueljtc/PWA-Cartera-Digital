@@ -1119,7 +1119,11 @@ export default {
       .then(item => {
         this.form.id = item.id
         this.form.exist = item.exist
-        this.form.capitalInicial = item.capitalInicial
+        if (item.capitalInicial === null) {
+          this.form.capitalInicial = 0
+        } else {
+          this.form.capitalInicial = item.capitalInicial
+        }
       })
   },
   computed: {
