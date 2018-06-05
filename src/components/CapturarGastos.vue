@@ -6,11 +6,13 @@
       {{ setId() }}
       <q-field>
         <q-select
+          @click="mostrar_text_button"
           v-model="form_gasto.gasto"
           :options="selectOptionsGastos"
           float-label="Selecciona una opción"
         />
       </q-field>
+        <p v-show="mostrar_text">TEXTO</p>
       <div class="input-field center-align">
         <div class="row-m">
           <p class="frecuencia_sub">Frecuencia</p>
@@ -107,6 +109,7 @@ export default {
         cantidad: 0,
         cantidadMensual: null
       },
+      mostrar_text: false,
       //
       selectOptionsGastos: [
         {
@@ -126,7 +129,7 @@ export default {
           value: 'Agua'
         },
         {
-          label: 'Telefonía, Cable/Internet',
+          label: '<a>Telefonía, Cable/Internet</a>',
           value: 'Telefonía, Cable/Internet'
         }
       ]
@@ -141,6 +144,9 @@ export default {
       })
   },
   methods: {
+    mostrar_text_button: function () {
+      this.mostrar_text = !this.mostrar_text
+    },
     // Guardar gastos en store y db
     NextGasto () {
       if (this.form_gasto.frecuencia === 'Semanal') {
