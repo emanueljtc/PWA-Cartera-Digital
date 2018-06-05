@@ -34,7 +34,8 @@
                   currencySymbol: '$',
                   decimalPlaces: 2,
                   minimumValue: 0,
-                }" placeholder="$0.00"></vue-autonumeric>
+                }" placeholder="$0.00">
+                </vue-autonumeric>
             </q-field>
           </div>
         </div>
@@ -127,6 +128,16 @@ export default {
         {
           label: 'Telefonía',
           value: 'Telefonía'
+        },
+        {
+          label: 'Cable',
+          inset: true,
+          value: 'Cable'
+        },
+        {
+          label: 'Internet',
+          inset: true,
+          value: 'Internet'
         }
       ]
     }
