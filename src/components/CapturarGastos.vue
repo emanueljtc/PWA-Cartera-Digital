@@ -126,18 +126,8 @@ export default {
           value: 'Agua'
         },
         {
-          label: 'Telefonía',
-          value: 'Telefonía'
-        },
-        {
-          label: 'Cable',
-          inset: true,
-          value: 'Cable'
-        },
-        {
-          label: 'Internet',
-          inset: true,
-          value: 'Internet'
+          label: 'Telefonía, Cable/Internet',
+          value: 'Telefonía, Cable/Internet'
         }
       ]
     }
