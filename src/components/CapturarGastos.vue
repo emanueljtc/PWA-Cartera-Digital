@@ -129,7 +129,7 @@ export default {
           value: 'Agua'
         },
         {
-          label: '<a>Telefonía, Cable/Internet</a>',
+          label: 'Telefonía, Cable/Internet',
           value: 'Telefonía, Cable/Internet'
         }
       ]
