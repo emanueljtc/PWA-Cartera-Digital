@@ -12,7 +12,7 @@
           float-label="Selecciona una opción"
         />
       </q-field>
-        <p v-show="mostrar_text">TEXTO</p>
+        <p v-show="mostrar_text">Texto de prueba</p>
       <div class="input-field center-align">
         <div class="row-m">
           <p class="frecuencia_sub">Frecuencia</p>
