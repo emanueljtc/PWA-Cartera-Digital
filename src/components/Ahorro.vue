@@ -143,7 +143,6 @@
                   </q-collapsible>
               </q-list>
           </q-field>
-         <button type="submit" class="btn-next">Siguiente <i class="material-icons">arrow_forward</i></button>
     </div>
   </div>
 </template>

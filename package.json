@@ -20,7 +20,7 @@
     "highcharts": "^6.1.0",
     "moment": "^2.21.0",
     "npm-install-global": "^1.0.0",
-    "vue-autonumeric": "^1.2.0",
+    "vue-autonumeric": "^1.2.5",
     "vue-highcharts": "0.0.10",
     "vue-highcharts-v5": "^1.0.3",
     "vue-i18n": "^7.3.3",
