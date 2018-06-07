@@ -10,8 +10,8 @@
           :options="selectOptionsGastos"
           float-label="Selecciona una opción"
         />
-        <q-list>
-          <!-- <q-collapsible label="Selecciona una Opcion" close class="select">
+        <!-- <q-list>
+          <q-collapsible label="Selecciona una Opcion" close class="select">
             <div>
               <q-list link >
                   <q-item>
@@ -45,8 +45,8 @@
                     </q-item>
                 </q-list>
              </div>
-          </q-collapsible> -->
-        </q-list>
+          </q-collapsible>
+        </q-list> -->
       </q-field>
       <div class="input-field center-align">
         <div class="row-m">
