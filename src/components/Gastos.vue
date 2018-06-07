@@ -8,7 +8,7 @@
           <p>Tú <br> {{ PrintTuGasto }}</p>
         </div>
         <div class="precio-bajo items-center">
-          <p>Precio <br> mas bajo <br> {{ PrintPrecioBajo }}</p>
+          <p>Precio <br> mas bajo <br> {{ PrintPrecioBajo }} <a href="http://landing.axtel.mx/nuevos/res/search/xtremo/?utm_source=google&utm_medium=cpc&utm_campaign=adqpros_xtremoresnonbrand&utm_content=paquetes&gclid=Cj0KCQjwl7nYBRCwARIsAL7O7dGDrOYuiq-wkfwNKLVE4LlIpDfy2QhxdHsPvtBi7ZwFifbxraRyAIkaAkPCEALw_wcB" target="_blank" v-show="mostrar_text_telefonia">MXN <br> (AXTEL Extremo)</a><a v-show="mostrar_text_smartphone">MXN <br> (AT&T)</a></p>
         </div>
       </div>
       <i class="material-icons arrow">arrow_downward</i>
@@ -17,7 +17,9 @@
         <p><span> {{ PrintAhorro }} </span></p>
         <p>en {{ gastoMayor }}</p>
       </div>
-        <p v-show="mostrar_text">Prueba</p>
+      <div class = "text_informativo">
+        <p v-show="mostrar_text_telefonia">Haga un comparativo entre las tarifas y opte por la oferta que abarque las necesidades reales de su hogar. Analice lo que contrate, y si alguno de los servicios lo considera indispensable, elimínelo. </p>
+      </div>
     </div>
   </div>
 </template>
@@ -40,7 +42,8 @@ export default {
       gastoMayorCantidad: 0,
       gastoMayor: null,
       precioBajoSeleccionado: 0,
-      mostrar_text: false
+      mostrar_text_telefonia: false,
+      mostrar_text_smartphone: false
     }
   },
   created () {
@@ -64,11 +67,12 @@ export default {
       this.gastoMayorCantidad = mayorCantidad
       this.gastoMayor = mayor
     },
-    MostrarMsg () {
+    /* MostrarMsg () {
+      let seleccionar = 0
       if (this.gastoMayor === 'Telefonía, Cable/Internet') {
         console.log('Prueba')
       }
-    },
+    }, */
     SeleccionarPrecioBajo () {
       let seleccionar = 0
       if (this.gastoMayor === 'Smartphone') {
@@ -90,6 +94,7 @@ export default {
       if (this.gastoMayor === 'Telefonía, Cable/Internet') {
         seleccionar = this.precio_mas_bajo.telefonia
         this.precioBajoSeleccionado = this.precio_mas_bajo.telefonia
+        this.mostrar_text_telefonia = !this.mostrar_text_telefonia
       }
       return seleccionar
     },

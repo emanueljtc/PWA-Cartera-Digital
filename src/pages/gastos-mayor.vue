@@ -208,7 +208,6 @@ export default {
                   }
                 }
               }
-
               .data-box {
                 position: relative;
                 width: 50%;
@@ -282,7 +281,19 @@ export default {
         color: $dark-purple;
         margin-bottom: 50px;
       }
-
+      .text_informativo {
+        position: relative;
+        height: auto;
+        margin: 0px;
+        margin-left: 35%;
+        width: 32%;
+        p {
+          color: $dark-purple;
+          text-align: left;
+          font-size: 14px;
+          font-family: $nunito;
+        }
+      }
       .circulos {
         position: relative;
         width: 100%;
@@ -310,6 +321,12 @@ export default {
             line-height: 1.56;
             letter-spacing: normal;
             text-align: center;
+            a {
+              color: white;
+              font-size: 12px;
+              font-style: normal;
+              text-decoration: none;
+            }
           }
         }
 
@@ -400,6 +417,10 @@ export default {
                   .porcentaje, .cantidad {
                     font-size: 15px;
                   }
+                }
+              .text_informativo {
+                  margin-left: 0%;
+                  width: 100%;
                 }
               }
             }
