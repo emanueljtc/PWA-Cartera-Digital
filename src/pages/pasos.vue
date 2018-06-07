@@ -329,8 +329,8 @@ export default {
   .q-layout-page-container {
     padding: 0px !important;
   }
-
   .q-list {
+    border: 0px solid !important;
     padding: 0px;
     margin-bottom: 5px;
     .q-item {

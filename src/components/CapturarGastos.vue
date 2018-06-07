@@ -5,14 +5,51 @@
       <p>¿Cuáles son tus gastos más fuertes?</p>
       {{ setId() }}
       <q-field>
-        <q-select
+        <!-- <q-select
           @click="mostrar_text_button"
           v-model="form_gasto.gasto"
           :options="selectOptionsGastos"
           float-label="Selecciona una opción"
-        />
+        /> -->
+        <q-list>
+          <q-collapsible label="Selecciona una Opcion" close class="q-select">
+            <div>
+              <q-list link >
+                  <q-item>
+                      <q-item-main>
+                          <q-item-tile label>Smartphone</q-item-tile>
+                      </q-item-main>
+                  </q-item>
+                  <q-item-separator inset />
+                    <q-item>
+                      <q-item-main>
+                        <q-item-tile label>Luz</q-item-tile>
+                      </q-item-main>
+                    </q-item>
+                  <q-item-separator inset />
+                    <q-item>
+                      <q-item-main>
+                        <q-item-tile label>Gas</q-item-tile>
+                      </q-item-main>
+                    </q-item>
+                  <q-item-separator inset />
+                    <q-item>
+                      <q-item-main>
+                        <q-item-tile label>Agua</q-item-tile>
+                      </q-item-main>
+                    </q-item>
+                  <q-item-separator inset />
+                    <q-item>
+                      <q-item-main>
+                        <q-item-tile label><a @click="mostrar_text_button"> Telefonía, Cable/Internet</a></q-item-tile>
+                      </q-item-main>
+                    </q-item>
+                </q-list>
+             </div>
+          </q-collapsible>
+        </q-list>
       </q-field>
-        <p v-show="mostrar_text">Texto de prueba</p>
+        <p v-show="mostrar_text">$418.00 MXN (AXTEL Extremo)</p>
       <div class="input-field center-align">
         <div class="row-m">
           <p class="frecuencia_sub">Frecuencia</p>
