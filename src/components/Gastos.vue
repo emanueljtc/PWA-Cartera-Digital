@@ -92,12 +92,6 @@ export default {
       this.gastoMayorCantidad = mayorCantidad
       this.gastoMayor = mayor
     },
-    /* MostrarMsg () {
-      let seleccionar = 0
-      if (this.gastoMayor === 'Telefonía, Cable/Internet') {
-        console.log('Prueba')
-      }
-    }, */
     SeleccionarPrecioBajo () {
       let seleccionar = 0
       if (this.gastoMayor === 'Smartphone') {
