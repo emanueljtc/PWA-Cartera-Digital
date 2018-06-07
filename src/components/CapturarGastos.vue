@@ -144,7 +144,6 @@ export default {
         cantidad: 0,
         cantidadMensual: null
       },
-      mostrar_text: false,
       //
       selectOptionsGastos: [
         {

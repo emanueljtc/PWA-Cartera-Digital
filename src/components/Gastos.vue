@@ -17,6 +17,7 @@
         <p><span> {{ PrintAhorro }} </span></p>
         <p>en {{ gastoMayor }}</p>
       </div>
+        <p v-show="mostrar_text">Prueba</p>
     </div>
   </div>
 </template>
@@ -38,7 +39,8 @@ export default {
       },
       gastoMayorCantidad: 0,
       gastoMayor: null,
-      precioBajoSeleccionado: 0
+      precioBajoSeleccionado: 0,
+      mostrar_text: false
     }
   },
   created () {
@@ -62,6 +64,11 @@ export default {
       this.gastoMayorCantidad = mayorCantidad
       this.gastoMayor = mayor
     },
+    MostrarMsg () {
+      if (this.gastoMayor === 'Telefonía, Cable/Internet') {
+        console.log('Prueba')
+      }
+    },
     SeleccionarPrecioBajo () {
       let seleccionar = 0
       if (this.gastoMayor === 'Smartphone') {
@@ -80,7 +87,7 @@ export default {
         seleccionar = this.precio_mas_bajo.gas
         this.precioBajoSeleccionado = this.precio_mas_bajo.gas
       }
-      if (this.gastoMayor === 'Telefonía') {
+      if (this.gastoMayor === 'Telefonía, Cable/Internet') {
         seleccionar = this.precio_mas_bajo.telefonia
         this.precioBajoSeleccionado = this.precio_mas_bajo.telefonia
       }
