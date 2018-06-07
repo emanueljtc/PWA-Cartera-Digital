@@ -8,7 +8,7 @@
           <p>Tú <br> {{ PrintTuGasto }}</p>
         </div>
         <div class="precio-bajo items-center">
-          <p>Precio <br> mas bajo <br> {{ PrintPrecioBajo }} <a href="http://landing.axtel.mx/nuevos/res/search/xtremo/?utm_source=google&utm_medium=cpc&utm_campaign=adqpros_xtremoresnonbrand&utm_content=paquetes&gclid=Cj0KCQjwl7nYBRCwARIsAL7O7dGDrOYuiq-wkfwNKLVE4LlIpDfy2QhxdHsPvtBi7ZwFifbxraRyAIkaAkPCEALw_wcB" target="_blank" v-show="mostrar_text_telefonia">MXN <br> (AXTEL Extremo)</a><a v-show="mostrar_text_smartphone">MXN <br> (AT&T)</a></p>
+          <p>Precio <br> mas bajo <br> {{ PrintPrecioBajo }} <a href="http://landing.axtel.mx/nuevos/res/search/xtremo/?utm_source=google&utm_medium=cpc&utm_campaign=adqpros_xtremoresnonbrand&utm_content=paquetes&gclid=Cj0KCQjwl7nYBRCwARIsAL7O7dGDrOYuiq-wkfwNKLVE4LlIpDfy2QhxdHsPvtBi7ZwFifbxraRyAIkaAkPCEALw_wcB" target="_blank" v-show="mostrar_text_telefonia">MXN <br> (AXTEL Extremo)</a><a href="https://www.att.com.mx/att-con-todo-damos-mas.html" target="_blank" v-show="mostrar_text_smartphone">MXN <br> (AT&T)</a></p>
         </div>
       </div>
       <i class="material-icons arrow">arrow_downward</i>
@@ -19,6 +19,7 @@
       </div>
       <div class = "text_informativo">
         <p v-show="mostrar_text_telefonia">Haga un comparativo entre las tarifas y opte por la oferta que abarque las necesidades reales de su hogar. Analice lo que contrate, y si alguno de los servicios lo considera indispensable, elimínelo. </p>
+        <p v-show="mostrar_text_smartphone">Consulte en todas las empresas de telefonía móvil y decida por el plan que mejor se adapte a sus necesidades, muchas de las veces, una pequeña investigación de campo puede significar un gran ahorro de nuestros gastos</p>
       </div>
     </div>
   </div>
@@ -78,6 +79,7 @@ export default {
       if (this.gastoMayor === 'Smartphone') {
         seleccionar = this.precio_mas_bajo.smartphone
         this.precioBajoSeleccionado = this.precio_mas_bajo.smartphone
+        this.mostrar_text_smartphone = !this.mostrar_text_smartphone
       }
       if (this.gastoMayor === 'Luz') {
         seleccionar = this.precio_mas_bajo.luz
