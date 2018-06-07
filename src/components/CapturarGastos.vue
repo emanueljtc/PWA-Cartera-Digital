@@ -5,14 +5,13 @@
       <p>¿Cuáles son tus gastos más fuertes?</p>
       {{ setId() }}
       <q-field>
-        <!-- <q-select
-          @click="mostrar_text_button"
+        <q-select
           v-model="form_gasto.gasto"
           :options="selectOptionsGastos"
           float-label="Selecciona una opción"
-        /> -->
+        />
         <q-list>
-          <q-collapsible label="Selecciona una Opcion" close class="q-select">
+          <!-- <q-collapsible label="Selecciona una Opcion" close class="select">
             <div>
               <q-list link >
                   <q-item>
@@ -46,10 +45,9 @@
                     </q-item>
                 </q-list>
              </div>
-          </q-collapsible>
+          </q-collapsible> -->
         </q-list>
       </q-field>
-        <p v-show="mostrar_text">$418.00 MXN (AXTEL Extremo)</p>
       <div class="input-field center-align">
         <div class="row-m">
           <p class="frecuencia_sub">Frecuencia</p>
