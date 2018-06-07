@@ -20,6 +20,20 @@
       <div class = "text_informativo">
         <p v-show="mostrar_text_telefonia">Haga un comparativo entre las tarifas y opte por la oferta que abarque las necesidades reales de su hogar. Analice lo que contrate, y si alguno de los servicios lo considera indispensable, elimínelo. </p>
         <p v-show="mostrar_text_smartphone">Consulte en todas las empresas de telefonía móvil y decida por el plan que mejor se adapte a sus necesidades, muchas de las veces, una pequeña investigación de campo puede significar un gran ahorro de nuestros gastos</p>
+        <p v-show="mostrar_text_agua">4 tips para el ahorro de agua:</p>
+        <ol v-show="mostrar_text_agua">
+            <li>Opta por tomar duchas en vez de baños. Una persona gasta en una ducha entre 40 a 50 litros por tres minutos, y cada minuto adicional son 15 litros más. El gasto del líquido sanitario es similar.</li>
+            <li>Utilice la capacidad completa de los electrodomésticos como la lavadora.</li>
+            <li>¡Ten cuidado con las fugas en el baño y la cocina!</li>
+            <li>No dejes el grifo abierto al lavarte los dientes ni cuando friegues los platos.</li>
+        </ol>
+        <p v-show="mostrar_text_luz">4 tips para el ahorro de luz:</p>
+        <ol v-show="mostrar_text_luz">
+            <li>¡Aproveche al máximo la iluminación solar!</li>
+            <li>Mantenga la parte trasera de su refrigerador limpios y ventilados, así consumirá 15% menos energía.</li>
+            <li>Procure limpiar los filtros de los aires acondicionados y nunca ponga la temperatura más alta o más baja, unos 4 a 5 grados por encima o debajo de los límites es lo recomendable para ahorrar un porcentaje de energía.</li>
+            <li>Use bombillas ahorrativas, ahorran hasta un 80% de energía. </li>
+        </ol>
       </div>
     </div>
   </div>
@@ -44,7 +58,9 @@ export default {
       gastoMayor: null,
       precioBajoSeleccionado: 0,
       mostrar_text_telefonia: false,
-      mostrar_text_smartphone: false
+      mostrar_text_smartphone: false,
+      mostrar_text_agua: false,
+      mostrar_text_luz: false
     }
   },
   created () {
@@ -84,10 +100,12 @@ export default {
       if (this.gastoMayor === 'Luz') {
         seleccionar = this.precio_mas_bajo.luz
         this.precioBajoSeleccionado = this.precio_mas_bajo.luz
+        this.mostrar_text_luz = !this.mostrar_text_luz
       }
       if (this.gastoMayor === 'Agua') {
         seleccionar = this.precio_mas_bajo.agua
         this.precioBajoSeleccionado = this.precio_mas_bajo.agua
+        this.mostrar_text_agua = !this.mostrar_text_agua
       }
       if (this.gastoMayor === 'Gas') {
         seleccionar = this.precio_mas_bajo.gas

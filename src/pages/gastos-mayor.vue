@@ -287,11 +287,18 @@ export default {
         margin: 0px;
         margin-left: 35%;
         width: 32%;
+        font-size: 14px;
+        font-family: $nunito;
         p {
           color: $dark-purple;
           text-align: left;
-          font-size: 14px;
-          font-family: $nunito;
+        }
+        ol {
+          color: $dark-purple;
+          text-align: left;
+          li {
+            margin-top: 2%;
+          }
         }
       }
       .circulos {
