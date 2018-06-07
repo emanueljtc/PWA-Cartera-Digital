@@ -32,7 +32,14 @@
             <li>¡Aproveche al máximo la iluminación solar!</li>
             <li>Mantenga la parte trasera de su refrigerador limpios y ventilados, así consumirá 15% menos energía.</li>
             <li>Procure limpiar los filtros de los aires acondicionados y nunca ponga la temperatura más alta o más baja, unos 4 a 5 grados por encima o debajo de los límites es lo recomendable para ahorrar un porcentaje de energía.</li>
-            <li>Use bombillas ahorrativas, ahorran hasta un 80% de energía. </li>
+            <li>Use bombillas ahorrativas, ahorran hasta un 80% de energía.</li>
+        </ol>
+        <p v-show="mostrar_text_gas">4 tips para el ahorro de gas:</p>
+        <ol v-show="mostrar_text_gas">
+            <li>No dejar el agua caliente correr y cerrar los grifos cuando no se están utilizando.</li>
+            <li>Protega con material aislante las tuberías de agua caliente.</li>
+            <li>Utiliza cerrillos o encendedores para prender los equipos cuando se requieran.</li>
+            <li>Cuando cocine en el horno, trata de abrirlo lo menos posible.</li>
         </ol>
       </div>
     </div>
@@ -60,7 +67,8 @@ export default {
       mostrar_text_telefonia: false,
       mostrar_text_smartphone: false,
       mostrar_text_agua: false,
-      mostrar_text_luz: false
+      mostrar_text_luz: false,
+      mostrar_text_gas: false
     }
   },
   created () {
@@ -110,6 +118,7 @@ export default {
       if (this.gastoMayor === 'Gas') {
         seleccionar = this.precio_mas_bajo.gas
         this.precioBajoSeleccionado = this.precio_mas_bajo.gas
+        this.mostrar_text_gas = !this.mostrar_text_gas
       }
       if (this.gastoMayor === 'Telefonía, Cable/Internet') {
         seleccionar = this.precio_mas_bajo.telefonia
