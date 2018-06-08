@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    {{ GuardarAhorroIdeal() }}
     <div class="grafica">
       <vue-highcharts
         :options="pieOptions"
@@ -59,6 +60,10 @@ export default {
       },
       position: [],
       ahorro: null,
+      ahorroDB: {
+        id: 1,
+        ahorro: null
+      },
       excedente: null,
       pieOptions: {
         chart: {
@@ -189,8 +194,27 @@ export default {
         data: (dataPrueba)
       }
       this.$refs.pieChart.addSeries(DataPie)
-    }
+    },
     //
+    GuardarAhorroIdeal () {
+      let totalIngreso = this.form.ingreso
+      let totalEgresos = 0
+      let ahorroDB = this.ahorroDB
+      this.form.egresos.forEach(function (egreso, index) {
+        let cantidadMensual = egreso.cantidadMensual
+        let actualizar = cantidadMensual - (cantidadMensual * 0.10)
+
+        totalEgresos = totalEgresos + actualizar
+      })
+      let ahorro = totalIngreso - totalEgresos - this.form.deuda
+      if (ahorro > 0) {
+        ahorroDB.ahorro = ahorro
+      } else {
+        ahorroDB.ahorro = null
+      }
+
+      this.$store.dispatch('ahorro/store', ahorroDB)
+    }
   },
   computed: {
     PrintIngreso () {

@@ -166,7 +166,8 @@ export default {
         ingreso: null,
         deuda: null,
         egreso: [],
-        capitalInicial: null
+        capitalInicial: null,
+        ahorro: null
       },
       mostrar_SinInv: true,
       mostrar_axend: false,
@@ -1124,6 +1125,11 @@ export default {
           this.form.capitalInicial = item.capitalInicial
         }
       })
+    this.$store.dispatch('ahorro/get', this.form.id)
+      .then(item => {
+        this.form.id = item.id
+        this.form.ahorro = item.ahorro
+      })
   },
   computed: {
     PrintMeta () {
@@ -1143,10 +1149,7 @@ export default {
       return this.form.egreso
     },
     CalcularAhorro () {
-      let totalIngreso = this.form.ingreso
-      let totalEgresos = this.form.egreso
-      let totalEgresoM = this.form.deuda
-      let ahorro = totalIngreso - totalEgresos - totalEgresoM
+      let ahorro = this.form.ahorro
       return ahorro
     },
     Axend_M () {
