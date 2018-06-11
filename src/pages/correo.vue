@@ -17,7 +17,7 @@
           </q-field>
           <q-field>
             <q-input
-              v-model="password" type="password" placeholder="Minimo 8 caract."
+              v-model="form.password" type="password" placeholder="Minimo 8 caract."
               :before="[
                 {
                   icon: 'lock_outline'
@@ -38,14 +38,16 @@
 <script>
 import { QField, QInput } from 'quasar'
 import { required, email } from 'vuelidate/lib/validators'
+import http from 'axios'
+import VueResource from 'vue-resource'
 
 export default {
   data () {
     return {
       form: {
-        email: ''
-      },
-      password: ''
+        email: '',
+        password: ''
+      }
     }
   },
   validations: {
@@ -67,38 +69,29 @@ export default {
           position: 'top-right'
         })
       } else {
-        this.$router.replace('/diagnostico')
+        http.post('https://spark.bycarbono.tech/api/registrations', {
+          email: this.form.email,
+          password: this.form.password,
+          name: this.form.email
+        }).then(data => {
+          console.log(data)
+        }).catch(err => {
+          if (err) {
+            console.log(err)
+            this.$q.notify({
+              message: `Ocurrio un error`,
+              timeout: 5000,
+              position: 'top-right'
+            })
+          } else {
+            this.$router.replace('/diagnostico')
+          }
+        })
       }
     }
   },
-  computed: {
-    getIngreso () {
-      return this.$store.state.valuador.ingreso
-    },
-    getEgresos () {
-      return this.$store.state.valuador.egresos
-    },
-    getGastos () {
-      return this.$store.state.valuador.gastos
-    },
-    getDeuda () {
-      return this.$store.state.valuador.deuda
-    },
-    getDeudaF () {
-      return this.$store.state.valuador.frecuenciaDeuda
-    },
-    getDeudaC () {
-      return this.$store.state.valuador.cantidadDeuda
-    },
-    getMetaC () {
-      return this.$store.state.valuador.cantidadMeta
-    },
-    getMeta () {
-      return this.$store.state.valuador.meta
-    }
-  },
   components: {
-    QField, QInput
+    QField, QInput, http, VueResource
   }
 }
 </script>
