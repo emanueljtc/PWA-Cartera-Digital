@@ -12,15 +12,6 @@ export default [{
     }
   },
   {
-    path: '/users',
-    name: 'app.dbusers',
-    component: () =>
-                    import('pages/users'),
-    meta: {
-      requiresAuth: true
-    }
-  },
-  {
     path: '/pasos',
     name: 'app.pasos',
     component: () =>
