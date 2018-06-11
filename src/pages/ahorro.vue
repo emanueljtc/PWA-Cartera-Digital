@@ -36,7 +36,7 @@ export default {
 <style lang="scss">
 $green: #c0d84a;
 $yellow: #fbbb2f;
-$orange: #fbbb40;
+$orange: #ff8327;
 $pink: #e03757;
 $dark-purple: #3f224c;
 $link: #af85bc;
@@ -44,7 +44,8 @@ $blue_king: #0836a9;
 $light-blue: #64c9db;
 $purple: #af85bc;
 $white: #ffffff;
-$gray: #757169;
+$gray: #dedede;
+$gray-dark: #757169;
 $gray-light: #fcfcfc;
 $gray-button: #f6f6f6;
 $btn-secondary: #c0d84a;
@@ -203,7 +204,7 @@ header {
               }
               .btn-cero {
                 width: 90px;
-                background: $gray;
+                background: $gray-dark;
               }
               .btn-primary {
                 width: 90px;
@@ -213,8 +214,7 @@ header {
                 background: $green;
               }
               .btn-tree {
-                color: $dark-purple;
-                background: $gray;
+                background: $orange;
                 width: 115px;
               }
             }
@@ -266,7 +266,7 @@ header {
             .tableInv {
               thead {
                 tr {
-                  background: $gray !important;
+                  background: $gray-dark !important;
                 }
               }
             }
@@ -287,10 +287,7 @@ header {
             .tableFeudo {
               thead {
                 tr {
-                  background: $gray !important;
-                  th.sortable {
-                    color: $dark-purple !important;
-                  }
+                  background: $orange !important;
                 }
               }
             }

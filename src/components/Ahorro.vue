@@ -9,13 +9,13 @@
           <h2 class="layer" v-show="mostrar_SinInv" style="color: #757169">{{ Print_Ahorro_LG_S_Inv }}</h2>
           <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
           <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
-          <h2 class="layer" v-show="mostrar_feudo" style="color: #727171">{{ Print_Ahorro_LG_F }}</h2>
+          <h2 class="layer" v-show="mostrar_feudo" style="color: #ff8327">{{ Print_Ahorro_LG_F }}</h2>
            <div class="meta">
              <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
              <p class="meta-value">{{ PrintMeta }}</p>
           </div>
           <div class="alcance">
-            <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
+            <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #757169; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #ff8327; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
           </div>
           <div class="buttons">
             <button class="btn btn-cero " @click="sinInv_button" >Sin Inversión</button>
@@ -799,7 +799,7 @@ export default {
       let SinInversion_Series = {
         name: 'Sin Inversion',
         data: this.getChartData_SinInversion(capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12),
-        color: '#fbbb40'
+        color: '#757169'
       }
       let axendSeries = {
         name: 'Axend',
@@ -814,7 +814,7 @@ export default {
       let feudoSeries = {
         name: 'Feudo Capital',
         data: this.getChartData_feudo(capitalInicial, ahorro, interes_feudo, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12),
-        color: '#737272'
+        color: '#ff8327'
       }
       this.$refs.highcharts_SinInversion.addSeries(SinInversion_Series)
       this.$refs.highcharts_axend.addSeries(axendSeries)
