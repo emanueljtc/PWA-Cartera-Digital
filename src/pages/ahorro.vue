@@ -40,10 +40,11 @@ $orange: #fbbb40;
 $pink: #e03757;
 $dark-purple: #3f224c;
 $link: #af85bc;
+$blue_king: #0836a9;
 $light-blue: #64c9db;
 $purple: #af85bc;
 $white: #ffffff;
-$gray: #eae7e7;
+$gray: #757169;
 $gray-light: #fcfcfc;
 $gray-button: #f6f6f6;
 $btn-secondary: #c0d84a;
@@ -194,7 +195,7 @@ header {
                 margin-top: 2%;
                 border-style: none;
                 border-radius: 10px;
-                font-size: 16px;
+                font-size: 13px;
                 font-family: Opensans;
                 color: $white;
                 line-height: 1.56;
@@ -202,7 +203,7 @@ header {
               }
               .btn-cero {
                 width: 90px;
-                background: $orange;
+                background: $gray;
               }
               .btn-primary {
                 width: 90px;
@@ -265,7 +266,7 @@ header {
             .tableInv {
               thead {
                 tr {
-                  background: $orange !important;
+                  background: $gray !important;
                 }
               }
             }
@@ -380,8 +381,8 @@ header {
                 position: relative;
               }
               i {
-                border: 1px solid $orange;
-                color: $orange;
+                border: 1px solid $blue_king;
+                color: $blue_king;
                 width: 27px;
                 height: 27px;
                 padding: 3px;

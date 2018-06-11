@@ -5,8 +5,8 @@
       {{ tabla_kuspitComputed }}
       {{ tabla_feudoComputed }}
       {{ tabla_sinComputed }}
-      <p class="sub-title">Tu ahorro a largo plazo es de</p>
-          <h2 class="layer" v-show="mostrar_SinInv" style="color: #fbbb40">{{ Print_Ahorro_LG_S_Inv }}</h2>
+      <p class="sub-title">¡Descubre lo que estuvieras ganando al momento de invertir!</p>
+          <h2 class="layer" v-show="mostrar_SinInv" style="color: #757169">{{ Print_Ahorro_LG_S_Inv }}</h2>
           <h2 class="layer" v-show="mostrar_axend" style="color: #e03757">{{ Print_Ahorro_LG_A }}</h2>
           <h2 class="layer" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
           <h2 class="layer" v-show="mostrar_feudo" style="color: #727171">{{ Print_Ahorro_LG_F }}</h2>
@@ -18,7 +18,7 @@
             <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #e03757; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #fbbb40; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #c0d84a; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #727171; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
           </div>
           <div class="buttons">
-            <button class="btn btn-cero " @click="sinInv_button" >Sin Inv.</button>
+            <button class="btn btn-cero " @click="sinInv_button" >Sin Inversión</button>
             <button class="btn btn-primary " @click="axend_button" >Axend</button>
             <button class="btn btn-secondary highcharts-series-1" @click="kuspit_button">Kuspit</button>
             <button class="btn btn-tree" @click="feudo_button">Feudo Capital</button>
