@@ -208,7 +208,7 @@ header {
               }
               .btn-primary {
                 width: 90px;
-                background: $pink;
+                background: $blue-king;
               }
               .btn-secondary {
                 background: $green;
@@ -273,7 +273,7 @@ header {
             .tableAxend {
               thead {
                 tr {
-                  background: $pink !important;
+                  background: $blue-king !important;
                 }
               }
             }
