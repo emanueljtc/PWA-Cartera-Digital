@@ -160,8 +160,10 @@ header {
               position: relative;
               width: 50%;
               left: 25%;
+              .mostrar_SinInv {
+                  color: $gray-dark;
+              }
             }
-
             .sub-title {
               font-family: $opensans;
               font-size: 18px;
@@ -211,7 +213,7 @@ header {
                 background: $blue-king;
               }
               .btn-secondary {
-                background: $green;
+                background: $purple;
               }
               .btn-tree {
                 background: $orange;
@@ -280,7 +282,7 @@ header {
             .tableKuspit {
               thead {
                 tr {
-                  background: $green !important;
+                  background: $purple !important;
                 }
               }
             }
