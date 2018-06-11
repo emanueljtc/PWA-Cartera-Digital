@@ -15,7 +15,7 @@
              <p class="meta-value">{{ PrintMeta }}</p>
           </div>
           <div class="alcance">
-            <p class="alcance-text">Para alcanzar tu meta necesitas <span style="color: #0836a9; font-size: 20px" v-show="mostrar_axend">{{ meses_axend() }}</span><span style="color: #757169; font-size: 20px" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span style="color: #af85bc; font-size: 20px" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span style="color: #ff8327; font-size: 20px" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
+            <p class="alcance-text">Para alcanzar tu meta necesitas <span class="mostrar_Axend" v-show="mostrar_axend">{{ meses_axend() }}</span><span class="mostrar_SinInv" v-show="mostrar_SinInv">{{ meses_sin_inv() }}</span><span class="mostrar_Kuspit" v-show="mostrar_kuspit">{{ meses_kuspit() }}</span><span class="mostrar_Feudo" v-show="mostrar_feudo">{{ meses_feudo() }}</span> meses.</p>
           </div>
           <div class="buttons">
             <button class="btn btn-cero " @click="sinInv_button" >Sin Inversión</button>

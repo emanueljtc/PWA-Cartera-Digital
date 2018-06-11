@@ -160,6 +160,9 @@ header {
               position: relative;
               width: 50%;
               left: 25%;
+              span {
+                font-size: 25px;
+              }
               .mostrar_SinInv {
                   color: $gray-dark;
               }
@@ -373,7 +376,7 @@ header {
                 line-height: 1.39;
                 letter-spacing: normal;
                 font-family: Opensans;
-                padding-left: 75px;
+                padding-left: 22%;
                 padding-right: 15px;
               }
               .meta-value {
@@ -536,7 +539,11 @@ header {
             }
             .q-tab-pane {
               padding: 30px 0px;
-
+              .meta {
+                .meta-text {
+                  padding-left: 0% !important;
+                }
+              }
               .highcharts {
                 max-width: 100%;
               }
