@@ -447,7 +447,6 @@ export default {
           }
           capitalFinal_0 = this.form.capitalInicial
           total.push(capitalFinal_0)
-          console.log(`mes 0: ${capitalFinal_0}`)
           continue
         }
         if (mes === 2) {
@@ -456,7 +455,6 @@ export default {
           capitalRecopilada = ahorro + interes_axend
           capitalFinal_1 = capitalInicial + capitalRecopilada
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${capitalFinal_1}`)
           continue
         }
         if (mes === 3) {
@@ -909,7 +907,6 @@ export default {
     },
     tabla_axend () {
       let capitalInicial = this.form.capitalInicial
-      console.log('d' + capitalInicial)
       let ahorro = this.CalcularAhorro
       let interes = (capitalInicial + ahorro) * 0.0125
       let cantidadRecopilada = ahorro + interes
@@ -1185,7 +1182,6 @@ export default {
           }
           capitalFinal_0 = this.form.capitalInicial
           total.push(capitalFinal_0)
-          console.log(`mes 0: ${capitalFinal_0}`)
           continue
         }
         if (mes === 2) {
@@ -1194,7 +1190,6 @@ export default {
           capitalRecopilada = ahorro + interes_axend
           capitalFinal_1 = capitalInicial + capitalRecopilada
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${capitalFinal_1}`)
           continue
         }
         if (mes === 3) {
@@ -1325,7 +1320,6 @@ export default {
           }
           capitalFinal_0 = this.form.capitalInicial
           total.push(capitalFinal_0)
-          console.log(`mes 0: ${capitalFinal_0}`)
           continue
         }
         if (mes === 2) {
@@ -1334,7 +1328,6 @@ export default {
           capitalRecopilada = ahorro + interes_axend
           capitalFinal_1 = capitalInicial + capitalRecopilada
           total.push(capitalFinal_1)
-          console.log(`mes 1: ${capitalFinal_1}`)
           continue
         }
         if (mes === 3) {
