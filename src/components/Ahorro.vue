@@ -6,10 +6,10 @@
       {{ tabla_feudoComputed }}
       {{ tabla_sinComputed }}
       <p class="sub-title">¡Descubre lo que estuvieras ganando al momento de invertir!</p>
-          <h2 class="mostrar_SinInv layer" v-show="mostrar_SinInv">{{ Print_Ahorro_LG_S_Inv }}</h2>
-          <h2 class="layer" v-show="mostrar_axend" style="color: #0836a9">{{ Print_Ahorro_LG_A }}</h2>
-          <h2 class="layer" v-show="mostrar_kuspit" style="color: #af85bc">{{ Print_Ahorro_LG_K }}</h2>
-          <h2 class="layer" v-show="mostrar_feudo" style="color: #ff8327">{{ Print_Ahorro_LG_F }}</h2>
+          <h2 class="layer mostrar_SinInv" v-show="mostrar_SinInv">{{ Print_Ahorro_LG_S_Inv }}</h2>
+          <h2 class="layer mostrar_Axend" v-show="mostrar_axend">{{ Print_Ahorro_LG_A }}</h2>
+          <h2 class="layer mostrar_Kuspit" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
+          <h2 class="layer mostrar_Feudo" v-show="mostrar_feudo">{{ Print_Ahorro_LG_F }}</h2>
            <div class="meta">
              <p class="meta-text"><i class="fas fa-star"></i>{{ PrintProposito }}</p>
              <p class="meta-value">{{ PrintMeta }}</p>

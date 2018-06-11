@@ -163,6 +163,15 @@ header {
               .mostrar_SinInv {
                   color: $gray-dark;
               }
+              .mostrar_Axend {
+                  color: $blue_king;
+              }
+              .mostrar_Kuspit {
+                  color: $purple;
+              }
+              .mostrar_Feudo {
+                  color: $orange;
+              }
             }
             .sub-title {
               font-family: $opensans;
