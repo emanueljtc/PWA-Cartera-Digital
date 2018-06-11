@@ -26,7 +26,7 @@ import Ahorro from '../components/Ahorro'
 import { QTabs, QTab, QTabPane, QRouteTab } from 'quasar'
 export default {
   name: 'ahorro',
-  data() {
+  data () {
     return {}
   },
   components: { QTabs, QTab, QTabPane, QRouteTab, Ahorro }
