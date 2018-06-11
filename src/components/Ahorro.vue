@@ -6,6 +6,8 @@
       {{ tabla_feudoComputed }}
       {{ tabla_sinComputed }}
       <p class="sub-title">¡Descubre lo que estuvieras ganando al momento de invertir!</p>
+          <h5 class="sub-title" style="font-size: 16px" v-show="mostrar_SinInv">Tu ahorro en 12 Meses.</h5>
+          <h5 class="sub-title" style="font-size: 16px" v-show="mostrar_opc_inv">Los rendimientos a 12 meses.</h5>
           <h2 class="layer mostrar_SinInv" v-show="mostrar_SinInv">{{ Print_Ahorro_LG_S_Inv }}</h2>
           <h2 class="layer mostrar_Axend" v-show="mostrar_axend">{{ Print_Ahorro_LG_A }}</h2>
           <h2 class="layer mostrar_Kuspit" v-show="mostrar_kuspit">{{ Print_Ahorro_LG_K }}</h2>
@@ -173,6 +175,7 @@ export default {
       mostrar_axend: false,
       mostrar_kuspit: false,
       mostrar_feudo: false,
+      mostrar_opc_inv: false,
       descriptions_axend: true,
       descriptions_kuspit: true,
       descriptions_feudo: true,
@@ -297,24 +300,28 @@ export default {
       this.mostrar_kuspit = false
       this.mostrar_feudo = false
       this.mostrar_SinInv = true
+      this.mostrar_opc_inv = false
     },
     axend_button: function () {
       this.mostrar_axend = true
       this.mostrar_kuspit = false
       this.mostrar_feudo = false
       this.mostrar_SinInv = false
+      this.mostrar_opc_inv = true
     },
     kuspit_button: function () {
       this.mostrar_kuspit = true
       this.mostrar_feudo = false
       this.mostrar_axend = false
       this.mostrar_SinInv = false
+      this.mostrar_opc_inv = true
     },
     feudo_button: function () {
       this.mostrar_kuspit = false
       this.mostrar_axend = false
       this.mostrar_feudo = true
       this.mostrar_SinInv = false
+      this.mostrar_opc_inv = true
     },
     get_SinInversion_Result (capitalInicial, ahorro, capitalRecopilada, capitalFinal_0, capitalFinal_1, capitalFinal_2, capitalFinal_3, capitalFinal_4, capitalFinal_5, capitalFinal_6, capitalFinal_7, capitalFinal_8, capitalFinal_9, capitalFinal_10, capitalFinal_11, capitalFinal_12) {
       let total = []
