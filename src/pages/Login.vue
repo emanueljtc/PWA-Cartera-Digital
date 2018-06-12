@@ -435,7 +435,8 @@ export default {
         }
         button {
           position: relative;
-          left: 22%;
+          width: 65%;
+          left: 17.5%;
           bottom: 0;
           margin: 0px;
         }
@@ -470,7 +471,8 @@ export default {
         }
         button {
           position: relative;
-          left: 5%;
+          width: 81%;
+          left: 9.5%;
           bottom: 0;
           margin: 0px;
         }
@@ -503,12 +505,6 @@ export default {
         img {
           margin-left: 33%;
         }
-        button {
-          position: relative;
-          left: 15%;
-          bottom: 0;
-          margin: 0px;
-        }
       }
     }
 
@@ -537,12 +533,6 @@ export default {
         }
         img {
           margin-left: 33%;
-        }
-        button {
-          position: relative;
-          left: 15%;
-          bottom: 0;
-          margin: 0px;
         }
       }
     }
@@ -573,12 +563,6 @@ export default {
         img {
           margin: auto 33%;
         }
-        button {
-          position: relative;
-          left: 16%;
-          bottom: 0;
-          margin: 0px;
-        }
       }
     }
 
@@ -605,12 +589,6 @@ export default {
         img {
           margin: auto 29%;
         }
-         button {
-          position: relative;
-          left: 14%;
-          bottom: 0;
-          margin: 0px;
-        }
       }
     }
   }
@@ -633,36 +611,9 @@ export default {
         img {
           margin: auto 29%;
         }
-         button {
-          position: relative;
-          left: 9%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 415px) {
-    .login {
-      .content {
-        h2 {
-          position: relative;
-          width: 90%;
-          left: 5%;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 95%;
-            }
-          }
-        }
-         button {
-          position: relative;
-          left: 9%;
-          bottom: 0;
-          margin: 0px;
+        button {
+          width: 95%;
+          left: 2.5%;
         }
       }
     }
@@ -714,7 +665,8 @@ export default {
         }
          button {
           position: relative;
-          left: -2%;
+          width: 95%;
+          left: 2.5%;
           bottom: 0;
           margin: 0px;
         }
