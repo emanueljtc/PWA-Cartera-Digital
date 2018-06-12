@@ -69,24 +69,25 @@ export default {
           position: 'top-right'
         })
       } else {
-        http.post('https://spark.bycarbono.tech/api/registrations', {
-          email: this.form.email,
-          password: this.form.password,
-          name: this.form.email
-        }).then(data => {
-          console.log(data)
-        }).catch(err => {
-          if (err) {
-            console.log(err)
-            this.$q.notify({
-              message: `Ocurrio un error`,
-              timeout: 5000,
-              position: 'top-right'
-            })
-          } else {
-            this.$router.replace('/diagnostico')
-          }
-        })
+        // http.post('https://spark.bycarbono.tech/api/registrations', {
+        //   email: this.form.email,
+        //   password: this.form.password,
+        //   name: this.form.email
+        // }).then(data => {
+        //   console.log(data)
+        // }).catch(err => {
+        //   if (err) {
+        //     console.log(err)
+        //     this.$q.notify({
+        //       message: `Ocurrio un error`,
+        //       timeout: 5000,
+        //       position: 'top-right'
+        //     })
+        //   } else {
+        //     this.$router.replace('/diagnostico')
+        //   }
+        // })
+        this.$router.replace('/diagnostico')
       }
     }
   },
