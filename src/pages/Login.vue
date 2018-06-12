@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="header">
+   <header>
       <div class="retorno">
         <img src="~assets/img/return.svg">
       </div>
-    </div>
+   </header>
     <div class="layout-padding container items-center login center-align">
       <div class="content">
         <img src="~assets/img/logo-moneyko-full.svg" alt="MoneyKo">
@@ -128,7 +128,11 @@ export default {
   $os-semibold: OpenSansSemibold;
 
   header {
-    display: none !important;
+    width: 100%;
+    .retorno {
+      margin-left: 5%;
+      margin-top: 5%;
+    }
   }
 
   .q-layout-page-container {
