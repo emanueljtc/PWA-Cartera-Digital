@@ -163,6 +163,11 @@ export default {
     color: #8085e9 !important;
   }
 
+  .deficit {
+    left: -9px !important;
+    font-size: 15px;
+  }
+
   .q-layout-page-container {
     padding: 0px !important;
     background-color: #fcfcfc;

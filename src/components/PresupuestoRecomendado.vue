@@ -38,7 +38,7 @@
     <div class="excedente" v-if="excedente > 0">
       <div class="data-box">
         <div class="data">
-          <p class="porcentaje"><span v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">{{ PorcentajeExcedente }}%</span> Cantidad Excedente</p>
+          <p class="porcentaje"><span class="deficit" v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">- ({{ PorcentajeExcedente }}%)</span> Déficit</p>
           <p class="cantidad"> {{ PrintExcedente }} </p>
         </div>
       </div>
