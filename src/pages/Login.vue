@@ -369,13 +369,13 @@ export default {
         }
         button {
           position: relative;
-          left: 30%;
+          width: 56%;
+          left: 22%;
           bottom: 0;
           margin: 0px;
         }
       }
     }
-
     footer {
       display: none;
     }
@@ -440,13 +440,12 @@ export default {
         button {
           position: relative;
           width: 65%;
-          left: 17.5%;
+          left: 15.5%;
           bottom: 0;
           margin: 0px;
         }
       }
     }
-
     footer {
       display: none;
     }
