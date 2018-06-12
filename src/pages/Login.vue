@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="header">
+      <div class="retorno">
+        <img src="~assets/img/return.svg">
+      </div>
+    </div>
     <div class="layout-padding container items-center login center-align">
       <div class="content">
         <img src="~assets/img/logo-moneyko-full.svg" alt="MoneyKo">
@@ -683,7 +688,8 @@ export default {
          }
          button {
           position: relative;
-          left: 4%;
+          width: 95%;
+          left: 2.5%;
           bottom: 0;
           margin: 0px;
         }
