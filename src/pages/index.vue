@@ -11,7 +11,7 @@
           <a href="/ingresos" class="primary"></a>
           <q-btn @click="$router.replace('/pasos')"> Empieza ahora </q-btn>
           <div class="row">
-            <a href="#" class="center-align">Ya estoy registrado</a>
+            <a href="login" class="center-align">Ya estoy registrado</a>
           </div>
         </div>
       </div>
