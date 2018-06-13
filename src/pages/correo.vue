@@ -209,6 +209,7 @@ export default {
         height: 50px;
         border-radius: 15px;
         border: 0px;
+        outliner: 0;
         cursor: pointer;
         background-color: $light-blue;
         color: white;

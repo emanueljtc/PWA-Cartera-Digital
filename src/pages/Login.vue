@@ -1,45 +1,43 @@
 <template>
   <div>
-   <header>
-      <div class="retorno">
-        <img src="~assets/img/return.svg">
-      </div>
-   </header>
-    <div class="layout-padding container items-center login center-align">
+    <div class="container items-center login center-align">
       <div class="content">
         <img src="~assets/img/logo-moneyko-full.svg" alt="MoneyKo">
-        <h2>Ingresa tus datos para iniciar sesiòn</h2>
-          <div class="login_input">
-              <q-field>
-                  <q-input
-                    v-model="form.username" type="email"
-                    placeholder = "ejemplo@mail.com"
-                    :before="[
-                      {
-                        icon: 'mail_outline'
-                      }
-                    ]"
-                  />
-              </q-field>
-              <q-field>
-                <q-input
-                  v-model="form.password" type="password" placeholder="Minimo 8 caract."
-                  :before="[
-                    {
-                      icon: 'lock_outline'
-                    }
-                  ]"
-                />
-              </q-field>
-            </div>
-             <button class="primary">Iniciar Sesión</button>
-          </div>
+        <h2>Ingresa tus datos para <br> iniciar sesión</h2>
+        <div class="login_input">
+          <q-field>
+              <q-input
+                v-model="form.username" type="email"
+                placeholder = "ejemplo@mail.com"
+                :before="[
+                  {
+                    icon: 'mail_outline'
+                  }
+                ]"
+              />
+          </q-field>
+          <q-field>
+            <q-input
+              v-model="form.password" type="password" placeholder="Minimo 8 caract."
+              :before="[
+                {
+                  icon: 'lock_outline'
+                }
+              ]"
+            />
+          </q-field>
+        </div>
+        <button class="primary">Iniciar Sesión</button>
       </div>
     </div>
-
+    <footer>
+      <p>Todos los derechos reservados, Moneyko 2018.</p>
+    </footer>
+  </div>
 </template>
+
 <script>
-import { QInput, QField, QBtn, QCard, QCardTitle, QCardMain, Notify } from 'quasar'
+import { QInput, QField, QBtn, Notify } from 'quasar'
 import { mapActions } from 'vuex'
 export default {
   data () {
@@ -87,12 +85,7 @@ export default {
 
   },
   components: {
-    QField,
-    QInput,
-    QBtn,
-    QCard,
-    QCardTitle,
-    QCardMain
+    QField, QInput, QBtn
   }
 }
 </script>
@@ -128,11 +121,7 @@ export default {
   $os-semibold: OpenSansSemibold;
 
   header {
-    width: 100%;
-    .retorno {
-      margin-left: 5%;
-      margin-top: 5%;
-    }
+    display: initial !important;
   }
 
   .q-layout-page-container {
@@ -148,6 +137,9 @@ export default {
     min-height: 100vh;
     height: auto;
     .content {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
       width: 100%;
       h2 {
         font-size: 35px;
@@ -204,9 +196,7 @@ export default {
           }
         }
       }
-      img {
-        margin-left: 43%;
-      }
+
       button {
         position: relative;
         font-family: Nunito;
@@ -219,8 +209,7 @@ export default {
         border: 0px;
         cursor: pointer;
         margin-bottom: 15px;
-        margin-top: 50px;
-        margin-left: 38%;
+        margin-left: calc(50% - 150px);
       }
       .primary {
         background-color: $light-blue;
@@ -246,210 +235,7 @@ export default {
       line-height: 50px;
     }
   }
-  @media screen and (max-width: 1200px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
 
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-
-        button {
-          position: relative;
-          left: 35%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 1000px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-
-        button {
-          position: relative;
-          left: 32%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 975px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-
-        button {
-          position: relative;
-          left: 31%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 900px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-        img {
-          margin: auto 40%;
-        }
-        button {
-          position: relative;
-          width: 56%;
-          left: 22%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 700px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-        img {
-          margin: auto 38%;
-        }
-        button {
-          position: relative;
-          left: 26%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 675px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-        img {
-          margin: auto 37%;
-        }
-        button {
-          position: relative;
-          width: 65%;
-          left: 15.5%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-    footer {
-      display: none;
-    }
-  }
   @media screen and (max-width: 600px) {
     .login {
       padding: 50px 5%;
@@ -469,130 +255,19 @@ export default {
             }
           }
         }
-        img {
-          margin-left: 25%;
-        }
         button {
           position: relative;
-          width: 81%;
-          left: 9.5%;
+          width: 70%;
+          left: 15%;
           bottom: 0;
           margin: 0px;
+          margin-top: 50px;
         }
       }
     }
 
     footer {
       display: none;
-    }
-  }
-  @media screen and (max-width: 575px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-        img {
-          margin-left: 33%;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 535px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-        img {
-          margin-left: 33%;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 500px) {
-    .login {
-      padding: 50px 5%;
-      .content {
-        margin-bottom: 50px;
-        h2 {
-          position: relative;
-          width: 80%;
-          left: 10%;
-          font-size: 25px;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 80%;
-            }
-          }
-        }
-        img {
-          margin: auto 33%;
-        }
-      }
-    }
-
-    footer {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 475px) {
-    .login {
-      .content {
-        h2 {
-          position: relative;
-          width: 90%;
-          left: 5%;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 95%;
-            }
-          }
-        }
-        img {
-          margin: auto 29%;
-        }
-      }
     }
   }
   @media screen and (max-width: 440px) {
@@ -611,67 +286,9 @@ export default {
             }
           }
         }
-        img {
-          margin: auto 29%;
-        }
         button {
           width: 95%;
           left: 2.5%;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 375px) {
-    .login {
-      .content {
-        h2 {
-          position: relative;
-          width: 90%;
-          left: 5%;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 95%;
-            }
-          }
-        }
-         img {
-           margin: auto 25%;
-         }
-         button {
-          position: relative;
-          width: 95%;
-          left: 2.5%;
-          bottom: 0;
-          margin: 0px;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 320px) {
-    .login {
-      .content {
-        h2 {
-          position: relative;
-          width: 90%;
-          left: 5%;
-        }
-
-        .login_input {
-          .q-field {
-            .q-input {
-              width: 95%;
-            }
-          }
-        }
-         button {
-          position: relative;
-          width: 95%;
-          left: 2.5%;
-          bottom: 0;
-          margin: 0px;
         }
       }
     }
