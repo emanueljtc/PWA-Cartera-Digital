@@ -270,9 +270,6 @@ export default {
       top: 5px;
     }
   }
-  $one:  #64c9db;
-  $two: #c0d84a;
-  $tree: #e03757;
   .element-two {
     color: #c0d84a !important;
   }

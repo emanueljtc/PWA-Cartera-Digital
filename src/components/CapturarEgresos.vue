@@ -36,14 +36,14 @@
                   currencySymbol: '$',
                   decimalPlaces: 2,
                   minimumValue: 0,
-                }" placeholder="$0.00"></vue-autonumeric>
+                }" placeholder="'$0.00'"></vue-autonumeric>
             </q-field>
           </div>
         </div>
       </div>
       <div class="collapsible-box">
         <q-list v-for="(egreso, key) in form.egresos" :key="key">
-            <q-collapsible group="somegroup" :label='labelCantidad(egreso)' v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">
+            <q-collapsible group="somegroup" :label='labelCantidad(egreso)' v-bind:class="{'element-two': (form_egreso.id === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">
             <div>
                 <div class="input-field center-align">
                   <div class="row-m">
@@ -69,7 +69,7 @@
                             currencySymbol: '$',
                             decimalPlaces: 2,
                             minimumValue: 0,
-                          }" :placeholder="egreso.cantidad"></vue-autonumeric>
+                          }" :placeholder="'egreso.cantidad'"></vue-autonumeric>
                           {{ actualizarCantidadMensual(egreso) }}
                       </q-field>
                     </div>
@@ -210,8 +210,8 @@ export default {
       } else {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
           this.$store.dispatch('egresos/store', form_egreso)
-          this.form.egresos.push(form_egreso)
           this.position.push(form_egreso.id)
+          this.form.egresos.push(form_egreso)
           this.resetFormEgreso()
         }
       }
