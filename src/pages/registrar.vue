@@ -209,10 +209,12 @@ export default {
         height: 50px;
         border-radius: 15px;
         border: 0px;
+        outliner: 0;
         cursor: pointer;
         background-color: $light-blue;
         color: white;
         margin-bottom: 15px;
+        margin-top: 0px;
         font-weight: 500;
         font-size: 20px;
       }
