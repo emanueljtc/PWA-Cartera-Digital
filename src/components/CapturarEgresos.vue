@@ -43,7 +43,7 @@
       </div>
       <div class="collapsible-box">
         <q-list v-for="(egreso, key) in form.egresos" :key="key">
-            <q-collapsible group="somegroup" :label='labelCantidad(egreso)'>
+            <q-collapsible group="somegroup" :label='labelCantidad(egreso)' v-bind:class="{'element-two': (position.length === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">
             <div>
                 <div class="input-field center-align">
                   <div class="row-m">
@@ -103,6 +103,7 @@ export default {
       form: {
         egresos: []
       },
+      position: [],
       form_egreso: {
         id: null,
         egreso: null,
@@ -210,6 +211,7 @@ export default {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
           this.$store.dispatch('egresos/store', form_egreso)
           this.form.egresos.push(form_egreso)
+          this.position.push(form_egreso.id)
           this.resetFormEgreso()
         }
       }
