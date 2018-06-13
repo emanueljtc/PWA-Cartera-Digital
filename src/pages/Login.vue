@@ -27,7 +27,7 @@
             />
           </q-field>
         </div>
-        <button class="primary">Iniciar Sesión</button>
+        <button class="primary" @click="authenticate">Iniciar Sesión</button>
       </div>
     </div>
     <footer>
@@ -54,7 +54,7 @@ export default {
   methods: {
     loginError () {
       Notify.create({
-        message: 'Email or password incorrect',
+        message: 'Correo electrónico o contraseña incorrecta',
         icon: 'lock',
         timeout: 2500,
         color: 'negative',
