@@ -168,7 +168,7 @@ export default {
 
     // Terminar
     finishPasos () {
-      this.$router.replace('/correo')
+      this.$router.replace('/registrar')
     },
 
     update (serviciosBasicosExist) {

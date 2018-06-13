@@ -214,6 +214,7 @@ export default {
         background-color: $light-blue;
         color: white;
         margin-bottom: 15px;
+        margin-top: 0px;
         font-weight: 500;
         font-size: 20px;
       }

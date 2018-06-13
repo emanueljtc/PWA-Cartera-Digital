@@ -48,10 +48,10 @@ export default [{
     }
   },
   {
-    path: '/correo',
-    name: 'app.correo',
+    path: '/registrar',
+    name: 'app.registrar',
     component: () =>
-                    import('pages/correo'),
+                    import('pages/registrar'),
     meta: {
       requiresAuth: false
     }
