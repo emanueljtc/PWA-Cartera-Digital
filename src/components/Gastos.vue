@@ -3,7 +3,7 @@
     <div class="content">
       <h2>Con base en los costos <br> mas bajos del mercado</h2>
       {{ OrdenarGastos() }}
-      <div class="circulos">
+      <div class="circulos" v-show="mostrar_grafica">
         <div class="tu-precio items-center">
           <p>Tú <br> {{ PrintTuGasto }}</p>
         </div>
@@ -11,7 +11,7 @@
           <p>Precio <br> mas bajo <br> {{ PrintPrecioBajo }} <a href="http://landing.axtel.mx/nuevos/res/search/xtremo/?utm_source=google&utm_medium=cpc&utm_campaign=adqpros_xtremoresnonbrand&utm_content=paquetes&gclid=Cj0KCQjwl7nYBRCwARIsAL7O7dGDrOYuiq-wkfwNKLVE4LlIpDfy2QhxdHsPvtBi7ZwFifbxraRyAIkaAkPCEALw_wcB" target="_blank" v-show="mostrar_text_telefonia">MXN <br> (AXTEL Extremo)</a><a href="https://www.att.com.mx/att-con-todo-damos-mas.html" target="_blank" v-show="mostrar_text_smartphone">MXN <br> (AT&T)</a></p>
         </div>
       </div>
-      <i class="material-icons arrow">arrow_downward</i>
+      <i class="material-icons arrow" v-show="mostrar_grafica">arrow_downward</i>
       <div class="ahorro">
         <p>{{ AhorroText() }}</p>
         <p><span> {{ PrintAhorro }} </span></p>
@@ -64,6 +64,7 @@ export default {
       gastoMayorCantidad: 0,
       gastoMayor: null,
       precioBajoSeleccionado: 0,
+      mostrar_grafica: true,
       mostrar_text_telefonia: false,
       mostrar_text_smartphone: false,
       mostrar_text_agua: false,
@@ -103,16 +104,19 @@ export default {
         seleccionar = this.precio_mas_bajo.luz
         this.precioBajoSeleccionado = this.precio_mas_bajo.luz
         this.mostrar_text_luz = !this.mostrar_text_luz
+        this.mostrar_grafica = false
       }
       if (this.gastoMayor === 'Agua') {
         seleccionar = this.precio_mas_bajo.agua
         this.precioBajoSeleccionado = this.precio_mas_bajo.agua
         this.mostrar_text_agua = !this.mostrar_text_agua
+        this.mostrar_grafica = false
       }
       if (this.gastoMayor === 'Gas') {
         seleccionar = this.precio_mas_bajo.gas
         this.precioBajoSeleccionado = this.precio_mas_bajo.gas
         this.mostrar_text_gas = !this.mostrar_text_gas
+        this.mostrar_grafica = false
       }
       if (this.gastoMayor === 'Telefonía, Cable/Internet') {
         seleccionar = this.precio_mas_bajo.telefonia
