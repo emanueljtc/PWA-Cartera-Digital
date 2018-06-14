@@ -39,6 +39,9 @@
 <script>
 import { QInput, QField, QBtn, Notify } from 'quasar'
 import { mapActions } from 'vuex'
+import http from 'axios'
+import VueResource from 'vue-resource'
+
 export default {
   data () {
     return {
@@ -48,6 +51,11 @@ export default {
       }
     }
   },
+  // created () {
+  //   http.get('https://spark.bycarbono.tech/api/registrations').then(function (data) {
+  //     console.log(data)
+  //   })
+  // },
   mounted () {
     console.log('Login view Loaded!')
   },
@@ -64,28 +72,54 @@ export default {
     async authenticate () {
       let username = this.form.username
       let password = this.form.password
-      try {
-        let authentication = await this.$oauth.login(username, password)
-        await this.getCurrentUser()
-        let redirection = '/' // Default route
-        if (this.$route.query.redirect && authentication) {
-          // If query has a prop redirect
-          redirection = this.$route.query.redirect
-        } else {
-          // Otherwise redirect to default route
+      // try {
+      //   let authentication = await this.$oauth.login(username, password)
+      //   await this.getCurrentUser()
+      //   let redirection = '/' // Default route
+      //   if (this.$route.query.redirect && authentication) {
+      //     // If query has a prop redirect
+      //     redirection = this.$route.query.redirect
+      //   } else {
+      //     // Otherwise redirect to default route
+      //   }
+      //   this.$router.replace(redirection)
+      // } catch (error) {
+      //   // Error in Login
+      //   console.log(error)
+      //   this.loginError()
+      // }
+      http.post('https://spark.bycarbono.tech/api/registrations', {
+        email: username,
+        password: password,
+        name: username
+      }).then(data => {
+        console.log(data)
+      }).catch(err => {
+        if (err) {
+          let error = err.response.data.errors.email
+          error.forEach(function (element) {
+            console.log(element)
+            if (element === 'The email has already been taken.') {
+              this.loginError()
+            } else {
+              // this.$q.notify({
+              //   message: `Hola`,
+              //   timeout: 5000,
+              //   position: 'top-right'
+              // })
+              console.log('Hola No')
+            }
+          })
         }
-        this.$router.replace(redirection)
-      } catch (error) {
-        // Error in Login
-        console.log(error)
-        this.loginError()
-      }
+        // } else {
+        //   this.$router.replace('/diagnostico')
+        // }
+      })
     },
     ...mapActions('users', ['getCurrentUser', 'destroyCurrentUser'])
-
   },
   components: {
-    QField, QInput, QBtn
+    QField, QInput, QBtn, http, VueResource
   }
 }
 </script>

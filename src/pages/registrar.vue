@@ -74,7 +74,7 @@ export default {
         //   password: this.form.password,
         //   name: this.form.email
         // }).then(data => {
-        //   console.log(data)
+        //   console.log(data.properties.email)
         // }).catch(err => {
         //   if (err) {
         //     console.log(err)

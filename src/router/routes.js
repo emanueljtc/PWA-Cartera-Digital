@@ -26,7 +26,7 @@ export default [{
     component: () =>
                     import('pages/presupuesto'),
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
