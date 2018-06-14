@@ -71,7 +71,7 @@
                   currencySymbol: '$',
                   decimalPlaces: 2,
                   minimumValue: 0,
-                }" placeholder="$0.00">
+                }" placeholder="'$0.00'">
                 </vue-autonumeric>
             </q-field>
           </div>
@@ -104,7 +104,7 @@
                           currencySymbol: '$',
                           decimalPlaces: 2,
                           minimumValue: 0,
-                        }" :placeholder="gasto.cantidad"></vue-autonumeric>
+                        }" :placeholder="'gasto.cantidad'"></vue-autonumeric>
                         {{ actualizarCantidadMensual(gasto) }}
                     </q-field>
                   </div>

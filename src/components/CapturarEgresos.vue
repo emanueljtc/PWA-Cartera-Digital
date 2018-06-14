@@ -36,7 +36,7 @@
                   currencySymbol: '$',
                   decimalPlaces: 2,
                   minimumValue: 0,
-                }" placeholder="$0.00"></vue-autonumeric>
+                }" placeholder="'$0.00'"></vue-autonumeric>
             </q-field>
           </div>
         </div>
@@ -70,7 +70,6 @@
                             decimalPlaces: 2,
                             minimumValue: 0,
                           }" :placeholder="egreso.cantidad" v-bind:class="{ 'element-one-input': egreso.id === 1, 'element-two-input': egreso.id === 2, 'element-three-input': egreso.id === 3, 'element-four-input': egreso.id === 4, 'element-five-input': egreso.id === 5 }"></vue-autonumeric>
-                          {{ actualizarCantidadMensual(egreso) }}
                       </q-field>
                     </div>
                   </div>
@@ -103,6 +102,7 @@ export default {
       form: {
         egresos: []
       },
+      position: [],
       form_egreso: {
         id: null,
         egreso: null,
@@ -210,6 +210,7 @@ export default {
       } else {
         if (form_egreso.egreso !== null && form_egreso.frecuencia !== null && form_egreso.cantidad !== 0) {
           this.$store.dispatch('egresos/store', form_egreso)
+          this.position.push(form_egreso.id)
           this.form.egresos.push(form_egreso)
           this.resetFormEgreso()
         }
