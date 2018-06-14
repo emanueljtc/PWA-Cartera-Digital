@@ -230,6 +230,46 @@ export default {
     }
   }
 
+  .element-one {
+    background-color: rgba(100, 201, 219, .25) !important;
+  }
+
+  .element-two {
+    background-color: rgba(192, 216, 74, .25) !important;
+  }
+
+  .element-three {
+    background-color: rgba(224, 55, 87, .25) !important;
+  }
+
+  .element-four {
+    background-color: rgba(89, 186, 112, .25) !important;
+  }
+
+  .element-five {
+    background-color: rgba(175, 133, 188, .25) !important;
+  }
+
+  .element-one-input {
+    background-color: rgba(100, 201, 219, 0) !important;
+  }
+
+  .element-two-input {
+    background-color: rgba(192, 216, 74, 0) !important;
+  }
+
+  .element-three-input {
+    background-color: rgba(224, 55, 87, 0) !important;
+  }
+
+  .element-four-input {
+    background-color: rgba(89, 186, 112, 0) !important;
+  }
+
+  .element-five-input {
+    background-color: rgba(175, 133, 188, 0) !important;
+  }
+
   h2 {
     font-family: $nunitobold;
     font-size: 35px;

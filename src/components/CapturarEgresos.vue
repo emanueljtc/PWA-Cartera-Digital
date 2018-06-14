@@ -43,7 +43,7 @@
       </div>
       <div class="collapsible-box">
         <q-list v-for="(egreso, key) in form.egresos" :key="key">
-            <q-collapsible group="somegroup" :label='labelCantidad(egreso)'>
+            <q-collapsible v-bind:class="{ 'element-one': egreso.id === 1, 'element-two': egreso.id === 2, 'element-three': egreso.id === 3, 'element-four': egreso.id === 4, 'element-five': egreso.id === 5 }" group="somegroup" :label='labelCantidad(egreso)'>
             <div>
                 <div class="input-field center-align">
                   <div class="row-m">
@@ -69,7 +69,7 @@
                             currencySymbol: '$',
                             decimalPlaces: 2,
                             minimumValue: 0,
-                          }" :placeholder="egreso.cantidad"></vue-autonumeric>
+                          }" :placeholder="egreso.cantidad" v-bind:class="{ 'element-one-input': egreso.id === 1, 'element-two-input': egreso.id === 2, 'element-three-input': egreso.id === 3, 'element-four-input': egreso.id === 4, 'element-five-input': egreso.id === 5 }"></vue-autonumeric>
                           {{ actualizarCantidadMensual(egreso) }}
                       </q-field>
                     </div>
@@ -111,6 +111,7 @@ export default {
         cantidadMensual: null
       },
       serviciosBasicosExist: false,
+      hola: false,
       //
       selectOptions: [
         {
