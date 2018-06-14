@@ -43,7 +43,7 @@
       </div>
       <div class="collapsible-box">
         <q-list v-for="(egreso, key) in form.egresos" :key="key">
-            <q-collapsible group="somegroup" :label='labelCantidad(egreso)' v-bind:class="{'element-two': (form_egreso.id === 1), 'element-three': (position.length === 2), 'element-four': (position.length === 3), 'element-five': (position.length === 4), 'element-six': (position.length === 5), 'element-seven': (position.length === 6)}">
+            <q-collapsible group="somegroup" :label='labelCantidad(egreso)' v-bind:class="{'element-two': (position.id === 1), 'element-three': (position.id === 2)}">
             <div>
                 <div class="input-field center-align">
                   <div class="row-m">

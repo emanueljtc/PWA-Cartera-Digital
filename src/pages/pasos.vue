@@ -271,47 +271,27 @@ export default {
     }
   }
   .element-two {
-    color: #c0d84a !important;
+    background-color: #c0d84a !important;
   }
 
   .element-three {
-    color: #e03757 !important;
+    background-color: #e03757 !important;
   }
 
   .element-four {
-    color: #59ba70 !important;
+    background-color: #59ba70 !important;
   }
 
   .element-five {
-    color: #af85bc !important;
+   background-color: #af85bc !important;
   }
 
   .element-six {
-    color: #fbbb2f !important;
+    background-color: #fbbb2f !important;
   }
 
   .element-seven {
-    color: #6179bb !important;
-  }
-
-  .element-eight {
-    color: #7cb5ec !important;
-  }
-
-  .element-nine {
-    color: #434348 !important;
-  }
-
-  .element-ten {
-    color: #90ed7d !important;
-  }
-
-  .element-eleven {
-    color: #f7a35c !important;
-  }
-
-  .element-twelve {
-    color: #8085e9 !important;
+    background-color: #6179bb !important;
   }
   .close-modal {
     position: absolute;
