@@ -229,7 +229,6 @@ export default {
       display: none;
     }
   }
-
   .element-one {
     background-color: rgba(100, 201, 219, .25) !important;
   }
